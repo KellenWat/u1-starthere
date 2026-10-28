@@ -1,4 +1,4 @@
-# U1 StartHere data contract (1.0.0)
+# U1 StartHere data contract (1.1.0)
 
 The canonical authored content is `data/items.json`, `data/fixes.json` and
 `data/phases.json`. Consumers must render records from these files; catalog
@@ -6,8 +6,8 @@ titles, prices, compatibility claims and verification dates must not become
 hand-maintained copies in application code. Paths are relative to the GitHub
 Pages project root, so a deployment under `/u1-starthere/` remains supported.
 
-M1 defines and validates the contract. UI, planner, search, embed and freshness
-behavior are implemented in later milestones, in that order.
+M1 defined and validated the contract. M2 adds the catalog, pre-rendered detail
+pages and startup track. Planner, search, embed and freshness follow in order.
 
 ## Envelope and reuse
 
@@ -15,7 +15,7 @@ Every file is an object with these required properties:
 
 | Key | Meaning |
 | --- | --- |
-| `version` | Contract version, currently `1.0.0`; not a firmware version |
+| `version` | Contract version, currently `1.1.0`; not a firmware version |
 | `license` | `CC-BY-4.0` for original curated content |
 | `imported_at` | ISO date of the seed import |
 | `attribution` | Curator, license URL, supplied-source titles/authorship and reuse notice |
@@ -112,7 +112,11 @@ Each record contains `phase`, `name`, `goal`, and ordered `steps`. A step is
 `{ "id": "stable-step-slug", "text": "Original guidance", "item_id": null }`;
 use a catalog ID instead of `null` when the step has a related item.
 Step IDs are globally unique and intended as stable localStorage progress
-keys in M2. Item phase is its earliest stage; the track can refer to it later.
+keys. `optional` is an optional boolean added in 1.1.0; absent means false.
+The M2 track permits skipping only explicitly optional steps. Each step's
+saved state is `done`, `skipped`, or absent. Mandatory setup and stock tests
+cannot be skipped, while choosing to remain stock is a valid firmware decision.
+Item phase is its earliest stage; the track can refer to it later.
 Expansion is an optional post-week-one phase, not a claim that chamber-heating
 or soldering belongs in the first week. The firmware phase explicitly permits
 staying stock; integration steps are conditional on the firmware decision.
@@ -162,3 +166,23 @@ unprovided gates, invalid track order/IDs, impossible dates, untested firmware
 claims, and affiliate/tracking links or direct model/firmware/document files.
 Tests mutate valid input to prove rejection paths run. The validator does
 not contact external sites, execute a planner, or perform symptom search.
+
+## Authoring and M2 consumers
+
+Run `node scripts/render.mjs` after editing item data, phases or the page
+template, then commit the generated HTML. It uses `assets/view.mjs`, the same
+escaped view helpers used by the live catalog. This authoring operation needs
+Node 22+ without npm or dependencies; serving/deployment needs neither.
+
+`node scripts/render.mjs --check` fails when a generated page is missing,
+stale, or orphaned. CI also runs `node --test tests/*.test.mjs` for catalog
+filtering, project-prefix links, safe text rendering and progress behavior.
+Python tests check that committed page links and local assets resolve inside
+the site root. The JavaScript budget includes `.js` and `.mjs`, including
+authoring and test modules, for a conservative total.
+
+Browser storage uses only `u1-starthere.track.v1` with
+`{ "version": 1, "steps": { "stable-step-id": "done" } }`. It stores no
+other preferences, identity or telemetry. Invalid, old or unknown step state
+is ignored; unavailable storage falls back to progress for the current visit.
+Catalog filter choices live in the URL query string, not browser storage.

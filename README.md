@@ -13,7 +13,11 @@ projects keep their own licenses. This is an unofficial community project.
 Imported 38 items, 12 fixes and phases 0–6. The schemas, offline validator and
 CI workflow pass locally and on GitHub. [Successful Actions run #2](https://github.com/KellenWat/u1-starthere/actions/runs/40779468443)
 validated all three data files and passed all 24 tests for `a133ce3`.
-M2–M6 have not started.
+
+**M2 implemented and locally verified; final Actions run pending.** Home,
+filterable catalog, 38 pre-rendered item pages and the checkable startup track
+are ready. Phone-sized browser testing completed the full track, including
+optional skips, persistence, item links and reset. M3–M6 have not started.
 
 M1 acceptance evidence:
 
@@ -27,40 +31,46 @@ M1 acceptance evidence:
 
 ## Validate locally
 
-Python 3.11 or later is needed only for development checks. No Node/npm setup
-is required. From this directory (Windows):
+Python 3.11+ is needed for data checks and Node 22+ for authoring/JavaScript
+checks. No npm installation is required. From this directory (Windows):
 
 ```powershell
 python -m venv .venv
 .venv\Scripts\python -m pip install -r requirements-dev.txt
 .venv\Scripts\python scripts/validate.py
 .venv\Scripts\python -m unittest discover -s tests -v
+node --test tests/*.test.mjs
+node scripts/render.mjs --check
 ```
 
-On macOS/Linux use `.venv/bin/python` for the last three commands. CI installs
+On macOS/Linux use `.venv/bin/python` for the Python commands. CI installs
 the same requirements into its disposable runner and uses `python` directly.
 The format extras are required: validation fails explicitly if the URI checker
 is unavailable, rather than silently skipping source URL format validation.
 
-The JSON Schema validator resolves only local schema resources. It does not
-fetch third-party links. Link and staleness checks belong to M5. The current
-test suite checks required seed coverage, imported prices, critical dependency
-and warning data, and rejection of malformed or inconsistent changes. Planner
-persona tests arrive with M3; search-ranking tests arrive with M4. M1 tests do
-not claim either feature works.
+Node 22+ is needed for authoring and JavaScript tests, with no npm install.
+The JSON Schema validator resolves only local schemas and does not fetch
+third-party links. Scheduled external link/staleness checks belong to M5.
+The suites cover seed integrity, page links, catalog filters, saved progress,
+project-prefix routing and escaped content. Planner persona tests arrive with
+M3; symptom search-ranking tests arrive with M4.
 
 ## Local preview
 
-M1 is data only: there are no website pages yet. To inspect the public data
-paths over HTTP:
+From this directory, serve the committed site directly:
 
 ```powershell
 python -m http.server 8000 --bind 127.0.0.1
 ```
 
-Open http://127.0.0.1:8000/data/items.json (or `fixes.json`, `phases.json`).
-The command serves existing static files and does not build them. M2 will add
-the mobile website and the optional item-page generator.
+Open http://127.0.0.1:8000/ for home, `/start/` for the track or `/catalog/`
+for the catalog. Trailing slashes work with plain static servers and GitHub
+Pages. Item pages have real `/item/{id}/index.html` files, so direct links
+work without a server router. No site build or runtime dependency is needed.
+
+After editing JSON content or `templates/page.html`, run
+`node scripts/render.mjs` and commit its generated files. CI checks that they
+match the JSON. The optional authoring script is not a deployment build step.
 
 ## Decisions
 
@@ -75,10 +85,11 @@ the mobile website and the optional item-page generator.
 3. **Recommended item routes:** M2 will use checked-in, pre-rendered item HTML
    from a small optional generator. Regeneration is an authoring operation;
    GitHub Pages serves the committed files without a build. JSON remains the
-   sole authored source for item content. Nothing is generated at M1.
+   sole authored source for item content. M2 implements this using a small
+   Node script and shared view helpers, without dependencies or npm.
 4. **Recommended name and appearance:** `u1-starthere`; clean, mobile-first,
    visually compatible with the printer ecosystem and clearly unofficial.
-   No domain, fund submission or public hosting has been configured at M1.
+   No domain, fund submission or Pages hosting has been configured yet.
 5. **Versioned data:** all three JSON files use a `version`, `license`,
    `imported_at`, `attribution` envelope plus `items`, `fixes` or `phases`.
    The brief's record fields and phase ordering remain intact inside it.
@@ -147,6 +158,32 @@ the mobile website and the optional item-page generator.
     Actions run #1 failed before tests because pip caching looked for the
     default requirements filename. Set `cache-dependency-path` to
     `requirements-dev.txt`; the new run #2 passed validation and all 24 tests.
+16. **What’s next interface (owner direction):** M3 will use an interactive,
+    scrolling decision path that branches toward relevant community options
+    and original creator pages. Show one skippable question at a time, retain
+    earlier answers, and allow backtracking/changes. Use normal scrolling and
+    keyboard controls. Keep the brief's deterministic ordering, prerequisites,
+    conflicts, reason chips and visible budget deferrals. This changes the
+    intake presentation, not the planner rules. No M3 engine is built in M2.
+17. **Honest M2 navigation:** until the planner exists, the home page's second
+    action opens the working catalog rather than a dead planner link. It
+    previews the future decision path in plain language. Symptom search stays
+    in M4; M2 links owners to official U1 support without a fake search field.
+18. **Optional track choices:** contract 1.1.0 adds `steps[].optional` (default
+    false) to phases. Purchases and modifications can be explicitly skipped.
+    The nine required steps cover preparation, inspection, stock tests and a
+    firmware decision; staying stock is valid. Twenty-two optional steps can
+    be completed or skipped. Checks do not verify actual printer behavior.
+19. **Progress and filters:** track-only localStorage, under a versioned key;
+    the UI distinguishes completed from skipped steps and permits reset with
+    an accessible confirmation dialog. Filter state uses the URL query.
+    No cookies, remote fonts, analytics, storage for other purposes, or
+    automatic network calls to creator pages are introduced.
+20. **M2 visual direction:** a white/cool-gray field guide with blue controls,
+    local system fonts, a four-toolhead mark, and large checklist labels.
+    Tested at 320 px and 390 px phone widths and a 1280 px desktop viewport.
+    See [DESIGN.md](DESIGN.md) for tokens and rationale. M5 still owns the full
+    accessibility/freshness polish pass; these are the M2 usability checks.
 
 ## Source review and remaining content work
 
@@ -174,7 +211,7 @@ Deferred source gaps are explicit in the data:
 
 ## Next milestones
 
-Stop after this M1 handoff. The required passing Actions run is recorded above.
-Then proceed in order: M2 catalog/track; M3 planner plus five golden personas;
+Stop after the M2 handoff. Once its acceptance checks pass, the next stage is
+M3: the scrolling decision path and planner plus five golden personas;
 M4 symptom search plus all 12 ranking fixtures; M5 embed, freshness and
 accessibility; M6 submission assets only after all earlier acceptance checks.

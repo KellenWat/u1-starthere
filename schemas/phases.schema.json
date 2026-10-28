@@ -10,7 +10,7 @@
   ],
   "properties": {
     "version": {
-      "const": "1.0.0"
+      "const": "1.1.0"
     },
     "license": {
       "const": "CC-BY-4.0"
@@ -74,6 +74,10 @@
                     "null"
                   ],
                   "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                },
+                "optional": {
+                  "type": "boolean",
+                  "default": false
                 }
               }
             }

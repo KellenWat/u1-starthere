@@ -25,3 +25,10 @@ jobs:
         run: python scripts/validate.py
       - name: Check seed integrity and validator rejection cases
         run: python -m unittest discover -s tests -v
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check catalog and progress behavior (no npm)
+        run: node --test tests/*.test.mjs
+      - name: Ensure committed pages match their JSON source
+        run: node scripts/render.mjs --check

@@ -157,7 +157,8 @@ def main() -> int:
     for kind in KINDS:
         print(f"PASS data/{kind}.json: {len(documents[kind][kind])} records (JSON Schema 2020-12)")
     print("PASS cross-document references, prerequisite DAG, gate providers, conflicts, track order, attribution and URLs")
-    js_bytes = sum(path.stat().st_size for path in ROOT.rglob("*.js")
+    js_bytes = sum(path.stat().st_size for path in ROOT.rglob("*")
+                   if path.suffix in {".js", ".mjs"}
                    if not {".git", ".venv"}.intersection(path.parts))
     if js_bytes >= 200_000:
         print(f"FAIL total JavaScript {js_bytes} bytes; must be below 200000", file=sys.stderr)
