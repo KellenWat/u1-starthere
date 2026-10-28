@@ -1,0 +1,255 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "license",
+    "imported_at",
+    "attribution",
+    "items"
+  ],
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "license": {
+      "const": "CC-BY-4.0"
+    },
+    "imported_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "attribution": {
+      "$ref": "common.schema.json#/$defs/attribution"
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "title",
+          "category",
+          "type",
+          "summary",
+          "cost_usd",
+          "cost_note",
+          "price_checked_at",
+          "time_minutes",
+          "difficulty",
+          "phase",
+          "requires",
+          "conflicts",
+          "gates",
+          "conditions",
+          "materials_relevance",
+          "reversible",
+          "warranty_risk",
+          "source",
+          "last_verified",
+          "verified_firmware",
+          "tags",
+          "bothers",
+          "locations",
+          "warnings",
+          "optional_related_items",
+          "provenance"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "category": {
+            "enum": [
+              "setup",
+              "printed-mod",
+              "purchase",
+              "firmware",
+              "slicer",
+              "enclosure",
+              "cooling",
+              "filament-system",
+              "multi-color",
+              "maintenance"
+            ]
+          },
+          "type": {
+            "enum": [
+              "print",
+              "buy",
+              "install",
+              "setting",
+              "habit"
+            ]
+          },
+          "summary": {
+            "type": "string",
+            "minLength": 1
+          },
+          "cost_usd": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "cost_note": {
+            "type": "string",
+            "minLength": 1
+          },
+          "price_checked_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "time_minutes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "difficulty": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "phase": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 6
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+            },
+            "uniqueItems": true
+          },
+          "conflicts": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+            },
+            "uniqueItems": true
+          },
+          "gates": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+            },
+            "uniqueItems": true
+          },
+          "conditions": {
+            "$ref": "common.schema.json#/$defs/conditions"
+          },
+          "materials_relevance": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "all",
+                "pla",
+                "petg",
+                "tpu",
+                "abs",
+                "asa",
+                "pa",
+                "cf-gf",
+                "five-plus-colors"
+              ]
+            },
+            "uniqueItems": true,
+            "minItems": 1
+          },
+          "reversible": {
+            "type": "boolean"
+          },
+          "warranty_risk": {
+            "enum": [
+              "none",
+              "gray",
+              "void-risk"
+            ]
+          },
+          "source": {
+            "$ref": "common.schema.json#/$defs/source"
+          },
+          "last_verified": {
+            "type": "string",
+            "format": "date"
+          },
+          "verified_firmware": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+            },
+            "uniqueItems": true
+          },
+          "bothers": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "noise",
+                "fumes",
+                "reliability",
+                "speed-flow",
+                "color-count",
+                "dry-filament"
+              ]
+            },
+            "uniqueItems": true
+          },
+          "locations": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "living-space",
+                "office",
+                "garage-workshop"
+              ]
+            },
+            "uniqueItems": true
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "optional_related_items": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+            },
+            "uniqueItems": true
+          },
+          "provenance": {
+            "$ref": "common.schema.json#/$defs/provenance"
+          }
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://u1-starthere.example/schemas/items.schema.json"
+}

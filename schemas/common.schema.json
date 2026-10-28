@@ -1,0 +1,207 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://u1-starthere.example/schemas/common.schema.json",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "creator",
+        "url",
+        "kind",
+        "credit_status",
+        "note"
+      ],
+      "properties": {
+        "creator": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://[^\\s]+$"
+        },
+        "kind": {
+          "enum": [
+            "docs",
+            "model",
+            "product",
+            "forum",
+            "repository",
+            "collection",
+            "homepage"
+          ]
+        },
+        "credit_status": {
+          "enum": [
+            "named",
+            "pending"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "seed",
+        "section",
+        "verification_status",
+        "note"
+      ],
+      "properties": {
+        "seed": {
+          "enum": [
+            "checklist",
+            "brief"
+          ]
+        },
+        "section": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verification_status": {
+          "enum": [
+            "imported-not-tested",
+            "source-reviewed-not-tested"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "attribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "curator",
+        "license_url",
+        "sources",
+        "notice"
+      ],
+      "properties": {
+        "curator": {
+          "const": "U1 StartHere contributors"
+        },
+        "license_url": {
+          "const": "https://creativecommons.org/licenses/by/4.0/"
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "title",
+              "creator",
+              "date",
+              "url"
+            ],
+            "properties": {
+              "id": {
+                "enum": [
+                  "checklist",
+                  "brief"
+                ]
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "creator": {
+                "type": "string",
+                "minLength": 1
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "url": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "notice": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "conditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [],
+      "properties": {
+        "min_stock_days": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "firmware_min": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requires_firmware": {
+          "enum": [
+            "paxx12"
+          ]
+        },
+        "soldering": {
+          "type": "boolean"
+        },
+        "required_gates": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "uniqueItems": true
+        },
+        "excluded_materials": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "pla",
+              "petg",
+              "tpu",
+              "abs",
+              "asa",
+              "pa",
+              "cf-gf",
+              "wood",
+              "glow"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "matching_hotends": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

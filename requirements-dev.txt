@@ -1,0 +1,2 @@
+# Development checks only; the website has no runtime dependencies.
+jsonschema[format-nongpl]==4.26.0

@@ -1,0 +1,1995 @@
+{
+  "version": "1.0.0",
+  "license": "CC-BY-4.0",
+  "imported_at": "2026-10-28",
+  "attribution": {
+    "curator": "U1 StartHere contributors",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "sources": [
+      {
+        "id": "checklist",
+        "title": "Snapmaker U1 — First-Week Setup Checklist",
+        "creator": "Owner-provided checklist (author not named in supplied document)",
+        "date": "2026-10-26",
+        "url": null
+      },
+      {
+        "id": "brief",
+        "title": "U1 StartHere — Build Brief",
+        "creator": "Owner-provided project brief (author not named in supplied document)",
+        "date": "2026-10-28",
+        "url": null
+      }
+    ],
+    "notice": "Original StartHere summaries and structured facts: CC BY 4.0. Retain this metadata and per-record creator credits; indicate adaptations. Linked third-party works keep their own licenses. A null creator means unresolved credit, not a claim of authorship."
+  },
+  "items": [
+    {
+      "id": "bench-and-slicer-prep",
+      "title": "Prepare the bench and stock slicer",
+      "category": "setup",
+      "type": "habit",
+      "summary": "Choose a steady, level spot and get the stock slicer ready. Bookmark the official setup and support pages before unboxing.",
+      "cost_usd": 0,
+      "cost_note": "Free preparation; an optional paver is priced separately.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 1,
+      "phase": 0,
+      "requires": [],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Snapmaker",
+        "url": "https://wiki.snapmaker.com/en/snapmaker_u1",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [],
+      "bothers": [],
+      "locations": [],
+      "warnings": [],
+      "optional_related_items": [
+        "concrete-paver-base"
+      ],
+      "provenance": {
+        "seed": "checklist",
+        "section": "Before it arrives",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "concrete-paver-base",
+      "title": "Concrete paver base",
+      "category": "purchase",
+      "type": "buy",
+      "summary": "A heavy base is an inexpensive way to try reducing bench vibration. Calibrate with the printer in its final position.",
+      "cost_usd": 8,
+      "cost_note": "Checklist estimate $6–8 for a 16-inch paver; budget uses the $8 upper bound.",
+      "price_checked_at": "2026-10-26",
+      "time_minutes": 10,
+      "difficulty": 1,
+      "phase": 0,
+      "requires": [],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "The Home Depot / Lowe's",
+        "url": "https://www.homedepot.com/",
+        "kind": "homepage",
+        "credit_status": "named",
+        "note": "Retailers named in the checklist; no exact paver SKU supplied."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "vibration"
+      ],
+      "bothers": [
+        "noise"
+      ],
+      "locations": [
+        "living-space",
+        "office"
+      ],
+      "warnings": [
+        "Check bench load capacity and support the printer securely."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "unbox-inspect",
+      "title": "Inspect and assemble on stock firmware",
+      "category": "setup",
+      "type": "habit",
+      "summary": "Record the serial number, photograph the four toolhead contacts, and check the supplied parts. Follow the official assembly and stock calibration sequence.",
+      "cost_usd": 0,
+      "cost_note": "No additional purchase. The checklist reports a spare 0.4 mm stainless hotend in the box; check your packing list before ordering.",
+      "price_checked_at": null,
+      "time_minutes": 90,
+      "difficulty": 1,
+      "phase": 1,
+      "requires": [
+        "bench-and-slicer-prep"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Snapmaker",
+        "url": "https://wiki.snapmaker.com/en/snapmaker_u1",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [],
+      "bothers": [
+        "reliability"
+      ],
+      "locations": [],
+      "warnings": [
+        "Pause and contact official support if any contact, dock, cable, or supplied component looks damaged."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "Day 0 — Unbox & inspect",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "stock-burn-in-complete",
+      "title": "Complete stock burn-in",
+      "category": "setup",
+      "type": "habit",
+      "summary": "Test each of the four heads separately, then run a four-color job with a prime tower. Save any errors and the idle-noise and temperature baseline before modifying the printer.",
+      "cost_usd": 0,
+      "cost_note": "Uses the supplied filament; no extra purchase assumed.",
+      "price_checked_at": null,
+      "time_minutes": 180,
+      "difficulty": 1,
+      "phase": 2,
+      "requires": [
+        "unbox-inspect"
+      ],
+      "conflicts": [],
+      "gates": [
+        "stock-burn-in"
+      ],
+      "conditions": {},
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Snapmaker",
+        "url": "https://wiki.snapmaker.com/en/snapmaker_u1",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [],
+      "bothers": [
+        "reliability"
+      ],
+      "locations": [],
+      "warnings": [
+        "Resolve parking, loading, or calibration failures with support while the machine is still stock.",
+        "The time is a planning estimate; model choice changes print duration."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "Day 1 — Stock burn-in",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "just-a-riser-xl",
+      "title": "Just-A-Riser XL+",
+      "category": "printed-mod",
+      "type": "print",
+      "summary": "Print a vented riser with an optional recessed LED track. Check the creator's fit notes for your intended cover before printing.",
+      "cost_usd": 0,
+      "cost_note": "No purchase price; printed parts still consume your filament and power.",
+      "price_checked_at": null,
+      "time_minutes": 480,
+      "difficulty": 2,
+      "phase": 3,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": null,
+        "url": "https://www.printables.com/model/1818645-snapmaker-u1-just-a-riser-xl-with-vents-and-multic",
+        "kind": "model",
+        "credit_status": "pending",
+        "note": "Exact model URL retained from checklist; page fetch failed, so the designer handle is pending."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "lighting",
+        "enclosure",
+        "vibration"
+      ],
+      "bothers": [
+        "noise"
+      ],
+      "locations": [],
+      "warnings": [
+        "Re-run vibration compensation after installation.",
+        "Cover compatibility is imported from the checklist and has not been physically checked."
+      ],
+      "optional_related_items": [
+        "riser-led-kit",
+        "vibration-recalibration"
+      ],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "riser-led-kit",
+      "title": "LED strip and USB supply",
+      "category": "purchase",
+      "type": "buy",
+      "summary": "Add lighting to the riser's recessed track using a suitable strip and supply. Match the strip dimensions and voltage to the creator's instructions.",
+      "cost_usd": 18,
+      "cost_note": "Checklist estimate $12–18; budget uses $18. Optional lighting, not a prerequisite for the printed riser.",
+      "price_checked_at": "2026-10-26",
+      "time_minutes": 20,
+      "difficulty": 1,
+      "phase": 3,
+      "requires": [
+        "just-a-riser-xl"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": null,
+        "url": "https://www.amazon.com/",
+        "kind": "homepage",
+        "credit_status": "pending",
+        "note": "Checklist names Amazon but no product or manufacturer; exact product and creator pending."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "lighting"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "small-parts-bundle",
+      "title": "PTFE fittings, tubing and bearings",
+      "category": "purchase",
+      "type": "buy",
+      "summary": "Gather the small hardware used by selected tube supports and spool holders. Buy to the actual model bill of materials to avoid duplicate parts.",
+      "cost_usd": 35,
+      "cost_note": "Checklist estimate ~$35: PC4-M10 fittings, spare PTFE tube, four 608 bearings and zip ties.",
+      "price_checked_at": "2026-10-26",
+      "time_minutes": 10,
+      "difficulty": 1,
+      "phase": 3,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": null,
+        "url": "https://www.amazon.com/",
+        "kind": "homepage",
+        "credit_status": "pending",
+        "note": "Generic shopping bundle from checklist; no exact SKUs or manufacturers supplied."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "ptfe",
+        "bearings"
+      ],
+      "bothers": [
+        "reliability"
+      ],
+      "locations": [],
+      "warnings": [],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "ptfe-support-guides",
+      "title": "PTFE supports and radius guides",
+      "category": "printed-mod",
+      "type": "print",
+      "summary": "Support feed tubes so bends stay gradual and toolhead travel stays clear. Check the whole movement range after fitting clips or adapters.",
+      "cost_usd": 0,
+      "cost_note": "No purchase price; printed parts still consume your filament and power.",
+      "price_checked_at": null,
+      "time_minutes": 90,
+      "difficulty": 1,
+      "phase": 3,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": null,
+        "url": "https://makerworld.com/en/models/2065608-snapmaker-u1-ptfe-tube-support-clip",
+        "kind": "model",
+        "credit_status": "pending",
+        "note": "Exact example from checklist; fetch blocked. Designer handle and separate guide/adapter models need review."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "ptfe"
+      ],
+      "bothers": [
+        "reliability"
+      ],
+      "locations": [],
+      "warnings": [
+        "Some designs need PC4-M10 fittings; check the model's hardware list before printing."
+      ],
+      "optional_related_items": [
+        "small-parts-bundle"
+      ],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "tpu-feed-tube-holder",
+      "title": "TPU feed-tube holder",
+      "category": "printed-mod",
+      "type": "print",
+      "summary": "A flexible holder can keep feed tubing tidy without a rigid clamp. Select the exact U1 model and confirm clearance before installing it.",
+      "cost_usd": 0,
+      "cost_note": "No purchase price; printed parts still consume your filament and power.",
+      "price_checked_at": null,
+      "time_minutes": 60,
+      "difficulty": 2,
+      "phase": 3,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": null,
+        "url": "https://makerworld.com/",
+        "kind": "homepage",
+        "credit_status": "pending",
+        "note": "Checklist credits Uncle Jessy's mods roundup as discovery only; exact model and original designer were not supplied."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "ptfe"
+      ],
+      "bothers": [
+        "reliability"
+      ],
+      "locations": [],
+      "warnings": [
+        "Original designer link is pending; do not treat the platform homepage as a downloadable model.",
+        "Requires suitable TPU filament; filament cost is excluded."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "tool-holders-spool-adapters",
+      "title": "Tool holders and spool adapters",
+      "category": "printed-mod",
+      "type": "print",
+      "summary": "Choose holders for the tools you use and adapters that suit your spool dimensions. A bearing-supported holder may help a spool rotate freely.",
+      "cost_usd": 0,
+      "cost_note": "No purchase price; printed parts still consume your filament and power.",
+      "price_checked_at": null,
+      "time_minutes": 180,
+      "difficulty": 1,
+      "phase": 3,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": null,
+        "url": "https://makerworld.com/",
+        "kind": "homepage",
+        "credit_status": "pending",
+        "note": "Checklist names several model types but no individual projects; original designer links pending."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "spool-holder",
+        "organization"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "Bearing-holder designs in the checklist use two 608 bearings per holder; verify your selected model."
+      ],
+      "optional_related_items": [
+        "small-parts-bundle"
+      ],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "vibration-recalibration",
+      "title": "Re-run vibration calibration",
+      "category": "maintenance",
+      "type": "habit",
+      "summary": "Repeat vibration compensation after changing the base, riser or cover. Save a fresh baseline with the printer in its normal operating position.",
+      "cost_usd": 0,
+      "cost_note": "No purchase price; printed parts still consume your filament and power.",
+      "price_checked_at": null,
+      "time_minutes": 15,
+      "difficulty": 1,
+      "phase": 3,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Snapmaker",
+        "url": "https://wiki.snapmaker.com/en/snapmaker_u1",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "vibration"
+      ],
+      "bothers": [
+        "reliability"
+      ],
+      "locations": [],
+      "warnings": [],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "Prep and Days 2–3 recalibration",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "cryogrip-pro",
+      "title": "BIQU CryoGrip Pro plate",
+      "category": "purchase",
+      "type": "buy",
+      "summary": "Try a U1-sized textured plate when you want a different PLA or PETG adhesion surface. Let parts cool before removal and follow the plate maker's material guidance.",
+      "cost_usd": 27.89,
+      "cost_note": "Checklist BIQU sale $27.89 (list $39.99); P3D alternative $29. These are 2026-10-26 prices.",
+      "price_checked_at": "2026-10-26",
+      "time_minutes": 10,
+      "difficulty": 1,
+      "phase": 3,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "pla",
+        "petg"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "BIQU",
+        "url": "https://biqu.equipment/pages/halloween-sale",
+        "kind": "collection",
+        "credit_status": "named",
+        "note": "Checklist sale page; confirm the U1-sized variant before buying."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "bed-adhesion"
+      ],
+      "bothers": [
+        "reliability"
+      ],
+      "locations": [],
+      "warnings": [
+        "A hot or strongly bonded part can damage the surface if forced off."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "paxx12-extended-firmware",
+      "title": "Paxx12 Extended Firmware",
+      "category": "firmware",
+      "type": "install",
+      "summary": "Adds community integrations and browser controls to the U1. Read the installation and stock-recovery instructions before changing firmware.",
+      "cost_usd": 0,
+      "cost_note": "No purchase price; printed parts still consume your filament and power.",
+      "price_checked_at": null,
+      "time_minutes": 90,
+      "difficulty": 3,
+      "phase": 4,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [
+        "extended-firmware"
+      ],
+      "conditions": {
+        "min_stock_days": 3
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": "Paxx12",
+        "url": "https://snapmakeru1-extended-firmware.pages.dev/",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "camera",
+        "notifications",
+        "spoolman",
+        "remote-access"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "Wait until stock burn-in is clean; the checklist schedules installation on Days 4–5.",
+        "Damage attributable to custom firmware may not be covered; review the current terms."
+      ],
+      "optional_related_items": [
+        "spoolman-integration",
+        "print-notifications",
+        "webrtc-camera",
+        "tailscale-remote-access"
+      ],
+      "provenance": {
+        "seed": "checklist",
+        "section": "Days 4–5 — Paxx12 Extended Firmware",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Checklist order retained; project documentation reviewed for capabilities and warranty wording. No installed version was tested."
+      }
+    },
+    {
+      "id": "spoolman-integration",
+      "title": "Enable Spoolman integration",
+      "category": "firmware",
+      "type": "setting",
+      "summary": "Connect supported spool tracking to an existing Spoolman service. Check the project guide for setup and where filament records are stored.",
+      "cost_usd": 0,
+      "cost_note": "Integration is free; any separate Spoolman hosting is outside this site's scope.",
+      "price_checked_at": null,
+      "time_minutes": 25,
+      "difficulty": 2,
+      "phase": 4,
+      "requires": [
+        "paxx12-extended-firmware"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "requires_firmware": "paxx12"
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Paxx12; Spoolman contributors",
+        "url": "https://snapmakeru1-extended-firmware.pages.dev/spoolman",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "spoolman"
+      ],
+      "bothers": [
+        "dry-filament"
+      ],
+      "locations": [],
+      "warnings": [],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "Days 4–5 — integrations",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Integration docs reviewed; no service is hosted by StartHere."
+      }
+    },
+    {
+      "id": "print-notifications",
+      "title": "Enable print notifications",
+      "category": "firmware",
+      "type": "setting",
+      "summary": "Configure completion or failure messages through the extended firmware's notification integration. Choose the external service and events you need.",
+      "cost_usd": 0,
+      "cost_note": "No purchase assumed; external service accounts, if chosen, are separate from StartHere.",
+      "price_checked_at": null,
+      "time_minutes": 15,
+      "difficulty": 1,
+      "phase": 4,
+      "requires": [
+        "paxx12-extended-firmware"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "requires_firmware": "paxx12"
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Paxx12",
+        "url": "https://snapmakeru1-extended-firmware.pages.dev/",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "notifications"
+      ],
+      "bothers": [
+        "reliability"
+      ],
+      "locations": [],
+      "warnings": [],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "webrtc-camera",
+      "title": "Set up the WebRTC camera",
+      "category": "firmware",
+      "type": "setting",
+      "summary": "Try the extended firmware's camera view after the printer passes stock tests. A second USB camera is optional.",
+      "cost_usd": 0,
+      "cost_note": "Free with the built-in camera; optional USB camera and hub cost extra.",
+      "price_checked_at": null,
+      "time_minutes": 15,
+      "difficulty": 1,
+      "phase": 4,
+      "requires": [
+        "paxx12-extended-firmware"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "requires_firmware": "paxx12"
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Paxx12",
+        "url": "https://snapmakeru1-extended-firmware.pages.dev/",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "camera"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "tailscale-remote-access",
+      "title": "Review Tailscale remote access",
+      "category": "firmware",
+      "type": "setting",
+      "summary": "Use the firmware project's remote-access guide if you want access away from home. Review its external service requirements before enabling it.",
+      "cost_usd": 0,
+      "cost_note": "No purchase assumed; external service terms apply. StartHere never connects to your printer.",
+      "price_checked_at": null,
+      "time_minutes": 20,
+      "difficulty": 2,
+      "phase": 4,
+      "requires": [
+        "paxx12-extended-firmware"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "requires_firmware": "paxx12"
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Paxx12",
+        "url": "https://snapmakeru1-extended-firmware.pages.dev/",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "remote-access"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "openspool-ntag215",
+      "title": "OpenSpool NTAG215 tags",
+      "category": "filament-system",
+      "type": "buy",
+      "summary": "Use writable spool tags with compatible extended firmware for third-party filament identification. The reader still needs the tag close enough to scan.",
+      "cost_usd": 13,
+      "cost_note": "Checklist estimate ~$13 for 10 tags; an NFC-capable writing device is assumed.",
+      "price_checked_at": "2026-10-26",
+      "time_minutes": 30,
+      "difficulty": 2,
+      "phase": 4,
+      "requires": [
+        "paxx12-extended-firmware"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "requires_firmware": "paxx12"
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Paxx12; OpenSpool contributors",
+        "url": "https://snapmakeru1-extended-firmware.pages.dev/design/rfid",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "rfid"
+      ],
+      "bothers": [
+        "dry-filament"
+      ],
+      "locations": [],
+      "warnings": [
+        "Optional RFID-loss remedy only when a programmed tag can reach the reader; a tag left on a distant dryer spool will not fix detection."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "Days 4–5 — optional tags",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "RFID documentation reviewed for firmware support and reader proximity. No physical reading test performed."
+      }
+    },
+    {
+      "id": "space-pi-x4",
+      "title": "Creality Space Pi X4 dryer",
+      "category": "purchase",
+      "type": "buy",
+      "summary": "A four-spool dryer can prepare and feed several filaments alongside the U1. Plan the tube route and select drying settings for the actual filament.",
+      "cost_usd": 159,
+      "cost_note": "Checklist: $159 Creality list, $149 Comgrow, $158.99 recent Amazon, $179 Best Buy. Budget uses manufacturer $159.",
+      "price_checked_at": "2026-10-26",
+      "time_minutes": 30,
+      "difficulty": 1,
+      "phase": 5,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "petg",
+        "tpu",
+        "abs",
+        "asa",
+        "pa",
+        "cf-gf"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Creality",
+        "url": "https://www.creality3dofficial.com/en/products/creality-space-pi-x4-dry-box-on-sale",
+        "kind": "product",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "dryer"
+      ],
+      "bothers": [
+        "dry-filament"
+      ],
+      "locations": [],
+      "warnings": [
+        "Check supply voltage for your region and use the filament maker's drying limits."
+      ],
+      "optional_related_items": [
+        "dryer-dry-feed"
+      ],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "dryer-dry-feed",
+      "title": "Route dryer feed and set profiles",
+      "category": "filament-system",
+      "type": "setting",
+      "summary": "Route PTFE from the dryer to the feeders without tight bends. Select filament profiles manually when remote spools no longer pass the built-in RFID readers.",
+      "cost_usd": 0,
+      "cost_note": "Setup adds no new purchase if dryer and suitable tubing are already available; otherwise budget for them separately.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 2,
+      "phase": 5,
+      "requires": [
+        "space-pi-x4"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Paxx12",
+        "url": "https://snapmakeru1-extended-firmware.pages.dev/design/rfid",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "rfid",
+        "dryer"
+      ],
+      "bothers": [
+        "dry-filament"
+      ],
+      "locations": [],
+      "warnings": [
+        "RFID auto-detection is lost when dryer spools are away from the built-in readers. Set each feeder's filament profile manually.",
+        "OpenSpool tags are an optional remedy with extended firmware and deliberate placement near the reader."
+      ],
+      "optional_related_items": [
+        "openspool-ntag215"
+      ],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "flow-pa-calibration",
+      "title": "Calibrate flow and pressure advance",
+      "category": "slicer",
+      "type": "habit",
+      "summary": "Tune the filaments you actually use and save each result in a named profile. Repeat after changing a hotend or filament when the results no longer fit.",
+      "cost_usd": 0,
+      "cost_note": "No purchase; calibration consumes filament.",
+      "price_checked_at": null,
+      "time_minutes": 60,
+      "difficulty": 2,
+      "phase": 5,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Snapmaker",
+        "url": "https://wiki.snapmaker.com/en/snapmaker_u1",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "flow",
+        "pressure-advance"
+      ],
+      "bothers": [
+        "reliability",
+        "speed-flow"
+      ],
+      "locations": [],
+      "warnings": [],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "vfa-slicer-fix",
+      "title": "Test and reduce VFA banding",
+      "category": "slicer",
+      "type": "setting",
+      "summary": "Use a speed test to locate wall banding. The linked community report tries 0.4 mm wall widths, Inner/Outer/Inner order and walls near 210 mm/s; retest within your filament's flow limits.",
+      "cost_usd": 0,
+      "cost_note": "No purchase price; printed parts still consume your filament and power.",
+      "price_checked_at": null,
+      "time_minutes": 45,
+      "difficulty": 2,
+      "phase": 5,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "tonsofbuns; forum discussion contributors",
+        "url": "https://forum.snapmaker.com/t/eliminate-vfa-on-the-snapmaker-u1-for-free/41179",
+        "kind": "forum",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "vfa",
+        "surface-quality"
+      ],
+      "bothers": [
+        "speed-flow"
+      ],
+      "locations": [],
+      "warnings": [
+        "These are starting values from a community report, not a universal U1 profile. Keep volumetric flow within your measured limit."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "Days 6–7 — VFA",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original forum discussion reviewed; values retained as a trial, not a guaranteed fix."
+      }
+    },
+    {
+      "id": "makerworld-u1-converter",
+      "title": "MakerWorld to U1 converter",
+      "category": "slicer",
+      "type": "install",
+      "summary": "Convert MakerWorld print profiles to U1 projects with Dragon2203's browser extension. Inspect the resulting plate, tool assignments and settings in the slicer before printing.",
+      "cost_usd": 0,
+      "cost_note": "No purchase price; printed parts still consume your filament and power.",
+      "price_checked_at": null,
+      "time_minutes": 15,
+      "difficulty": 1,
+      "phase": 5,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Dragon2203",
+        "url": "https://github.com/Dragon2203/makerworld-to-snapmaker-u1",
+        "kind": "repository",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "3mf",
+        "makerworld"
+      ],
+      "bothers": [
+        "color-count"
+      ],
+      "locations": [],
+      "warnings": [],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "Days 6–7 — MakerWorld workflow",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Checklist did not identify the extension author. Selected Dragon2203's matching project after reviewing its own repository."
+      }
+    },
+    {
+      "id": "spare-toolhead",
+      "title": "Spare U1 toolhead",
+      "category": "purchase",
+      "type": "buy",
+      "summary": "An optional spare head can reduce downtime while a fault is investigated. Choose the correct slot-specific part rather than assuming all four heads are identical.",
+      "cost_usd": 64.99,
+      "cost_note": "USD price imported from the owner's 2026-10-26 checklist; excludes tax and shipping.",
+      "price_checked_at": "2026-10-26",
+      "time_minutes": 10,
+      "difficulty": 1,
+      "phase": 3,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Snapmaker",
+        "url": "https://shop.snapmaker.com/collections/modules-accessories-for-u1",
+        "kind": "collection",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [],
+      "bothers": [
+        "reliability"
+      ],
+      "locations": [],
+      "warnings": [
+        "Checklist identifies Toolhead 1 as the left/mirrored version and 2–4 as right-slot versions; confirm the current listing before ordering."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "spares-kit",
+      "title": "Cleaning, parking and screw spares",
+      "category": "purchase",
+      "type": "buy",
+      "summary": "Keep replacement brushes, parking pads, wipers and screws for routine service. Check which pieces are needed before placing an order.",
+      "cost_usd": 16.96,
+      "cost_note": "Checklist components: brushes/parking pads $3.99 + left wiper $3.99 + right wiper $3.99 + screws $4.99 = $16.96; toolhead is separate.",
+      "price_checked_at": "2026-10-26",
+      "time_minutes": 10,
+      "difficulty": 1,
+      "phase": 3,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Snapmaker",
+        "url": "https://shop.snapmaker.com/collections/modules-accessories-for-u1",
+        "kind": "collection",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [],
+      "bothers": [
+        "reliability"
+      ],
+      "locations": [],
+      "warnings": [
+        "The checklist's approximate $78 combined spares total does not equal all listed components; this record uses the explicit line prices."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "official-top-cover",
+      "title": "Official U1 Top Cover",
+      "category": "enclosure",
+      "type": "buy",
+      "summary": "The official cover provides an enclosure and an integrated filtration route. Review its circulation modes, firmware requirements and material guidance before an enclosed job.",
+      "cost_usd": 149,
+      "cost_note": "Checklist $149 pre-order (list $249); availability and firmware requirement need rechecking.",
+      "price_checked_at": "2026-10-26",
+      "time_minutes": 30,
+      "difficulty": 1,
+      "phase": 6,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [
+        "diy-samla-lid",
+        "biqu-popcap"
+      ],
+      "gates": [
+        "enclosed"
+      ],
+      "conditions": {
+        "firmware_min": "1.5.2 Beta"
+      },
+      "materials_relevance": [
+        "abs",
+        "asa",
+        "pa"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Snapmaker",
+        "url": "https://shop.snapmaker.com/collections/modules-accessories-for-u1",
+        "kind": "collection",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [],
+      "bothers": [
+        "fumes",
+        "noise"
+      ],
+      "locations": [
+        "living-space",
+        "office"
+      ],
+      "warnings": [
+        "A cover or filter does not certify indoor air safety; follow official ventilation and material guidance.",
+        "Re-run vibration calibration after fitting."
+      ],
+      "optional_related_items": [
+        "vibration-recalibration"
+      ],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "diy-samla-lid",
+      "title": "DIY IKEA SAMLA lid",
+      "category": "enclosure",
+      "type": "print",
+      "summary": "Use the linked connector project to explore a box-based lid. This route encloses the printer but does not provide the official cover's integrated filtration.",
+      "cost_usd": 20,
+      "cost_note": "Checklist $17.99 IKEA box/lid, roughly $18–20; budget uses $20 plus your filament. Other routes mentioned: Coroplast ~$15, IKEALLER ~$55, fully printed ~$60–110.",
+      "price_checked_at": "2026-10-26",
+      "time_minutes": 180,
+      "difficulty": 2,
+      "phase": 6,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [
+        "official-top-cover",
+        "biqu-popcap"
+      ],
+      "gates": [
+        "enclosed"
+      ],
+      "conditions": {},
+      "materials_relevance": [
+        "abs",
+        "asa"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": null,
+        "url": "https://www.printables.com/model/1521011-snapmaker-u1-top-cover-modding-for-ikea-samla-45l",
+        "kind": "model",
+        "credit_status": "pending",
+        "note": "Checklist model URL retained; page fetch failed, original designer handle pending."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [],
+      "bothers": [
+        "noise"
+      ],
+      "locations": [],
+      "warnings": [
+        "No integrated source filtration is assumed; review ventilation before enclosed ABS/ASA printing.",
+        "Re-run vibration calibration after fitting."
+      ],
+      "optional_related_items": [
+        "vibration-recalibration"
+      ],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "biqu-popcap",
+      "title": "BIQU PopCap cover",
+      "category": "enclosure",
+      "type": "buy",
+      "summary": "An alternative cover route for owners considering a polycarbonate lid. Check U1 fit, riser compatibility and the vendor's current operating limits.",
+      "cost_usd": 175.99,
+      "cost_note": "Checklist sale $175.99 (list $199.99).",
+      "price_checked_at": "2026-10-26",
+      "time_minutes": 30,
+      "difficulty": 1,
+      "phase": 6,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [
+        "official-top-cover",
+        "diy-samla-lid"
+      ],
+      "gates": [
+        "enclosed"
+      ],
+      "conditions": {},
+      "materials_relevance": [
+        "abs",
+        "asa"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "BIQU",
+        "url": "https://biqu.equipment/",
+        "kind": "homepage",
+        "credit_status": "named",
+        "note": "Manufacturer homepage; direct U1 PopCap product URL needs confirmation."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [],
+      "bothers": [
+        "noise"
+      ],
+      "locations": [],
+      "warnings": [
+        "The checklist's 120°C lid rating is not a safe chamber-temperature rating for the U1.",
+        "Re-run vibration calibration after fitting."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "liber-high-flow-hotends",
+      "title": "Phaetus Liber high-flow hotends",
+      "category": "purchase",
+      "type": "buy",
+      "summary": "A high-flow hotend set targets large parts with long extrusion paths. Check material restrictions and calibrate the matching heads after replacement.",
+      "cost_usd": 99,
+      "cost_note": "Checklist $34.99 each or $99 for four (bundle list $119); budget uses the four-pack.",
+      "price_checked_at": "2026-10-26",
+      "time_minutes": 60,
+      "difficulty": 2,
+      "phase": 6,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "excluded_materials": [
+          "tpu",
+          "wood",
+          "cf-gf"
+        ],
+        "matching_hotends": true
+      },
+      "materials_relevance": [
+        "pla",
+        "petg",
+        "abs",
+        "asa"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Snapmaker / Phaetus",
+        "url": "https://us.snapmaker.com/products/liber-high-flow-hotend",
+        "kind": "product",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [],
+      "bothers": [
+        "speed-flow"
+      ],
+      "locations": [],
+      "warnings": [
+        "Checklist and product page advise against TPU, wood and CF/GF in this high-flow route.",
+        "Keep all heads used in the job matched; review the current hotend settings guide."
+      ],
+      "optional_related_items": [
+        "flow-pa-calibration"
+      ],
+      "provenance": {
+        "seed": "checklist",
+        "section": "Shopping D — Liber High Flow",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Manufacturer page reviewed for restrictions; checklist prices retained."
+      }
+    },
+    {
+      "id": "hardened-steel-hotends",
+      "title": "Hardened-steel hotends",
+      "category": "purchase",
+      "type": "buy",
+      "summary": "Choose a wear-resistant hotend for a planned abrasive filament. Confirm material and nozzle compatibility, then tune the affected profile.",
+      "cost_usd": 15.99,
+      "cost_note": "Checklist standard hotend line starts at $15.99 per head; multiple heads cost extra.",
+      "price_checked_at": "2026-10-26",
+      "time_minutes": 30,
+      "difficulty": 2,
+      "phase": 6,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "cf-gf"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Snapmaker",
+        "url": "https://us.snapmaker.com/products/hot-end-for-snapmaker-u1",
+        "kind": "product",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "abrasives"
+      ],
+      "bothers": [
+        "reliability"
+      ],
+      "locations": [],
+      "warnings": [],
+      "optional_related_items": [
+        "flow-pa-calibration"
+      ],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "mainboard-psu-cooling",
+      "title": "Mainboard and PSU cooling review",
+      "category": "cooling",
+      "type": "install",
+      "summary": "Evaluate a documented fan and duct route for electronics cooling or fan noise. An active-heater setup needs cooling that reaches the main processor, not only the stepper drivers.",
+      "cost_usd": 40,
+      "cost_note": "Checklist estimate $20–40 for fans and buck converter; budget uses $40.",
+      "price_checked_at": "2026-10-26",
+      "time_minutes": 180,
+      "difficulty": 4,
+      "phase": 6,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [
+        "chamber-heat-safe"
+      ],
+      "conditions": {
+        "soldering": true,
+        "min_stock_days": 7
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": "Paxx12; linked cooling-model designers",
+        "url": "https://snapmakeru1-extended-firmware.pages.dev/panda_breath",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Integration guide links to original cooler models; individual designer credits and PSU wiring design still need review."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [],
+      "bothers": [
+        "noise",
+        "reliability"
+      ],
+      "locations": [
+        "living-space",
+        "office"
+      ],
+      "warnings": [
+        "After week one only. Wiring work and machine changes can affect warranty coverage.",
+        "Do not open or modify a mains PSU from this summary; use an appropriate complete guide or qualified help.",
+        "The processor-cooling requirement is distinct from a stepper-driver temperature reading."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "Shopping D — mainboard/PSU cooling",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Cooling requirement checked against firmware integration docs; this is a review step, not an installation guide or safety certification."
+      }
+    },
+    {
+      "id": "panda-breath-heater",
+      "title": "BIQU Panda Breath heater/filter",
+      "category": "enclosure",
+      "type": "buy",
+      "summary": "Consider an actively heated chamber only after reviewing the U1 integration and thermal risks. Additional motherboard cooling is a prerequisite.",
+      "cost_usd": 87.12,
+      "cost_note": "Checklist US BIQU $87.12; $95.81 with filter pack. Imported prices retained despite a different price shown during source review.",
+      "price_checked_at": "2026-10-26",
+      "time_minutes": 90,
+      "difficulty": 4,
+      "phase": 6,
+      "requires": [
+        "stock-burn-in-complete",
+        "mainboard-psu-cooling"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "required_gates": [
+          "enclosed",
+          "chamber-heat-safe"
+        ],
+        "min_stock_days": 7
+      },
+      "materials_relevance": [
+        "abs",
+        "asa",
+        "pa"
+      ],
+      "reversible": true,
+      "warranty_risk": "void-risk",
+      "source": {
+        "creator": "BIQU",
+        "url": "https://biqu.equipment/products/biqu-panda-breath-smart-chamber-heater",
+        "kind": "product",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "Do not operate without processor/mainboard cooling and a suitable enclosure.",
+        "Active chamber heating can cause overheating and damage; follow the U1 integration guide and official support advice.",
+        "A product target temperature does not establish a safe operating temperature for the printer."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "Shopping D — Panda Breath",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Manufacturer and U1 integration docs reviewed; seed price retained. Integration source is the cooling item's source."
+      }
+    },
+    {
+      "id": "abs-asa-first-print",
+      "title": "Prepare an enclosed ABS/ASA test",
+      "category": "slicer",
+      "type": "habit",
+      "summary": "Review the filament and enclosure instructions before a small ABS or ASA trial. Use a suitable enclosed setup and an appropriate ventilation plan.",
+      "cost_usd": 0,
+      "cost_note": "No purchase price; printed parts still consume your filament and power.",
+      "price_checked_at": null,
+      "time_minutes": 45,
+      "difficulty": 2,
+      "phase": 6,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "required_gates": [
+          "enclosed"
+        ]
+      },
+      "materials_relevance": [
+        "abs",
+        "asa"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Snapmaker",
+        "url": "https://wiki.snapmaker.com/en/snapmaker_u1",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "enclosed-printing"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "An enclosure gate expresses a prerequisite, not a health or safety certification."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "brief",
+        "section": "Planner golden persona 1",
+        "verification_status": "imported-not-tested",
+        "note": "Added an explicit ABS-dependent setting step so the enclosure gate can be tested without requiring an active heater."
+      }
+    },
+    {
+      "id": "biqu-popstatus",
+      "title": "BIQU PopStatus display",
+      "category": "purchase",
+      "type": "buy",
+      "summary": "An optional status display is a convenience purchase after the printer is working reliably. Check current compatibility and power requirements.",
+      "cost_usd": 32.55,
+      "cost_note": "Checklist sale $32.55 (list $45.99).",
+      "price_checked_at": "2026-10-26",
+      "time_minutes": 20,
+      "difficulty": 1,
+      "phase": 6,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "BIQU",
+        "url": "https://biqu.equipment/",
+        "kind": "homepage",
+        "credit_status": "named",
+        "note": "Manufacturer homepage; exact PopStatus product URL needs confirmation."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "status-display"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "biqu-popstation-mini",
+      "title": "BIQU PopStation Mini cabinet",
+      "category": "filament-system",
+      "type": "buy",
+      "summary": "Consider an alternative four-spool cabinet only if your existing dry-feed arrangement does not suit you. Compare its actual drying and feeding functions before replacing equipment.",
+      "cost_usd": 279.99,
+      "cost_note": "Checklist sale $279.99 (list $299).",
+      "price_checked_at": "2026-10-26",
+      "time_minutes": 45,
+      "difficulty": 1,
+      "phase": 6,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "BIQU",
+        "url": "https://biqu.equipment/",
+        "kind": "homepage",
+        "credit_status": "named",
+        "note": "Manufacturer homepage; exact PopStation Mini product URL needs confirmation."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "dry-storage"
+      ],
+      "bothers": [
+        "dry-filament"
+      ],
+      "locations": [],
+      "warnings": [],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "First-week checklist",
+        "verification_status": "imported-not-tested",
+        "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      }
+    },
+    {
+      "id": "multiace",
+      "title": "multiACE expansion",
+      "category": "multi-color",
+      "type": "install",
+      "summary": "The community multiACE project explores additional filament choices through ACE hardware. Read the project's beta limitations and supported configuration before buying parts.",
+      "cost_usd": null,
+      "cost_note": "Variable project cost; obtain a quote before budgeting.",
+      "price_checked_at": null,
+      "time_minutes": 240,
+      "difficulty": 4,
+      "phase": 6,
+      "requires": [
+        "paxx12-extended-firmware"
+      ],
+      "conflicts": [
+        "sidecar"
+      ],
+      "gates": [],
+      "conditions": {
+        "requires_firmware": "paxx12"
+      },
+      "materials_relevance": [
+        "five-plus-colors"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": "decay71; multiACE contributors",
+        "url": "https://github.com/decay71/multiACE",
+        "kind": "repository",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [],
+      "bothers": [
+        "color-count"
+      ],
+      "locations": [],
+      "warnings": [
+        "Experimental expansion; hardware cost is unknown and must not be counted as free."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "Shopping D — multiACE / Sidecar",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Split alternative projects to retain their own creator links; repository reviewed for experimental status."
+      }
+    },
+    {
+      "id": "sidecar",
+      "title": "Sidecar expansion preview",
+      "category": "multi-color",
+      "type": "install",
+      "summary": "Sidecar is a material-handling development project for more filament slots. Its published beta source is a preview rather than an installable release.",
+      "cost_usd": null,
+      "cost_note": "Variable project cost; obtain a quote before budgeting.",
+      "price_checked_at": null,
+      "time_minutes": 240,
+      "difficulty": 5,
+      "phase": 6,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [
+        "multiace"
+      ],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "five-plus-colors"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": "dcan999; Sidecar contributors",
+        "url": "https://github.com/dcan999/Sidecar-Beta",
+        "kind": "repository",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [],
+      "bothers": [
+        "color-count"
+      ],
+      "locations": [],
+      "warnings": [
+        "Development preview; controlled hardware validation and a complete install path are still pending.",
+        "Obtain a complete bill of materials; unknown cost is not $0."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "checklist",
+        "section": "Shopping D — multiACE / Sidecar",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Creator repository reviewed; retained as a research option, not a ready-to-install recommendation."
+      }
+    },
+    {
+      "id": "full-spectrum",
+      "title": "Full Spectrum color blending",
+      "category": "multi-color",
+      "type": "setting",
+      "summary": "Explore blended color effects through the Full Spectrum slicer project. This creates visual mixtures rather than adding more independently fed filament slots.",
+      "cost_usd": 0,
+      "cost_note": "No purchase price; printed parts still consume your filament and power.",
+      "price_checked_at": null,
+      "time_minutes": 60,
+      "difficulty": 2,
+      "phase": 6,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {},
+      "materials_relevance": [
+        "five-plus-colors"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Radu (ratdoux); Full Spectrum contributors",
+        "url": "https://github.com/ratdoux/OrcaSlicer-FullSpectrum",
+        "kind": "repository",
+        "credit_status": "named",
+        "note": "Creator's own page; linked content remains under its original license."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "color-blending"
+      ],
+      "bothers": [
+        "color-count"
+      ],
+      "locations": [],
+      "warnings": [
+        "Review current slicer support and test a small model before committing to a long print."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "brief",
+        "section": "Content seed — Full Spectrum",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Required by brief but absent from owner's checklist; creator repository reviewed."
+      }
+    }
+  ]
+}

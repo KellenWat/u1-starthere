@@ -1,0 +1,232 @@
+{
+  "version": "1.0.0",
+  "license": "CC-BY-4.0",
+  "imported_at": "2026-10-28",
+  "attribution": {
+    "curator": "U1 StartHere contributors",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "sources": [
+      {
+        "id": "checklist",
+        "title": "Snapmaker U1 — First-Week Setup Checklist",
+        "creator": "Owner-provided checklist (author not named in supplied document)",
+        "date": "2026-10-26",
+        "url": null
+      },
+      {
+        "id": "brief",
+        "title": "U1 StartHere — Build Brief",
+        "creator": "Owner-provided project brief (author not named in supplied document)",
+        "date": "2026-10-28",
+        "url": null
+      }
+    ],
+    "notice": "Original StartHere summaries and structured facts: CC BY 4.0. Retain this metadata and per-record creator credits; indicate adaptations. Linked third-party works keep their own licenses. A null creator means unresolved credit, not a claim of authorship."
+  },
+  "phases": [
+    {
+      "phase": 0,
+      "name": "Prepare",
+      "goal": "Have a stable bench and official setup resources ready.",
+      "steps": [
+        {
+          "id": "prepare-bench",
+          "text": "Choose the printer's final level surface and check the bench can carry the full setup.",
+          "item_id": "bench-and-slicer-prep"
+        },
+        {
+          "id": "consider-paver",
+          "text": "Consider a paver only if it suits the bench and vibration problem.",
+          "item_id": "concrete-paver-base"
+        },
+        {
+          "id": "prepare-slicer",
+          "text": "Install the stock slicer and bookmark official assembly and support guidance. Save creator links for later; leave firmware unchanged.",
+          "item_id": "bench-and-slicer-prep"
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "name": "Unbox and inspect",
+      "goal": "Document the machine before its first job.",
+      "steps": [
+        {
+          "id": "save-records",
+          "text": "Save the serial number, order details and photos of the contents.",
+          "item_id": "unbox-inspect"
+        },
+        {
+          "id": "photograph-contacts",
+          "text": "Photograph the pogo contacts and dock couplings on all four heads; ask support about any visible damage.",
+          "item_id": "unbox-inspect"
+        },
+        {
+          "id": "stock-calibration",
+          "text": "Check the packing list, assemble using official instructions, update stock firmware and run the stock calibration sequence.",
+          "item_id": "unbox-inspect"
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "name": "Stock burn-in",
+      "goal": "Find head, loading and docking faults before modifications.",
+      "steps": [
+        {
+          "id": "test-four-heads",
+          "text": "Run the demo and a separate single-color print through each of the four toolheads.",
+          "item_id": "stock-burn-in-complete"
+        },
+        {
+          "id": "test-four-color",
+          "text": "Run one four-color print with a prime tower and watch the swaps, parking and loading.",
+          "item_id": "stock-burn-in-complete"
+        },
+        {
+          "id": "save-baseline",
+          "text": "Record idle fan noise and labelled temperature readings after a sustained print. Resolve failures with support before proceeding.",
+          "item_id": "stock-burn-in-complete"
+        }
+      ]
+    },
+    {
+      "phase": 3,
+      "name": "First printed mods",
+      "goal": "Fit useful printed parts after clean stock tests.",
+      "steps": [
+        {
+          "id": "print-riser",
+          "text": "Review the riser model and its cover fit; lighting is optional and priced separately.",
+          "item_id": "just-a-riser-xl"
+        },
+        {
+          "id": "support-tubes",
+          "text": "Review tube supports, radius guides and any required fittings.",
+          "item_id": "ptfe-support-guides"
+        },
+        {
+          "id": "flexible-holder",
+          "text": "Find and credit the exact TPU holder model before printing; the imported source still needs review.",
+          "item_id": "tpu-feed-tube-holder"
+        },
+        {
+          "id": "organize-spools",
+          "text": "Choose tool holders and spool adapters for the parts you actually own; confirm each original model's hardware list.",
+          "item_id": "tool-holders-spool-adapters"
+        },
+        {
+          "id": "calibrate-after-riser",
+          "text": "Repeat vibration calibration after the riser or base changes.",
+          "item_id": "vibration-recalibration"
+        }
+      ]
+    },
+    {
+      "phase": 4,
+      "name": "Firmware decision",
+      "goal": "Make a deliberate firmware choice after stock burn-in is clean.",
+      "steps": [
+        {
+          "id": "decide-firmware",
+          "text": "Stock first, mods second: stock tests help isolate a new-machine fault and preserve useful support evidence. From Day 4, consider extended firmware only if those tests are clean; staying stock is valid.",
+          "item_id": "paxx12-extended-firmware"
+        },
+        {
+          "id": "review-recovery",
+          "text": "If proceeding, read the creator's current installation and stock-recovery guide before installing anything.",
+          "item_id": "paxx12-extended-firmware"
+        },
+        {
+          "id": "configure-camera",
+          "text": "On compatible extended firmware, review the built-in camera option.",
+          "item_id": "webrtc-camera"
+        },
+        {
+          "id": "configure-spoolman",
+          "text": "Optionally connect an existing Spoolman setup; StartHere hosts no service.",
+          "item_id": "spoolman-integration"
+        },
+        {
+          "id": "configure-notifications",
+          "text": "Optionally set print notifications through the firmware's own integration.",
+          "item_id": "print-notifications"
+        },
+        {
+          "id": "review-remote-access",
+          "text": "Review remote-access options only if you need them and accept the external service requirements.",
+          "item_id": "tailscale-remote-access"
+        }
+      ]
+    },
+    {
+      "phase": 5,
+      "name": "Dry-feed and tune",
+      "goal": "Use appropriate filament preparation and repeatable profiles.",
+      "steps": [
+        {
+          "id": "consider-dryer",
+          "text": "Buy a dryer only when needed; the checklist's four-spool choice is a priced option.",
+          "item_id": "space-pi-x4"
+        },
+        {
+          "id": "route-dry-feed",
+          "text": "Route dryer tubing with gentle bends. When distant spools lose RFID detection, set each feeder's profile manually.",
+          "item_id": "dryer-dry-feed"
+        },
+        {
+          "id": "record-drying",
+          "text": "Dry PETG and TPU according to the filament maker's settings; record time and temperature with the spool notes.",
+          "item_id": "flow-pa-calibration"
+        },
+        {
+          "id": "test-vfa",
+          "text": "Use a small VFA test before trying speed or wall-order changes.",
+          "item_id": "vfa-slicer-fix"
+        },
+        {
+          "id": "tune-profiles",
+          "text": "Calibrate flow and pressure advance for the filaments you use, then save named profiles.",
+          "item_id": "flow-pa-calibration"
+        },
+        {
+          "id": "check-imports",
+          "text": "Review converted 3MF objects, tool assignments and prime-tower stability in the slicer before printing.",
+          "item_id": "makerworld-u1-converter"
+        }
+      ]
+    },
+    {
+      "phase": 6,
+      "name": "Expand when needed",
+      "goal": "Defer major purchases and machine changes until a real job justifies them.",
+      "steps": [
+        {
+          "id": "select-enclosure",
+          "text": "For an ABS/ASA trial, choose one appropriate enclosure route and review ventilation first.",
+          "item_id": "abs-asa-first-print"
+        },
+        {
+          "id": "review-electronics-cooling",
+          "text": "After week one, review electronics cooling only with a complete documented route and suitable skills.",
+          "item_id": "mainboard-psu-cooling"
+        },
+        {
+          "id": "gate-active-heat",
+          "text": "Do not add active chamber heat until motherboard cooling and enclosure prerequisites are satisfied.",
+          "item_id": "panda-breath-heater"
+        },
+        {
+          "id": "research-color",
+          "text": "Explore Full Spectrum's visual blending separately from hardware expansion for more filament slots.",
+          "item_id": "full-spectrum"
+        },
+        {
+          "id": "retain-stock-records",
+          "text": "Keep the original stock-test records and add your configuration changes to your maintenance notes.",
+          "item_id": null
+        }
+      ]
+    }
+  ]
+}

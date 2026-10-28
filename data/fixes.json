@@ -1,0 +1,484 @@
+{
+  "version": "1.0.0",
+  "license": "CC-BY-4.0",
+  "imported_at": "2026-10-28",
+  "attribution": {
+    "curator": "U1 StartHere contributors",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "sources": [
+      {
+        "id": "checklist",
+        "title": "Snapmaker U1 — First-Week Setup Checklist",
+        "creator": "Owner-provided checklist (author not named in supplied document)",
+        "date": "2026-10-26",
+        "url": null
+      },
+      {
+        "id": "brief",
+        "title": "U1 StartHere — Build Brief",
+        "creator": "Owner-provided project brief (author not named in supplied document)",
+        "date": "2026-10-28",
+        "url": null
+      }
+    ],
+    "notice": "Original StartHere summaries and structured facts: CC BY 4.0. Retain this metadata and per-record creator credits; indicate adaptations. Linked third-party works keep their own licenses. A null creator means unresolved credit, not a claim of authorship."
+  },
+  "fixes": [
+    {
+      "id": "pogo-cleaning-reminder-loop",
+      "symptoms": [
+        "asks me to clean pogo pins every two days",
+        "cleaning reminder keeps coming back",
+        "toolhead cleaning notification every day"
+      ],
+      "title": "Pogo cleaning reminder keeps returning",
+      "likely_cause": "The brief describes either a reminder-state problem or an unreliable contact; frequent alerts alone do not prove dirt is the cause.",
+      "steps": [
+        "Stop the print and use the official contact-cleaning procedure with the machine in its specified safe state.",
+        "Inspect and photograph the contact surfaces; reseat the head only as directed in the maintenance guide.",
+        "Record which head triggers the reminder and send the pattern and photos to support if cleaning does not resolve it."
+      ],
+      "stop_if": "A contact is bent, stuck, recessed or visibly damaged, or a fan also drops out. Stop using that head and contact support.",
+      "severity": "caution",
+      "related_items": [
+        "spare-toolhead",
+        "unbox-inspect"
+      ],
+      "codes": [
+        "0002-0523-0001-0045"
+      ],
+      "source": {
+        "creator": "Snapmaker",
+        "url": "https://wiki.snapmaker.com/en/snapmaker_u1",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Official support entry point; specific symptom guidance below is imported from the owner's checklist or brief, not independently confirmed by this index page."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "support_url": "https://snapmaker.formcrafts.com/u1-troubleshooting-request",
+      "provenance": {
+        "seed": "brief",
+        "section": "Fix schema example and minimum fix seed",
+        "verification_status": "imported-not-tested",
+        "note": "Reminder-loop card and example code imported from brief. Exact code association and manual pin-travel check are not independently verified; no pin manipulation is instructed here."
+      }
+    },
+    {
+      "id": "homing-anomaly",
+      "symptoms": [
+        "homing moves the head the wrong way",
+        "homing anomaly move head to bed center",
+        "printer starts homing from the corner"
+      ],
+      "title": "Homing begins from an unexpected position",
+      "likely_cause": "The brief reports a recovery involving the head's starting position. Mechanical obstruction or an unresolved setup fault can look similar.",
+      "steps": [
+        "Cancel motion if the head approaches an obstruction; save the displayed message and starting position.",
+        "Check the official homing and setup instructions for the correct recovery sequence.",
+        "If the official guide or support directs you to center the head, do so only in the machine state they specify, then retry once."
+      ],
+      "stop_if": "The nozzle scrapes the plate, motion binds, or a controlled retry fails. Contact support before further movement.",
+      "severity": "caution",
+      "related_items": [
+        "unbox-inspect",
+        "stock-burn-in-complete"
+      ],
+      "codes": [],
+      "source": {
+        "creator": "Snapmaker",
+        "url": "https://wiki.snapmaker.com/en/snapmaker_u1",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Official support entry point; specific symptom guidance below is imported from the owner's checklist or brief, not independently confirmed by this index page."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "support_url": "https://snapmaker.formcrafts.com/u1-troubleshooting-request",
+      "provenance": {
+        "seed": "brief",
+        "section": "Minimum fixes — homing anomaly",
+        "verification_status": "imported-not-tested",
+        "note": "Centering suggestion came from brief only; no specific official recovery page supplied. Do not force axes or move a powered machine based on this card."
+      }
+    },
+    {
+      "id": "nozzle-grease-calibration",
+      "symptoms": [
+        "nozzle grease calibration failure",
+        "auto calibration fails with greasy nozzle",
+        "residue on nozzle before calibration"
+      ],
+      "title": "Calibration fails with residue on the nozzle",
+      "likely_cause": "Residue on the nozzle may interfere with the calibration contact. This seed explanation does not establish that every calibration failure has the same cause.",
+      "steps": [
+        "Cancel calibration and let the nozzle cool fully.",
+        "Follow the official nozzle-cleaning procedure; if isopropyl alcohol is permitted for the affected surface, use it only with the printer off and cool, then let it evaporate.",
+        "Inspect the nozzle and run the official calibration sequence again after cleaning."
+      ],
+      "stop_if": "The nozzle is damaged, a sensor fault appears, or calibration still fails. Keep the printer stock and send support the error and photos.",
+      "severity": "caution",
+      "related_items": [
+        "unbox-inspect"
+      ],
+      "codes": [],
+      "source": {
+        "creator": "Snapmaker",
+        "url": "https://wiki.snapmaker.com/en/snapmaker_u1",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Official support entry point; specific symptom guidance below is imported from the owner's checklist or brief, not independently confirmed by this index page."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "support_url": "https://snapmaker.formcrafts.com/u1-troubleshooting-request",
+      "provenance": {
+        "seed": "brief",
+        "section": "Minimum fixes — nozzle-grease calibration failure",
+        "verification_status": "imported-not-tested",
+        "note": "Imported from brief only. IPA use is conditional on the official procedure; solvent must never be applied to a hot nozzle."
+      }
+    },
+    {
+      "id": "vfa-banding",
+      "symptoms": [
+        "vertical lines on walls at some speeds",
+        "vfa banding at 120 to 180 mm per second",
+        "fine vertical artifacts on straight walls"
+      ],
+      "title": "Vertical bands vary with wall speed",
+      "likely_cause": "A community test associates these fine bands with particular wall speeds; actual results depend on the machine and filament.",
+      "steps": [
+        "Run a VFA speed test with a profile that stays within the filament's usable flow range.",
+        "Compare banding across speeds before changing your saved profile.",
+        "Trial the linked report's 0.4 mm wall widths, Inner/Outer/Inner wall order and roughly 210 mm/s walls, then compare a small print."
+      ],
+      "stop_if": "Extrusion becomes inconsistent or the test exceeds your measured flow capability. Reduce the demand and tune flow before repeating.",
+      "severity": "caution",
+      "related_items": [
+        "vfa-slicer-fix",
+        "flow-pa-calibration"
+      ],
+      "codes": [],
+      "source": {
+        "creator": "tonsofbuns; forum discussion contributors",
+        "url": "https://forum.snapmaker.com/t/eliminate-vfa-on-the-snapmaker-u1-for-free/41179",
+        "kind": "forum",
+        "credit_status": "named",
+        "note": "Original forum discussion reviewed; starting values are not a universal profile."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "support_url": "https://snapmaker.formcrafts.com/u1-troubleshooting-request",
+      "provenance": {
+        "seed": "checklist",
+        "section": "Days 6–7 — VFA test",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Rewritten from checklist and linked original discussion; no physical test."
+      }
+    },
+    {
+      "id": "prime-tower-toppling",
+      "symptoms": [
+        "prime tower keeps falling over",
+        "prime tower topples and causes layer shift",
+        "four color tower comes loose"
+      ],
+      "title": "Prime tower falls over",
+      "likely_cause": "A loose or poorly supported tower can be struck during printing and disrupt the job. Check adhesion and layout before assuming a motion fault.",
+      "steps": [
+        "Stop the job if the loose tower enters the toolhead path.",
+        "Check plate cleanliness and the tower's first-layer adhesion.",
+        "Review tower position, footprint and brim in the slicer. Try a modest layout change on a small job and inspect the toolhead path before repeating."
+      ],
+      "stop_if": "A collision, layer shift or repeated adhesion failure returns after a controlled test. Save the project and ask support for help.",
+      "severity": "caution",
+      "related_items": [
+        "stock-burn-in-complete",
+        "cryogrip-pro",
+        "makerworld-u1-converter"
+      ],
+      "codes": [],
+      "source": {
+        "creator": "Snapmaker",
+        "url": "https://wiki.snapmaker.com/en/snapmaker_u1",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Official support entry point; specific symptom guidance below is imported from the owner's checklist or brief, not independently confirmed by this index page."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "support_url": "https://snapmaker.formcrafts.com/u1-troubleshooting-request",
+      "provenance": {
+        "seed": "checklist",
+        "section": "Red flags and first-week observations",
+        "verification_status": "imported-not-tested",
+        "note": "Original rewrite of supplied seed guidance. No reproduction or installed firmware verification; use official support for unresolved faults."
+      }
+    },
+    {
+      "id": "runout-sensor-errors",
+      "symptoms": [
+        "runout sensor errors on one head",
+        "filament present but printer says runout",
+        "extruder gear jams on a specific head"
+      ],
+      "title": "One head reports filament runout incorrectly",
+      "likely_cause": "The checklist flags a head-specific sensor or feed-path fault. A hotend problem can produce a similar loading failure.",
+      "steps": [
+        "Record the affected head, error and filament before clearing anything.",
+        "Check the visible filament route and follow the official unload and inspection procedure.",
+        "Ask support whether the included spare hotend should be used to isolate the fault; perform any swap only under the official maintenance procedure."
+      ],
+      "stop_if": "There is a jam that needs force, damage is visible, or the same head still fails. Stop and contact support while the machine is stock.",
+      "severity": "caution",
+      "related_items": [
+        "stock-burn-in-complete",
+        "spare-toolhead"
+      ],
+      "codes": [],
+      "source": {
+        "creator": "Snapmaker",
+        "url": "https://wiki.snapmaker.com/en/snapmaker_u1",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Official support entry point; specific symptom guidance below is imported from the owner's checklist or brief, not independently confirmed by this index page."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "support_url": "https://snapmaker.formcrafts.com/u1-troubleshooting-request",
+      "provenance": {
+        "seed": "checklist",
+        "section": "Red flags and first-week observations",
+        "verification_status": "imported-not-tested",
+        "note": "Original rewrite of supplied seed guidance. No reproduction or installed firmware verification; use official support for unresolved faults."
+      }
+    },
+    {
+      "id": "psu-fan-whine",
+      "symptoms": [
+        "psu fan whine at idle",
+        "right panel fan makes high pitched noise",
+        "power supply fan too loud"
+      ],
+      "title": "Idle fan whine near the PSU or right panel",
+      "likely_cause": "The checklist records idle fan noise as something to baseline. Its location needs checking before choosing a cooling modification.",
+      "steps": [
+        "Record a short clip and note whether the printer is idle or printing.",
+        "Check for an external object touching a panel or obstructing airflow without opening the machine.",
+        "During week one, send persistent noise to support. Review a documented cooling route only after stock checks are complete."
+      ],
+      "stop_if": "There is grinding, a stalled fan, burning smell or loss of cooling. Turn the printer off safely and contact support.",
+      "severity": "info",
+      "related_items": [
+        "mainboard-psu-cooling",
+        "stock-burn-in-complete"
+      ],
+      "codes": [],
+      "source": {
+        "creator": "Snapmaker",
+        "url": "https://wiki.snapmaker.com/en/snapmaker_u1",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Official support entry point; specific symptom guidance below is imported from the owner's checklist or brief, not independently confirmed by this index page."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "support_url": "https://snapmaker.formcrafts.com/u1-troubleshooting-request",
+      "provenance": {
+        "seed": "checklist",
+        "section": "Red flags and first-week observations",
+        "verification_status": "imported-not-tested",
+        "note": "Original rewrite of supplied seed guidance. No reproduction or installed firmware verification; use official support for unresolved faults."
+      }
+    },
+    {
+      "id": "driver-temperature-baseline",
+      "symptoms": [
+        "driver temps 85 to 92 degrees normal",
+        "orcaslicer shows hot stepper drivers",
+        "driver temperature around 90 celsius"
+      ],
+      "title": "Driver temperature readings look high",
+      "likely_cause": "The owner checklist reports stock driver readings around 85–92°C and attributes reassurance to support. This is a baseline observation, not a universal safe limit or a main-processor reading.",
+      "steps": [
+        "Record the exact sensor label, room conditions and workload alongside the reading.",
+        "Check that stock vents are unobstructed and compare with your own initial stock log.",
+        "Ask official support about the reading for your firmware and sensor if it is unfamiliar; keep processor and driver readings separate."
+      ],
+      "stop_if": "There are thermal warnings, print failures, abnormal smells or stopped fans. Stop the job and consult support rather than relying on the seed temperature range.",
+      "severity": "info",
+      "related_items": [
+        "stock-burn-in-complete",
+        "mainboard-psu-cooling"
+      ],
+      "codes": [],
+      "source": {
+        "creator": "Snapmaker",
+        "url": "https://wiki.snapmaker.com/en/snapmaker_u1",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Official support entry point; specific symptom guidance below is imported from the owner's checklist or brief, not independently confirmed by this index page."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "support_url": "https://snapmaker.formcrafts.com/u1-troubleshooting-request",
+      "provenance": {
+        "seed": "checklist",
+        "section": "Red flags and first-week observations",
+        "verification_status": "imported-not-tested",
+        "note": "Original rewrite of supplied seed guidance. No reproduction or installed firmware verification; use official support for unresolved faults."
+      }
+    },
+    {
+      "id": "dryer-feed-rfid-loss",
+      "symptoms": [
+        "dryer feed lost rfid auto detection",
+        "filament from dryer not recognized",
+        "spool profile disappears when feeding from dry box"
+      ],
+      "title": "Dryer-fed filament is no longer identified",
+      "likely_cause": "The built-in reader cannot scan a spool that has moved away into the dryer. Custom tags still need compatible firmware and proximity to the reader.",
+      "steps": [
+        "Set the material and color manually for each affected feeder and verify the slicer assignments.",
+        "Check whether the physical spool or tag is within the reader's working range.",
+        "Optionally review OpenSpool NTAG215 setup on extended firmware; place a correctly written tag where the reader can actually scan it."
+      ],
+      "stop_if": "The manual filament assignment is wrong or unreliable, or the tag is not detected after the documented checks. Resolve identification before starting a job.",
+      "severity": "info",
+      "related_items": [
+        "dryer-dry-feed",
+        "openspool-ntag215"
+      ],
+      "codes": [],
+      "source": {
+        "creator": "Paxx12; OpenSpool contributors",
+        "url": "https://snapmakeru1-extended-firmware.pages.dev/design/rfid",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Reviewed project documentation for tag support and reader proximity."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "support_url": "https://snapmaker.formcrafts.com/u1-troubleshooting-request",
+      "provenance": {
+        "seed": "checklist",
+        "section": "Days 6–7 — dry-feed",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Checklist warning retained. Tags are a conditional optional remedy, not automatic identification of distant dryer spools."
+      }
+    },
+    {
+      "id": "cryogrip-part-stuck",
+      "symptoms": [
+        "cryogrip part stuck to plate",
+        "flat petg part welded to cryogrip",
+        "cannot remove print from cold grip plate"
+      ],
+      "title": "Part will not release from CryoGrip",
+      "likely_cause": "Strong adhesion over a wide contact area can make removal difficult, particularly before the plate has cooled.",
+      "steps": [
+        "Let the print and removable plate cool completely.",
+        "Follow BIQU's release instructions and use only gentle flexing within the plate's limits.",
+        "The checklist reports a short freezer chill as a release trick; check current plate guidance before trying it and keep condensation away from the printer."
+      ],
+      "stop_if": "Release requires sharp tools, heavy force or surface damage. Pause and ask the plate vendor for guidance.",
+      "severity": "caution",
+      "related_items": [
+        "cryogrip-pro"
+      ],
+      "codes": [],
+      "source": {
+        "creator": "BIQU",
+        "url": "https://biqu.equipment/",
+        "kind": "homepage",
+        "credit_status": "named",
+        "note": "Manufacturer contact point only; freezer suggestion is owner-reported and not verified vendor guidance."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "support_url": "https://snapmaker.formcrafts.com/u1-troubleshooting-request",
+      "provenance": {
+        "seed": "checklist",
+        "section": "Red flags and first-week observations",
+        "verification_status": "imported-not-tested",
+        "note": "Original rewrite of supplied seed guidance. No reproduction or installed firmware verification; use official support for unresolved faults."
+      }
+    },
+    {
+      "id": "pogo-fan-dropout",
+      "symptoms": [
+        "pogo fan dropouts on one head",
+        "toolhead fan stops intermittently",
+        "one head fan loses power"
+      ],
+      "title": "One toolhead fan cuts out",
+      "likely_cause": "An unreliable contact is one possibility in the checklist. A fan or wiring fault also needs ruling out through official support.",
+      "steps": [
+        "Stop printing with the affected head and save the error or a video.",
+        "With the machine in the official maintenance state, inspect and photograph the pogo contacts.",
+        "Follow the official cleaning and reseating procedure, then ask support how to verify the fan before using that head again."
+      ],
+      "stop_if": "The fan remains intermittent, any contact is damaged, or a temperature warning appears. Keep that head out of service and contact support.",
+      "severity": "stop",
+      "related_items": [
+        "unbox-inspect",
+        "spare-toolhead"
+      ],
+      "codes": [],
+      "source": {
+        "creator": "Snapmaker",
+        "url": "https://wiki.snapmaker.com/en/snapmaker_u1",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Official support entry point; specific symptom guidance below is imported from the owner's checklist or brief, not independently confirmed by this index page."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "support_url": "https://snapmaker.formcrafts.com/u1-troubleshooting-request",
+      "provenance": {
+        "seed": "checklist",
+        "section": "Red flags and first-week observations",
+        "verification_status": "imported-not-tested",
+        "note": "Original rewrite of supplied seed guidance. No reproduction or installed firmware verification; use official support for unresolved faults."
+      }
+    },
+    {
+      "id": "top-cover-odor-mode",
+      "symptoms": [
+        "odor with top cover in external circulation mode",
+        "enclosure smells despite official filter",
+        "top cover exhaust instead of internal filtered mode"
+      ],
+      "title": "Odor persists with the official Top Cover",
+      "likely_cause": "The brief suggests checking circulation mode. Odor alone cannot measure filtration effectiveness or establish whether the space is safe.",
+      "steps": [
+        "Pause the job if fumes are escaping into an occupied space and follow the material's ventilation guidance.",
+        "Check the official cover guide for the mode required by your material; review internal filtered circulation rather than assuming external exhaust passes through the filter.",
+        "Check the filter installation and service interval before resuming, and ask support if the mode or airflow remains unclear."
+      ],
+      "stop_if": "Odor persists, the fan or filter is faulty, or anyone is uncomfortable. Stop printing in that space and resolve ventilation and support guidance first.",
+      "severity": "caution",
+      "related_items": [
+        "official-top-cover"
+      ],
+      "codes": [],
+      "source": {
+        "creator": "Snapmaker",
+        "url": "https://wiki.snapmaker.com/en/snapmaker_u1",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Official support entry point; specific symptom guidance below is imported from the owner's checklist or brief, not independently confirmed by this index page."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "support_url": "https://snapmaker.formcrafts.com/u1-troubleshooting-request",
+      "provenance": {
+        "seed": "brief",
+        "section": "Minimum fixes — Top Cover external/internal circulation",
+        "verification_status": "imported-not-tested",
+        "note": "Mode-specific guidance imported from brief; not independently verified against a retrieved cover manual. This card does not certify emissions control."
+      }
+    }
+  ]
+}
