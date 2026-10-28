@@ -1,6 +1,8 @@
 # M2 validation evidence
 
-Local acceptance checks passed on 2026-10-28. GitHub Actions run pending.
+Local acceptance checks and [GitHub Actions run #4](https://github.com/KellenWat/u1-starthere/actions/runs/40782192085)
+passed on 2026-10-28. That run checked the data schemas, all 25 Python tests,
+all 11 JavaScript tests and all 41 generated pages for commit `b09c652`.
 M3 has not started. The owner's interactive scrolling decision-path direction
 is recorded in README Decisions and DESIGN.md for M3.
 
@@ -56,7 +58,7 @@ PASS data/items.json: 38 records (JSON Schema 2020-12)
 PASS data/fixes.json: 12 records (JSON Schema 2020-12)
 PASS data/phases.json: 7 records (JSON Schema 2020-12)
 PASS cross-document references, prerequisite DAG, gate providers, conflicts, track order, attribution and URLs
-PASS total JavaScript: 30235 / 200000 bytes
+PASS total JavaScript: 30259 / 200000 bytes
 Validation passed: 3 data files; 0 errors.
 ```
 
@@ -83,6 +85,8 @@ sanitization and completion, project-prefix links, and safe text rendering.
   reset-then-check-then-Escape sequence; the new check remained intact.
 - JavaScript budget validation now includes `.mjs`, including test/authoring
   code, instead of accidentally counting only `.js`.
+- Trimmed trailing whitespace in generated HTML and reran generation,
+  the generated-output check, data validation and the diff check successfully.
 - Contract 1.1.0 adds the optional-step flag. Content prices, creator credits
   and verification claims are unchanged.
 - Tests use Chromium viewport sizes; no physical phone or Mobile Safari test

@@ -13,7 +13,7 @@ const pages = [
 let stale = 0;
 for (const page of pages) {
   const values = {...page,content:page.content || '<p class="loading" role="status">Loading your field guide…</p><noscript><h1>JavaScript is needed for this page</h1><p>Enable JavaScript for the interactive catalog and track. Individual item pages remain readable without it.</p></noscript>', 'active-start':page.page==='start'?'aria-current="page"':'','active-catalog':page.page==='catalog'?'aria-current="page"':''};
-  const html = template.replace(/\{\{([a-z-]+)\}\}/g,(_,key)=>['content','active-start','active-catalog'].includes(key)?values[key]:escape(values[key]));
+  const html = template.replace(/\{\{([a-z-]+)\}\}/g,(_,key)=>['content','active-start','active-catalog'].includes(key)?values[key]:escape(values[key])).replace(/[\t ]+$/gm,'');
   const target = new URL(page.file,root);
   if (check) { if (await read(page.file).catch(()=>null) !== html) { console.error(`STALE ${page.file}`); stale++; } }
   else { await mkdir(new URL('./',target),{recursive:true}); await writeFile(target,html); }

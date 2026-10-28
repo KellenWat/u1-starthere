@@ -14,10 +14,13 @@ Imported 38 items, 12 fixes and phases 0–6. The schemas, offline validator and
 CI workflow pass locally and on GitHub. [Successful Actions run #2](https://github.com/KellenWat/u1-starthere/actions/runs/40779468443)
 validated all three data files and passed all 24 tests for `a133ce3`.
 
-**M2 implemented and locally verified; final Actions run pending.** Home,
+**M2 complete: phone-flow acceptance and GitHub Actions pass.** Home,
 filterable catalog, 38 pre-rendered item pages and the checkable startup track
 are ready. Phone-sized browser testing completed the full track, including
-optional skips, persistence, item links and reset. M3–M6 have not started.
+optional skips, persistence, item links and reset. [Actions run #4 passed](https://github.com/KellenWat/u1-starthere/actions/runs/40782192085)
+with all three JSON files, 25 Python tests, 11 JavaScript tests and all 41
+generated pages checked. [M2 validation evidence](M2_VALIDATION.md) records
+the phone/desktop checks and limits. M3–M6 have not started.
 
 M1 acceptance evidence:
 
