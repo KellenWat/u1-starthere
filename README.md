@@ -9,19 +9,20 @@ projects keep their own licenses. This is an unofficial community project.
 
 ## Milestone status
 
-**M1 implemented and locally validated; GitHub Actions execution pending.**
+**M1 complete: local validation and GitHub Actions pass.**
 Imported 38 items, 12 fixes and phases 0–6. The schemas, offline validator and
-CI workflow are present. Do not claim the Actions acceptance criterion passed
-until a successful remote run is recorded. M2–M6 have not started.
+CI workflow pass locally and on GitHub. [Successful Actions run #2](https://github.com/KellenWat/u1-starthere/actions/runs/40779468443)
+validated all three data files and passed all 24 tests for `a133ce3`.
+M2–M6 have not started.
 
 M1 acceptance evidence:
 
 | Criterion | Evidence |
 | --- | --- |
-| Separate project/repo scaffold | This directory, local Git repository, licenses, `.nojekyll`, `.gitignore` |
+| Separate project/repo scaffold | This directory, [GitHub repository](https://github.com/KellenWat/u1-starthere), licenses, `.nojekyll`, `.gitignore` |
 | JSON Schemas and seed import | Three data documents; item, fix, phase and shared schemas in `schemas/` |
 | npm-less validation locally | `python scripts/validate.py`: all three documents and relationship checks pass |
-| Validation in Actions | `.github/workflows/validate.yml` runs the same validator and tests on pushes, PRs and manual dispatch; remote result pending |
+| Validation in Actions | [Run #2 passed](https://github.com/KellenWat/u1-starthere/actions/runs/40779468443): the same validator and 24 tests on Ubuntu/Python 3.11; workflow also supports PRs and manual dispatch |
 | DATA.md written | [Data contract and contribution procedure](DATA.md) |
 
 ## Validate locally
@@ -139,9 +140,13 @@ the mobile website and the optional item-page generator.
     Do not ship downloads, campaigns, personal deadlines or a code decoder.
 15. **Hosting:** the requested GitHub Pages workflow takes priority over a
     plugin-hosted Site. No Sites registration or deployment is performed.
-    The local repository has no configured GitHub destination yet; available
-    GitHub connector tools do not provide repository creation. CI remains
-    pending until a destination exists and the workflow actually runs.
+    Created the public `KellenWat/u1-starthere` repository to support the
+    intended $0 GitHub Pages deployment, and configured it as `origin`.
+    No website has been deployed yet. The connector lacks repository
+    creation, so creation used the signed-in GitHub browser; pushes use Git.
+    Actions run #1 failed before tests because pip caching looked for the
+    default requirements filename. Set `cache-dependency-path` to
+    `requirements-dev.txt`; the new run #2 passed validation and all 24 tests.
 
 ## Source review and remaining content work
 
@@ -169,7 +174,7 @@ Deferred source gaps are explicit in the data:
 
 ## Next milestones
 
-Stop after this M1 handoff. Record a passing Actions run before beginning M2.
+Stop after this M1 handoff. The required passing Actions run is recorded above.
 Then proceed in order: M2 catalog/track; M3 planner plus five golden personas;
 M4 symptom search plus all 12 ranking fixtures; M5 embed, freshness and
 accessibility; M6 submission assets only after all earlier acceptance checks.
