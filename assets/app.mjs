@@ -1,5 +1,5 @@
 import {renderTrackStep,renderMilestones} from './track-view.mjs';
-import {mountFreshness} from './freshness.mjs';
+import {mountFreshness} from './freshness.mjs?v=1.7.0';
 import {renderHome} from './home-view.mjs';
 import {renderCatalog} from './catalog-view.mjs';
 import {escape as e,label,money,path,itemPath,catalogItems,platformLabel} from './view.mjs';

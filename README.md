@@ -456,6 +456,11 @@ match the JSON. The optional authoring script is not a deployment build step.
     review and requirement information accessible, with unstable software status
     still visible. Existing filter URLs and planner behavior remain compatible.
 
+57. **Release caching:** generated pages version their stylesheet and entry script
+    using the JSON contract version. The changed freshness module also has a
+    release key to refresh cached catalog assets
+    during this contract transition.
+
 ## Source review and remaining content work
 
 Source pages were reviewed on 2026-10-28 for Paxx12, its RFID/Spoolman/heater

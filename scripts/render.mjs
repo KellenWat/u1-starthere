@@ -3,7 +3,7 @@ import {readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
 import {escape,renderItem} from '../assets/view.mjs';
 const root = new URL('../',import.meta.url), check = process.argv.includes('--check');
 const read = path => readFile(new URL(path,root),'utf8');
-const [{items},{phases},template] = await Promise.all([read('data/items.json').then(JSON.parse),read('data/phases.json').then(JSON.parse),read('templates/page.html')]);
+const [{items,version},{phases},template] = await Promise.all([read('data/items.json').then(JSON.parse),read('data/phases.json').then(JSON.parse),read('templates/page.html')]);
 const pages = [
   {file:'index.html',page:'home',base:'./',title:'U₁ StartHere — A clear next step for your U1',description:'Find your next step, follow the startup track and explore sourced community fixes and projects for Snapmaker U1.'},
   {file:'catalog/index.html',page:'catalog',base:'../',title:'Catalog — U₁ StartHere',description:'Browse U1 setup, printed mods, purchases and settings by cost, difficulty and stage.'},
@@ -16,7 +16,7 @@ const pages = [
 ];
 let stale = 0;
 for (const page of pages) {
-  const values = {...page,content:page.content || '<p class="loading" role="status">Loading your field guide…</p><noscript><h1>JavaScript is needed for this page</h1><p>Enable JavaScript for the interactive catalog, planner and track. Individual item pages remain readable without it.</p></noscript>', ...Object.fromEntries(['start','plan','catalog','fixes'].map(name=>[`active-${name}`,page.page===name?'aria-current="page"':'']))};
+  const values = {...page,version,content:page.content || '<p class="loading" role="status">Loading your field guide…</p><noscript><h1>JavaScript is needed for this page</h1><p>Enable JavaScript for the interactive catalog, planner and track. Individual item pages remain readable without it.</p></noscript>', ...Object.fromEntries(['start','plan','catalog','fixes'].map(name=>[`active-${name}`,page.page===name?'aria-current="page"':'']))};
   const html = template.replace(/\{\{([a-z-]+)\}\}/g,(_,key)=>key==='content'||key.startsWith('active-')?values[key]:escape(values[key])).replace(/[\t ]+$/gm,'');
   const target = new URL(page.file,root);
   if (check) { if (await read(page.file).catch(()=>null) !== html) { console.error(`STALE ${page.file}`); stale++; } }
