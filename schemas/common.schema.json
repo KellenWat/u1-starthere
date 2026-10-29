@@ -200,6 +200,49 @@
         },
         "matching_hotends": {
           "type": "boolean"
+        },
+        "on_request": {
+          "type": "boolean"
+        },
+        "interests_any": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "noise",
+              "fumes",
+              "reliability",
+              "speed-flow",
+              "color-count",
+              "dry-filament"
+            ]
+          }
+        },
+        "materials_any": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "pla",
+              "petg",
+              "tpu",
+              "abs",
+              "asa",
+              "pa",
+              "cf-gf",
+              "five-plus-colors"
+            ]
+          }
+        },
+        "after_selected": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
         }
       }
     }

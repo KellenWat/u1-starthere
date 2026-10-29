@@ -20,7 +20,13 @@ are ready. Phone-sized browser testing completed the full track, including
 optional skips, persistence, item links and reset. [Actions run #4 passed](https://github.com/KellenWat/u1-starthere/actions/runs/40782192085)
 with all three JSON files, 25 Python tests, 11 JavaScript tests and all 41
 generated pages checked. [M2 validation evidence](M2_VALIDATION.md) records
-the phone/desktop checks and limits. M3–M6 have not started.
+the phone/desktop checks and limits.
+
+**M3 implemented and locally verified; final Actions run pending.** The
+scrolling decision path builds a deterministic plan with gate/prerequisite
+ordering, visible conflict and budget explanations, reason chips, running
+totals, URL sharing, ownership refinements, optional remedies and print/Markdown
+exports. All five golden personas pass locally. M4–M6 have not started.
 
 M1 acceptance evidence:
 
@@ -55,8 +61,9 @@ Node 22+ is needed for authoring and JavaScript tests, with no npm install.
 The JSON Schema validator resolves only local schemas and does not fetch
 third-party links. Scheduled external link/staleness checks belong to M5.
 The suites cover seed integrity, page links, catalog filters, saved progress,
-project-prefix routing and escaped content. Planner persona tests arrive with
-M3; symptom search-ranking tests arrive with M4.
+project-prefix routing and escaped content. Planner persona/invariant and
+export tests also run in that Node command. Symptom search-ranking tests
+arrive with M4.
 
 ## Local preview
 
@@ -66,8 +73,8 @@ From this directory, serve the committed site directly:
 python -m http.server 8000 --bind 127.0.0.1
 ```
 
-Open http://127.0.0.1:8000/ for home, `/start/` for the track or `/catalog/`
-for the catalog. Trailing slashes work with plain static servers and GitHub
+Open http://127.0.0.1:8000/ for home, `/start/` for the track, `/catalog/`
+for the catalog, or `/plan/` for the scrolling decision path. Trailing slashes work with plain static servers and GitHub
 Pages. Item pages have real `/item/{id}/index.html` files, so direct links
 work without a server router. No site build or runtime dependency is needed.
 
@@ -182,11 +189,50 @@ match the JSON. The optional authoring script is not a deployment build step.
     an accessible confirmation dialog. Filter state uses the URL query.
     No cookies, remote fonts, analytics, storage for other purposes, or
     automatic network calls to creator pages are introduced.
-20. **M2 visual direction:** a white/cool-gray field guide with blue controls,
+20. **Original M2 visual direction:** a white/cool-gray field guide with blue controls,
     local system fonts, a four-toolhead mark, and large checklist labels.
     Tested at 320 px and 390 px phone widths and a 1280 px desktop viewport.
     See [DESIGN.md](DESIGN.md) for tokens and rationale. M5 still owns the full
     accessibility/freshness polish pass; these are the M2 usability checks.
+    The owner's macOS direction below supersedes this visual treatment.
+21. **M3 defaults and ownership:** stock/assembled, basic materials, no
+    enclosure, $50, no selected concerns, no firmware/soldering, office.
+    General stock/modded stage answers imply preparation/assembly only;
+    burn-in and specific mods are never guessed. Already-on-Paxx12 adds only
+    that firmware to the known setup, with separate settings still offered.
+    `done_for_stages` and `done_for_enclosures` live in JSON. Per-item actions
+    refine ownership and optional requests without adding intake questions.
+22. **Deterministic scoring and ties:** 100 per concern match, 10 per specific
+    material match (1 for general/all), 20 per location match. Kahn ordering
+    chooses prerequisite-ready items by phase, descending score, then stable
+    code-point ID. Alternative routes use relevance, known affordability,
+    lower cost and ID. See [PLANNER.md](PLANNER.md) for the full algorithm.
+23. **Budget and quotes:** integer cents, greedy fill in sorted order, with
+    prerequisites deferred together. A selected route that does not fit
+    remains visibly deferred while a cheaper compatible route is tried; no
+    earlier purchase is evicted. Unknown costs require a quote, never $0.
+    The $300+ intake choice uses a conservative $300 cap, shown in the output.
+24. **Data contract 1.2.0:** optional purchases and the checklist's "buy when
+    needed" triggers are explicit `on_request`, `interests_any` and
+    `materials_any` conditions. A request or required gate bypasses an
+    interest/optional trigger, but cannot bypass materials, firmware or
+    soldering restrictions. `after_selected` orders recalibration after
+    chosen base/riser/cover changes without making those purchases mandatory.
+    No item prices, source credits or verification dates were advanced.
+25. **Owner-requested macOS theme:** replaced M2's display font and blue
+    field-guide panels with Apple system typography when available, native
+    fallbacks, a frosted desktop toolbar, segmented navigation, quiet gray
+    canvas, rounded white panels and blue controls. Our four-toolhead mark
+    becomes a blue app-style icon. No Apple artwork, remote fonts, UI library
+    or new dependency. The theme applies across all M2/M3 pages and keeps
+    native form controls and visible keyboard focus.
+26. **Sharing and exports:** versioned URL-hash state only; no planner
+    localStorage, backend or printer connection. Normal scrolling plus
+    explicit Continue/Skip actions; earlier answers remain editable. Print
+    view separates shopping and printed parts, and includes full guidance;
+    Markdown retains reasons, warnings, exclusions and creator credits.
+    Clipboard failure exposes selectable text. Invalid links fall back with
+    a notice. Keyboard skip-to-content preserves the encoded answers.
 
 ## Source review and remaining content work
 
@@ -214,7 +260,6 @@ Deferred source gaps are explicit in the data:
 
 ## Next milestones
 
-Stop after the M2 handoff. Once its acceptance checks pass, the next stage is
-M3: the scrolling decision path and planner plus five golden personas;
+Stop after the M3 handoff. Once its acceptance checks pass, the next stage is
 M4 symptom search plus all 12 ranking fixtures; M5 embed, freshness and
 accessibility; M6 submission assets only after all earlier acceptance checks.

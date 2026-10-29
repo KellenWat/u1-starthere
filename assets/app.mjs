@@ -1,5 +1,6 @@
 import {escape as e,label,money,path,itemPath,itemCard,catalogItems} from './view.mjs';
 import {STORAGE_KEY,readProgress,progressCounts} from './progress.mjs';
+import {mountPlanner} from './plan-ui.mjs';
 
 const base = new URL('../',import.meta.url).href;
 const main = document.querySelector('#main');
@@ -21,6 +22,7 @@ async function load() {
     if (page === 'home') home();
     if (page === 'catalog') catalog();
     if (page === 'start') track();
+    if (page === 'plan') mountPlanner(main,items,phases,base,docs[0]);
   } catch {
     main.innerHTML = `<section class="empty-state"><h1>Your field guide couldn’t load</h1><p>Check your connection and try again. For a local preview, open the site through its HTTP address.</p><button type="button" class="button primary" id="retry">Try again</button></section>`;
     document.querySelector('#retry').addEventListener('click',()=>load());
@@ -32,14 +34,14 @@ function home() {
     items.find(item=>item.category===category)).filter(Boolean);
   main.innerHTML = `<section class="home-hero"><div class="hero-copy"><p class="intro-label">For your Snapmaker U1</p>
     <h1>A good first week starts stock.</h1><p class="lead">Get the basics right, find useful community projects, and make your next change with a reason.</p>
-    <div class="hero-actions">${link('start/','I’m new — start the track','button primary')}${link('catalog/','I have a U1 — explore the catalog','button secondary')}</div>
+    <div class="hero-actions">${link('start/','I’m new — start the track','button primary')}${link('plan/','I have a U1 — plan my next steps','button secondary')}</div>
     <p class="quiet-note">Free to use. No accounts, affiliate links or tracking.</p></div>
-    <aside class="week-preview" aria-labelledby="week-heading"><div class="preview-heading"><img src="${e(path(base,'assets/mark.svg'))}" width="44" height="44" alt=""><h2 id="week-heading">Give your U1 a good start</h2></div>
+    <aside class="week-preview" aria-labelledby="week-heading"><div class="preview-heading"><img src="${e(path(base,'assets/app-icon.svg'))}" width="44" height="44" alt=""><h2 id="week-heading">Give your U1 a good start</h2></div>
     <ol>${phases.slice(0,3).map(phase=>`<li><span class="phase-number">${phase.phase+1}</span><div><h3>${e(phase.name)}</h3><p>${e(phase.goal)}</p></div></li>`).join('')}</ol>
     ${link('start/','See the full startup track','text-link')}</aside></section>
     <section class="home-section"><div class="section-heading"><div><h2>Good places to begin</h2><p>Useful community options, with the source always attached.</p></div>${link('catalog/','Browse the catalog','text-link')}</div>
     <div class="catalog-grid">${highlights.map(item=>itemCard(item,phases,base)).join('')}</div></section>
-    <section class="next-section"><div><h2>“What should I do next?”</h2><p>A guided decision path is coming next: start with where you are, follow the choices that matter, and find the community options that fit.</p><p class="small">For now, explore the catalog by cost, difficulty and stage.</p></div>${link('catalog/','Explore your options','button secondary')}</section>
+    <section class="next-section"><div><h2>“What should I do next?”</h2><p>Follow a guided decision path from where you are to community projects that fit. See the order, costs and reasons, including anything your budget defers.</p><p class="small">Seven skippable questions. No account or printer connection.</p></div>${link('plan/','Find my next steps','button secondary')}</section>
     <section class="support-section"><h2>Something isn’t working?</h2><p>While symptom search is being built, start with the official U1 support guides. Keep your printer stock while investigating a new-machine fault.</p><a class="text-link" href="https://wiki.snapmaker.com/en/snapmaker_u1">Open official U1 support guides</a></section>`;
 }
 

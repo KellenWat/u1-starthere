@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "license": "CC-BY-4.0",
   "imported_at": "2026-10-28",
   "attribution": {
@@ -66,7 +66,12 @@
         "section": "Before it arrives",
         "verification_status": "imported-not-tested",
         "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
-      }
+      },
+      "done_for_stages": [
+        "stock",
+        "mods",
+        "paxx12"
+      ]
     },
     {
       "id": "concrete-paver-base",
@@ -83,7 +88,11 @@
       "requires": [],
       "conflicts": [],
       "gates": [],
-      "conditions": {},
+      "conditions": {
+        "interests_any": [
+          "noise"
+        ]
+      },
       "materials_relevance": [
         "all"
       ],
@@ -165,7 +174,12 @@
         "section": "Day 0 — Unbox & inspect",
         "verification_status": "imported-not-tested",
         "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
-      }
+      },
+      "done_for_stages": [
+        "stock",
+        "mods",
+        "paxx12"
+      ]
     },
     {
       "id": "stock-burn-in-complete",
@@ -291,7 +305,9 @@
       ],
       "conflicts": [],
       "gates": [],
-      "conditions": {},
+      "conditions": {
+        "on_request": true
+      },
       "materials_relevance": [
         "all"
       ],
@@ -337,7 +353,9 @@
       ],
       "conflicts": [],
       "gates": [],
-      "conditions": {},
+      "conditions": {
+        "on_request": true
+      },
       "materials_relevance": [
         "all"
       ],
@@ -540,7 +558,15 @@
       ],
       "conflicts": [],
       "gates": [],
-      "conditions": {},
+      "conditions": {
+        "after_selected": [
+          "concrete-paver-base",
+          "just-a-riser-xl",
+          "official-top-cover",
+          "diy-samla-lid",
+          "biqu-popcap"
+        ]
+      },
       "materials_relevance": [
         "all"
       ],
@@ -588,7 +614,11 @@
       ],
       "conflicts": [],
       "gates": [],
-      "conditions": {},
+      "conditions": {
+        "interests_any": [
+          "reliability"
+        ]
+      },
       "materials_relevance": [
         "pla",
         "petg"
@@ -681,7 +711,10 @@
         "section": "Days 4–5 — Paxx12 Extended Firmware",
         "verification_status": "source-reviewed-not-tested",
         "note": "Checklist order retained; project documentation reviewed for capabilities and warranty wording. No installed version was tested."
-      }
+      },
+      "done_for_stages": [
+        "paxx12"
+      ]
     },
     {
       "id": "spoolman-integration",
@@ -897,7 +930,8 @@
       "conflicts": [],
       "gates": [],
       "conditions": {
-        "requires_firmware": "paxx12"
+        "requires_firmware": "paxx12",
+        "on_request": true
       },
       "materials_relevance": [
         "all"
@@ -948,7 +982,11 @@
       ],
       "conflicts": [],
       "gates": [],
-      "conditions": {},
+      "conditions": {
+        "interests_any": [
+          "dry-filament"
+        ]
+      },
       "materials_relevance": [
         "petg",
         "tpu",
@@ -1005,7 +1043,11 @@
       ],
       "conflicts": [],
       "gates": [],
-      "conditions": {},
+      "conditions": {
+        "interests_any": [
+          "dry-filament"
+        ]
+      },
       "materials_relevance": [
         "all"
       ],
@@ -1209,7 +1251,11 @@
       ],
       "conflicts": [],
       "gates": [],
-      "conditions": {},
+      "conditions": {
+        "interests_any": [
+          "reliability"
+        ]
+      },
       "materials_relevance": [
         "all"
       ],
@@ -1257,7 +1303,11 @@
       ],
       "conflicts": [],
       "gates": [],
-      "conditions": {},
+      "conditions": {
+        "interests_any": [
+          "reliability"
+        ]
+      },
       "materials_relevance": [
         "all"
       ],
@@ -1311,7 +1361,11 @@
         "enclosed"
       ],
       "conditions": {
-        "firmware_min": "1.5.2 Beta"
+        "firmware_min": "1.5.2 Beta",
+        "interests_any": [
+          "noise",
+          "fumes"
+        ]
       },
       "materials_relevance": [
         "abs",
@@ -1350,7 +1404,10 @@
         "section": "First-week checklist",
         "verification_status": "imported-not-tested",
         "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
-      }
+      },
+      "done_for_enclosures": [
+        "official"
+      ]
     },
     {
       "id": "diy-samla-lid",
@@ -1374,7 +1431,12 @@
       "gates": [
         "enclosed"
       ],
-      "conditions": {},
+      "conditions": {
+        "interests_any": [
+          "noise",
+          "fumes"
+        ]
+      },
       "materials_relevance": [
         "abs",
         "asa"
@@ -1407,7 +1469,10 @@
         "section": "First-week checklist",
         "verification_status": "imported-not-tested",
         "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
-      }
+      },
+      "done_for_enclosures": [
+        "diy"
+      ]
     },
     {
       "id": "biqu-popcap",
@@ -1431,7 +1496,12 @@
       "gates": [
         "enclosed"
       ],
-      "conditions": {},
+      "conditions": {
+        "interests_any": [
+          "noise",
+          "fumes"
+        ]
+      },
       "materials_relevance": [
         "abs",
         "asa"
@@ -1487,7 +1557,10 @@
           "wood",
           "cf-gf"
         ],
-        "matching_hotends": true
+        "matching_hotends": true,
+        "interests_any": [
+          "speed-flow"
+        ]
       },
       "materials_relevance": [
         "pla",
@@ -1542,7 +1615,11 @@
       ],
       "conflicts": [],
       "gates": [],
-      "conditions": {},
+      "conditions": {
+        "materials_any": [
+          "cf-gf"
+        ]
+      },
       "materials_relevance": [
         "cf-gf"
       ],
@@ -1596,7 +1673,11 @@
       ],
       "conditions": {
         "soldering": true,
-        "min_stock_days": 7
+        "min_stock_days": 7,
+        "interests_any": [
+          "noise",
+          "reliability"
+        ]
       },
       "materials_relevance": [
         "all"
@@ -1657,7 +1738,12 @@
           "enclosed",
           "chamber-heat-safe"
         ],
-        "min_stock_days": 7
+        "min_stock_days": 7,
+        "materials_any": [
+          "abs",
+          "asa",
+          "pa"
+        ]
       },
       "materials_relevance": [
         "abs",
@@ -1711,6 +1797,11 @@
       "conditions": {
         "required_gates": [
           "enclosed"
+        ],
+        "materials_any": [
+          "abs",
+          "asa",
+          "pa"
         ]
       },
       "materials_relevance": [
@@ -1761,7 +1852,9 @@
       ],
       "conflicts": [],
       "gates": [],
-      "conditions": {},
+      "conditions": {
+        "on_request": true
+      },
       "materials_relevance": [
         "all"
       ],
@@ -1807,7 +1900,9 @@
       ],
       "conflicts": [],
       "gates": [],
-      "conditions": {},
+      "conditions": {
+        "on_request": true
+      },
       "materials_relevance": [
         "all"
       ],
@@ -1858,7 +1953,10 @@
       ],
       "gates": [],
       "conditions": {
-        "requires_firmware": "paxx12"
+        "requires_firmware": "paxx12",
+        "materials_any": [
+          "five-plus-colors"
+        ]
       },
       "materials_relevance": [
         "five-plus-colors"
@@ -1909,7 +2007,11 @@
         "multiace"
       ],
       "gates": [],
-      "conditions": {},
+      "conditions": {
+        "materials_any": [
+          "five-plus-colors"
+        ]
+      },
       "materials_relevance": [
         "five-plus-colors"
       ],
@@ -1958,7 +2060,11 @@
       ],
       "conflicts": [],
       "gates": [],
-      "conditions": {},
+      "conditions": {
+        "materials_any": [
+          "five-plus-colors"
+        ]
+      },
       "materials_relevance": [
         "five-plus-colors"
       ],

@@ -8,12 +8,13 @@ const pages = [
   {file:'index.html',page:'home',base:'./',title:'U1 StartHere — A good first week starts stock',description:'A clear startup track and credited catalog for Snapmaker U1 owners.'},
   {file:'catalog/index.html',page:'catalog',base:'../',title:'Catalog — U1 StartHere',description:'Browse U1 setup, printed mods, purchases and settings by cost, difficulty and stage.'},
   {file:'start/index.html',page:'start',base:'../',title:'Startup track — U1 StartHere',description:'Work through your U1 setup, stock tests, first mods and tuning at your own pace.'},
+  {file:'plan/index.html',page:'plan',base:'../',title:'What’s next? — U1 StartHere',description:'Follow a scrolling decision path to a deterministic, priced U1 plan with prerequisites and credited community sources.'},
   ...items.map(item=>({file:`item/${item.id}/index.html`,page:'item',base:'../../',title:`${item.title} — U1 StartHere`,description:item.summary,content:renderItem(item,items,phases,'../..')}))
 ];
 let stale = 0;
 for (const page of pages) {
-  const values = {...page,content:page.content || '<p class="loading" role="status">Loading your field guide…</p><noscript><h1>JavaScript is needed for this page</h1><p>Enable JavaScript for the interactive catalog and track. Individual item pages remain readable without it.</p></noscript>', 'active-start':page.page==='start'?'aria-current="page"':'','active-catalog':page.page==='catalog'?'aria-current="page"':''};
-  const html = template.replace(/\{\{([a-z-]+)\}\}/g,(_,key)=>['content','active-start','active-catalog'].includes(key)?values[key]:escape(values[key])).replace(/[\t ]+$/gm,'');
+  const values = {...page,content:page.content || '<p class="loading" role="status">Loading your field guide…</p><noscript><h1>JavaScript is needed for this page</h1><p>Enable JavaScript for the interactive catalog, planner and track. Individual item pages remain readable without it.</p></noscript>', 'active-start':page.page==='start'?'aria-current="page"':'','active-plan':page.page==='plan'?'aria-current="page"':'','active-catalog':page.page==='catalog'?'aria-current="page"':''};
+  const html = template.replace(/\{\{([a-z-]+)\}\}/g,(_,key)=>key==='content'||key.startsWith('active-')?values[key]:escape(values[key])).replace(/[\t ]+$/gm,'');
   const target = new URL(page.file,root);
   if (check) { if (await read(page.file).catch(()=>null) !== html) { console.error(`STALE ${page.file}`); stale++; } }
   else { await mkdir(new URL('./',target),{recursive:true}); await writeFile(target,html); }

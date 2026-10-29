@@ -10,7 +10,7 @@
   ],
   "properties": {
     "version": {
-      "const": "1.1.0"
+      "const": "1.2.0"
     },
     "license": {
       "const": "CC-BY-4.0"
@@ -245,6 +245,30 @@
           },
           "provenance": {
             "$ref": "common.schema.json#/$defs/provenance"
+          },
+          "done_for_stages": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "not-arrived",
+                "stock",
+                "mods",
+                "paxx12"
+              ]
+            },
+            "uniqueItems": true
+          },
+          "done_for_enclosures": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "none",
+                "diy",
+                "official",
+                "other"
+              ]
+            },
+            "uniqueItems": true
           }
         }
       }

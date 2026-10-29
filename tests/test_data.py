@@ -111,6 +111,14 @@ class DataTests(unittest.TestCase):
         self.item("cryogrip-pro")["requires"].append("missing-item")
         self.rejects("missing item")
 
+    def test_rejects_unknown_followup_reference(self):
+        self.item("vibration-recalibration")["conditions"]["after_selected"] = ["missing-item"]
+        self.rejects("missing item")
+
+    def test_rejects_followup_cycle(self):
+        self.item("just-a-riser-xl")["conditions"]["after_selected"] = ["vibration-recalibration"]
+        self.rejects("prerequisite cycle")
+
     def test_rejects_dependency_cycle(self):
         self.item("bench-and-slicer-prep")["requires"] = ["stock-burn-in-complete"]
         self.rejects("prerequisite cycle")

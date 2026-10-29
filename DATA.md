@@ -1,4 +1,4 @@
-# U1 StartHere data contract (1.1.0)
+# U1 StartHere data contract (1.2.0)
 
 The canonical authored content is `data/items.json`, `data/fixes.json` and
 `data/phases.json`. Consumers must render records from these files; catalog
@@ -7,7 +7,8 @@ hand-maintained copies in application code. Paths are relative to the GitHub
 Pages project root, so a deployment under `/u1-starthere/` remains supported.
 
 M1 defined and validated the contract. M2 adds the catalog, pre-rendered detail
-pages and startup track. Planner, search, embed and freshness follow in order.
+pages and startup track. M3 adds the scrolling decision path and deterministic
+planner. Search, embed and freshness follow in order.
 
 ## Envelope and reuse
 
@@ -15,7 +16,7 @@ Every file is an object with these required properties:
 
 | Key | Meaning |
 | --- | --- |
-| `version` | Contract version, currently `1.1.0`; not a firmware version |
+| `version` | Contract version, currently `1.2.0`; not a firmware version |
 | `license` | `CC-BY-4.0` for original curated content |
 | `imported_at` | ISO date of the seed import |
 | `attribution` | Curator, license URL, supplied-source titles/authorship and reuse notice |
@@ -61,6 +62,8 @@ rendering rather than injecting data as markup.
 | `warnings` | Plain-text warnings that must remain visible in later item/plan views |
 | `optional_related_items` | Optional accessories/remedies; never automatic required purchases |
 | `provenance` | Seed document ID, section, verification status and limitations |
+| `done_for_stages` | Optional stage answers that imply this specific item is done; never used to assume stock burn-in |
+| `done_for_enclosures` | Optional exact enclosure answers that imply this route is already fitted |
 
 `conditions` is an object; all its keys are optional:
 
@@ -73,6 +76,10 @@ rendering rather than injecting data as markup.
 | `required_gates` | Capability slugs the plan must satisfy through an existing or inserted provider |
 | `excluded_materials` | Materials unsuitable for the route; not a relevance penalty |
 | `matching_hotends` | Show the matching-head requirement and current-guide warning |
+| `materials_any` | Material-specific eligibility: at least one of these materials must match |
+| `interests_any` | This optional route is a candidate when a listed concern matches; explicit requests or prerequisites can also add it |
+| `on_request` | Optional accessory/remedy, outside the numbered plan and totals until requested or required |
+| `after_selected` | Follow-up precedence after any referenced configuration change present in the candidate graph; never forces that purchase |
 
 Example relationship in the actual seed: `panda-breath-heater` requires
 `mainboard-psu-cooling` and requests the `enclosed` and `chamber-heat-safe`
@@ -81,10 +88,16 @@ routes grant `enclosed`. The planner must insert prerequisites and resolve
 alternative gates before presenting a usable order. Do not confuse an
 existing enclosure with proof that active heating is safe.
 
-M3 must keep budget deferrals and conflict reasons visible, prevent orphaned
-dependents when prerequisites are deferred, and show unknown-price items
-separately rather than treating them as free. Relevance weights and stable
-final tie breaks will be specified with that engine and its golden fixtures.
+M3 keeps budget deferrals and conflict reasons visible, prevents a dependent
+from entering the usable plan when its prerequisite is deferred, and lists
+unknown-price items separately. [PLANNER.md](PLANNER.md) specifies scoring,
+ownership defaults, capability insertion, deterministic ties and the bounded
+cheaper-route retry. Five golden personas and invariant tests run in CI.
+
+Contract 1.2.0 adds the ownership and trigger/precedence metadata above. It
+encodes the supplied checklist's optional accessories and purchase triggers;
+these are editorial planning rules, not independently verified compatibility
+claims. Prices, creator credits and verification dates did not change.
 
 ## Fix records
 
@@ -186,3 +199,16 @@ Browser storage uses only `u1-starthere.track.v1` with
 other preferences, identity or telemetry. Invalid, old or unknown step state
 is ignored; unavailable storage falls back to progress for the current visit.
 Catalog filter choices live in the URL query string, not browser storage.
+
+Planner links use `#plan=` plus a URI-encoded JSON object with `v: 1`, the seven
+answer keys, and `owned`/`selected` ID arrays. State is whitelisted, canonical,
+bounded to 12,000 encoded characters on import, and never stored in
+localStorage. Unknown IDs and unsupported values are ignored; invalid versions
+or malformed links show a notice and use defaults. The same inputs and data
+produce the same plan; future data updates may change prices and results.
+
+Markdown and print exports retain ordered steps, reason chips, warnings,
+source credits, separate shopping/print queues, budget deferrals, exclusions
+and unknown-price items. Optional related items remain outside totals until
+added explicitly. A local-preview link works on that machine; sharing with
+other owners requires serving these same static files at the public site URL.

@@ -96,6 +96,11 @@ def validate_documents(documents: dict, root: Path = ROOT) -> list[str]:
     gates = {gate for item in items for gate in item["gates"]}
     for item in items:
         key = item["id"]
+        for target in item["conditions"].get("after_selected", []):
+            if target not in item_map:
+                errors.append(f"{key}: after_selected references missing item {target}")
+            if target == key:
+                errors.append(f"{key}: self-reference in after_selected")
         if item["phase"] not in phase_ids:
             errors.append(f"{key}: unknown phase")
         for target in item["conflicts"]:
@@ -122,7 +127,7 @@ def validate_documents(documents: dict, root: Path = ROOT) -> list[str]:
         if key in visited or key not in item_map:
             return
         visiting.add(key)
-        for target in item_map[key]["requires"]:
+        for target in item_map[key]["requires"] + item_map[key]["conditions"].get("after_selected", []):
             visit(target)
         visiting.remove(key)
         visited.add(key)

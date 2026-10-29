@@ -1,0 +1,49 @@
+{
+  "description": "The five required personas from the build brief. Source IDs are assertions against the curated dataset, not engine rules.",
+  "personas": [
+    {
+      "id": "abs-curious-150",
+      "name": "ABS-curious, no enclosure, $150",
+      "answers": {"stage":"stock","materials":"abs","enclosure":"none","budget":150,"bothers":["fumes"],"comfort":"basic","location":"office"},
+      "include": ["official-top-cover","abs-asa-first-print"],
+      "exclude": ["diy-samla-lid","biqu-popcap","panda-breath-heater"],
+      "before": [["official-top-cover","abs-asa-first-print"]]
+    },
+    {
+      "id": "zero-budget-pla",
+      "name": "$0, PLA group, firmware comfortable",
+      "answers": {"stage":"stock","materials":"basic","budget":0,"bothers":[],"comfort":"firmware"},
+      "include": ["stock-burn-in-complete","paxx12-extended-firmware"],
+      "exclude": ["official-top-cover","panda-breath-heater"],
+      "before": [["stock-burn-in-complete","paxx12-extended-firmware"]],
+      "free_only": true
+    },
+    {
+      "id": "noise-living-room",
+      "name": "Noise-sensitive, living room, soldering comfortable",
+      "answers": {"stage":"stock","materials":"basic","budget":300,"bothers":["noise"],"comfort":"soldering","location":"living-space"},
+      "include": ["mainboard-psu-cooling","just-a-riser-xl"],
+      "exclude": ["panda-breath-heater"],
+      "before": []
+    },
+    {
+      "id": "dryer-feeder",
+      "name": "Dryer feeder selected",
+      "answers": {"stage":"stock","materials":"basic","budget":300,"bothers":["dry-filament"],"comfort":"firmware","selected":["dryer-dry-feed"]},
+      "include": ["space-pi-x4","dryer-dry-feed"],
+      "exclude": [],
+      "before": [["space-pi-x4","dryer-dry-feed"]],
+      "warning": {"item":"dryer-dry-feed","contains":"RFID"},
+      "optional": {"item":"dryer-dry-feed","related":"openspool-ntag215"}
+    },
+    {
+      "id": "already-paxx12",
+      "name": "Already on Paxx12",
+      "answers": {"stage":"paxx12","materials":"basic","budget":50,"comfort":"basic"},
+      "include": ["spoolman-integration","print-notifications"],
+      "exclude": ["paxx12-extended-firmware"],
+      "before": [],
+      "setting_only": ["spoolman-integration","print-notifications"]
+    }
+  ]
+}

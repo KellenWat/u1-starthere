@@ -1,5 +1,23 @@
 # M2 design direction
 
+The owner updated the visual direction during M3 to Apple/macOS-inspired.
+The current theme below supersedes the original M2 typography and surface
+treatment; the original rationale is retained as project history.
+
+## Current theme: macOS-inspired (owner direction)
+
+- Canvas `#f5f5f7`, near-white surfaces `#fbfbfd` / `#ffffff`, text
+  `#1d1d1f`, secondary text `#626268`, links `#0066cc`, controls `#0071e3`.
+- Apple system fonts when available, with native Segoe UI/sans-serif fallbacks.
+  No font downloads, third-party assets or new dependencies.
+- Frosted desktop toolbar, segmented navigation, soft white panels, rounded
+  controls, restrained shadows and a blue app-style icon using our original
+  four-toolhead mark. No fake window buttons or Apple branding.
+- Phone navigation stays compact and does not pin a tall header over the
+  questions. Desktop scroll targets account for the frosted toolbar height.
+- Preserve semantic controls, focus visibility, contrast, ordinary scrolling,
+  all planner behavior and the single small stylesheet.
+
 U1 StartHere is a bench-side field guide: easy to read on a phone while a
 printer is nearby. The visual reference is a printed setup guide with useful
 tabs and a clear sequence, rather than a dashboard or store.
@@ -54,4 +72,15 @@ answers, allow changes and backtracking, and branch toward relevant community
 options with direct creator links. Use ordinary scrolling and keyboard
 controls. Preserve the brief's deterministic planner, prerequisite/gate
 ordering, visible conflicts, reason chips and budget deferrals underneath.
-The M2 home page introduces this direction; its engine starts only in M3.
+M3 implements this direction. The home page now links to the working planner.
+
+## M3 decision-path layout
+
+Keep earlier answers as collapsed summaries and reveal the next question on
+Continue/Skip. On desktop, a quiet sidebar previews relevant credited projects
+as the answers change; on a phone, it follows the current question. Use the
+same macOS-inspired control and panel system rather than drawing a separate
+diagram UI. The numbered result sequence carries reason chips, prerequisite
+links, visible conditions and running totals. Budget deferrals and unknown
+prices are separate sections; other options remain inspectable. Exports use
+a plain readable layout, without frosted surfaces or toolbar shadows on paper.
