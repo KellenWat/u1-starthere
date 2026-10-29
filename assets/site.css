@@ -115,7 +115,7 @@ dialog{border:1px solid rgba(0,0,0,.09);border-radius:20px;background:rgba(251,2
 body[data-page="plan"]{background:#fff}
 body[data-page="plan"] .site-main{padding-block:0 60px}
 .flow-toolbar{min-height:64px;display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid var(--line)}
-.flow-toolbar h1{margin:0;font-size:.85rem;font-weight:400;letter-spacing:0;line-height:1.5;color:var(--muted)}
+.flow-toolbar h1{margin:0;max-width:none;font-size:.85rem;font-weight:400;letter-spacing:0;line-height:1.5;color:var(--muted)}
 .flow-toolbar>div{display:flex;gap:22px}.flow-toolbar .text-button{font-size:.8rem}
 .decision-node{position:relative;min-height:calc(100svh - 89px);display:flex;align-items:center;justify-content:center;padding:64px 0 80px;scroll-margin-top:89px}
 .decision-node[hidden]{display:none}.decision-node:focus{outline:0}

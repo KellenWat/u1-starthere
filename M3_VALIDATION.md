@@ -31,6 +31,20 @@ concern toggling/limit, and selected/hidden node rendering. The complete suite
 now has 37 JavaScript tests, including the unchanged five golden personas.
 README decision 27 records the interaction assumption. M4 remains deferred.
 
+[Actions run #8](https://github.com/KellenWat/u1-starthere/actions/runs/40793584857)
+passed for `da85a37`. Actual local output summary:
+
+```text
+ℹ tests 37
+ℹ pass 37
+ℹ fail 0
+PASS total JavaScript: 84647 / 200000 bytes
+Validation passed: 3 data files; 0 errors.
+Ran 27 tests in 4.728s
+OK
+PASS generated pages match JSON and template: 42 HTML pages (38 item details).
+```
+
 ## Original M3 acceptance
 
 Local acceptance checks and [GitHub Actions run #6](https://github.com/KellenWat/u1-starthere/actions/runs/40791919046)
