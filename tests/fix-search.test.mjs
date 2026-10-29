@@ -64,7 +64,7 @@ test('fix views retain ordered steps, stop conditions, creator credit and honest
   for(const card of fixes){
     const html=renderFix(card,items,'https://example.github.io/u1-starthere/');
     assert.ok(html.indexOf('fix-stop')<html.indexOf('fix-steps'));
-    assert.ok(html.includes('Firmware behavior not tested.'));
+    assert.ok(html.includes('Firmware: Not tested'));
     assert.ok(html.includes(card.support_url));
     assert.ok(html.includes(card.source.creator));
     let previous=-1;for(const step of card.steps){const index=html.indexOf(escape(step));assert.ok(index>previous,card.id);previous=index;}

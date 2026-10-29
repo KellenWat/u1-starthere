@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Embed a credited U1 item card or reuse the public CC BY 4.0 JSON data.">
+  <title>Embed and open data — U1 StartHere</title>
+  <link rel="icon" href="../assets/app-icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script type="module" src="../assets/app.mjs"></script>
+</head>
+<body data-page="embed">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../" aria-label="U1 StartHere home"><img src="../assets/app-icon.svg" width="28" height="28" alt=""><span>U1 <strong>StartHere</strong></span></a>
+      <nav aria-label="Main navigation">
+        <a href="../start/" >Startup track</a>
+        <a href="../plan/" >What’s next?</a>
+        <a href="../catalog/" >Catalog</a>
+        <a href="../fixes/" >Fixes</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="site-main" tabindex="-1"><header class="page-heading"><h1>Bring a sourced guide to your page.</h1><p class="lead">Use a small item card on your own website, or read the same public JSON that powers StartHere.</p></header>
+<section class="about-section"><h2>A live card</h2><div data-u1-item="stock-burn-in-complete"></div><script src="../embed.js" defer></script></section>
+<section class="about-section"><h2>Add it to a website</h2><p>Replace the item ID with a stable ID from the catalog. Include the script once; it renders each matching container. The card keeps creator credit, review information, source links and the data-license link.</p><pre class="code-example"><code>&lt;div data-u1-item="stock-burn-in-complete"&gt;&lt;/div&gt;
+&lt;script src="https://KellenWat.github.io/u1-starthere/embed.js" defer&gt;&lt;/script&gt;</code></pre><p>The script fetches public data without credentials, uses its own isolated styles, and saves no browser data. A host page must allow external scripts, HTTPS data requests and embedded custom elements. Forums that strip scripts should use a normal item-page link instead.</p><p>For a container created later, call <code>window.U1StartHere.render(element, itemId)</code> after the script loads. Unknown IDs or unavailable data show a link back to the catalog.</p></section>
+<section class="about-section"><h2>Use the data directly</h2><ul class="api-links"><li><a href="../data/items.json">Catalog items</a></li><li><a href="../data/fixes.json">Fix cards</a></li><li><a href="../data/phases.json">Startup phases and readiness checks</a></li><li><a href="../data/journey.json">Connected decision routes</a></li></ul><p>These are static files with a contract version, not a server API. Preserve attribution and license metadata when adapting the data. Review dates describe the evidence in each record; they do not certify third-party instructions.</p><p><a href="https://github.com/KellenWat/u1-starthere/blob/main/DATA.md">Data format and compatibility notes</a> · <a href="../data/LICENSE.md">CC BY 4.0 data license</a></p></section>
+</main>
+  <footer class="site-footer">
+    <div><a class="footer-brand" href="../">U1 StartHere</a><p>An independent community guide. Not affiliated with Snapmaker.</p></div>
+    <div class="footer-links"><a href="../about/">About and feedback</a><a href="../embed/">Embed and open data</a><a href="https://github.com/KellenWat/u1-starthere">Project and sources</a><a href="../data/LICENSE.md">Data: CC BY 4.0</a><a href="../LICENSE">Code: MIT</a></div>
+  </footer>
+</body>
+</html>

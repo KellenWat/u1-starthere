@@ -1,4 +1,5 @@
 // Shared, dependency-free views. The authoring script uses these same views.
+import {reviewLabel} from './freshness.mjs';
 export const escape = value => String(value ?? '').replace(/[&<>"']/g, char =>
   ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 export const label = value => String(value).replaceAll('-', ' ').replace(/^./, char => char.toUpperCase());
@@ -14,6 +15,7 @@ export const difficulty = value => ['','Easy','Some setup','Hands-on','Advanced'
 const safeLink = url => { try { return new URL(url).protocol === 'https:' ? url : '#'; } catch { return '#'; } };
 const link = (href, text, attrs = '') => `<a href="${escape(href)}" ${attrs}>${escape(text)}</a>`;
 const list = entries => `<ul class="plain-list">${entries.map(entry => `<li>${entry}</li>`).join('')}</ul>`;
+export const renderReview=record=>`<p class="review-badge" data-review-date="${escape(record.last_verified)}" data-review-status="${escape(record.provenance?.verification_status)}" data-review-firmware="${escape(record.verified_firmware||'')}">${escape(reviewLabel(record))}</p>`;
 
 export function catalogItems(items, filters = {}) {
   const query = (filters.q || '').trim().toLocaleLowerCase('en-US');
@@ -38,7 +40,7 @@ export function itemCard(item, phases, base) {
     <p class="card-summary">${escape(item.summary)}</p>
     <div class="card-facts"><strong>${escape(money(item.cost_usd))}</strong><span>${escape(duration(item.time_minutes))} estimated</span></div>
     <p class="card-stage">${escape(phase?.name || '')}<span aria-hidden="true"> / </span>${escape(difficulty(item.difficulty))}</p>
-    <p class="card-credit">${escape(item.source.creator || 'Creator credit pending')}${item.warranty_risk !== 'none' ? '<span class="risk-note">Review warranty risk</span>' : ''}</p>
+    <p class="card-credit">${escape(item.source.creator || 'Creator credit pending')}${item.warranty_risk !== 'none' ? '<span class="risk-note">Review warranty risk</span>' : ''}</p>${renderReview(item)}
   </article>`;
 }
 
@@ -66,7 +68,6 @@ export function renderItem(item, items, phases, base) {
     return link(itemPath(base,id), related?.title || id);
   })) : `<p>${escape(empty)}</p>`;
   const notes = conditionNotes(item, items, base);
-  const status = item.provenance.verification_status === 'source-reviewed-not-tested' ? 'Source reviewed' : 'Imported from the seed';
   return `<div class="detail-nav">${link(path(base,'catalog/'),'Back to catalog')} ${link(path(base,`start/#phase-${item.phase}`),'View this stage in the track')}</div>
     <header class="detail-header"><p class="section-note">${escape(label(item.category))} / ${escape(phase?.name || '')}</p>
     <h1>${escape(item.title)}</h1>${softwareBadges(item)}<p class="lead">${escape(item.summary)}</p></header>
@@ -88,8 +89,7 @@ export function renderItem(item, items, phases, base) {
       <p class="creator-name">${escape(item.source.creator || 'Original creator credit pending')}</p>
       ${link(safeLink(item.source.url), item.source.kind === 'model' ? "Open the creator's model page" : 'Open the source page', 'class="button primary"')}
       <p>${escape(item.source.note)}</p>
-      <dl class="source-facts"><div><dt>${escape(status)}</dt><dd>${escape(date(item.last_verified))}</dd></div>
-      <div><dt>Firmware tested</dt><dd>${escape(item.verified_firmware || 'Not tested')}</dd></div></dl>
+      ${renderReview(item)}
       ${item.community_evidence?.length?`<h3>Community discussion</h3><ul class="plain-list">${item.community_evidence.map(source=>`<li>${link(safeLink(source.url),source.note)}<small>${escape(source.creator||'Credit pending')}</small></li>`).join('')}</ul>`:''}
       <p class="small">${escape(item.provenance.note)}</p><p class="small">We link to the original project. Its own license and instructions apply.</p>
     </aside></div>`;
@@ -105,7 +105,7 @@ export function softwareFacts(item){
   return `<dl class="software-facts">${[['Printer / firmware',s.firmware],['Accounts and services',s.accounts],['Extra hardware',s.hardware],['Project license',s.project_license]].map(([name,value])=>`<div><dt>${escape(name)}</dt><dd>${escape(value)}</dd></div>`).join('')}</dl>`;
 }
 export function softwareCard(item,base){
-  return `<article class="software-card" data-software-item="${escape(item.id)}"><h3>${link(itemPath(base,item.id),item.title)}</h3>${softwareBadges(item)}<p>${escape(item.summary)}</p><p class="small software-cost"><strong>${escape(money(item.cost_usd))}</strong></p><details class="software-card-requirements"><summary>Requirements and cost notes</summary><p class="small">${escape(item.cost_note)}</p>${item.software?softwareFacts(item):''}</details><p class="software-credit">${escape(item.source.creator||'Creator credit pending')} · Source ${item.provenance.verification_status==='source-reviewed-not-tested'?'reviewed':'imported'} ${escape(date(item.last_verified))}; firmware not tested.</p><div class="software-actions">${link(itemPath(base,item.id),'Read the guide','class="button secondary"')}<button type="button" class="text-button" data-plan-item="${escape(item.id)}">Add to a plan</button></div></article>`;
+  return `<article class="software-card" data-software-item="${escape(item.id)}"><h3>${link(itemPath(base,item.id),item.title)}</h3>${softwareBadges(item)}<p>${escape(item.summary)}</p><p class="small software-cost"><strong>${escape(money(item.cost_usd))}</strong></p><details class="software-card-requirements"><summary>Requirements and cost notes</summary><p class="small">${escape(item.cost_note)}</p>${item.software?softwareFacts(item):''}</details><p class="software-credit">${escape(item.source.creator||'Creator credit pending')}</p>${renderReview(item)}<div class="software-actions">${link(itemPath(base,item.id),'Read the guide','class="button secondary"')}<button type="button" class="text-button" data-plan-item="${escape(item.id)}">Add to a plan</button></div></article>`;
 }
 
 export function filterSoftware(items,{platform='',kind=''}={}){

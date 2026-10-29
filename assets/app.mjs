@@ -1,4 +1,5 @@
 import {renderTrackStep,renderMilestones} from './track-view.mjs';
+import {mountFreshness} from './freshness.mjs';
 import {renderHome} from './home-view.mjs';
 import {escape as e,label,money,path,itemPath,itemCard,catalogItems,platformLabel} from './view.mjs';
 import {STORAGE_KEY,readProgress,progressCounts} from './progress.mjs';
@@ -8,12 +9,13 @@ import {mountFixes} from './fix-ui.mjs';
 const base = new URL('../',import.meta.url).href;
 const main = document.querySelector('#main');
 const page = document.body.dataset.page;
+mountFreshness();
 const link = (route,text,cls='') => `<a class="${cls}" href="${e(path(base,route))}">${e(text)}</a>`;
 const options = rows => rows.map(([value,text])=>`<option value="${e(value)}">${e(text)}</option>`).join('');
 let items,phases;
 
 async function load() {
-  if (page === 'item') return; // Complete item content is pre-rendered from JSON.
+  if (['item','about','embed'].includes(page)) return; // These pages are pre-rendered.
   try {
     const names=['items','phases',...(['plan','fixes'].includes(page)?['fixes']:[]),...(['home','plan'].includes(page)?['journey']:[])];
     const docs = await Promise.all(names.map(async name => {

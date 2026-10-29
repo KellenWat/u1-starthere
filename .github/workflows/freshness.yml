@@ -1,0 +1,35 @@
+name: Weekly source review
+on:
+  schedule:
+    - cron: '17 8 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: source-review-queue
+  cancel-in-progress: false
+jobs:
+  freshness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements-dev.txt
+      - name: Validate every data document
+        run: python scripts/validate.py
+      - name: Check links and maintain one source-review issue
+        run: python scripts/freshness.py --publish
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+      - name: Save complete review report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-review-report
+          path: .reports/
+          if-no-files-found: ignore

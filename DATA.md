@@ -1,5 +1,29 @@
 # U1 StartHere data contract (1.6.0)
 
+## Public URLs and freshness
+
+The published root is `https://KellenWat.github.io/u1-starthere/`. The four
+documents below `data/` retain stable paths and their explicit contract version.
+`embed.js` renders an item by stable ID; `/embed/` has a live example and reuse
+instructions. Script-stripping forums should link to an item page instead.
+
+`scripts/freshness.py` validates the full dataset and checks every nested source,
+software-doc, code-evidence, community-evidence and track-guidance URL. It flags
+reviews older than 45 whole UTC days and unresolved primary creator credits.
+HTTP 404/410 means a broken link; bot challenges, rate limits, network failures
+and temporary server errors need manual review. HEAD falls back to a ranged GET
+only for 405/501. No model or document payload is saved or rehosted.
+
+The Monday/on-demand Actions workflow saves complete JSON/Markdown reports and
+maintains one bot-owned review issue. It never edits user-created issues or
+automatically changes data dates. A human must check the primary source, edit
+the affected record and regenerate HTML. A successful link check cannot upgrade
+an imported record to source-reviewed or claim a firmware test.
+
+Item and fix badges derive their dates/status from JSON. Generated HTML remains
+time-independent; JavaScript adds Review due at runtime so time passing does not
+make committed pages fail regeneration checks. Firmware testing stays separate.
+
 The canonical authored content is `data/items.json`, `data/fixes.json` and
 `data/phases.json`, plus the routing-only `data/journey.json`. Consumers must render records from these files; catalog
 titles, prices, compatibility claims and verification dates must not become

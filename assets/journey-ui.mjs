@@ -16,6 +16,9 @@ export function mountJourney(main,items,phases,base,itemData,fixes,data){
   function startPlanner(extra={}){
     const shared=location.hash.startsWith('#plan=');
     planner=true;scenes.hidden=true;plannerMount.hidden=false;
+    main.querySelector('.journey-toolbar h1').hidden=true;
+    main.querySelector('.journey-toolbar [data-home]').hidden=true;
+    main.querySelector('#journey-status').textContent='';
     for(const card of main.querySelectorAll('.map-node')){card.classList.toggle('is-current',card.id==='map-plan');card.setAttribute('aria-current',card.id==='map-plan'?'step':'false');}
     mountPlanner(plannerMount,items,phases,base,itemData,{initialState:location.hash.startsWith('#plan=')?undefined:current?.state,answered:current?.answered,onRestart:()=>{choices=[];save();draw(true);},...extra});
     window.onhashchange=restore;
@@ -25,6 +28,8 @@ export function mountJourney(main,items,phases,base,itemData,fixes,data){
     unmountPlanner(plannerMount);
     document.body.classList.remove('print-preview');window.onbeforeprint=null;window.onafterprint=null;
     current=walkJourney(data,choices,items);planner=false;scenes.hidden=false;plannerMount.hidden=true;
+    main.querySelector('.journey-toolbar h1').hidden=false;
+    main.querySelector('.journey-toolbar [data-home]').hidden=false;
     const {node,trail}=current;
     for(const card of main.querySelectorAll('.map-node')){card.classList.toggle('is-on-route',trail.some(entry=>`map-${entry.node.id}`===card.id));card.classList.toggle('is-current',card.id===`map-${node.id}`);card.setAttribute('aria-current',card.id===`map-${node.id}`?'step':'false');}
     const past=trail.map(({node,edge},index)=>`<section class="journey-visited"><button type="button" data-trail="${index}"><span>${e(title(node))}</span><strong>${e(edge.label)}</strong></button></section>`).join('');

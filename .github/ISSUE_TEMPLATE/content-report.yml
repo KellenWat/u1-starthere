@@ -1,0 +1,17 @@
+name: Source or content correction
+description: Report an outdated link, missing credit, incorrect step or compatibility concern.
+title: "Content correction: "
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page, item ID or fix title
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: What needs changing?
+      description: Include the original creator or official documentation link if available. Keep serial numbers and private details out of this public report.
+    validations:
+      required: true

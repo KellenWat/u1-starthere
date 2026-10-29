@@ -7,6 +7,20 @@ Code and schemas: [MIT](LICENSE). Curated data: [CC BY 4.0](data/LICENSE.md),
 with creator attribution embedded in every data document and record. Linked
 projects keep their own licenses. This is an unofficial community project.
 
+**[Open the public beta](https://KellenWat.github.io/u1-starthere/)** ·
+[About and owner feedback](https://KellenWat.github.io/u1-starthere/about/#feedback) ·
+[Embed and open data](https://KellenWat.github.io/u1-starthere/embed/)
+
+The beta focuses on a successful first print, finding an appropriate fix and
+choosing a useful next project. Source review is not physical-printer validation.
+[Owner walkthrough protocol](BETA_TESTING.md) records the next validation work.
+
+Publishing uses GitHub Pages at no domain cost. Main-branch deployment runs only
+after schemas, tests and generated-page checks pass. The server publishes the
+committed files without a site build. Weekly/on-demand source checks maintain
+one public review issue; inaccessible pages need manual review, not invented
+replacement links or automatically advanced dates.
+
 ## Milestone status
 
 **M1 complete: local validation and GitHub Actions pass.**
@@ -41,7 +55,10 @@ limitations, stop conditions and related-item links stay visible. See
 [Actions run #10 passed](https://github.com/KellenWat/u1-starthere/actions/runs/40817767600)
 for `d4e0b03`: 63 JavaScript tests, 31 Python tests, four data documents and
 all 43 generated pages.
-M5 and M6 have not started.
+M5 implementation is included in this beta: embed/data docs, About/feedback,
+review badges, weekly source monitoring and mobile/keyboard polish. See
+[M5 validation evidence](M5_VALIDATION.md) for acceptance results. Formal M6
+competition submission assets remain separate.
 
 **Post-M4 software coverage pass:** added 25 source-reviewed guides and
 classified six existing integrations, for 31 software entries in the 63-item
@@ -84,7 +101,7 @@ is unavailable, rather than silently skipping source URL format validation.
 
 Node 22+ is needed for authoring and JavaScript tests, with no npm install.
 The JSON Schema validator resolves only local schemas and does not fetch
-third-party links. Scheduled external link/staleness checks belong to M5.
+third-party links. External checks run separately in Weekly source review.
 The suites cover seed integrity, page links, catalog filters, saved progress,
 project-prefix routing and escaped content. Planner persona/invariant and
 export tests also run in that Node command. M4 adds symptom rankings,
@@ -397,6 +414,21 @@ match the JSON. The optional authoring script is not a deployment build step.
     claims to provide a thermal-safety capability. See
     [forum print review](FORUM_PRINT_REVIEW.md) for sources and deferred leads.
 
+51. **Public beta and M5:** freeze feature categories and gather real owner
+    walkthroughs. Add About/privacy/credit policy, GitHub feedback templates,
+    reusable embed cards and honest source/firmware badges. No real-owner or
+    physical-print validation is claimed before those observations exist.
+52. **Freshness policy:** weekly plus manual Actions runs use 45 whole UTC days,
+    one bot-owned review issue and report artifacts. Treat 403/429/network errors
+    as manual review; only 404/410 means a confirmed failed link. Never update
+    source dates or firmware claims automatically. A local live run found 83
+    unique links: 51 responded, 32 needed manual review, none returned 404/410;
+    eight primary creator credits remain unresolved.
+53. **Publishing:** the owner explicitly authorized making the website public.
+    The repository was already public. GitHub Pages uses the existing main
+    branch through a test-gated Actions deployment, serving committed files
+    without a site build. No custom domain or paid hosting is required.
+
 ## Source review and remaining content work
 
 Source pages were reviewed on 2026-10-28 for Paxx12, its RFID/Spoolman/heater
@@ -424,5 +456,6 @@ Deferred source gaps are explicit in the data:
 
 ## Next milestones
 
-Stop after the M4 handoff. Next is M5 embed, freshness and the full accessibility
-polish pass; M6 submission assets only after all earlier acceptance checks.
+The public beta includes M5. Gather real owner observations using BETA_TESTING.md
+and fix demonstrated blockers. M6 submission assets follow the M5 acceptance
+handoff; formal community posting needs the owner's instruction.

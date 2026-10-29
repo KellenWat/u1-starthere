@@ -37,7 +37,7 @@ export function mountPlanner(main,items,phases,base,data,config={}){
     try{
       plan=buildPlan(items,state);state=plan.state;summaries();
       if(showing){results.hidden=false;results.innerHTML=`<details class="plan-answer-review"><summary>Review answers and defaults</summary><p class="small">Questions that do not affect this route use the defaults shown below. You can change any answer.</p><dl>${questions.map((question,index)=>`<div><dt>${e(question.title)}</dt><dd>${e(main.querySelector(`[data-answer="${question.name}"]`).textContent)} <small>${known.has(question.name)||completed.has(question.name)?'Your answer':decoded.shared&&!config.initialState?'From shared plan':'Default — not asked'}</small><button type="button" class="text-button" data-edit-question="${index}">Change<span class="visually-hidden"> ${e(question.title)}</span></button></dd></div>`).join('')}</dl></details>`+renderPlan(plan,base,data);main.querySelector('#share-link').value=new URL(`${path(base,'plan/')}${encodeState(state,items)}`).href;}
-      main.querySelector('#plan-announcement').textContent=`Plan updated: ${plan.steps.length} steps, ${money(plan.total_cost)} planned, ${plan.deferred.length} deferred by budget.`;
+      main.querySelector('#plan-announcement').textContent=showing?`Plan updated: ${plan.steps.length} steps, ${money(plan.total_cost)} planned, ${plan.deferred.length} deferred by budget.`:'';
     }catch(error){
       results.hidden=false;results.innerHTML='<div class="callout caution" role="alert"><h2 id="result-heading" tabindex="-1">The plan cannot be built safely</h2><p>The catalog has an unresolved dependency or capability problem. Please report it through the project’s GitHub page.</p></div>';plan=null;
     }

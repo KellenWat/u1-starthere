@@ -9,6 +9,7 @@ export function renderHome(items,phases,journey,base){
     <p class="lead">From your first print to your next improvement.<br>Start with what you need.</p>
     <nav class="home-paths" aria-label="Choose your starting point">${start.choices.map(edge=>`<a class="home-path" href="${e(path(base,'plan/')+encodeJourney([edge.id]))}"><span>${e(edge.label)}</span>${edge.description?`<small>${e(edge.description)}</small>`:''}</a>`).join('')}</nav>
     <p class="quiet-note">A community guide. Free to use, with every source attached.</p>
+    <p class="beta-note">Public beta. <a href="${e(path(base,'about/#feedback'))}">Help us spot a missing step.</a></p>
   </section>
   <section class="home-tools" aria-label="Quick ways to get help">
     <div class="home-start"><h2>Stock first. Mods second.</h2><p>Build a baseline before making changes.</p>

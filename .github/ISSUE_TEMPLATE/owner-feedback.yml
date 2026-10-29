@@ -1,0 +1,38 @@
+name: Owner walkthrough feedback
+description: Tell us where the guide helped or left you unsure.
+title: "Owner feedback: "
+body:
+  - type: markdown
+    attributes:
+      value: "Thank you for trying the beta. This report is public. Leave out serial numbers, passwords, network details and other personal information."
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Where are you with your U1?
+      options: [Just unboxed, Printing on stock setup, Using modifications, Planning an advanced project]
+    validations:
+      required: true
+  - type: input
+    id: goal
+    attributes:
+      label: What were you trying to do?
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Where did the guide help or leave you unsure?
+      description: Include the page or step, what you expected, and what happened.
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence
+    attributes:
+      label: How did you try it?
+      options: [Browsed the website only, Followed along with a physical U1, Completed a physical print]
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Phone or computer and browser (optional)

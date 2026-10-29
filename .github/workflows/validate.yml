@@ -1,4 +1,4 @@
-name: Validate curated data
+name: Validate and publish
 
 on:
   push:
@@ -32,3 +32,27 @@ jobs:
         run: node --test tests/*.test.mjs
       - name: Ensure committed pages match their JSON source
         run: node scripts/render.mjs --check
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: data
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    concurrency:
+      group: github-pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Upload the committed static site (no build)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - name: Publish to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

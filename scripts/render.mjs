@@ -10,6 +10,8 @@ const pages = [
   {file:'start/index.html',page:'start',base:'../',title:'Startup track — U1 StartHere',description:'Work through your U1 setup, stock tests, first mods and tuning at your own pace.'},
   {file:'plan/index.html',page:'plan',base:'../',title:'What’s next? — U1 StartHere',description:'Follow a scrolling decision path to a deterministic, priced U1 plan with prerequisites and credited community sources.'},
   {file:'fixes/index.html',page:'fixes',base:'../',title:'Fixes — U1 StartHere',description:'Search U1 symptoms or documented error codes for sourced checks and explicit stop conditions.'},
+  {file:'about/index.html',page:'about',base:'../',title:'About and feedback — U1 StartHere',description:'How StartHere credits sources, handles review dates, protects privacy and gathers owner feedback.',content:await read('content/about.html')},
+  {file:'embed/index.html',page:'embed',base:'../',title:'Embed and open data — U1 StartHere',description:'Embed a credited U1 item card or reuse the public CC BY 4.0 JSON data.',content:await read('content/embed.html')},
   ...items.map(item=>({file:`item/${item.id}/index.html`,page:'item',base:'../../',title:`${item.title} — U1 StartHere`,description:item.summary,content:renderItem(item,items,phases,'../..')}))
 ];
 let stale = 0;

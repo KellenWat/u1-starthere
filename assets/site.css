@@ -535,4 +535,13 @@ body[data-page="plan"]{background:#fbfbfd}
 .step-next{font-size:.86rem;line-height:1.65;max-width:60ch;margin-top:12px}
 .phase-readiness{font-size:.8rem;margin-top:20px;line-height:1.65}
 .track-step{scroll-margin-top:84px}
+.review-badge{font-size:.78rem;line-height:1.65;color:var(--muted);margin:12px 0 0;max-width:65ch}
+.review-due{color:#704b00;background:#fff6e6;border-left:3px solid #8b6500;padding:8px 12px}
+.beta-note{font-size:.86rem;color:var(--muted);margin-top:12px}.beta-note a{display:inline-flex;align-items:center;min-height:44px}
+.about-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(260px,1fr);gap:64px}.about-layout section,.about-section{margin-bottom:42px}
+.about-layout h2,.about-section h2{font-size:1.5rem}.about-layout p,.about-section p{line-height:1.75}
+.feedback-panel{background:var(--surface);padding:26px;border-radius:12px;align-self:start;scroll-margin-top:24px}.feedback-panel .button{margin-bottom:12px}.feedback-panel ol{padding-left:22px}.feedback-panel li{margin-bottom:14px}
+.code-example{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--surface);padding:20px;border-radius:8px;font-size:.86rem;line-height:1.7}.api-links{padding-left:22px}.api-links a{display:inline-flex;align-items:center;min-height:44px}
+textarea:focus-visible{outline:3px solid #1742a4;outline-offset:4px}
+@media(max-width:760px){.about-layout{grid-template-columns:1fr;gap:16px}.about-layout section{margin-bottom:32px}.feedback-panel{padding:22px}}
 @media(max-width:760px){.step-guide{padding-left:12px}.step-guide-body{font-size:.92rem;line-height:1.75}.step-guide-body ol{padding-left:19px}.step-guide-body ol li{padding-left:3px}.step-success{padding:13px}.track-step{scroll-margin-top:20px}.track-milestone h3{font-size:.98rem}}

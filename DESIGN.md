@@ -2,6 +2,14 @@
 
 ## Current refinement: a clear next step
 
+Public-beta additions keep the existing tokens and layout: source-review text
+is subordinate to an item's purpose, with a plain Review due label when needed.
+About uses left-aligned readable sections and a quiet feedback panel that stacks
+on phones. The embed isolates its small white card from a host site's CSS.
+Avoid another visual redesign during owner validation. Browser review caught
+duplicate planner headings/restart buttons and premature default-plan speech;
+the handoff now exposes one page title and announces a plan only when shown.
+
 Preserve the owner's minimal Apple/macOS direction and connected, full-screen
 decision diagram. Make the next useful action the strongest element on every
 page. The U1's four toolheads inform the four connected starting choices;
