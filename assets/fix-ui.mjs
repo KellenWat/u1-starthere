@@ -1,0 +1,21 @@
+import {escape as e,path} from './view.mjs';
+import {searchFixes} from './fix-search.mjs';
+import {renderFix} from './fix-view.mjs';
+
+export function mountFixes(main,fixes,items,base){
+  const params=new URL(location.href).searchParams,initial=params.get('q')||'',selected=fixes.find(card=>card.id===params.get('card'));
+  main.innerHTML=`<header class="page-heading fix-heading"><p class="intro-label">Find a useful next check</p><h1>What’s happening?</h1><p class="lead">Describe what your U1 is doing. These community guides offer possible explanations, ordered checks and clear stop conditions.</p></header>
+    <form class="fix-search" role="search" aria-label="Search U1 symptoms"><label for="fix-query">Search by symptom</label><div><input id="fix-query" name="q" type="search" autocomplete="off" placeholder="For example: prime tower keeps falling over" value="${e(initial)}"><button type="submit" class="button primary">Search</button></div></form>
+    <p id="fix-count" class="small" role="status" aria-live="polite"></p><div id="fix-results"></div>
+    <section class="fix-footer"><h2>Not sure where to start?</h2><a class="text-link" href="${e(path(base,'plan/'))}">Follow the connected guide</a><p class="small">A search match is not a confirmed diagnosis. New-machine faults belong with official support while the printer is stock.</p><a class="text-link" href="https://wiki.snapmaker.com/en/snapmaker_u1">Open official U1 guides</a></section>`;
+  const input=main.querySelector('#fix-query');
+  function update(first=false){
+    let results=searchFixes(fixes,input.value);
+    if(first&&selected)results=[{card:selected},...results.filter(result=>result.card.id!==selected.id)];
+    main.querySelector('#fix-count').textContent=input.value.trim()?`${results.length} matching guide${results.length===1?'':'s'}. Best keyword match first.`:`${fixes.length} community guides. Source limitations are shown in each card.`;
+    main.querySelector('#fix-results').innerHTML=results.length?results.map(({card},index)=>`<details class="fix-result" ${index===0&&(input.value.trim()||selected&&first)?'open':''}><summary><span>${e(card.title)}</span><span aria-hidden="true">+</span></summary>${renderFix(card,items,base)}</details>`).join(''):`<section class="empty-state"><h2>No matching guide yet</h2><p>Try a shorter description, follow the connected guide, or contact official support. No match does not mean the printer has no solution.</p><a class="text-link" href="${e(path(base,'plan/'))}">Help me narrow it down</a></section>`;
+    const url=new URL(location.href);url.search='';if(input.value.trim())url.searchParams.set('q',input.value.trim());if(first&&selected)url.searchParams.set('card',selected.id);history.replaceState(null,'',url);
+  }
+  main.querySelector('form').addEventListener('submit',event=>{event.preventDefault();update();main.querySelector('#fix-results').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});
+  input.addEventListener('input',()=>update());update(true);
+}

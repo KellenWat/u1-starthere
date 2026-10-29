@@ -12,7 +12,7 @@ from jsonschema import Draft202012Validator, FormatChecker
 from referencing import Registry, Resource
 
 ROOT = Path(__file__).resolve().parents[1]
-KINDS = ("items", "fixes", "phases")
+KINDS = ("items", "fixes", "phases", "journey")
 
 
 def load_documents(root: Path = ROOT) -> dict:
@@ -42,7 +42,7 @@ def validate_documents(documents: dict, root: Path = ROOT) -> list[str]:
     if errors:
         return errors  # Shape must be valid before relationships can be inspected.
 
-    items, fixes, phases = (documents[kind][kind] for kind in KINDS)
+    items, fixes, phases = (documents[kind][kind] for kind in ("items", "fixes", "phases"))
     item_map = {item["id"]: item for item in items}
     phase_ids = [phase["phase"] for phase in phases]
     if phase_ids != list(range(7)):
@@ -146,6 +146,36 @@ def validate_documents(documents: dict, root: Path = ROOT) -> list[str]:
                 errors.append(f"{step['id']}: track introduces item before its earliest phase")
     if len(step_ids) != len(set(step_ids)):
         errors.append("phases.json: duplicate track step IDs")
+
+    journey = documents["journey"]
+    node_map = {node["id"]: node for node in journey["nodes"]}
+    if len(node_map) != len(journey["nodes"]):
+        errors.append("journey.json: duplicate node IDs")
+    if journey["start"] not in node_map:
+        errors.append("journey.json: missing start node")
+    fix_ids = {card["id"] for card in fixes}
+    for node in journey["nodes"]:
+        if node["kind"] == "fix" and node["fix_id"] not in fix_ids:
+            errors.append(f"{node['id']}: missing fix {node['fix_id']}")
+        choices = node.get("choices", [])
+        if len({edge["id"] for edge in choices}) != len(choices):
+            errors.append(f"{node['id']}: duplicate choice IDs")
+        targets = [edge["next"] for edge in choices] + ([node["next"]] if "next" in node else [])
+        for target in targets:
+            if target not in node_map:
+                errors.append(f"{node['id']}: missing journey node {target}")
+    reachable, pending = set(), [journey["start"]]
+    while pending:
+        key = pending.pop()
+        if key in reachable or key not in node_map:
+            continue
+        reachable.add(key)
+        node = node_map[key]
+        pending.extend(edge["next"] for edge in node.get("choices", []))
+        if "next" in node:
+            pending.append(node["next"])
+    for key in node_map.keys() - reachable:
+        errors.append(f"journey.json: unreachable node {key}")
     return errors
 
 
@@ -160,7 +190,7 @@ def main() -> int:
         print("\n".join(f"FAIL: {error}" for error in errors), file=sys.stderr)
         return 1
     for kind in KINDS:
-        print(f"PASS data/{kind}.json: {len(documents[kind][kind])} records (JSON Schema 2020-12)")
+        print(f"PASS data/{kind}.json: {len(documents[kind]['nodes' if kind == 'journey' else kind])} records (JSON Schema 2020-12)")
     print("PASS cross-document references, prerequisite DAG, gate providers, conflicts, track order, attribution and URLs")
     js_bytes = sum(path.stat().st_size for path in ROOT.rglob("*")
                    if path.suffix in {".js", ".mjs"}
@@ -169,7 +199,7 @@ def main() -> int:
         print(f"FAIL total JavaScript {js_bytes} bytes; must be below 200000", file=sys.stderr)
         return 1
     print(f"PASS total JavaScript: {js_bytes} / 200000 bytes")
-    print("Validation passed: 3 data files; 0 errors.")
+    print(f"Validation passed: {len(KINDS)} data files; 0 errors.")
     return 0
 
 

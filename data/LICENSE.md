@@ -3,7 +3,7 @@
 Copyright (c) 2026 U1 StartHere contributors.
 
 The original curated text and structured data in `items.json`, `fixes.json`,
-and `phases.json` are licensed under Creative Commons Attribution 4.0
+`phases.json` and the routing metadata in `journey.json` are licensed under Creative Commons Attribution 4.0
 International (CC BY 4.0): https://creativecommons.org/licenses/by/4.0/
 
 Legal terms: https://creativecommons.org/licenses/by/4.0/legalcode.en

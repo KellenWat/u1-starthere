@@ -1,14 +1,15 @@
 # U1 StartHere data contract (1.2.0)
 
 The canonical authored content is `data/items.json`, `data/fixes.json` and
-`data/phases.json`. Consumers must render records from these files; catalog
+`data/phases.json`, plus the routing-only `data/journey.json`. Consumers must render records from these files; catalog
 titles, prices, compatibility claims and verification dates must not become
 hand-maintained copies in application code. Paths are relative to the GitHub
 Pages project root, so a deployment under `/u1-starthere/` remains supported.
 
 M1 defined and validated the contract. M2 adds the catalog, pre-rendered detail
 pages and startup track. M3 adds the scrolling decision path and deterministic
-planner. Search, embed and freshness follow in order.
+planner. M4 adds symptom search and the owner's interconnected route map;
+embed and freshness follow in M5.
 
 ## Envelope and reuse
 
@@ -20,7 +21,7 @@ Every file is an object with these required properties:
 | `license` | `CC-BY-4.0` for original curated content |
 | `imported_at` | ISO date of the seed import |
 | `attribution` | Curator, license URL, supplied-source titles/authorship and reuse notice |
-| `items`, `fixes` or `phases` | The corresponding array of records |
+| `items`, `fixes`, `phases` or `nodes` | The corresponding array of records; journey also declares its `start` node |
 
 Preserve `attribution` and individual source credits when reusing or adapting
 the dataset. Attribute U1 StartHere contributors, link to CC BY 4.0, and state
@@ -112,9 +113,31 @@ Additional fields are `severity` (`info`, `caution`, `stop`),
 `provenance`. Preserve stop conditions, severity and evidence limitations in
 the later fix UI. A suspected cause is not a diagnosis.
 
-At M4 the first phrase in each card's `symptoms` will be one of the 12 seed
-ranking checks; additional phrases can be included as regression cases. No
-search-ranking acceptance claim is made at M1.
+M4's 12 fixtures in `tests/fixtures/fix-search.json` check the first seed
+phrase on every card. All additional authored symptom phrases are also tested.
+Search normalizes Unicode/case/punctuation and removes common stopwords.
+Exact phrases outrank partial matches; otherwise score by coverage, title
+matches and inverse term frequency. Less than 30% query-token coverage is not
+a match. Stable ID breaks ties. Codes are keywords, not an error decoder.
+
+## Connected journey records
+
+`journey.json` uses the same version/license/attribution envelope, with `start`
+and a `nodes` array. Node IDs are unique. Question nodes have `title`, `help`
+and `choices`; each choice has a unique local `id`, `label`, target `next`,
+optional `description`, and optional `set` effects for stage/materials/concerns.
+Fix nodes reference `fix_id` and a follow-up `next`; their content is rendered
+from fixes.json. Terminal kinds are `plan`, `track`, `search` and `support`.
+No fix instructions or item facts are copied into routing metadata.
+
+The validator checks all four schemas, targets, unique choices, fix references
+and reachability. Shared nodes and return edges are intentional. Navigation
+truncates to an earlier node instead of looping, replaying only retained
+choices so abandoned assumptions disappear. `#journey=` encodes a version-1
+choice-ID array, capped at 40 choices and 6,000 import characters. Unknown
+choices, repetitions and unsupported versions fall back with a notice.
+Planner output continues to use the original `#plan=` state format.
+`/fixes/?q=...` shares a search; `?card=stable-fix-id` opens a particular guide.
 
 ## Track records
 

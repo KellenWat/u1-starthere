@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://u1-starthere.example/schemas/journey.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "license",
+    "imported_at",
+    "attribution",
+    "start",
+    "nodes"
+  ],
+  "properties": {
+    "version": {
+      "const": "1.2.0"
+    },
+    "license": {
+      "const": "CC-BY-4.0"
+    },
+    "imported_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "attribution": {
+      "$ref": "common.schema.json#/$defs/attribution"
+    },
+    "start": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "kind"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "kind": {
+            "enum": [
+              "question",
+              "fix",
+              "plan",
+              "track",
+              "search",
+              "support"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "help": {
+            "type": "string",
+            "minLength": 1
+          },
+          "choices": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "label",
+                "next"
+              ],
+              "properties": {
+                "id": {
+                  "$ref": "common.schema.json#/$defs/id"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "next": {
+                  "$ref": "common.schema.json#/$defs/id"
+                },
+                "set": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "minProperties": 1,
+                  "properties": {
+                    "stage": {
+                      "enum": [
+                        "not-arrived",
+                        "stock",
+                        "mods",
+                        "paxx12"
+                      ]
+                    },
+                    "materials": {
+                      "enum": [
+                        "basic",
+                        "abs",
+                        "abrasive",
+                        "colors"
+                      ]
+                    },
+                    "bothers": {
+                      "type": "array",
+                      "minItems": 1,
+                      "maxItems": 2,
+                      "uniqueItems": true,
+                      "items": {
+                        "enum": [
+                          "noise",
+                          "fumes",
+                          "reliability",
+                          "speed-flow",
+                          "color-count",
+                          "dry-filament"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "fix_id": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "next": {
+            "$ref": "common.schema.json#/$defs/id"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "question"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "title",
+                "help",
+                "choices"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "fix"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "fix_id",
+                "next"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "plan",
+                    "track",
+                    "search",
+                    "support"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "title"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

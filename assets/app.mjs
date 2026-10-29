@@ -1,6 +1,7 @@
 import {escape as e,label,money,path,itemPath,itemCard,catalogItems} from './view.mjs';
 import {STORAGE_KEY,readProgress,progressCounts} from './progress.mjs';
-import {mountPlanner} from './plan-ui.mjs';
+import {mountJourney} from './journey-ui.mjs';
+import {mountFixes} from './fix-ui.mjs';
 
 const base = new URL('../',import.meta.url).href;
 const main = document.querySelector('#main');
@@ -12,7 +13,8 @@ let items,phases;
 async function load() {
   if (page === 'item') return; // Complete item content is pre-rendered from JSON.
   try {
-    const docs = await Promise.all(['items','phases'].map(async name => {
+    const names=['items','phases',...(['plan','fixes'].includes(page)?['fixes']:[]),...(page==='plan'?['journey']:[])];
+    const docs = await Promise.all(names.map(async name => {
       const response = await fetch(path(base,`data/${name}.json`));
       if (!response.ok) throw new Error('Data unavailable');
       return response.json();
@@ -22,7 +24,8 @@ async function load() {
     if (page === 'home') home();
     if (page === 'catalog') catalog();
     if (page === 'start') track();
-    if (page === 'plan') mountPlanner(main,items,phases,base,docs[0]);
+    if (page === 'plan') mountJourney(main,items,phases,base,docs[0],docs[2].fixes,docs[3]);
+    if (page === 'fixes') mountFixes(main,docs[2].fixes,items,base);
   } catch {
     main.innerHTML = `<section class="empty-state"><h1>Your field guide couldn’t load</h1><p>Check your connection and try again. For a local preview, open the site through its HTTP address.</p><button type="button" class="button primary" id="retry">Try again</button></section>`;
     document.querySelector('#retry').addEventListener('click',()=>load());
@@ -41,8 +44,8 @@ function home() {
     ${link('start/','See the full startup track','text-link')}</aside></section>
     <section class="home-section"><div class="section-heading"><div><h2>Good places to begin</h2><p>Useful community options, with the source always attached.</p></div>${link('catalog/','Browse the catalog','text-link')}</div>
     <div class="catalog-grid">${highlights.map(item=>itemCard(item,phases,base)).join('')}</div></section>
-    <section class="next-section"><div><h2>“What should I do next?”</h2><p>Follow a guided decision path from where you are to community projects that fit. See the order, costs and reasons, including anything your budget defers.</p><p class="small">Seven skippable questions. No account or printer connection.</p></div>${link('plan/','Find my next steps','button secondary')}</section>
-    <section class="support-section"><h2>Something isn’t working?</h2><p>While symptom search is being built, start with the official U1 support guides. Keep your printer stock while investigating a new-machine fault.</p><a class="text-link" href="https://wiki.snapmaker.com/en/snapmaker_u1">Open official U1 support guides</a></section>`;
+    <section class="next-section"><div><h2>“What should I do next?”</h2><p>Follow connected choices to a matching guide, the next useful question, or community projects that fit. See the order, costs and reasons, including anything your budget defers.</p><p class="small">Ask what matters. Keep every source attached.</p></div>${link('plan/','Find my next steps','button secondary')}</section>
+    <section class="support-section"><h2>Something isn’t working?</h2><form class="home-fix-search" action="${e(path(base,'fixes/'))}" role="search"><label for="home-symptom">Describe the symptom</label><div><input id="home-symptom" type="search" name="q" placeholder="For example: prime tower keeps falling over"><button class="button primary" type="submit">Find a guide</button></div></form><p class="small">Keep your printer stock while investigating a new-machine fault.</p>${link('fixes/','Browse all fix cards','text-link')}</section>`;
 }
 
 function catalog() {

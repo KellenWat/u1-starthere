@@ -164,6 +164,26 @@ class DataTests(unittest.TestCase):
         self.item("cryogrip-pro")["source"]["url"] = "https://example.com/model.stl"
         self.rejects("not a direct third-party file")
 
+    def test_rejects_missing_journey_destination(self):
+        self.docs["journey"]["nodes"][0]["choices"][0]["next"] = "missing-node"
+        self.rejects("missing journey node")
+
+    def test_rejects_missing_journey_fix(self):
+        node = next(node for node in self.docs["journey"]["nodes"] if node["kind"] == "fix")
+        node["fix_id"] = "not-a-fix"
+        self.rejects("missing fix")
+
+    def test_rejects_duplicate_journey_choices(self):
+        node = self.docs["journey"]["nodes"][0]
+        node["choices"].append(copy.deepcopy(node["choices"][0]))
+        self.rejects("duplicate choice IDs")
+
+    def test_rejects_unreachable_journey_nodes(self):
+        node = copy.deepcopy(self.docs["journey"]["nodes"][-1])
+        node["id"] = "unreachable-support"
+        self.docs["journey"]["nodes"].append(node)
+        self.rejects("unreachable node")
+
 
 if __name__ == "__main__":
     unittest.main()

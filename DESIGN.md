@@ -1,5 +1,38 @@
 # M2 design direction
 
+## Current iteration: interconnected community map
+
+Use the four-toolhead printer's connected workflow as the visual structure:
+one centered question, a thin branching rail, and floating choice nodes.
+Canvas `#fbfbfd`, ink `#1d1d1f`, secondary `#626268`, rail `#d6d9e0`,
+active blue `#0071e3`, pale selection `#edf5ff`. Keep system typography;
+questions use a large unboxed headline, choices use quiet borders and only
+the active choice receives depth. No decorative gradients or stock imagery.
+
+```text
+        Start → Improve → Filament
+             What is happening?
+                    |
+           +--------+---------+
+       [Recognizing]      [Drying]
+             |               |
+       shared question   relevant plan
+             |
+         existing fix → helped / next question / related options
+```
+
+Each decision fills the screen. A compact editable trail preserves context;
+clicks reveal and scroll to the next node. Clear matches open fix guidance
+without a planner questionnaire. Multiple entrances reuse shared nodes.
+An overview exposes all connections, and URL state restores the chosen route.
+The planner asks only relevant remaining intake questions and exposes defaults
+for review. No match is not a diagnosis; offer search and official support.
+
+Review: remove the boxed question, duplicate answer text and rigid seven-step
+counter. The diagram expresses actual navigation rather than decorating a
+fixed form. Keep full fix stop conditions, attribution and honest source status.
+The dedicated /fixes surface uses the same cards and deterministic search.
+
 The owner updated the visual direction during M3 to Apple/macOS-inspired.
 The current theme below supersedes the original M2 typography and surface
 treatment; the original rationale is retained as project history.

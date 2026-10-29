@@ -18,7 +18,7 @@ class PageLinks(HTMLParser):
 
 class SiteLinksTest(unittest.TestCase):
     def test_generated_page_links_and_assets_resolve_inside_project(self):
-        pages = [ROOT / "index.html", ROOT / "catalog/index.html", ROOT / "start/index.html", ROOT / "plan/index.html",
+        pages = [ROOT / "index.html", ROOT / "catalog/index.html", ROOT / "start/index.html", ROOT / "plan/index.html", ROOT / "fixes/index.html",
                  *sorted((ROOT / "item").glob("*/index.html"))]
         self.assertGreater(len(pages), 3)
         for page in pages:

@@ -29,7 +29,16 @@ totals, URL sharing, ownership refinements, optional remedies and print/Markdown
 exports. [Actions run #6 passed](https://github.com/KellenWat/u1-starthere/actions/runs/40791919046)
 for `ba097fa`: all five golden personas, 34 JavaScript tests, 27 Python tests,
 three data files and all 42 generated pages. See [M3 validation evidence](M3_VALIDATION.md).
-The owner's macOS-inspired theme is applied across the site. M4–M6 have not started.
+The owner's macOS-inspired theme is applied across the site.
+
+**M4 implemented: connected guide, symptom search and all seed rankings pass locally.**
+The owner's latest direction adds a shared decision map: clear observations
+open matching fix cards, uncertain answers lead to another question, and goals
+lead to a conditional planner. `/fixes/` searches all 12 cards. Every seed
+symptom and additional authored phrase ranks its own card first. Source
+limitations, stop conditions and related-item links stay visible. See
+[M4 validation evidence](M4_VALIDATION.md) for final local and CI evidence.
+M5 and M6 have not started.
 
 M1 acceptance evidence:
 
@@ -65,8 +74,8 @@ The JSON Schema validator resolves only local schemas and does not fetch
 third-party links. Scheduled external link/staleness checks belong to M5.
 The suites cover seed integrity, page links, catalog filters, saved progress,
 project-prefix routing and escaped content. Planner persona/invariant and
-export tests also run in that Node command. Symptom search-ranking tests
-arrive with M4.
+export tests also run in that Node command. M4 adds symptom rankings,
+connected-route checks, follow-ups and conditional intake coverage.
 
 ## Local preview
 
@@ -246,6 +255,32 @@ match the JSON. The optional authoring script is not a deployment build step.
     Edit answers. Native buttons work with Tab, Enter and Space; focus follows
     the next question, and reduced motion uses immediate scrolling. This is
     an M3 presentation refinement; planner rules and M4 scope stay unchanged.
+28. **Interconnected map (owner direction):** M4 connects setup, improvement,
+    exploration and symptom paths through shared nodes. A specific observation
+    opens an existing fix card; uncertain answers ask a clarifier or offer
+    search/support. This is navigation, not an automated diagnosis. Fixes offer
+    helped/still-happening follow-ups and explicit related-option planning.
+    Editing an earlier route replays only the retained choices; later effects
+    are removed. Revisiting a shared question truncates the loop. The map is
+    available in a keyboard-usable dialog, with links to individual guides.
+29. **Routing data:** `data/journey.json` is a fourth CC BY 4.0 document with
+    embedded source attribution. Its 30 nodes reference fix IDs rather than
+    duplicating repair steps, catalog facts, prices or verification dates.
+    Schema and relationship validation now cover all four documents. Catalog,
+    fix and phase formats remain at 1.2.0; existing consumers remain valid.
+30. **Conditional intake and assumptions:** at most the seven original
+    planner inputs, skipping fields already explicitly selected in the map.
+    Enclosure is asked for ABS/ASA or noise/fume routes; location for noise/fume
+    routes. Stage, materials, concerns, comfort and budget are otherwise
+    available, with the same conservative defaults. Results expose every
+    answer/default and allow individual edits. Reported hardware state is
+    never inferred from a diagnostic symptom. Planner rules are unchanged.
+31. **Search and evidence:** normalized keyword matching over title, symptoms
+    and optional code keywords, with exact-phrase priority, coverage and rare
+    word weighting; stable ID ties, no library or ML. Blank search lists cards;
+    unrelated queries return an honest empty state. A source index is disclosed
+    as such; no imported record gained a verification claim. Search and route
+    state live in URLs only. No additional browser storage or tracking.
 
 ## Source review and remaining content work
 
@@ -273,6 +308,5 @@ Deferred source gaps are explicit in the data:
 
 ## Next milestones
 
-Stop after the M3 handoff. Once its acceptance checks pass, the next stage is
-M4 symptom search plus all 12 ranking fixtures; M5 embed, freshness and
-accessibility; M6 submission assets only after all earlier acceptance checks.
+Stop after the M4 handoff. Next is M5 embed, freshness and the full accessibility
+polish pass; M6 submission assets only after all earlier acceptance checks.

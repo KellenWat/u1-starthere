@@ -1,20 +1,23 @@
-import {money,path} from './view.mjs';
+import {escape as e,money,path} from './view.mjs';
 import {buildPlan,normalizeState,encodeState,decodeState} from './planner.mjs';
 import {renderPlan,planMarkdown,printPlan} from './plan-view.mjs';
 
-import {questions,renderDecisionNodes,toggleConcern} from './decision-flow.mjs';
+import {questions,renderDecisionNodes,toggleConcern,remainingQuestions} from './decision-flow.mjs';
 
 const mounts=new WeakMap();
+export function unmountPlanner(main){mounts.get(main)?.abort();mounts.delete(main);}
 
-export function mountPlanner(main,items,phases,base,data){
-  mounts.get(main)?.abort();const controller=new AbortController();mounts.set(main,controller);
+export function mountPlanner(main,items,phases,base,data,config={}){
+  unmountPlanner(main);const controller=new AbortController();mounts.set(main,controller);
   document.body.classList.remove('print-preview');
   const decoded=decodeState(location.hash,items);
-  let state=decoded.state,plan,showing=decoded.shared,hashWritten=location.hash;
+  let state=config.initialState?normalizeState(config.initialState,items):decoded.state,plan,showing=!config.initialState&&decoded.shared,hashWritten=location.hash;
+  const known=new Set(config.answered||[]),completed=new Set(known),visited=[];
+  const first=remainingQuestions(state,completed)[0]??0;
   main.innerHTML=`<div class="planner-screen node-flow">
     <div class="flow-toolbar"><h1>What’s next for your U1?</h1><div><button type="button" class="text-button" id="edit-answers" ${showing?'':'hidden'}>Edit answers</button><button type="button" class="text-button" id="use-defaults" ${showing?'hidden':''}>See my plan</button><button type="button" class="text-button" data-action="restart">Start over</button></div></div>
-    <div id="hash-notice" class="callout caution" ${decoded.valid?'hidden':''}>This plan link is invalid or uses an unsupported version. We’ve loaded the default answers.</div>
-    <div id="decision-intake" ${showing?'hidden':''}>${renderDecisionNodes(state)}</div>
+    <div id="hash-notice" class="callout caution" ${decoded.valid||config.initialState?'hidden':''}>This plan link is invalid or uses an unsupported version. We’ve loaded the default answers.</div>
+    <div id="decision-intake" ${showing?'hidden':''}>${renderDecisionNodes(state,first)}</div>
     <p id="question-status" class="visually-hidden" role="status" aria-live="polite"></p>
     <section id="plan-results" ${showing?'':'hidden'} aria-labelledby="result-heading"></section><p id="plan-announcement" role="status" aria-live="polite" class="visually-hidden"></p></div>
     <section id="plan-print" class="plan-print" hidden></section>`;
@@ -33,15 +36,15 @@ export function mountPlanner(main,items,phases,base,data){
   function compute(){
     try{
       plan=buildPlan(items,state);state=plan.state;summaries();
-      if(showing){results.hidden=false;results.innerHTML=renderPlan(plan,base,data);main.querySelector('#share-link').value=new URL(`${path(base,'plan/')}${encodeState(state,items)}`).href;}
+      if(showing){results.hidden=false;results.innerHTML=`<details class="plan-answer-review"><summary>Review answers and defaults</summary><p class="small">Questions that do not affect this route use the defaults shown below. You can change any answer.</p><dl>${questions.map((question,index)=>`<div><dt>${e(question.title)}</dt><dd>${e(main.querySelector(`[data-answer="${question.name}"]`).textContent)} <small>${known.has(question.name)||completed.has(question.name)?'Your answer':decoded.shared&&!config.initialState?'From shared plan':'Default — not asked'}</small><button type="button" class="text-button" data-edit-question="${index}">Change<span class="visually-hidden"> ${e(question.title)}</span></button></dd></div>`).join('')}</dl></details>`+renderPlan(plan,base,data);main.querySelector('#share-link').value=new URL(`${path(base,'plan/')}${encodeState(state,items)}`).href;}
       main.querySelector('#plan-announcement').textContent=`Plan updated: ${plan.steps.length} steps, ${money(plan.total_cost)} planned, ${plan.deferred.length} deferred by budget.`;
     }catch(error){
       results.hidden=false;results.innerHTML='<div class="callout caution" role="alert"><h2 id="result-heading" tabindex="-1">The plan cannot be built safely</h2><p>The catalog has an unresolved dependency or capability problem. Please report it through the project’s GitHub page.</p></div>';plan=null;
     }
   }
   function revealResult(){showing=true;saveHash();compute();main.querySelector('#edit-answers').hidden=false;main.querySelector('#use-defaults').hidden=true;scrollTo(main.querySelector('#result-heading'));}
-  function revealQuestion(index){intake.hidden=false;const next=main.querySelector(`#question-${index}`);next.hidden=false;questionStatus.textContent=`Question ${index+1} of ${questions.length}. Earlier answers can still be changed.`;scrollTo(next);}
-  function advance(index){saveHash();if(index===questions.length-1)revealResult();else revealQuestion(index+1);}
+  function revealQuestion(index){intake.hidden=false;const next=main.querySelector(`#question-${index}`);next.hidden=false;if(visited.at(-1)!==index)visited.push(index);next.querySelector('[data-back]').hidden=visited.length<2;questionStatus.textContent=questions[index].title;scrollTo(next);}
+  function advance(index){completed.add(questions[index].name);saveHash();const next=remainingQuestions(state,completed)[0];if(next===undefined)revealResult();else revealQuestion(next);}
   intake.addEventListener('click',event=>{
     const button=event.target.closest('button');if(!button)return;
     if(button.dataset.question){
@@ -56,10 +59,10 @@ export function mountPlanner(main,items,phases,base,data){
       else questionStatus.textContent=`${state.bothers.length} of 2 concerns selected. Continue when ready.`;
     }
     if(button.dataset.nextQuestion!==undefined||button.dataset.skipQuestion!==undefined)advance(Number(button.dataset.nextQuestion??button.dataset.skipQuestion));
-    if(button.dataset.back!==undefined)revealQuestion(Number(button.dataset.back));
+    if(button.dataset.back!==undefined){visited.pop();revealQuestion(visited.pop()??first);}
   });
   main.querySelector('#use-defaults').addEventListener('click',revealResult);
-  main.querySelector('#edit-answers').addEventListener('click',()=>revealQuestion(0));
+  main.querySelector('#edit-answers').addEventListener('click',()=>{known.clear();completed.clear();revealQuestion(0);});
   async function copy(text,message){
     try{await navigator.clipboard.writeText(text);document.querySelector('#export-status').textContent=message;}
     catch{document.querySelector('#export-status').textContent='Automatic copy is unavailable. Select and copy the text below.';document.querySelector('#copy-fallback-wrap').hidden=false;const area=document.querySelector('#copy-fallback');area.value=text;area.focus();area.select();}
@@ -67,6 +70,7 @@ export function mountPlanner(main,items,phases,base,data){
   main.addEventListener('click',event=>{
     const button=event.target.closest('button');if(!button)return;
     const edit=button.dataset;
+    if(edit.editQuestion!==undefined){const index=Number(edit.editQuestion);known.delete(questions[index].name);completed.delete(questions[index].name);revealQuestion(index);return;}
     if(edit.owned||edit.unown||edit.add||edit.remove){
       if(edit.owned)state.owned.push(edit.owned);
       if(edit.unown)state.owned=state.owned.filter(id=>id!==edit.unown);
@@ -74,7 +78,7 @@ export function mountPlanner(main,items,phases,base,data){
       if(edit.remove)state.selected=state.selected.filter(id=>id!==edit.remove);
       state=normalizeState(state,items);saveHash();compute();scrollTo(document.querySelector('#result-heading'));return;
     }
-    if(edit.action==='restart'){state=normalizeState({},items);showing=false;history.replaceState(null,'',`${location.pathname}${location.search}`);mountPlanner(main,items,phases,base,data);scrollTo(document.querySelector('#question-0'));return;}
+    if(edit.action==='restart'){if(config.onRestart){config.onRestart();return;}state=normalizeState({},items);showing=false;history.replaceState(null,'',`${location.pathname}${location.search}`);mountPlanner(main,items,phases,base,data);scrollTo(document.querySelector('#question-0'));return;}
     if(!plan)return;
     if(edit.action==='markdown')copy(planMarkdown(plan,base,data),'Shopping list, print queue and full guidance copied.');
     if(edit.action==='share')copy(document.querySelector('#share-link').value,'Plan link copied.');
@@ -87,4 +91,6 @@ export function mountPlanner(main,items,phases,base,data){
   window.onbeforeprint=()=>{if(plan){document.querySelector('#plan-print').innerHTML=printPlan(plan,base,data);document.querySelector('#plan-print').hidden=false;}};
   window.onafterprint=()=>{if(!document.body.classList.contains('print-preview'))document.querySelector('#plan-print').hidden=true;};
   compute();
+  if(config.initialState)saveHash();
+  if(!showing){visited.push(first);main.querySelector(`#question-${first} [data-back]`).hidden=true;}
 }

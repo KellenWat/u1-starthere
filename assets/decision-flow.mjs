@@ -11,8 +11,15 @@ export const questions=[
 ];
 
 // Every question is a connected, full-screen scene; later scenes are revealed on choice.
-export function renderDecisionNodes(state){
-  return questions.map((question,index)=>`<section class="decision-node" id="question-${index}" aria-labelledby="node-title-${index}" ${index?'hidden':''} tabindex="-1">
+export const questionOrder=[0,1,4,2,5,6,3];
+export function remainingQuestions(state,answered=[]){
+  const done=new Set(answered),environment=state.bothers.some(value=>['noise','fumes'].includes(value));
+  return questionOrder.filter(index=>!done.has(questions[index].name)
+    &&(questions[index].name!=='enclosure'||state.materials==='abs'||environment)
+    &&(questions[index].name!=='location'||environment));
+}
+export function renderDecisionNodes(state,first=0){
+  return questions.map((question,index)=>`<section class="decision-node" id="question-${index}" aria-labelledby="node-title-${index}" ${index===first?'':'hidden'} tabindex="-1">
     <div class="node-inner">
       <div class="node-navigation"><button type="button" class="text-button" data-back="${index-1}" ${index?'':'hidden'}>Back</button><span>${index+1} of ${questions.length}</span></div>
       <header class="question-block"><h2 id="node-title-${index}">${e(question.title)}</h2></header>

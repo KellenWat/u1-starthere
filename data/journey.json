@@ -1,0 +1,615 @@
+{
+  "version": "1.2.0",
+  "license": "CC-BY-4.0",
+  "imported_at": "2026-10-28",
+  "attribution": {
+    "curator": "U1 StartHere contributors",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "sources": [
+      {
+        "id": "checklist",
+        "title": "Snapmaker U1 — First-Week Setup Checklist",
+        "creator": "Owner-provided checklist (author not named in supplied document)",
+        "date": "2026-10-26",
+        "url": null
+      },
+      {
+        "id": "brief",
+        "title": "U1 StartHere — Build Brief",
+        "creator": "Owner-provided project brief (author not named in supplied document)",
+        "date": "2026-10-28",
+        "url": null
+      }
+    ],
+    "notice": "Original StartHere summaries and structured facts: CC BY 4.0. Retain this metadata and per-record creator credits; indicate adaptations. Linked third-party works keep their own licenses. A null creator means unresolved credit, not a claim of authorship."
+  },
+  "start": "start",
+  "nodes": [
+    {
+      "id": "start",
+      "kind": "question",
+      "title": "What’s next for your U1?",
+      "help": "Start with what you need. We’ll connect the useful next steps.",
+      "choices": [
+        {
+          "id": "new",
+          "label": "Get started",
+          "next": "setup",
+          "description": "From delivery to a clean stock baseline"
+        },
+        {
+          "id": "improve",
+          "label": "Improve my setup",
+          "next": "improve",
+          "description": "Make one useful change at a time"
+        },
+        {
+          "id": "problem",
+          "label": "Something isn’t working",
+          "next": "symptoms",
+          "description": "Find a guide or narrow down the symptom"
+        },
+        {
+          "id": "explore",
+          "label": "Explore what’s possible",
+          "next": "explore",
+          "description": "Materials, more colors and firmware features"
+        }
+      ]
+    },
+    {
+      "id": "setup",
+      "kind": "question",
+      "title": "Where are you starting?",
+      "help": "Stock first, mods second. Keep a clean baseline before changing the printer.",
+      "choices": [
+        {
+          "id": "waiting",
+          "label": "Waiting for my U1",
+          "next": "track",
+          "set": {
+            "stage": "not-arrived"
+          }
+        },
+        {
+          "id": "assembled",
+          "label": "Just assembled",
+          "next": "track",
+          "set": {
+            "stage": "stock"
+          }
+        },
+        {
+          "id": "ready",
+          "label": "Ready for my next change",
+          "next": "improve",
+          "set": {
+            "stage": "stock"
+          }
+        }
+      ]
+    },
+    {
+      "id": "improve",
+      "kind": "question",
+      "title": "What would make printing better?",
+      "help": "A specific symptom can lead straight to its guide. A broader goal leads to a plan.",
+      "choices": [
+        {
+          "id": "noise",
+          "label": "Less noise",
+          "next": "noise",
+          "set": {
+            "bothers": [
+              "noise"
+            ]
+          }
+        },
+        {
+          "id": "reliable",
+          "label": "More reliable prints",
+          "next": "symptoms",
+          "set": {
+            "bothers": [
+              "reliability"
+            ]
+          }
+        },
+        {
+          "id": "fumes",
+          "label": "Manage fumes",
+          "next": "odor",
+          "set": {
+            "bothers": [
+              "fumes"
+            ]
+          }
+        },
+        {
+          "id": "dry",
+          "label": "Keep filament dry",
+          "next": "filament",
+          "set": {
+            "bothers": [
+              "dry-filament"
+            ]
+          }
+        },
+        {
+          "id": "speed",
+          "label": "Faster printing",
+          "next": "quality",
+          "set": {
+            "bothers": [
+              "speed-flow"
+            ]
+          }
+        },
+        {
+          "id": "colors",
+          "label": "More color options",
+          "next": "plan",
+          "set": {
+            "bothers": [
+              "color-count"
+            ],
+            "materials": "colors"
+          }
+        },
+        {
+          "id": "general",
+          "label": "Show useful improvements",
+          "next": "plan"
+        }
+      ]
+    },
+    {
+      "id": "explore",
+      "kind": "question",
+      "title": "What would you like to try?",
+      "help": "Your plan will check costs, prerequisites and conflicting routes.",
+      "choices": [
+        {
+          "id": "abs",
+          "label": "ABS or ASA",
+          "next": "plan",
+          "set": {
+            "materials": "abs"
+          }
+        },
+        {
+          "id": "abrasive",
+          "label": "Abrasive materials",
+          "next": "plan",
+          "set": {
+            "materials": "abrasive"
+          }
+        },
+        {
+          "id": "colors",
+          "label": "Five or more colors",
+          "next": "plan",
+          "set": {
+            "materials": "colors",
+            "bothers": [
+              "color-count"
+            ]
+          }
+        },
+        {
+          "id": "firmware",
+          "label": "Firmware features",
+          "next": "firmware"
+        },
+        {
+          "id": "basic",
+          "label": "Everyday PLA, PETG or TPU",
+          "next": "improve",
+          "set": {
+            "materials": "basic"
+          }
+        }
+      ]
+    },
+    {
+      "id": "firmware",
+      "kind": "question",
+      "title": "Is Paxx12 already installed?",
+      "help": "An installed-firmware answer does not assume a particular mod or completed stock-test history.",
+      "choices": [
+        {
+          "id": "installed",
+          "label": "Yes, show settings and integrations",
+          "next": "plan",
+          "set": {
+            "stage": "paxx12"
+          }
+        },
+        {
+          "id": "stock",
+          "label": "No, explore the firmware decision",
+          "next": "plan"
+        },
+        {
+          "id": "unsure",
+          "label": "I’m not sure",
+          "next": "plan"
+        }
+      ]
+    },
+    {
+      "id": "symptoms",
+      "kind": "question",
+      "title": "What are you noticing?",
+      "help": "Choose the closest description. We only link to guides already in the curated data.",
+      "choices": [
+        {
+          "id": "quality",
+          "label": "Print surface or adhesion",
+          "next": "quality"
+        },
+        {
+          "id": "filament",
+          "label": "Filament feeding or identification",
+          "next": "filament"
+        },
+        {
+          "id": "noise",
+          "label": "Noise, fans or temperatures",
+          "next": "noise"
+        },
+        {
+          "id": "head",
+          "label": "Toolhead or calibration",
+          "next": "head"
+        },
+        {
+          "id": "odor",
+          "label": "Fumes or enclosure odor",
+          "next": "odor"
+        },
+        {
+          "id": "none",
+          "label": "No fault — explore improvements",
+          "next": "plan"
+        }
+      ]
+    },
+    {
+      "id": "quality",
+      "kind": "question",
+      "title": "What is happening to the print?",
+      "help": "Choose a specific observation, or continue without assuming a cause.",
+      "choices": [
+        {
+          "id": "tower",
+          "label": "Prime tower falls over",
+          "next": "fix-prime-tower-toppling"
+        },
+        {
+          "id": "bands",
+          "label": "Vertical bands change with wall speed",
+          "next": "fix-vfa-banding"
+        },
+        {
+          "id": "stuck",
+          "label": "Part is stuck on CryoGrip",
+          "next": "fix-cryogrip-part-stuck"
+        },
+        {
+          "id": "faster",
+          "label": "No fault — I want faster prints",
+          "next": "plan",
+          "set": {
+            "bothers": [
+              "speed-flow"
+            ]
+          }
+        },
+        {
+          "id": "other",
+          "label": "Something else",
+          "next": "unmatched"
+        }
+      ]
+    },
+    {
+      "id": "filament",
+      "kind": "question",
+      "title": "What is happening with the filament?",
+      "help": "Dry feeding, spool identification and runout faults take different routes.",
+      "choices": [
+        {
+          "id": "identify",
+          "label": "The spool is no longer identified",
+          "next": "dryer"
+        },
+        {
+          "id": "runout",
+          "label": "One head reports unexpected runout",
+          "next": "fix-runout-sensor-errors"
+        },
+        {
+          "id": "dry",
+          "label": "No fault — plan drying and dry feed",
+          "next": "plan",
+          "set": {
+            "bothers": [
+              "dry-filament"
+            ]
+          }
+        },
+        {
+          "id": "other",
+          "label": "Something else",
+          "next": "unmatched"
+        }
+      ]
+    },
+    {
+      "id": "dryer",
+      "kind": "question",
+      "title": "Are you feeding from a dryer?",
+      "help": "This distinguishes the documented dryer-feed identification case from other recognition problems.",
+      "choices": [
+        {
+          "id": "yes",
+          "label": "Yes, directly from a dryer",
+          "next": "fix-dryer-feed-rfid-loss"
+        },
+        {
+          "id": "no",
+          "label": "No, the spool is on the printer",
+          "next": "unmatched"
+        },
+        {
+          "id": "unsure",
+          "label": "I’m not sure",
+          "next": "unmatched"
+        }
+      ]
+    },
+    {
+      "id": "noise",
+      "kind": "question",
+      "title": "Which sound or reading concerns you?",
+      "help": "Do not treat a fan fault as a reason to modify the printer before investigating it.",
+      "choices": [
+        {
+          "id": "idle",
+          "label": "Fan whine near the PSU at idle",
+          "next": "fix-psu-fan-whine"
+        },
+        {
+          "id": "fan",
+          "label": "One toolhead fan cuts out",
+          "next": "fix-pogo-fan-dropout"
+        },
+        {
+          "id": "temp",
+          "label": "Driver temperature looks high",
+          "next": "fix-driver-temperature-baseline"
+        },
+        {
+          "id": "vibration",
+          "label": "No fault — reduce vibration or noise",
+          "next": "plan",
+          "set": {
+            "bothers": [
+              "noise"
+            ]
+          }
+        },
+        {
+          "id": "other",
+          "label": "Something else",
+          "next": "unmatched"
+        }
+      ]
+    },
+    {
+      "id": "head",
+      "kind": "question",
+      "title": "What is the toolhead doing?",
+      "help": "The guide will show its stop conditions before the ordered checks.",
+      "choices": [
+        {
+          "id": "reminder",
+          "label": "Cleaning reminder keeps returning",
+          "next": "fix-pogo-cleaning-reminder-loop"
+        },
+        {
+          "id": "homing",
+          "label": "Unexpected movement during homing",
+          "next": "fix-homing-anomaly"
+        },
+        {
+          "id": "grease",
+          "label": "Calibration fails with nozzle residue",
+          "next": "fix-nozzle-grease-calibration"
+        },
+        {
+          "id": "fan",
+          "label": "One toolhead fan cuts out",
+          "next": "fix-pogo-fan-dropout"
+        },
+        {
+          "id": "other",
+          "label": "Something else",
+          "next": "unmatched"
+        }
+      ]
+    },
+    {
+      "id": "odor",
+      "kind": "question",
+      "title": "Does this involve the official Top Cover?",
+      "help": "Odor does not measure air quality or prove that filtration is effective.",
+      "choices": [
+        {
+          "id": "yes",
+          "label": "Yes, odor persists with the official cover",
+          "next": "fix-top-cover-odor-mode"
+        },
+        {
+          "id": "no",
+          "label": "No — plan enclosure and fume options",
+          "next": "plan",
+          "set": {
+            "bothers": [
+              "fumes"
+            ]
+          }
+        },
+        {
+          "id": "unsure",
+          "label": "I’m not sure",
+          "next": "unmatched"
+        }
+      ]
+    },
+    {
+      "id": "unmatched",
+      "kind": "question",
+      "title": "Let’s find another useful next step.",
+      "help": "There isn’t a specific matching guide on this route yet. That does not mean there is no solution.",
+      "choices": [
+        {
+          "id": "another",
+          "label": "Check another symptom",
+          "next": "symptoms"
+        },
+        {
+          "id": "search",
+          "label": "Describe it in my own words",
+          "next": "search"
+        },
+        {
+          "id": "support",
+          "label": "Get official support",
+          "next": "support"
+        },
+        {
+          "id": "improve",
+          "label": "Explore preventive improvements",
+          "next": "improve"
+        }
+      ]
+    },
+    {
+      "id": "followup",
+      "kind": "question",
+      "title": "What would you like to do next?",
+      "help": "Keep exploring without treating a guide as a confirmed diagnosis.",
+      "choices": [
+        {
+          "id": "helped",
+          "label": "That helped — explore improvements",
+          "next": "improve"
+        },
+        {
+          "id": "nothelped",
+          "label": "Still happening — find another route",
+          "next": "unmatched"
+        },
+        {
+          "id": "another",
+          "label": "Check another symptom",
+          "next": "symptoms"
+        }
+      ]
+    },
+    {
+      "id": "fix-pogo-cleaning-reminder-loop",
+      "kind": "fix",
+      "fix_id": "pogo-cleaning-reminder-loop",
+      "next": "followup"
+    },
+    {
+      "id": "fix-homing-anomaly",
+      "kind": "fix",
+      "fix_id": "homing-anomaly",
+      "next": "followup"
+    },
+    {
+      "id": "fix-nozzle-grease-calibration",
+      "kind": "fix",
+      "fix_id": "nozzle-grease-calibration",
+      "next": "followup"
+    },
+    {
+      "id": "fix-vfa-banding",
+      "kind": "fix",
+      "fix_id": "vfa-banding",
+      "next": "followup"
+    },
+    {
+      "id": "fix-prime-tower-toppling",
+      "kind": "fix",
+      "fix_id": "prime-tower-toppling",
+      "next": "followup"
+    },
+    {
+      "id": "fix-runout-sensor-errors",
+      "kind": "fix",
+      "fix_id": "runout-sensor-errors",
+      "next": "followup"
+    },
+    {
+      "id": "fix-psu-fan-whine",
+      "kind": "fix",
+      "fix_id": "psu-fan-whine",
+      "next": "followup"
+    },
+    {
+      "id": "fix-driver-temperature-baseline",
+      "kind": "fix",
+      "fix_id": "driver-temperature-baseline",
+      "next": "followup"
+    },
+    {
+      "id": "fix-dryer-feed-rfid-loss",
+      "kind": "fix",
+      "fix_id": "dryer-feed-rfid-loss",
+      "next": "followup"
+    },
+    {
+      "id": "fix-cryogrip-part-stuck",
+      "kind": "fix",
+      "fix_id": "cryogrip-part-stuck",
+      "next": "followup"
+    },
+    {
+      "id": "fix-pogo-fan-dropout",
+      "kind": "fix",
+      "fix_id": "pogo-fan-dropout",
+      "next": "followup"
+    },
+    {
+      "id": "fix-top-cover-odor-mode",
+      "kind": "fix",
+      "fix_id": "top-cover-odor-mode",
+      "next": "followup"
+    },
+    {
+      "id": "plan",
+      "kind": "plan",
+      "title": "Build my next steps"
+    },
+    {
+      "id": "track",
+      "kind": "track",
+      "title": "Your startup track"
+    },
+    {
+      "id": "search",
+      "kind": "search",
+      "title": "Search by symptom"
+    },
+    {
+      "id": "support",
+      "kind": "support",
+      "title": "Official U1 support"
+    }
+  ]
+}

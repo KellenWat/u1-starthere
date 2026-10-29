@@ -21,14 +21,14 @@ jobs:
           cache-dependency-path: requirements-dev.txt
       - name: Install validation dependency (no npm)
         run: python -m pip install -r requirements-dev.txt
-      - name: Validate all three JSON documents and relationships
+      - name: Validate catalog, fixes, phases and journey JSON with relationships
         run: python scripts/validate.py
       - name: Check seed integrity and validator rejection cases
         run: python -m unittest discover -s tests -v
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Check five planner personas, exports, catalog and progress (no npm)
+      - name: Check planner personas, symptom rankings, connected routes and views (no npm)
         run: node --test tests/*.test.mjs
       - name: Ensure committed pages match their JSON source
         run: node scripts/render.mjs --check

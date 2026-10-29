@@ -1,0 +1,50 @@
+[
+  {
+    "id": "pogo-cleaning-reminder-loop",
+    "query": "asks me to clean pogo pins every two days"
+  },
+  {
+    "id": "homing-anomaly",
+    "query": "homing moves the head the wrong way"
+  },
+  {
+    "id": "nozzle-grease-calibration",
+    "query": "nozzle grease calibration failure"
+  },
+  {
+    "id": "vfa-banding",
+    "query": "vertical lines on walls at some speeds"
+  },
+  {
+    "id": "prime-tower-toppling",
+    "query": "prime tower keeps falling over"
+  },
+  {
+    "id": "runout-sensor-errors",
+    "query": "runout sensor errors on one head"
+  },
+  {
+    "id": "psu-fan-whine",
+    "query": "psu fan whine at idle"
+  },
+  {
+    "id": "driver-temperature-baseline",
+    "query": "driver temps 85 to 92 degrees normal"
+  },
+  {
+    "id": "dryer-feed-rfid-loss",
+    "query": "dryer feed lost rfid auto detection"
+  },
+  {
+    "id": "cryogrip-part-stuck",
+    "query": "cryogrip part stuck to plate"
+  },
+  {
+    "id": "pogo-fan-dropout",
+    "query": "pogo fan dropouts on one head"
+  },
+  {
+    "id": "top-cover-odor-mode",
+    "query": "odor with top cover in external circulation mode"
+  }
+]

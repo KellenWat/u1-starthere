@@ -1,6 +1,10 @@
 # Deterministic planner rules
 
-M3 presents the seven brief questions as a scrolling decision path. Changing
+M3 defines the seven brief inputs. M4's connected guide can supply explicit
+answers, then ask only the relevant remaining questions. Enclosure matters
+for ABS/ASA or noise/fume concerns; location for noise/fume concerns. The
+remaining order is stage, materials, concerns, enclosure, comfort, location,
+budget. Results expose every default and permit individual edits. Changing
 an answer recomputes the same pure planner; no network service or ML is used.
 
 ## Inputs and defaults
