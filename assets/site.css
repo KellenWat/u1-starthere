@@ -535,6 +535,7 @@ body[data-page="plan"]{background:#fbfbfd}
 .step-next{font-size:.86rem;line-height:1.65;max-width:60ch;margin-top:12px}
 .phase-readiness{font-size:.8rem;margin-top:20px;line-height:1.65}
 .track-step{scroll-margin-top:84px}
+.brand sub,.footer-brand sub{font-size:.65em;line-height:0;vertical-align:sub;letter-spacing:0}
 .review-badge{font-size:.78rem;line-height:1.65;color:var(--muted);margin:12px 0 0;max-width:65ch}
 .review-due{color:#704b00;background:#fff6e6;border-left:3px solid #8b6500;padding:8px 12px}
 .beta-note{font-size:.86rem;color:var(--muted);margin-top:12px}.beta-note a{display:inline-flex;align-items:center;min-height:44px}

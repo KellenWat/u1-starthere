@@ -1,4 +1,4 @@
-# U1 StartHere
+# U₁ StartHere
 
 A community startup track, explainable upgrade planner and symptom finder for
 Snapmaker U1 owners. Static files for GitHub Pages; no framework or site build.
@@ -443,6 +443,10 @@ match the JSON. The optional authoring script is not a deployment build step.
     guide, fix, project or usability improvement, with an optional original
     creator link and page context. The button discloses the GitHub account
     requirement; the About page links to the same form.
+
+55. **Wordmark:** display the site name as U₁ StartHere, with a smaller subscript
+    1 in the header/footer and Unicode subscript in page titles. Accessible
+    link names remain readable as U1 StartHere.
 
 ## Source review and remaining content work
 
