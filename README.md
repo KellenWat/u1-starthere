@@ -49,6 +49,9 @@ catalog. Eight software goals connect discovery to creator documentation and
 explicit planner requests. The requested desktop/phone review led to a second
 iteration: compact expandable cards, visible status, and platform filters.
 See [coverage and sources](SOFTWARE_COVERAGE.md) and [validation](SOFTWARE_VALIDATION.md).
+[Actions run #12 passed](https://github.com/KellenWat/u1-starthere/actions/runs/40822437238)
+for `622e4d0`: 72 JavaScript tests, 34 Python tests, four JSON documents and
+all 68 generated pages. All five planner personas and 12 seed rankings still pass.
 
 M1 acceptance evidence:
 

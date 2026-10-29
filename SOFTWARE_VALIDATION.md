@@ -1,5 +1,19 @@
 # Software documentation and second-iteration validation
 
+[GitHub Actions run #12](https://github.com/KellenWat/u1-starthere/actions/runs/40822437238)
+passed for `622e4d08637c993c1ab02ce65e84d29084d42928`. Actual CI summary:
+
+```text
+PASS total JavaScript: 122847 / 200000 bytes
+Validation passed: 4 data files; 0 errors.
+Ran 34 tests in 3.849s
+OK
+# tests 72
+# pass 72
+# fail 0
+PASS generated pages match JSON and template: 68 HTML pages (63 item details).
+```
+
 This owner-requested post-M4 pass fills the previously identified software
 documentation gaps, then reviews the website and applies a second refinement.
 M5 embed/freshness/About work and M6 remain deferred.
