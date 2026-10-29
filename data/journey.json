@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0",
+  "version": "1.5.0",
   "license": "CC-BY-4.0",
   "imported_at": "2026-10-28",
   "attribution": {
@@ -73,11 +73,21 @@
         },
         {
           "id": "assembled",
-          "label": "Just assembled",
-          "next": "track",
+          "label": "Assembled; first-start setup is next",
+          "next": "track-setup",
           "set": {
             "stage": "stock"
           }
+        },
+        {
+          "id": "filament",
+          "label": "I need to load filament",
+          "next": "track-filament"
+        },
+        {
+          "id": "file",
+          "label": "I need a first print file",
+          "next": "track-first-file"
         },
         {
           "id": "ready",
@@ -332,6 +342,11 @@
       "help": "Dry feeding, spool identification and runout faults take different routes.",
       "choices": [
         {
+          "id": "first-load",
+          "label": "I haven’t loaded filament yet",
+          "next": "track-filament"
+        },
+        {
           "id": "identify",
           "label": "The spool is no longer identified",
           "next": "dryer"
@@ -377,7 +392,7 @@
         {
           "id": "no",
           "label": "No, the spool is on the printer",
-          "next": "unmatched"
+          "next": "filament-identification"
         },
         {
           "id": "unsure",
@@ -507,6 +522,11 @@
       "help": "There isn’t a specific matching guide on this route yet. That does not mean there is no solution.",
       "choices": [
         {
+          "id": "support",
+          "label": "Get official support",
+          "next": "support"
+        },
+        {
           "id": "another",
           "label": "Check another symptom",
           "next": "symptoms"
@@ -515,11 +535,6 @@
           "id": "search",
           "label": "Describe it in my own words",
           "next": "search"
-        },
-        {
-          "id": "support",
-          "label": "Get official support",
-          "next": "support"
         },
         {
           "id": "improve",
@@ -821,6 +836,59 @@
       "kind": "fix",
       "fix_id": "filament-printing-anomaly",
       "next": "followup"
+    },
+    {
+      "id": "filament-identification",
+      "kind": "question",
+      "title": "Does the spool have a Snapmaker RFID tag?",
+      "help": "A spool without RFID needs its material and color set manually. Missing automatic identification alone is not a loading fault. Use the material printed on the spool label.",
+      "choices": [
+        {
+          "id": "manual",
+          "label": "No — use the manual material setting",
+          "next": "track-material"
+        },
+        {
+          "id": "rfid",
+          "label": "Yes — the tagged spool still is not recognized",
+          "next": "unmatched"
+        },
+        {
+          "id": "unsure",
+          "label": "I’m not sure — show the loading guide",
+          "next": "track-material"
+        },
+        {
+          "id": "another",
+          "label": "Check another symptom",
+          "next": "symptoms"
+        }
+      ]
+    },
+    {
+      "id": "track-setup",
+      "kind": "track",
+      "title": "Complete first-start setup",
+      "step_id": "stock-calibration"
+    },
+    {
+      "id": "track-filament",
+      "kind": "track",
+      "title": "Load filament before the first print",
+      "step_id": "load-first-filament"
+    },
+    {
+      "id": "track-first-file",
+      "kind": "track",
+      "title": "Prepare the first print file",
+      "step_id": "prepare-first-file"
+    },
+    {
+      "id": "track-material",
+      "kind": "track",
+      "title": "Set the spool’s material and color",
+      "help": "Use the already-loaded-spool instruction in this guide. A missing automatic label does not by itself mean the filament failed to load.",
+      "step_id": "load-first-filament"
     }
   ]
 }

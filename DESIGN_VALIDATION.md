@@ -95,3 +95,20 @@ python -m http.server 8000 --bind 127.0.0.1
 Open `http://127.0.0.1:8000/`, `/catalog/`, `/fixes/`, `/start/` or `/plan/`.
 The agent-owned review server is stopped at handoff. GitHub Pages activation
 is separate work; this change updates the static repository.
+
+## Follow-up review: 2026-10-29
+
+Browser review became available again during the owner-journey audit. Resumed
+the interrupted checks: Software + iOS gave three records; the difficulty
+disclosure worked with Enter, showed its active count, and restored the filter
+after reload; clearing filters restored all 63 items. The related stock-baseline
+detail page and updated startup track were inspected. The homepage was captured
+again at the normal desktop viewport. No browser console errors were observed.
+
+The audit also caught a real nested-summary layout bug on phones and inadequate
+multiline prerequisite-link hit areas. Both were corrected, then the guide was
+checked at 390 and 320 px with no horizontal overflow. Deep links and keyboard
+focus now open the requested guide. Progress was checked through reload and
+restored to its initial unchecked state. See USER_JOURNEY_AUDIT.md for the full
+review, actual test output and evidence limits. The earlier blocked attempts
+above remain a historical record; this follow-up completes their visual checks.

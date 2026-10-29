@@ -163,6 +163,35 @@ class DataTests(unittest.TestCase):
         self.docs["phases"]["phases"][0]["steps"][0]["item_id"] = "missing-item"
         self.rejects("track references missing item")
 
+    def test_rejects_missing_track_prerequisite(self):
+        self.docs["phases"]["phases"][2]["steps"][0]["requires_steps"] = ["missing-step"]
+        self.rejects("missing prerequisite step")
+
+    def test_rejects_track_prerequisite_after_dependent(self):
+        self.docs["phases"]["phases"][2]["steps"][0]["requires_steps"] = ["test-four-color"]
+        self.rejects("prerequisite step must appear earlier")
+
+    def test_rejects_missing_guide_completion_check(self):
+        del self.docs["phases"]["phases"][2]["steps"][0]["guidance"]["done_when"]
+        self.rejects("required property")
+
+    def test_rejects_guide_tracking_links(self):
+        self.docs["phases"]["phases"][2]["steps"][0]["guidance"]["sources"][0]["url"] += "?ref=affiliate"
+        self.rejects("affiliate/tracking")
+
+    def test_rejects_milestone_requiring_optional_purchase(self):
+        self.docs["phases"]["milestones"][0]["step_ids"].append("consider-paver")
+        self.rejects("readiness must not require optional step")
+
+    def test_rejects_missing_milestone_step(self):
+        self.docs["phases"]["milestones"][0]["step_ids"].append("missing-step")
+        self.rejects("missing milestone step")
+
+    def test_rejects_missing_track_destination(self):
+        node = next(node for node in self.docs["journey"]["nodes"] if node.get("step_id"))
+        node["step_id"] = "missing-step"
+        self.rejects("missing track destination")
+
     def test_rejects_reordered_phases(self):
         self.docs["phases"]["phases"].reverse()
         self.rejects("in order 0 through 6")

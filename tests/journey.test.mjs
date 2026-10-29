@@ -34,7 +34,7 @@ test('reliability and troubleshooting share the same question, not duplicate tre
 test('ambiguous recognition asks a clarifier and no dryer gives an honest next question',()=>{
   assert.equal(walk(['problem','filament','identify']).node.id,'dryer');
   assert.equal(walk(['problem','filament','identify','yes']).node.fix_id,'dryer-feed-rfid-loss');
-  assert.equal(walk(['problem','filament','identify','no']).node.id,'unmatched');
+  assert.equal(walk(['problem','filament','identify','no']).node.id,'filament-identification');
 });
 test('fixes offer follow-up routes and a failed attempt does not imply success',()=>{
   assert.equal(walk(['problem','quality','tower','next','nothelped']).node.id,'unmatched');

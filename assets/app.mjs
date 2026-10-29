@@ -1,3 +1,4 @@
+import {renderTrackStep,renderMilestones} from './track-view.mjs';
 import {renderHome} from './home-view.mjs';
 import {escape as e,label,money,path,itemPath,itemCard,catalogItems,platformLabel} from './view.mjs';
 import {STORAGE_KEY,readProgress,progressCounts} from './progress.mjs';
@@ -24,7 +25,7 @@ async function load() {
     if (!Array.isArray(items) || !Array.isArray(phases)) throw new Error('Invalid data');
     if (page === 'home') main.innerHTML=renderHome(items,phases,docs[2],base);
     if (page === 'catalog') catalog();
-    if (page === 'start') track();
+    if (page === 'start') track(docs[1]);
     if (page === 'plan') mountJourney(main,items,phases,base,docs[0],docs[2].fixes,docs[3]);
     if (page === 'fixes') mountFixes(main,docs[2].fixes,items,base);
   } catch {
@@ -72,29 +73,37 @@ function catalog() {
   update();
 }
 
-function track() {
+function track(trackData) {
   const allSteps = phases.flatMap(phase=>phase.steps);
   let saved, persistent=true;
   try { saved=localStorage.getItem(STORAGE_KEY); } catch { persistent=false; }
   let progress = readProgress(saved,phases);
   const firstIncomplete = phases.find(phase=>progressCounts(progress,phase.steps).finished<phase.steps.length)?.phase ?? phases[0].phase;
   const hashPhase = /^#phase-(\d+)$/.exec(location.hash)?.[1];
-  const openPhase = hashPhase!==undefined && phases.some(phase=>phase.phase===Number(hashPhase)) ? Number(hashPhase) : firstIncomplete;
-  main.innerHTML = `<header class="page-heading track-heading"><h1>The startup track.</h1><p class="lead">Stock first, mods second. Get a clean baseline before changing the printer, then choose what’s useful to you.</p></header>
-    <section class="progress-panel" aria-labelledby="progress-heading"><div><h2 id="progress-heading">Your progress</h2><p id="progress-text" role="status" aria-live="polite"></p></div><progress id="track-progress" value="0" max="${allSteps.length}" aria-label="Startup track progress"></progress><p class="small" id="storage-note">Saved only in this browser. Optional steps can be skipped.</p></section>
+  const hashStep=/^#step-([a-z0-9-]+)$/.exec(location.hash)?.[1];
+  const requestedStep=allSteps.find(step=>step.id===hashStep);
+  const requestedPhase=phases.find(phase=>phase.steps.some(step=>step.id===hashStep));
+  const openPhase = requestedPhase?requestedPhase.phase:hashPhase!==undefined && phases.some(phase=>phase.phase===Number(hashPhase)) ? Number(hashPhase) : firstIncomplete;
+  const openGuide=requestedStep?.id||phases.find(phase=>phase.phase===openPhase).steps.find(step=>step.guidance&&progress.steps[step.id]!=='done')?.id;
+  main.innerHTML = `<header class="page-heading track-heading"><h1>The startup track.</h1><p class="lead">Stock first, mods second. Get a clean baseline before changing the printer, then choose what’s useful to you.</p><p class="small">Start with the first-print checks. Buying upgrades or installing custom firmware is optional.</p></header>
+    <section class="progress-panel" aria-labelledby="progress-heading"><div><h2 id="progress-heading">Checklist progress</h2><p id="progress-text" role="status" aria-live="polite"></p></div><progress id="track-progress" value="0" max="${allSteps.length}" aria-label="Startup track progress"></progress><p class="small" id="storage-note">Saved only in this browser. Optional steps can be skipped.</p><div id="track-readiness" class="track-readiness" aria-live="polite"></div></section>
     <nav class="phase-nav" aria-label="Track stages">${phases.map(phase=>`<a href="#phase-${phase.phase}">${e(phase.name)}</a>`).join('')}</nav>
     <div class="track-phases">${phases.map(phase=>`<details class="track-phase" id="phase-${phase.phase}" ${phase.phase===openPhase?'open':''}><summary><span class="phase-number">${phase.phase+1}</span><span class="phase-title">${e(phase.name)}<small>${e(phase.goal)}</small></span><span class="phase-status" data-phase-status="${phase.phase}"></span><span class="disclosure" aria-hidden="true">+</span></summary>
-      <div class="phase-body">${phase.steps.map(step=>{const item=items.find(item=>item.id===step.item_id);return `<div class="track-step" data-step="${e(step.id)}"><div class="step-main"><input type="checkbox" id="${e(step.id)}" data-done="${e(step.id)}"><div><label for="${e(step.id)}">${e(step.text)}</label><div class="step-meta">${step.optional?'<span class="optional-label">Optional</span>':''}${item?`<a href="${e(itemPath(base,item.id))}">Details: ${e(item.title)}</a>`:''}</div></div></div>${step.optional?`<button class="skip-step" type="button" data-skip="${e(step.id)}" aria-label="${e(`Skip optional step: ${step.text}`)}" aria-pressed="false">Skip</button>`:''}</div>`;}).join('')}
+      <div class="phase-body">${phase.steps.map(step=>renderTrackStep(step,allSteps,items,base,step.id===openGuide)).join('')}
+      <p class="phase-readiness small" data-phase-remaining="${phase.phase}"></p>
       ${phase.phase<phases.at(-1).phase?`<button class="button secondary next-phase" type="button" data-next="${phase.phase+1}">Continue to ${e(phases.find(p=>p.phase===phase.phase+1)?.name || '')}</button>`:''}</div></details>`).join('')}</div>
     <section class="completion" id="track-completion" hidden><h2>Track reviewed. Keep your baseline.</h2><p id="completion-text"></p>${link('catalog/','Explore the community catalog','button primary')}</section>
     <div class="track-bottom"><p class="small">Checking a box records your progress. It doesn’t verify a repair, firmware version or printer configuration.</p><button type="button" class="text-button" id="open-reset">Reset track progress</button></div>
     <dialog id="reset-dialog" aria-labelledby="reset-title"><form method="dialog"><h2 id="reset-title">Reset this track?</h2><p>This clears your saved checks and skipped steps in this browser.</p><div class="dialog-actions"><button class="button secondary" value="cancel" autofocus>Keep progress</button><button class="button primary" value="reset">Reset progress</button></div></form></dialog>`;
   function update() {
     const counts = progressCounts(progress,allSteps);
-    document.querySelector('#progress-text').textContent = `${counts.finished} of ${counts.total} steps finished${counts.skipped?` (${counts.skipped} optional skipped)`:''}`;
+    document.querySelector('#progress-text').textContent = `${counts.finished} of ${counts.total} checklist steps finished${counts.skipped?` (${counts.skipped} optional skipped)`:''}. This total includes optional improvements.`;
     document.querySelector('#track-progress').value = counts.finished;
     document.querySelector('#storage-note').textContent = persistent ? 'Saved only in this browser. Optional steps can be skipped.' : 'Progress lasts for this visit only. This browser is blocking saved progress.';
+    document.querySelector('#track-readiness').innerHTML=renderMilestones(trackData.milestones,progress,phases);
     for(const phase of phases){
+      const remaining=phase.steps.filter(step=>!step.optional&&progress.steps[step.id]!=='done').length;
+      document.querySelector(`[data-phase-remaining="${phase.phase}"]`).textContent=remaining?`${remaining} required check${remaining===1?' is':'s are'} still unchecked. You can look ahead; finish these checks before relying on this stage.`:'Required checks are marked. Optional steps are your choice.';
       const count = progressCounts(progress,phase.steps);
       document.querySelector(`[data-phase-status="${phase.phase}"]`).textContent = count.finished===count.total ? 'Finished' : `${count.finished}/${count.total}`;
       for(const step of phase.steps){
@@ -114,9 +123,17 @@ function track() {
     const id=event.target.dataset.done;if(!id)return;
     if(event.target.checked)progress.steps[id]='done';else delete progress.steps[id];save();
   });
+  function revealStep(id){
+    const phase=phases.find(phase=>phase.steps.some(step=>step.id===id)),row=document.getElementById('step-'+id);
+    if(!phase||!row)return;
+    document.querySelector('#phase-'+phase.phase).open=true;
+    const guide=row.querySelector('.step-guide');if(guide)guide.open=true;
+    const target=guide?guide.querySelector('summary'):row.querySelector('input');target?.focus({preventScroll:true});row.scrollIntoView({block:'start'});
+  }
   main.addEventListener('click',event=>{
+    const jump=event.target.closest('a[href^="#step-"]');if(jump){event.preventDefault();history.replaceState(null,'',jump.hash);revealStep(jump.hash.slice(6));return;}
     const skip=event.target.closest('[data-skip]');if(skip){const id=skip.dataset.skip;if(progress.steps[id]==='skipped')delete progress.steps[id];else progress.steps[id]='skipped';save();}
-    const next=event.target.closest('[data-next]');if(next){const target=document.querySelector(`#phase-${next.dataset.next}`);target.open=true;target.querySelector('summary').focus();target.scrollIntoView({block:'start'});}
+    const next=event.target.closest('[data-next]');if(next){const target=document.querySelector(`#phase-${next.dataset.next}`);target.open=true;const nextStep=phases.find(phase=>phase.phase===Number(next.dataset.next)).steps.find(step=>step.guidance&&progress.steps[step.id]!=='done');if(nextStep)target.querySelector(`[data-step="${nextStep.id}"] .step-guide`).open=true;target.querySelector('summary').focus();target.scrollIntoView({block:'start'});}
   });
   document.querySelectorAll('.phase-nav a').forEach(anchor=>anchor.addEventListener('click',()=>{const target=document.querySelector(anchor.hash);if(target)target.open=true;}));
   const dialog=document.querySelector('#reset-dialog');
@@ -124,7 +141,9 @@ function track() {
   dialog.addEventListener('close',()=>{if(dialog.returnValue==='reset'){progress={version:1,steps:{}};try{localStorage.removeItem(STORAGE_KEY);}catch{persistent=false;}update();}document.querySelector('#open-reset').focus();});
   window.addEventListener('storage',event=>{if(event.key===STORAGE_KEY){progress=readProgress(event.newValue,phases);update();}});
   update();
-  if(hashPhase!==undefined)document.querySelector(`#phase-${openPhase}`)?.scrollIntoView({block:'start'});
+  window.addEventListener('hashchange',()=>{const target=/^#step-([a-z0-9-]+)$/.exec(location.hash)?.[1];if(target)revealStep(target);});
+  if(requestedStep)revealStep(requestedStep.id);
+  else if(hashPhase!==undefined)document.querySelector(`#phase-${openPhase}`)?.scrollIntoView({block:'start'});
 }
 
 load();

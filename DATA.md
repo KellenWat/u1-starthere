@@ -1,4 +1,4 @@
-# U1 StartHere data contract (1.4.0)
+# U1 StartHere data contract (1.5.0)
 
 The canonical authored content is `data/items.json`, `data/fixes.json` and
 `data/phases.json`, plus the routing-only `data/journey.json`. Consumers must render records from these files; catalog
@@ -194,6 +194,25 @@ Item phase is its earliest stage; the track can refer to it later.
 Expansion is an optional post-week-one phase, not a claim that chamber-heating
 or soldering belongs in the first week. The firmware phase explicitly permits
 staying stock; integration steps are conditional on the firmware decision.
+
+Contract 1.5.0 adds `requires_steps` and optional `guidance` to track steps.
+Prerequisites must reference earlier steps; required checks cannot depend on
+optional changes. Guidance contains ordered original `actions`, `done_when`,
+`if_stuck`, credited `sources`, `last_verified` and
+`verification_status: source-reviewed-not-tested`. Review dates and URLs are
+validated. Eight assembly/first-print steps currently have this fuller guide.
+
+Top-level `milestones` contain stable IDs, titles, `step_ids` and `complete_text`.
+Readiness counts completed checks and their transitive prerequisites, excluding
+optional work. Only the first unfinished milestone offers a next action. This
+is owner-recorded progress, not telemetry or a physical readiness guarantee.
+Existing version-1 progress and step IDs remain valid; new checks start unchecked.
+
+A journey `track` node may reference a `step_id`; CI checks the destination.
+`/start/#step-STABLE-ID` opens its phase and guidance, moves keyboard focus to
+the guide summary and scrolls it into view. Routing metadata can distinguish
+first loading from editing an already-loaded spool without duplicating the
+canonical procedure. All printer instructions remain in phases.json.
 
 ## Attribution and verification
 

@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0",
+  "version": "1.5.0",
   "license": "CC-BY-4.0",
   "imported_at": "2026-10-28",
   "attribution": {
@@ -52,7 +52,7 @@
     {
       "phase": 1,
       "name": "Unbox and inspect",
-      "goal": "Document the machine before its first job.",
+      "goal": "An assembled printer with completed stock initialization, ready for first-print preparation.",
       "steps": [
         {
           "id": "save-records",
@@ -67,35 +67,297 @@
           "optional": false
         },
         {
-          "id": "stock-calibration",
-          "text": "Check the packing list, assemble using official instructions, update stock firmware and run the stock calibration sequence.",
+          "id": "assemble-printer",
+          "text": "Assemble the printer using the official Quick Start Guide",
           "item_id": "unbox-inspect",
-          "optional": false
+          "optional": false,
+          "requires_steps": [
+            "prepare-bench"
+          ],
+          "guidance": {
+            "actions": [
+              "Use the Quick Start Guide or initial-setup video linked from the official U1 page. Follow the assembly sequence before turning to printing or modifications."
+            ],
+            "done_when": "The assembly checklist is complete, with no loose, damaged or uncertain components.",
+            "if_stuck": "Stop on damage or an unclear assembly step. Ask official support before powering or moving the printer.",
+            "sources": [
+              {
+                "creator": "Snapmaker",
+                "url": "https://wiki.snapmaker.com/en/snapmaker_u1",
+                "kind": "docs",
+                "credit_status": "named",
+                "note": "Official U1 Quick Start Guide and initial-setup video"
+              }
+            ],
+            "last_verified": "2026-10-29",
+            "verification_status": "source-reviewed-not-tested"
+          }
+        },
+        {
+          "id": "stock-calibration",
+          "text": "Complete the on-screen first-start setup and stock calibration",
+          "item_id": "unbox-inspect",
+          "optional": false,
+          "requires_steps": [
+            "assemble-printer"
+          ],
+          "guidance": {
+            "actions": [
+              "Use the official setup guide for the stock-firmware update and first-start sequence. Complete the requested calibration and build-plate handling on screen."
+            ],
+            "done_when": "The setup and calibration sequence finishes without an unresolved warning.",
+            "if_stuck": "Keep the printer stock and record the message if initialization fails; do not jump ahead to a test print.",
+            "sources": [
+              {
+                "creator": "Snapmaker",
+                "url": "https://wiki.snapmaker.com/en/snapmaker_u1",
+                "kind": "docs",
+                "credit_status": "named",
+                "note": "Official U1 Quick Start Guide and initial-setup video"
+              }
+            ],
+            "last_verified": "2026-10-29",
+            "verification_status": "source-reviewed-not-tested"
+          }
         }
       ]
     },
     {
       "phase": 2,
-      "name": "Stock burn-in",
-      "goal": "Find head, loading and docking faults before modifications.",
+      "name": "First prints on stock firmware",
+      "goal": "Prepare a file, load filament and check your first stock prints. Useful modifications can wait.",
       "steps": [
         {
-          "id": "test-four-heads",
-          "text": "Run the demo and a separate single-color print through each of the four toolheads.",
+          "id": "prepare-first-file",
+          "text": "Choose a U1-ready first print file",
           "item_id": "stock-burn-in-complete",
-          "optional": false
+          "optional": false,
+          "requires_steps": [
+            "stock-calibration"
+          ],
+          "guidance": {
+            "actions": [
+              "Use a U1-compatible local demo if available. Otherwise choose First layer test – STL from the official pre-flight guide below, or use a simple model you already trust.",
+              "In Snapmaker Orca, select matching U1/nozzle/material presets, import the model and choose Slice Plate. Slicing turns the model into printer instructions; an imported project may carry another printer’s settings.",
+              "Note which materials and toolheads the job needs before printing."
+            ],
+            "done_when": "You have a U1-compatible sliced job and know which heads and materials it uses.",
+            "if_stuck": "If no suitable local file is available, use the official slicer walkthrough below. Do not print another printer’s pre-sliced instructions.",
+            "sources": [
+              {
+                "creator": "Snapmaker",
+                "url": "https://wiki.snapmaker.com/en/snapmaker_u1/troubleshooting/first_layer_printing_troubleshooting_guide",
+                "kind": "docs",
+                "credit_status": "named",
+                "note": "Test-model source: look for First layer test – STL under Completing the pre-flight check"
+              },
+              {
+                "creator": "Snapmaker",
+                "url": "https://wiki.snapmaker.com/en/snapmaker_orca/qsg",
+                "kind": "docs",
+                "credit_status": "named",
+                "note": "Prepare and send a file with Snapmaker Orca"
+              }
+            ],
+            "last_verified": "2026-10-29",
+            "verification_status": "source-reviewed-not-tested"
+          }
+        },
+        {
+          "id": "load-first-filament",
+          "text": "Load PLA for the first print",
+          "item_id": "stock-burn-in-complete",
+          "optional": false,
+          "requires_steps": [
+            "stock-calibration"
+          ],
+          "guidance": {
+            "actions": [
+              "Use the illustrated guide to match feeder and head. For PLA/PETG, trim a slanted end, mount the spool to unwind from below, then insert filament into the feeder.",
+              "A steady white light means preloaded, not loaded at the nozzle. Confirm material/color on Filament; set these manually for a non-RFID spool. If already Loaded, edit its information without reloading.",
+              "Choose Filament > Loading Mode, select that filament and tap Load. After extrusion and cleaning, tap Done. Repeat for other heads when needed."
+            ],
+            "done_when": "Each required head shows Loaded with the correct material.",
+            "if_stuck": "Do not force filament or start the print while loading fails. Use the loading-failure guide below. TPU has a different loading route; follow the linked manual-loading guide.",
+            "sources": [
+              {
+                "creator": "Snapmaker",
+                "url": "https://wiki.snapmaker.com/en/snapmaker_u1/automatic_loading",
+                "kind": "docs",
+                "credit_status": "named",
+                "note": "Automatic loading for rigid filament"
+              },
+              {
+                "creator": "Snapmaker",
+                "url": "https://wiki.snapmaker.com/en/snapmaker_u1/manual_loading",
+                "kind": "docs",
+                "credit_status": "named",
+                "note": "Manual loading route for flexible filament"
+              },
+              {
+                "creator": "Snapmaker",
+                "url": "https://wiki.snapmaker.com/en/snapmaker_u1/troubleshooting/u1_auto_loading_failure",
+                "kind": "docs",
+                "credit_status": "named",
+                "note": "If loading does not complete"
+              }
+            ],
+            "last_verified": "2026-10-29",
+            "verification_status": "source-reviewed-not-tested"
+          }
+        },
+        {
+          "id": "check-first-print",
+          "text": "Check the build plate and filament mapping",
+          "item_id": "stock-burn-in-complete",
+          "optional": false,
+          "requires_steps": [
+            "prepare-first-file",
+            "load-first-filament"
+          ],
+          "guidance": {
+            "actions": [
+              "Confirm the build plate is installed as the setup guide requires and the print area is clear.",
+              "Review the job’s filament mapping: every selected toolhead must match a loaded spool of the intended material. Resolve mismatches before starting."
+            ],
+            "done_when": "The file, actual loaded materials and selected heads agree, with no unresolved setup warning.",
+            "if_stuck": "Cancel the start if the material, nozzle preset or mapping is uncertain. Correct the setup using the linked U1 printing guide.",
+            "sources": [
+              {
+                "creator": "Snapmaker",
+                "url": "https://wiki.snapmaker.com/en/snapmaker_u1/printing_guides/multi-color_printing_guide",
+                "kind": "docs",
+                "credit_status": "named",
+                "note": "U1 file mapping, starting and finishing a print"
+              },
+              {
+                "creator": "Snapmaker",
+                "url": "https://wiki.snapmaker.com/en/snapmaker_u1/troubleshooting/first_layer_printing_troubleshooting_guide",
+                "kind": "docs",
+                "credit_status": "named",
+                "note": "Stock first-layer checks; ask support before advanced adjustments"
+              }
+            ],
+            "last_verified": "2026-10-29",
+            "verification_status": "source-reviewed-not-tested"
+          }
+        },
+        {
+          "id": "start-first-print",
+          "text": "Start the prepared print and stay nearby",
+          "item_id": "stock-burn-in-complete",
+          "optional": false,
+          "requires_steps": [
+            "check-first-print"
+          ],
+          "guidance": {
+            "actions": [
+              "For a local job, use Start on the touchscreen and select the prepared file. Review its mapping and on-screen preferences.",
+              "For Snapmaker Orca over LAN, first put printer and computer on the same network. Enable Settings > LAN Mode on the U1, add the printer in Orca by IP/search, and confirm the request on the printer.",
+              "After slicing, use Upload and Print when ready. Upload alone transfers a file without necessarily starting it."
+            ],
+            "done_when": "The intended job starts and you can observe its initial moves.",
+            "if_stuck": "If connection or transfer fails, follow the official connection guide below. Stop if the displayed job differs; do not bypass warnings.",
+            "sources": [
+              {
+                "creator": "Snapmaker",
+                "url": "https://wiki.snapmaker.com/en/snapmaker_u1/printing_guides/multi-color_printing_guide",
+                "kind": "docs",
+                "credit_status": "named",
+                "note": "U1 file mapping, starting and finishing a print"
+              },
+              {
+                "creator": "Snapmaker",
+                "url": "https://wiki.snapmaker.com/en/snapmaker_orca/qsg",
+                "kind": "docs",
+                "credit_status": "named",
+                "note": "Prepare and send a file with Snapmaker Orca"
+              }
+            ],
+            "last_verified": "2026-10-29",
+            "verification_status": "source-reviewed-not-tested"
+          }
+        },
+        {
+          "id": "watch-first-layer",
+          "text": "Watch the first layer before leaving the printer",
+          "item_id": "stock-burn-in-complete",
+          "optional": false,
+          "requires_steps": [
+            "start-first-print"
+          ],
+          "guidance": {
+            "actions": [
+              "Stay beside the printer for its first layer. Watch whether material stays on the plate instead of collecting on the nozzle or being dragged around."
+            ],
+            "done_when": "The initial paths stay attached and motion proceeds without scraping, collisions or a repeated warning.",
+            "if_stuck": "Pause or cancel a failing print. Keep hands clear of the moving/hot parts, save the message or a photo, and use official support for a new-machine fault.",
+            "sources": [
+              {
+                "creator": "Snapmaker",
+                "url": "https://wiki.snapmaker.com/en/snapmaker_u1/troubleshooting/first_layer_printing_troubleshooting_guide",
+                "kind": "docs",
+                "credit_status": "named",
+                "note": "Stock first-layer checks; ask support before advanced adjustments"
+              }
+            ],
+            "last_verified": "2026-10-29",
+            "verification_status": "source-reviewed-not-tested"
+          }
+        },
+        {
+          "id": "cool-first-print",
+          "text": "Let the plate cool before removing the print",
+          "item_id": "stock-burn-in-complete",
+          "optional": false,
+          "requires_steps": [
+            "watch-first-layer"
+          ],
+          "guidance": {
+            "actions": [
+              "After the job finishes, wait for the bed to return to room temperature before removing the part."
+            ],
+            "done_when": "The finished part is removed after cooling and the plate is ready for the next check.",
+            "if_stuck": "Do not force a stuck part from a hot plate. Follow the plate’s own care guide if it will not release.",
+            "sources": [
+              {
+                "creator": "Snapmaker",
+                "url": "https://wiki.snapmaker.com/en/snapmaker_u1/printing_guides/multi-color_printing_guide",
+                "kind": "docs",
+                "credit_status": "named",
+                "note": "U1 file mapping, starting and finishing a print"
+              }
+            ],
+            "last_verified": "2026-10-29",
+            "verification_status": "source-reviewed-not-tested"
+          }
+        },
+        {
+          "id": "test-four-heads",
+          "text": "Run a single-color print from each of the four toolheads; count an earlier single-color print if already done",
+          "item_id": "stock-burn-in-complete",
+          "optional": false,
+          "requires_steps": [
+            "cool-first-print"
+          ]
         },
         {
           "id": "test-four-color",
           "text": "Run one four-color print with a prime tower and watch the swaps, parking and loading.",
           "item_id": "stock-burn-in-complete",
-          "optional": false
+          "optional": false,
+          "requires_steps": [
+            "test-four-heads"
+          ]
         },
         {
           "id": "save-baseline",
           "text": "Record idle fan noise and labelled temperature readings after a sustained print. Resolve failures with support before proceeding.",
           "item_id": "stock-burn-in-complete",
-          "optional": false
+          "optional": false,
+          "requires_steps": [
+            "test-four-color"
+          ]
         }
       ]
     },
@@ -258,6 +520,34 @@
           "optional": true
         }
       ]
+    }
+  ],
+  "milestones": [
+    {
+      "id": "first-print-ready",
+      "title": "Ready to start the first print",
+      "step_ids": [
+        "prepare-bench",
+        "assemble-printer",
+        "stock-calibration",
+        "prepare-first-file",
+        "load-first-filament",
+        "check-first-print"
+      ],
+      "complete_text": "First-print preparation checks are marked. Start the prepared job and watch the first layer."
+    },
+    {
+      "id": "stock-baseline",
+      "title": "Stock baseline checked",
+      "step_ids": [
+        "start-first-print",
+        "watch-first-layer",
+        "cool-first-print",
+        "test-four-heads",
+        "test-four-color",
+        "save-baseline"
+      ],
+      "complete_text": "Stock-test checks are marked. You can keep printing; hardware and firmware changes are optional."
     }
   ]
 }

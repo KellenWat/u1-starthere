@@ -1,0 +1,7 @@
+[
+  {"name":"assembled owner needs initialization","choices":["new","assembled"],"step_id":"stock-calibration"},
+  {"name":"new owner needs physical filament loading","choices":["new","filament"],"step_id":"load-first-filament"},
+  {"name":"filament not yet loaded is setup, not a fault","choices":["problem","filament","first-load"],"step_id":"load-first-filament"},
+  {"name":"owner needs a printer-ready file","choices":["new","file"],"step_id":"prepare-first-file"},
+  {"name":"non-RFID spool needs manual material information","choices":["problem","filament","identify","no","manual"],"step_id":"load-first-filament"}
+]

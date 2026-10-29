@@ -6,11 +6,12 @@
     "license",
     "imported_at",
     "attribution",
-    "phases"
+    "phases",
+    "milestones"
   ],
   "properties": {
     "version": {
-      "const": "1.4.0"
+      "const": "1.5.0"
     },
     "license": {
       "const": "CC-BY-4.0"
@@ -78,9 +79,94 @@
                 "optional": {
                   "type": "boolean",
                   "default": false
+                },
+                "requires_steps": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "$ref": "common.schema.json#/$defs/id"
+                  }
+                },
+                "guidance": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "actions",
+                    "done_when",
+                    "if_stuck",
+                    "sources",
+                    "last_verified",
+                    "verification_status"
+                  ],
+                  "properties": {
+                    "actions": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "done_when": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "if_stuck": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sources": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "$ref": "common.schema.json#/$defs/source"
+                      }
+                    },
+                    "last_verified": {
+                      "$ref": "common.schema.json#/$defs/date"
+                    },
+                    "verification_status": {
+                      "const": "source-reviewed-not-tested"
+                    }
+                  }
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "milestones": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "title",
+          "step_ids",
+          "complete_text"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "step_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "$ref": "common.schema.json#/$defs/id"
+            }
+          },
+          "complete_text": {
+            "type": "string",
+            "minLength": 1
           }
         }
       }

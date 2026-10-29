@@ -59,6 +59,39 @@ of the quiet decorative rules. Preserve native keyboard controls.
 
 ## Earlier iterations
 
+### Owner walkthrough audit
+
+Treat the first print as the new owner's goal. Before each unfamiliar action,
+show the prerequisites, a short procedure, an observable completion check and
+a recovery route. Keep the current white/gray/blue tokens and native type.
+Checkbox labels name the task; an adjacent native disclosure holds its guide.
+Open the requested step's guide (or the next unfinished guide) so the person
+sees instructions before a catalog link. A compact readiness summary separates
+first-print preparation from optional improvements. All procedural content,
+sources and dates live in phases.json.
+
+```text
+Ready to start the first print: 3 of 6 checks marked
+Next unchecked check: Load PLA for the first print
+
+[ ] Load PLA for the first print
+    Before: ...
+    Do: ordered steps
+    Done when: ...
+    If stuck: ...       official guide / support
+```
+
+Review: a prettier checkbox would preserve the missing instruction. Add the
+instruction and success condition, not more decoration. Preserve existing
+step IDs/progress; new checks start unchecked. Readiness is owner-recorded
+checklist state, never a claim that StartHere inspected or controls a printer.
+Shared tree routes land on the relevant track step and expose its prerequisites.
+
+Phone review caught an inherited selector applying the phase header's four-column
+grid to nested instruction summaries. Scope phase-header styles to direct-child
+summaries. Focus the native instruction summary when opening a linked step,
+instead of outlining/announcing the entire long instruction block.
+
 ## Software documentation expansion
 
 Keep the existing native gray/white/blue system. Add a Software & integrations

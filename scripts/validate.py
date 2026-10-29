@@ -164,6 +164,44 @@ def validate_documents(documents: dict, root: Path = ROOT) -> list[str]:
                 errors.append(f"{step['id']}: track introduces item before its earliest phase")
     if len(step_ids) != len(set(step_ids)):
         errors.append("phases.json: duplicate track step IDs")
+    step_positions = {key: index for index, key in enumerate(step_ids)}
+    for phase in phases:
+        for step in phase["steps"]:
+            key = step["id"]
+            for dependency in step.get("requires_steps", []):
+                if dependency not in step_positions:
+                    errors.append(f"{key}: missing prerequisite step {dependency}")
+                elif step_positions[dependency] >= step_positions[key]:
+                    errors.append(f"{key}: prerequisite step must appear earlier: {dependency}")
+                elif not step.get("optional") and any(candidate["id"] == dependency and candidate.get("optional") for stage in phases for candidate in stage["steps"]):
+                    errors.append(f"{key}: required step must not depend on optional step {dependency}")
+            guide = step.get("guidance")
+            if not guide:
+                continue
+            if not documents["phases"]["imported_at"] <= guide["last_verified"] <= date.today().isoformat():
+                errors.append(f"{key}: guide review date must be between import and today")
+            for source in guide["sources"]:
+                if not source["creator"] or source["credit_status"] != "named":
+                    errors.append(f"{key}: guide source must preserve named creator credit")
+                parsed = urlsplit(source["url"])
+                query_keys = {name.lower() for name, _ in parse_qsl(parsed.query)}
+                if parsed.username or parsed.password or not parsed.hostname:
+                    errors.append(f"{key}: invalid public guide URL")
+                if query_keys & {"ref", "referral", "aff", "affiliate", "tag", "aff_id"} or any(name.startswith("utm_") for name in query_keys):
+                    errors.append(f"{key}: affiliate/tracking parameters in guide URL")
+                if parsed.path.lower().endswith((".stl", ".3mf", ".bin", ".uf2", ".pdf")):
+                    errors.append(f"{key}: guide must link to creator page, not a direct third-party file")
+    milestone_ids = []
+    optional_steps = {step["id"] for phase in phases for step in phase["steps"] if step.get("optional")}
+    for milestone in documents["phases"]["milestones"]:
+        milestone_ids.append(milestone["id"])
+        for key in milestone["step_ids"]:
+            if key not in step_positions:
+                errors.append(f"{milestone['id']}: missing milestone step {key}")
+            if key in optional_steps:
+                errors.append(f"{milestone['id']}: readiness must not require optional step {key}")
+    if len(milestone_ids) != len(set(milestone_ids)):
+        errors.append("phases.json: duplicate milestone IDs")
 
     journey = documents["journey"]
     node_map = {node["id"]: node for node in journey["nodes"]}
@@ -173,6 +211,8 @@ def validate_documents(documents: dict, root: Path = ROOT) -> list[str]:
         errors.append("journey.json: missing start node")
     fix_ids = {card["id"] for card in fixes}
     for node in journey["nodes"]:
+        if "step_id" in node and node["step_id"] not in step_positions:
+            errors.append(f"{node['id']}: missing track destination {node['step_id']}")
         if node["kind"] == "fix" and node["fix_id"] not in fix_ids:
             errors.append(f"{node['id']}: missing fix {node['fix_id']}")
         for target in node.get("item_ids", []):

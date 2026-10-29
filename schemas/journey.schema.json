@@ -13,7 +13,7 @@
   ],
   "properties": {
     "version": {
-      "const": "1.4.0"
+      "const": "1.5.0"
     },
     "license": {
       "const": "CC-BY-4.0"
@@ -142,6 +142,9 @@
             "items": {
               "$ref": "common.schema.json#/$defs/id"
             }
+          },
+          "step_id": {
+            "$ref": "common.schema.json#/$defs/id"
           }
         },
         "allOf": [
@@ -209,6 +212,20 @@
                 "help",
                 "item_ids"
               ]
+            }
+          },
+          {
+            "if": {
+              "required": [
+                "step_id"
+              ]
+            },
+            "then": {
+              "properties": {
+                "kind": {
+                  "const": "track"
+                }
+              }
             }
           }
         ]

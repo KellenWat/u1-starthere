@@ -355,6 +355,28 @@ match the JSON. The optional authoring script is not a deployment build step.
     those extra filters when needed. Track stage links scroll in one row.
     This is a design iteration; M5 embed/freshness and M6 remain deferred.
 
+44. **First-print audit:** address the missing bridge between assembly and
+    printing before encouraging community upgrades. Contract 1.5.0 adds eight
+    guided assembly/first-use checks with prerequisites, instructions, observable
+    completion criteria, recovery advice and credited official sources.
+45. **Material scope:** the beginner loading route follows official PLA/PETG
+    automatic-loading guidance. TPU links to the dedicated manual-loading guide.
+    A missing RFID label leads to material/color entry, not an assumed fault.
+46. **Readiness and saved progress:** retain existing version-1 progress and
+    stable IDs, leaving new checks unchecked. Readiness milestones include
+    prerequisites and offer one next unchecked action. Optional purchases and
+    modifications never gate the first print. Checks are owner-recorded, not
+    machine-verified.
+47. **File assumptions:** do not assume a demo is preinstalled. Offer a local
+    compatible demo conditionally, otherwise an official test model sliced for
+    the U1. Explain LAN upload versus starting a print. Do not invent an offline
+    SD/USB transfer procedure from inconsistent documentation.
+48. **Evidence limits:** the walkthrough uses documentation review and browser
+    scenarios, not recruited participants or a physical U1 print. Source review
+    is labeled accordingly. [Owner journey audit](USER_JOURNEY_AUDIT.md) records
+    findings, changes, validation and remaining usability questions. The current
+    track has 38 steps; the connected journey has 48 nodes. M5/M6 remain deferred.
+
 ## Source review and remaining content work
 
 Source pages were reviewed on 2026-10-28 for Paxx12, its RFID/Spoolman/heater
