@@ -231,11 +231,21 @@ match the JSON. The optional authoring script is not a deployment build step.
     native form controls and visible keyboard focus.
 26. **Sharing and exports:** versioned URL-hash state only; no planner
     localStorage, backend or printer connection. Normal scrolling plus
-    explicit Continue/Skip actions; earlier answers remain editable. Print
+    explicit advancement; earlier answers remain editable. Print
     view separates shopping and printed parts, and includes full guidance;
     Markdown retains reasons, warnings, exclusions and creator credits.
     Clipboard failure exposes selectable text. Invalid links fall back with
     a notice. Keyboard skip-to-content preserves the encoded answers.
+27. **Minimal decision diagram (owner refinement):** each question now fills
+    a screen, with connected rectangular choice nodes and automatic scrolling
+    after a single choice. Selecting an existing default also advances. Earlier
+    screens remain editable through ordinary scrolling or Back. The concerns
+    question allows zero, one or two selections and uses a connected Continue
+    node so the first selection does not unexpectedly end that choice. The
+    sidebar and accordion intake are removed. Shared links open the plan with
+    Edit answers. Native buttons work with Tab, Enter and Space; focus follows
+    the next question, and reduced motion uses immediate scrolling. This is
+    an M3 presentation refinement; planner rules and M4 scope stay unchanged.
 
 ## Source review and remaining content work
 

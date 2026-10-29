@@ -1,5 +1,38 @@
 # M3 validation evidence
 
+## Owner refinement: full-screen decision diagram
+
+Replaced the intake accordion and sidebar with connected choice nodes on a
+white canvas. Each question fills the viewport (below the desktop toolbar).
+Single-choice clicks and Enter/Space reveal, focus and automatically scroll
+to the next question. The multi-choice concern node has an explicit Continue
+node, supporting zero, one or two concerns. Prior screens stay editable.
+The engine, catalog data and output/export renderers were not changed.
+
+Browser checks passed in Chromium at 1280×900, 390×844 and 320×740:
+
+- Selecting the default stock node still advances. Desktop next-question top
+  is 89 px below the toolbar, height 811 px in a 900 px viewport.
+- Enter on a material branch and Space on the final location branch advance
+  and transfer focus. The final result exposes 12 reason-chip groups for its
+  12 steps in the checked ABS/noise/fumes route.
+- Concerns stay on screen after the first selection; a third is rejected
+  with an announced explanation. Continue advances with the chosen pair.
+- Back returns to the preceding node and preserves choices. Skip/current
+  answer advances. No horizontal overflow at either phone width.
+- Copy share link reports success. Reload opens the shared result; Edit
+  answers restores the selected ABS branch. Print view and Back still work.
+- Smooth scrolling is conditional on `prefers-reduced-motion`; reduced motion
+  uses immediate scrolling. No scroll snapping or forced scrolling on wheel
+  movement. Tests are viewport simulations, not physical-device tests.
+
+Three additional automated checks cover every engine intake branch, immutable
+concern toggling/limit, and selected/hidden node rendering. The complete suite
+now has 37 JavaScript tests, including the unchanged five golden personas.
+README decision 27 records the interaction assumption. M4 remains deferred.
+
+## Original M3 acceptance
+
 Local acceptance checks and [GitHub Actions run #6](https://github.com/KellenWat/u1-starthere/actions/runs/40791919046)
 passed on 2026-10-28 for commit `ba097fa89aec402bca104c72da86c14dc39aa01f`.
 The successful run checked all five golden personas, 34 JavaScript tests,

@@ -74,7 +74,33 @@ controls. Preserve the brief's deterministic planner, prerequisite/gate
 ordering, visible conflicts, reason chips and budget deferrals underneath.
 M3 implements this direction. The home page now links to the working planner.
 
-## M3 decision-path layout
+## Current decision diagram (owner refinement)
+
+Use a white canvas, ink `#1d1d1f`, secondary gray `#626268`, connector
+gray `#c8c8ce`, and selection blue `#0071e3`. Retain native system typography.
+Each question occupies at least one viewport. Center its question block above
+connected rectangular choice nodes; the selected branch turns blue. Remove
+the sidebar, accordion panels, shadows and large introductory copy here.
+
+```text
+                 [ Where are you now? ]
+                           |
+             +-------------+-------------+
+        [ Stock U1 ]                 [ Some mods ]
+             |
+             v  select, reveal and scroll one screen
+                 [ What will you print? ]
+```
+
+Earlier screens remain in the document for editing; a Back action returns to
+the preceding node. Single choices advance immediately, including selecting
+the current default. The concerns node allows up to two toggles, then an
+explicit connected Next node (including none). Respect reduced motion and
+move keyboard focus with the newly revealed question. Shared links open the
+result with an Edit answers action. Keep the full credited output and exports.
+This replaces generic cards with a diagram whose lines describe real choices.
+
+## Previous M3 decision-path layout
 
 Keep earlier answers as collapsed summaries and reveal the next question on
 Continue/Skip. On desktop, a quiet sidebar previews relevant credited projects
