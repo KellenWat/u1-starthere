@@ -34,7 +34,7 @@ The owner's macOS-inspired theme is applied across the site.
 **M4 complete: connected guide, symptom search and all seed rankings pass locally and in CI.**
 The owner's latest direction adds a shared decision map: clear observations
 open matching fix cards, uncertain answers lead to another question, and goals
-lead to a conditional planner. `/fixes/` searches all 12 cards. Every seed
+lead to a conditional planner. `/fixes/` searches 16 cards and 37 documented codes. Every seed
 symptom and additional authored phrase ranks its own card first. Source
 limitations, stop conditions and related-item links stay visible. See
 [M4 validation evidence](M4_VALIDATION.md) for final local and CI evidence.
@@ -317,6 +317,26 @@ match the JSON. The optional authoring script is not a deployment build step.
     category and platform filter. Resource filters last for the current visit;
     catalog filters are shareable in the URL. No added browser storage.
 
+36. **Owner-requested code mappings (2026-10-29):** the later request to add
+    error-code-to-fix guidance extends the brief's original keyword-only scope.
+    Contract 1.4.0 stores 37 explicit mappings across eight fault/notice families
+    in `fixes.json`, with credited evidence, dates and source-review status.
+    This is a curated lookup; unknown codes link to the official reference.
+    No numeric prefix is interpreted as a diagnosis or a printer command.
+37. **Corrected seed association:** `0002-0523-0001-0045` belongs to the new
+    pogo-contact fault card, not the reminder-loop card. Maintenance notice
+    `0001-0523-0000-0037` remains separate. All mappings were checked against
+    Snapmaker's table and linked articles; no printer/firmware testing is claimed.
+38. **Mixed community evidence:** the homing card credits the forum reports
+    by edstewbob, 0rfar and ni42. Centering helped some owners and failed for
+    another, who received a replacement. Keep the official checks first and
+    do not present the anecdote as a guaranteed current-firmware repair.
+39. **Code search behavior:** one complete identifier is required. Normalize
+    spaces/hyphens or compact digits, reject partial/multiple identifiers, and
+    never substitute a similar number. Keep symptom search available separately.
+    Expandable code evidence follows the checks to keep stop conditions visible
+    on a phone. All four new guides are reachable in the connected journey.
+
 ## Source review and remaining content work
 
 Source pages were reviewed on 2026-10-28 for Paxx12, its RFID/Spoolman/heater
@@ -335,9 +355,10 @@ Deferred source gaps are explicit in the data:
 - BIQU PopCap, PopStatus and PopStation Mini retain a manufacturer homepage
   fallback pending exact product URLs. Generic support-index links on fixes
   are labeled as such and do not substantiate symptom-specific claims.
-- Homing-center, grease/calibration and cover-mode fixes come from the brief;
-  the pogo reminder example and code also require symptom-specific review.
-  These must not be presented as independently verified repairs.
+- Homing, nozzle/calibration, loading-sensor and pogo guidance received specific
+  source review on 2026-10-29. [Code coverage](ERROR_CODE_COVERAGE.md) records
+  the supported families and correction to the seed example. Source review is
+  not a reproduced repair. The cover-mode card still needs specific review.
 - Sidecar's source currently describes a development preview, not a ready
   installation. Preserve that warning in future catalog and planner output.
 

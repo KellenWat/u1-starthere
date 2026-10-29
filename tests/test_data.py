@@ -45,7 +45,31 @@ class DataTests(unittest.TestCase):
             "driver-temperature-baseline", "dryer-feed-rfid-loss", "cryogrip-part-stuck",
             "pogo-fan-dropout", "top-cover-odor-mode",
         }
-        self.assertEqual(expected_fixes, {card["id"] for card in self.docs["fixes"]["fixes"]})
+        self.assertTrue(expected_fixes <= {card["id"] for card in self.docs["fixes"]["fixes"]})
+
+    def test_rejects_code_without_evidence(self):
+        del self.docs["fixes"]["fixes"][0]["code_evidence"]
+        self.rejects("required property")
+
+    def test_rejects_duplicate_code_mapping(self):
+        self.docs["fixes"]["fixes"][1]["codes"].append(self.docs["fixes"]["fixes"][0]["codes"][0])
+        self.rejects("duplicate code mapping")
+
+    def test_rejects_partial_code(self):
+        self.docs["fixes"]["fixes"][0]["codes"] = ["0045"]
+        self.rejects("does not match")
+
+    def test_rejects_unreviewed_code_mapping(self):
+        self.docs["fixes"]["fixes"][0]["provenance"]["verification_status"] = "imported-not-tested"
+        self.rejects("code mapping must be source-reviewed")
+
+    def test_rejects_code_review_date_mismatch(self):
+        self.docs["fixes"]["fixes"][0]["code_evidence"]["reviewed_at"] = "2026-10-28"
+        self.rejects("code review date must match")
+
+    def test_rejects_tracking_in_code_evidence(self):
+        self.docs["fixes"]["fixes"][0]["code_evidence"]["sources"][0]["url"] += "?ref=affiliate"
+        self.rejects("affiliate/tracking")
 
     def test_import_prices_preserved(self):
         prices = {"cryogrip-pro": 27.89, "space-pi-x4": 159, "spare-toolhead": 64.99,

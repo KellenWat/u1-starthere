@@ -37,7 +37,7 @@ test('editing an earlier route removes downstream assumptions before a new branc
   assert.deepEqual(walk(changed).state.bothers,['color-count']);
   assert.equal(walk(changed).state.materials,'colors');
 });
-test('every authored node and all 12 fix destinations are reachable',()=>{
+test('every authored node and every fix destination are reachable',()=>{
   const reached=new Set(),pending=[data.start],seenFixes=new Set();
   while(pending.length){const id=pending.pop();if(reached.has(id))continue;const node=data.nodes.find(node=>node.id===id);assert.ok(node,id);reached.add(id);if(node.fix_id)seenFixes.add(node.fix_id);pending.push(...edges(node).map(edge=>edge.next));}
   assert.equal(reached.size,data.nodes.length);

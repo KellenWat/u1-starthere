@@ -9,7 +9,7 @@ const pages = [
   {file:'catalog/index.html',page:'catalog',base:'../',title:'Catalog — U1 StartHere',description:'Browse U1 setup, printed mods, purchases and settings by cost, difficulty and stage.'},
   {file:'start/index.html',page:'start',base:'../',title:'Startup track — U1 StartHere',description:'Work through your U1 setup, stock tests, first mods and tuning at your own pace.'},
   {file:'plan/index.html',page:'plan',base:'../',title:'What’s next? — U1 StartHere',description:'Follow a scrolling decision path to a deterministic, priced U1 plan with prerequisites and credited community sources.'},
-  {file:'fixes/index.html',page:'fixes',base:'../',title:'Fixes — U1 StartHere',description:'Search U1 symptoms for credited community guides with ordered checks and explicit stop conditions.'},
+  {file:'fixes/index.html',page:'fixes',base:'../',title:'Fixes — U1 StartHere',description:'Search U1 symptoms or documented error codes for sourced checks and explicit stop conditions.'},
   ...items.map(item=>({file:`item/${item.id}/index.html`,page:'item',base:'../../',title:`${item.title} — U1 StartHere`,description:item.summary,content:renderItem(item,items,phases,'../..')}))
 ];
 let stale = 0;

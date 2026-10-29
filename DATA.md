@@ -1,4 +1,4 @@
-# U1 StartHere data contract (1.3.0)
+# U1 StartHere data contract (1.4.0)
 
 The canonical authored content is `data/items.json`, `data/fixes.json` and
 `data/phases.json`, plus the routing-only `data/journey.json`. Consumers must render records from these files; catalog
@@ -17,7 +17,7 @@ Every file is an object with these required properties:
 
 | Key | Meaning |
 | --- | --- |
-| `version` | Contract version, currently `1.3.0`; not a firmware version |
+| `version` | Contract version, currently `1.4.0`; not a firmware version |
 | `license` | `CC-BY-4.0` for original curated content |
 | `imported_at` | ISO date of the seed import |
 | `attribution` | Curator, license URL, supplied-source titles/authorship and reuse notice |
@@ -129,20 +129,34 @@ and normalizes it into the existing version-1 hash format. No IDs were renamed.
 `id`, `title`, `symptoms`, `likely_cause`, `steps`, `stop_if`, `related_items`,
 `codes`, `source` and `last_verified` follow the brief. In v1, `symptoms`
 contains at least three owner-style phrasings; `steps` is an ordered array.
-`related_items` references item IDs. `codes` holds optional keyword strings,
-never a general error-code decoder.
+`related_items` references item IDs. `codes` holds explicit complete identifiers
+in `0000-0000-0000-0000` form. Empty arrays are valid for symptom-only cards.
+Contract 1.4.0 adds `code_evidence`, required exactly when codes are present:
+`reviewed_at` (same date as `last_verified`), `status`
+(`source-reviewed-not-tested`), an explanatory `note`, and `sources`
+(one or more credited source objects). Duplicate codes across cards are invalid.
+Code evidence URLs receive the same tracking/file/credit checks as item sources.
 
 Additional fields are `severity` (`info`, `caution`, `stop`),
 `verified_firmware` (nullable), `support_url` (official support), and
 `provenance`. Preserve stop conditions, severity and evidence limitations in
 the later fix UI. A suspected cause is not a diagnosis.
 
-M4's 12 fixtures in `tests/fixtures/fix-search.json` check the first seed
-phrase on every card. All additional authored symptom phrases are also tested.
+M4's 12 fixtures in `tests/fixtures/fix-search.json` preserve the original seed
+rankings. All additional authored symptom phrases are also tested.
 Search normalizes Unicode/case/punctuation and removes common stopwords.
 Exact phrases outrank partial matches; otherwise score by coverage, title
 matches and inverse term frequency. Less than 30% query-token coverage is not
-a match. Stable ID breaks ties. Codes are keywords, not an error decoder.
+a match. Stable ID breaks ties.
+
+Code-shaped input follows a separate exact-match path. Spaces, ordinary/Unicode
+hyphens and a compact 16-digit form normalize to the complete identifier; a code
+may be pasted with explanatory text. Partial, malformed, multiple distinct or
+unknown codes never fall back to keyword scoring. Query links use `/fixes/?q=`.
+The UI offers the official reference for unmapped codes. No wildcard expansion,
+severity inference, printer commands or generalized decoder is implemented.
+`tests/fixtures/error-codes.json` pins representative source-to-card mappings;
+all 37 identifiers and supported input variants are exercised in tests.
 
 ## Connected journey records
 

@@ -1,5 +1,5 @@
 {
-  "version": "1.3.0",
+  "version": "1.4.0",
   "license": "CC-BY-4.0",
   "imported_at": "2026-10-28",
   "attribution": {
@@ -352,6 +352,11 @@
           }
         },
         {
+          "id": "filament-printing-anomaly",
+          "label": "Printing pauses with a feed anomaly",
+          "next": "fix-filament-printing-anomaly"
+        },
+        {
           "id": "other",
           "label": "Something else",
           "next": "unmatched"
@@ -444,6 +449,21 @@
           "id": "fan",
           "label": "One toolhead fan cuts out",
           "next": "fix-pogo-fan-dropout"
+        },
+        {
+          "id": "pogo-contact-anomaly",
+          "label": "Pogo contact fault during a swap",
+          "next": "fix-pogo-contact-anomaly"
+        },
+        {
+          "id": "toolhead-picking-failure",
+          "label": "Toolhead 2 cannot pick or park",
+          "next": "fix-toolhead-picking-failure"
+        },
+        {
+          "id": "toolhead-not-parked",
+          "label": "A seated head is reported detached",
+          "next": "fix-toolhead-not-parked"
         },
         {
           "id": "other",
@@ -777,6 +797,30 @@
         "full-spectrum"
       ],
       "next": "software"
+    },
+    {
+      "id": "fix-pogo-contact-anomaly",
+      "kind": "fix",
+      "fix_id": "pogo-contact-anomaly",
+      "next": "followup"
+    },
+    {
+      "id": "fix-toolhead-picking-failure",
+      "kind": "fix",
+      "fix_id": "toolhead-picking-failure",
+      "next": "followup"
+    },
+    {
+      "id": "fix-toolhead-not-parked",
+      "kind": "fix",
+      "fix_id": "toolhead-not-parked",
+      "next": "followup"
+    },
+    {
+      "id": "fix-filament-printing-anomaly",
+      "kind": "fix",
+      "fix_id": "filament-printing-anomaly",
+      "next": "followup"
     }
   ]
 }

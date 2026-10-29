@@ -48,6 +48,19 @@ def validate_documents(documents: dict, root: Path = ROOT) -> list[str]:
     if phase_ids != list(range(7)):
         errors.append("phases.json: phases must appear once each, in order 0 through 6")
 
+    code_owners = {}
+    for card in fixes:
+        evidence = card.get("code_evidence")
+        for code in card["codes"]:
+            if code in code_owners:
+                errors.append(f"{card['id']}: duplicate code mapping {code} also belongs to {code_owners[code]}")
+            code_owners[code] = card["id"]
+        if evidence:
+            if evidence["reviewed_at"] != card["last_verified"]:
+                errors.append(f"{card['id']}: code review date must match last_verified")
+            if card["provenance"]["verification_status"] != "source-reviewed-not-tested":
+                errors.append(f"{card['id']}: code mapping must be source-reviewed-not-tested")
+
     for kind, records in (("items", items), ("fixes", fixes)):
         ids = [record["id"] for record in records]
         if len(set(ids)) != len(ids):
@@ -76,6 +89,10 @@ def validate_documents(documents: dict, root: Path = ROOT) -> list[str]:
                         errors.append(f"{key}: self-reference in {field}")
             urls = [record["source"]["url"]]
             urls.extend(link["url"] for link in record.get("software", {}).get("docs", []))
+            for source in record.get("code_evidence", {}).get("sources", []):
+                if not source["creator"] or source["credit_status"] != "named":
+                    errors.append(f"{key}: code evidence must preserve named creator credit")
+                urls.append(source["url"])
             for url in urls:
                 parsed = urlsplit(url)
                 query_keys = {name.lower() for name, _ in parse_qsl(parsed.query)}

@@ -1,0 +1,11 @@
+[
+  {"query":"0001-0523-0000-0037","id":"pogo-cleaning-reminder-loop"},
+  {"query":"0002-0523-0001-0045","id":"pogo-contact-anomaly"},
+  {"query":"0002-0528-0000-0011","id":"homing-anomaly"},
+  {"query":"0003-0530-0001-0008","id":"nozzle-grease-calibration"},
+  {"query":"0002-0525-0002-0032","id":"runout-sensor-errors"},
+  {"query":"0002-0523-0003-0038","id":"filament-printing-anomaly"},
+  {"query":"0002-0523-0001-0021","id":"toolhead-picking-failure"},
+  {"query":"0002-0523-0001-0035","id":"toolhead-picking-failure"},
+  {"query":"0002-0523-0001-0040","id":"toolhead-not-parked"}
+]
