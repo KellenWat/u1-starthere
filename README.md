@@ -43,6 +43,13 @@ for `d4e0b03`: 63 JavaScript tests, 31 Python tests, four data documents and
 all 43 generated pages.
 M5 and M6 have not started.
 
+**Post-M4 software coverage pass:** added 25 source-reviewed guides and
+classified six existing integrations, for 31 software entries in the 63-item
+catalog. Eight software goals connect discovery to creator documentation and
+explicit planner requests. The requested desktop/phone review led to a second
+iteration: compact expandable cards, visible status, and platform filters.
+See [coverage and sources](SOFTWARE_COVERAGE.md) and [validation](SOFTWARE_VALIDATION.md).
+
 M1 acceptance evidence:
 
 | Criterion | Evidence |
@@ -284,6 +291,28 @@ match the JSON. The optional authoring script is not a deployment build step.
     unrelated queries return an honest empty state. A source index is disclosed
     as such; no imported record gained a verification claim. Search and route
     state live in URLs only. No additional browser storage or tracking.
+32. **Software coverage (owner request):** document the missing plugins,
+    firmware features, companion apps, integrations and reader hardware as
+    distinct types. New software is `on_request`; unknown service, platform or
+    hardware prices remain variable. Firmware prerequisites and stock burn-in
+    still apply to requested printer-side features. Eight goal-based resource
+    groups reference catalog IDs without copying their content into JS.
+33. **Source status:** guides are source-reviewed, not installed or tested.
+    Experimental, beta, proof-of-concept and unmaintained status remains
+    visible. SpoolTagger and baze reader metadata relies on the firmware
+    directory where creator documentation could not be read; that limitation
+    is disclosed. Current SpoolKid development is newer than its public code
+    snapshot. No claim of exhaustive community coverage or tested firmware.
+34. **Contract 1.3.0:** optional `software` metadata provides platform,
+    status, firmware/account/hardware/license notes, setup outline and credited
+    documentation links. Journey `resources` nodes reference `item_ids`.
+    Validation covers these references and outbound documentation URLs.
+    Existing IDs and version-1 plan/journey links remain supported.
+35. **Second iteration after review:** compact cards with expandable
+    requirements, visible status and platform filtering replace tall software
+    comparison panels. The catalog also exposes a Software & integrations
+    category and platform filter. Resource filters last for the current visit;
+    catalog filters are shareable in the URL. No added browser storage.
 
 ## Source review and remaining content work
 

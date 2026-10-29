@@ -1,6 +1,6 @@
 import {normalizeState} from './planner.mjs';
 
-export function edges(node){return node.kind==='fix'?[{id:'next',label:'Continue',next:node.next}]:(node.choices||[]);}
+export function edges(node){return node.kind==='fix'||node.kind==='resources'&&node.next?[{id:'next',label:node.kind==='resources'?'Explore another software goal':'Continue',next:node.next}]:(node.choices||[]);}
 export function walkJourney(data,choices,items){
   if(!Array.isArray(choices)||choices.length>40)throw new Error('Invalid journey length');
   const byId=new Map(data.nodes.map(node=>[node.id,node]));

@@ -18,12 +18,13 @@ const list = entries => `<ul class="plain-list">${entries.map(entry => `<li>${en
 export function catalogItems(items, filters = {}) {
   const query = (filters.q || '').trim().toLocaleLowerCase('en-US');
   return items.filter(item =>
-    (!filters.category || item.category === filters.category) &&
+    (!filters.category || (filters.category === 'software' ? Boolean(item.software) : item.category === filters.category)) &&
+    (!filters.platform || item.software?.platforms.includes(filters.platform)) &&
     (!filters.phase || item.phase === Number(filters.phase)) &&
     (!filters.difficulty || item.difficulty <= Number(filters.difficulty)) &&
     (!filters.cost || (filters.cost === 'variable' ? item.cost_usd === null :
       item.cost_usd !== null && item.cost_usd <= Number(filters.cost))) &&
-    (!query || [item.title, item.summary, item.source.creator || '', ...item.tags]
+    (!query || [item.title, item.summary, item.source.creator || '', ...item.tags, ...(item.software?.platforms||[])]
       .join(' ').toLocaleLowerCase('en-US').includes(query))
   ).sort((a,b) => a.phase - b.phase || a.title.localeCompare(b.title, 'en'));
 }
@@ -33,6 +34,7 @@ export function itemCard(item, phases, base) {
   return `<article class="item-card">
     <div class="card-kind"><span>${escape(label(item.category))}</span><span>${escape(label(item.type))}</span></div>
     <h3>${link(itemPath(base, item.id), item.title, 'class="card-link"')}</h3>
+    ${softwareBadges(item)}
     <p class="card-summary">${escape(item.summary)}</p>
     <div class="card-facts"><strong>${escape(money(item.cost_usd))}</strong><span>${escape(duration(item.time_minutes))} estimated</span></div>
     <p class="card-stage">${escape(phase?.name || '')}<span aria-hidden="true"> / </span>${escape(difficulty(item.difficulty))}</p>
@@ -67,12 +69,15 @@ export function renderItem(item, items, phases, base) {
   const status = item.provenance.verification_status === 'source-reviewed-not-tested' ? 'Source reviewed' : 'Imported from the seed';
   return `<div class="detail-nav">${link(path(base,'catalog/'),'Back to catalog')} ${link(path(base,`start/#phase-${item.phase}`),'View this stage in the track')}</div>
     <header class="detail-header"><p class="section-note">${escape(label(item.category))} / ${escape(phase?.name || '')}</p>
-    <h1>${escape(item.title)}</h1><p class="lead">${escape(item.summary)}</p></header>
+    <h1>${escape(item.title)}</h1>${softwareBadges(item)}<p class="lead">${escape(item.summary)}</p></header>
     <dl class="item-facts"><div><dt>Cost</dt><dd>${escape(money(item.cost_usd))}</dd></div>
     <div><dt>Estimated time</dt><dd>${escape(duration(item.time_minutes))}</dd></div>
     <div><dt>Difficulty</dt><dd>${escape(difficulty(item.difficulty))} <small>${item.difficulty} of 5</small></dd></div>
     <div><dt>Reversible</dt><dd>${item.reversible ? 'Usually, yes' : 'Review the guide'}</dd></div></dl>
     <div class="detail-columns"><div>
+      ${item.software?`<section class="detail-section software-requirements"><h2>Will this work for my setup?</h2>${softwareFacts(item)}<a class="button secondary" href="${escape(path(base,'plan/?item='+encodeURIComponent(item.id)))}">Plan this option</a></section>
+      <section class="detail-section"><h2>Setup outline</h2><p class="small">An overview to help you choose. Follow the linked creator guide for the actual installation.</p><ol class="software-steps">${item.software.setup_steps.map(step=>`<li>${escape(step)}</li>`).join('')}</ol></section>
+      <section class="detail-section"><h2>Documentation and creator links</h2><ul class="software-docs">${item.software.docs.map(doc=>`<li>${link(safeLink(doc.url),doc.label)}<small>${escape(doc.creator)}</small></li>`).join('')}</ul></section>`:''}
       <section class="detail-section"><h2>What to budget</h2><p>${escape(item.cost_note)}</p>
       ${item.price_checked_at ? `<p class="muted">Price recorded ${escape(date(item.price_checked_at))}. Check the seller before ordering.</p>` : ''}</section>
       <section class="detail-section"><h2>Before you start</h2>${references(item.requires,'No catalog prerequisites are listed. Check the source guide for the full requirements.')}${notes.length ? list(notes) : ''}</section>
@@ -87,4 +92,21 @@ export function renderItem(item, items, phases, base) {
       <div><dt>Firmware tested</dt><dd>${escape(item.verified_firmware || 'Not tested')}</dd></div></dl>
       <p class="small">${escape(item.provenance.note)}</p><p class="small">We link to the original project. Its own license and instructions apply.</p>
     </aside></div>`;
+}
+
+export function softwareBadges(item){
+  if(!item.software)return '';
+  return `<ul class="software-badges" aria-label="Software type and status"><li>${escape(label(item.software.kind))}</li><li class="software-status status-${escape(item.software.status)}">${escape(label(item.software.status))}</li><li>${escape(item.software.platforms.map(platformLabel).join(', '))}</li></ul>`;
+}
+export const platformLabel=value=>({ios:'iOS',android:'Android',windows:'Windows',macos:'macOS',linux:'Linux',browser:'Web browser',printer:'On the printer','external-device':'External hardware'}[value]||label(value));
+export function softwareFacts(item){
+  const s=item.software;if(!s)return '';
+  return `<dl class="software-facts">${[['Printer / firmware',s.firmware],['Accounts and services',s.accounts],['Extra hardware',s.hardware],['Project license',s.project_license]].map(([name,value])=>`<div><dt>${escape(name)}</dt><dd>${escape(value)}</dd></div>`).join('')}</dl>`;
+}
+export function softwareCard(item,base){
+  return `<article class="software-card" data-software-item="${escape(item.id)}"><h3>${link(itemPath(base,item.id),item.title)}</h3>${softwareBadges(item)}<p>${escape(item.summary)}</p><p class="small software-cost"><strong>${escape(money(item.cost_usd))}</strong></p><details class="software-card-requirements"><summary>Requirements and cost notes</summary><p class="small">${escape(item.cost_note)}</p>${item.software?softwareFacts(item):''}</details><p class="software-credit">${escape(item.source.creator||'Creator credit pending')} · Source ${item.provenance.verification_status==='source-reviewed-not-tested'?'reviewed':'imported'} ${escape(date(item.last_verified))}; firmware not tested.</p><div class="software-actions">${link(itemPath(base,item.id),'Read the guide','class="button secondary"')}<button type="button" class="text-button" data-plan-item="${escape(item.id)}">Add to a plan</button></div></article>`;
+}
+
+export function filterSoftware(items,{platform='',kind=''}={}){
+  return items.filter(item=>(!platform||item.software?.platforms.includes(platform))&&(!kind||item.software?.kind===kind));
 }

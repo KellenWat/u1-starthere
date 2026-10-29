@@ -1,5 +1,36 @@
 # M2 design direction
 
+## Software documentation expansion
+
+Keep the existing native gray/white/blue system. Add a Software & integrations
+route under Explore, Improve and the installed-firmware branch. Group resources
+by the owner's goal: filament inventory, tags/readers, remote access, screen,
+automation, camera and advanced tuning. Use real catalog references, with a
+clear kind/status/platform line and two actions: read the guide or explicitly
+add it to a plan. Detail pages show requirements and short original setup
+outlines beside the credited upstream documentation. No automatic installs.
+
+```text
+Explore → Software & integrations → What do you want to do?
+                                      |
+                            Track and identify filament
+                                      |
+                          credited, comparable tool guides
+```
+
+Review before building: a list of plugins would hide differences between apps,
+firmware features and hardware. Use goal-based groups and visible experimental
+or unmaintained labels. Preserve the fullscreen question sequence; resource
+lists can scroll normally. Review the first implementation at desktop and
+phone sizes, then make a separate refinement based on actual findings.
+
+Second-pass findings: the first inventory card was 806 px tall at 390 px
+width and the catalog had no explicit software/platform filters. The refinement
+uses native expandable requirements, always-visible status badges, a platform
+filter in resource groups, and software/category filters in the catalog. The
+same card is 496 px tall; iOS narrows seven inventory options to two. Source
+caveats stay visible. SpoolLink's platform-dependent cost is now variable.
+
 ## Current iteration: interconnected community map
 
 Use the four-toolhead printer's connected workflow as the visual structure:

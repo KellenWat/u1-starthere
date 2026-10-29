@@ -184,6 +184,19 @@ class DataTests(unittest.TestCase):
         self.docs["journey"]["nodes"].append(node)
         self.rejects("unreachable node")
 
+    def test_rejects_missing_resource_item(self):
+        node = next(node for node in self.docs["journey"]["nodes"] if node["kind"] == "resources")
+        node["item_ids"].append("missing-software")
+        self.rejects("missing resource item")
+
+    def test_rejects_software_tracking_links(self):
+        self.item("helixscreen")["software"]["docs"][0]["url"] += "?ref=affiliate"
+        self.rejects("affiliate/tracking")
+
+    def test_rejects_software_without_setup_outline(self):
+        self.item("helixscreen")["software"]["setup_steps"] = []
+        self.rejects("/software/setup_steps")
+
 
 if __name__ == "__main__":
     unittest.main()

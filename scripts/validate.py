@@ -74,8 +74,9 @@ def validate_documents(documents: dict, root: Path = ROOT) -> list[str]:
                         errors.append(f"{key}: {field} references missing item {target}")
                     if target == key:
                         errors.append(f"{key}: self-reference in {field}")
-            for field in ("url",):
-                url = record["source"][field]
+            urls = [record["source"]["url"]]
+            urls.extend(link["url"] for link in record.get("software", {}).get("docs", []))
+            for url in urls:
                 parsed = urlsplit(url)
                 query_keys = {name.lower() for name, _ in parse_qsl(parsed.query)}
                 if parsed.username or parsed.password or not parsed.hostname:
@@ -157,6 +158,9 @@ def validate_documents(documents: dict, root: Path = ROOT) -> list[str]:
     for node in journey["nodes"]:
         if node["kind"] == "fix" and node["fix_id"] not in fix_ids:
             errors.append(f"{node['id']}: missing fix {node['fix_id']}")
+        for target in node.get("item_ids", []):
+            if target not in item_map:
+                errors.append(f"{node['id']}: missing resource item {target}")
         choices = node.get("choices", [])
         if len({edge["id"] for edge in choices}) != len(choices):
             errors.append(f"{node['id']}: duplicate choice IDs")

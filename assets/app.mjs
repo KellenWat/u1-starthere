@@ -1,4 +1,4 @@
-import {escape as e,label,money,path,itemPath,itemCard,catalogItems} from './view.mjs';
+import {escape as e,label,money,path,itemPath,itemCard,catalogItems,platformLabel} from './view.mjs';
 import {STORAGE_KEY,readProgress,progressCounts} from './progress.mjs';
 import {mountJourney} from './journey-ui.mjs';
 import {mountFixes} from './fix-ui.mjs';
@@ -52,10 +52,11 @@ function catalog() {
   const categories = [...new Set(items.map(item=>item.category))].sort();
   main.innerHTML = `<header class="page-heading"><p class="intro-label">Community projects and practical setup</p><h1>The U1 catalog</h1><p class="lead">Find a useful next step. Check the prerequisites, cost notes and creator’s guide before making a change.</p></header>
     <form class="filters" id="catalog-filters" role="search" aria-label="Filter the catalog"><div class="search-control"><label for="catalog-query">Find an item</label><input id="catalog-query" name="q" type="search" placeholder="Try a material, project or creator" autocomplete="off"></div>
-    <div><label for="category">Category</label><select id="category" name="category">${options([['','All categories'],...categories.map(value=>[value,label(value)])])}</select></div>
+    <div><label for="category">Category</label><select id="category" name="category">${options([['','All categories'],['software','Software & integrations'],...categories.map(value=>[value,label(value)])])}</select></div>
     <div><label for="cost">Cost</label><select id="cost" name="cost">${options([['','Any cost'],['0','Free options'],['50','Up to $50'],['150','Up to $150'],['300','Up to $300'],['variable','Price varies']])}</select></div>
     <div><label for="difficulty">Difficulty</label><select id="difficulty" name="difficulty">${options([['','Any difficulty'],['1','1 — Easy'],['2','Up to 2 — Some setup'],['3','Up to 3 — Hands-on'],['4','Up to 4 — Advanced'],['5','Up to 5 — Experimental']])}</select></div>
     <div><label for="phase">Earliest stage</label><select id="phase" name="phase">${options([['','Any stage'],...phases.map(phase=>[String(phase.phase),phase.name])])}</select></div>
+    <div><label for="platform">Runs on</label><select id="platform" name="platform">${options([['','Any platform'],...[...new Set(items.flatMap(item=>item.software?.platforms||[]))].sort().map(value=>[value,platformLabel(value)])])}</select></div>
     <button type="reset" class="button quiet">Clear filters</button></form>
     <div class="results-heading"><p id="results-count" role="status" aria-live="polite"></p><p class="small">Ordered by earliest stage, then title</p></div><div class="catalog-grid" id="catalog-results"></div>
     <p class="catalog-note">Free means no purchase price; filament and optional hardware can still cost money. All times are estimates. Open an item for its price date, source and limitations.</p>`;

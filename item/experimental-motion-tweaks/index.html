@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f5f5f7">
+  <meta name="description" content="Review Max Speed, TMC AutoTune and reduced-current options before changing motion behavior.">
+  <title>Experimental motion and TMC tweaks — U1 StartHere</title>
+  <link rel="icon" href="../../assets/app-icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script type="module" src="../../assets/app.mjs"></script>
+</head>
+<body data-page="item">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../" aria-label="U1 StartHere home"><img src="../../assets/app-icon.svg" width="36" height="36" alt=""><span>U1 <strong>StartHere</strong><small>A community field guide</small></span></a>
+      <nav aria-label="Main navigation">
+        <a href="../../start/" >Startup track</a>
+        <a href="../../plan/" >What’s next?</a>
+        <a href="../../catalog/" >Catalog</a>
+        <a href="../../fixes/" >Fixes</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="site-main" tabindex="-1"><div class="detail-nav"><a href="../../catalog/" >Back to catalog</a> <a href="../../start/#phase-4" >View this stage in the track</a></div>
+    <header class="detail-header"><p class="section-note">Firmware / Firmware decision</p>
+    <h1>Experimental motion and TMC tweaks</h1><ul class="software-badges" aria-label="Software type and status"><li>Advanced config</li><li class="software-status status-experimental">Experimental</li><li>On the printer</li></ul><p class="lead">Review Max Speed, TMC AutoTune and reduced-current options before changing motion behavior.</p></header>
+    <dl class="item-facts"><div><dt>Cost</dt><dd>Free</dd></div>
+    <div><dt>Estimated time</dt><dd>30 min</dd></div>
+    <div><dt>Difficulty</dt><dd>Advanced <small>4 of 5</small></dd></div>
+    <div><dt>Reversible</dt><dd>Usually, yes</dd></div></dl>
+    <div class="detail-columns"><div>
+      <section class="detail-section software-requirements"><h2>Will this work for my setup?</h2><dl class="software-facts"><div><dt>Printer / firmware</dt><dd>Requires a compatible Paxx12 extended-firmware build; confirm feature availability in its current guide.</dd></div><div><dt>Accounts and services</dt><dd>No separate service account is documented for this setup.</dd></div><div><dt>Extra hardware</dt><dd>Use the existing printer and a device that can open its guide.</dd></div><div><dt>Project license</dt><dd>See the upstream project license and bundled-component notices.</dd></div></dl><a class="button secondary" href="../../plan/?item=experimental-motion-tweaks">Plan this option</a></section>
+      <section class="detail-section"><h2>Setup outline</h2><p class="small">An overview to help you choose. Follow the linked creator guide for the actual installation.</p><ol class="software-steps"><li>Begin with a calibrated stock baseline.</li><li>Read the separate risks for each option and change one setting at a time.</li><li>Run a small supervised test and revert on motion faults.</li></ol></section>
+      <section class="detail-section"><h2>Documentation and creator links</h2><ul class="software-docs"><li><a href="https://snapmakeru1-extended-firmware.pages.dev/tweaks" >Creator documentation</a><small>Paxx12 contributors; JNP-1 motion values</small></li></ul></section>
+      <section class="detail-section"><h2>What to budget</h2><p>No software purchase is listed; existing devices and any external hosting are separate.</p>
+      </section>
+      <section class="detail-section"><h2>Before you start</h2><ul class="plain-list"><li><a href="../../item/paxx12-extended-firmware/" >Paxx12 Extended Firmware</a></li></ul><ul class="plain-list"><li>This integration needs compatible extended firmware.</li></ul></section>
+      <section class="callout caution"><h2>Read before changing anything</h2><p><strong>Warranty risk: Gray.</strong> Review the current terms and the creator's guide.</p><ul class="plain-list"><li>Max Speed and Reduced Current cannot be combined in the documented configuration. Higher limits increase wear; driver changes can cause heat or skipped steps.</li></ul></section>
+
+
+    </div><aside class="source-panel" aria-labelledby="source-heading"><h2 id="source-heading">Go to the source</h2>
+      <p class="creator-name">Paxx12 contributors; JNP-1 motion values</p>
+      <a href="https://snapmakeru1-extended-firmware.pages.dev/tweaks" class="button primary">Open the source page</a>
+      <p>Creator documentation reviewed for this guide. Check the linked project for current releases and requirements.</p>
+      <dl class="source-facts"><div><dt>Source reviewed</dt><dd>Oct 28, 2026</dd></div>
+      <div><dt>Firmware tested</dt><dd>Not tested</dd></div></dl>
+      <p class="small">Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification.</p><p class="small">We link to the original project. Its own license and instructions apply.</p>
+    </aside></div></main>
+  <footer class="site-footer">
+    <div><a class="footer-brand" href="../../">U1 StartHere</a><p>An independent community guide. Not affiliated with Snapmaker.</p></div>
+    <div class="footer-links"><a href="https://github.com/KellenWat/u1-starthere">Project and sources</a><a href="../../data/">Open data</a><a href="../../data/LICENSE.md">Data: CC BY 4.0</a><a href="../../LICENSE">Code: MIT</a></div>
+  </footer>
+</body>
+</html>

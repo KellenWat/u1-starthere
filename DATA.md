@@ -1,4 +1,4 @@
-# U1 StartHere data contract (1.2.0)
+# U1 StartHere data contract (1.3.0)
 
 The canonical authored content is `data/items.json`, `data/fixes.json` and
 `data/phases.json`, plus the routing-only `data/journey.json`. Consumers must render records from these files; catalog
@@ -17,7 +17,7 @@ Every file is an object with these required properties:
 
 | Key | Meaning |
 | --- | --- |
-| `version` | Contract version, currently `1.2.0`; not a firmware version |
+| `version` | Contract version, currently `1.3.0`; not a firmware version |
 | `license` | `CC-BY-4.0` for original curated content |
 | `imported_at` | ISO date of the seed import |
 | `attribution` | Curator, license URL, supplied-source titles/authorship and reuse notice |
@@ -100,6 +100,30 @@ encodes the supplied checklist's optional accessories and purchase triggers;
 these are editorial planning rules, not independently verified compatibility
 claims. Prices, creator credits and verification dates did not change.
 
+## Software metadata (1.3.0)
+
+Catalog records can include a `software` object with:
+
+| Key | Meaning |
+| --- | --- |
+| `kind` | plugin, firmware-feature, companion-app, integration, hardware-integration or advanced-config |
+| `status` | documented, experimental, beta, proof-of-concept or unmaintained; documented is not a test/certification |
+| `platforms` | Data-derived platform tags; display/filter values, not inferred cross-platform compatibility |
+| `firmware`, `accounts`, `hardware`, `project_license` | Plain-language requirements and upstream-license notes |
+| `setup_steps` | Ordered original outline; actual installation remains in the creator guide |
+| `docs` | Credited `{label, url, creator}` links to HTTPS creator/integration pages |
+
+New sources use `provenance.seed: community-docs` with source-reviewed-not-tested
+status and null verified firmware. Existing seed attribution is retained;
+individual records credit the community authors. New guides are optional
+requests. Price `null` remains a quote, including platform-dependent software
+costs. The source's license applies to its files; CC BY covers our curated text.
+
+`resources` journey nodes contain a title, help, `item_ids`, and an optional
+return `next`. Resource references, documentation URLs, schemas and reachability
+are checked in CI. `/plan/?item=stable-item-id` starts an explicit planner request
+and normalizes it into the existing version-1 hash format. No IDs were renamed.
+
 ## Fix records
 
 `id`, `title`, `symptoms`, `likely_cause`, `steps`, `stop_if`, `related_items`,
@@ -165,7 +189,7 @@ staying stock; integration steps are conditional on the firmware decision.
 Null names always require pending credit. A platform homepage is a disclosed
 unresolved source, never a claim that the platform created the model.
 
-`provenance.seed` is `checklist` or `brief`. Its `section` and `note` explain
+`provenance.seed` is `checklist`, `brief` or `community-docs`. Its `section` and `note` explain
 where the facts came from and what is still unknown. A source index or vendor
 homepage is not evidence for a specific repair just because it responds.
 

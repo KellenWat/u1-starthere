@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "license": "CC-BY-4.0",
   "imported_at": "2026-10-28",
   "attribution": {
@@ -96,6 +96,12 @@
       "help": "A specific symptom can lead straight to its guide. A broader goal leads to a plan.",
       "choices": [
         {
+          "id": "software",
+          "label": "Software & integrations",
+          "description": "Apps, firmware features and community tools",
+          "next": "software"
+        },
+        {
           "id": "noise",
           "label": "Less noise",
           "next": "noise",
@@ -170,6 +176,12 @@
       "help": "Your plan will check costs, prerequisites and conflicting routes.",
       "choices": [
         {
+          "id": "software",
+          "label": "Software & integrations",
+          "description": "Apps, firmware features and community tools",
+          "next": "software"
+        },
+        {
           "id": "abs",
           "label": "ABS or ASA",
           "next": "plan",
@@ -219,8 +231,8 @@
       "choices": [
         {
           "id": "installed",
-          "label": "Yes, show settings and integrations",
-          "next": "plan",
+          "label": "Yes, explore features and integrations",
+          "next": "software",
           "set": {
             "stage": "paxx12"
           }
@@ -610,6 +622,161 @@
       "id": "support",
       "kind": "support",
       "title": "Official U1 support"
+    },
+    {
+      "id": "software-inventory",
+      "kind": "resources",
+      "title": "Track my filament",
+      "help": "Compare the requirements, read the creator’s guide, then choose an option to plan. Source review is not a printer compatibility test.",
+      "item_ids": [
+        "spoolman-integration",
+        "spool-link-app",
+        "spoolpainter",
+        "spoolkid",
+        "spooltagger",
+        "spool-studio",
+        "three-dmrp"
+      ],
+      "next": "software"
+    },
+    {
+      "id": "software-tags",
+      "kind": "resources",
+      "title": "Write tags or read from a drybox",
+      "help": "Compare the requirements, read the creator’s guide, then choose an option to plan. Source review is not a printer compatibility test.",
+      "item_ids": [
+        "openspool-ntag215",
+        "printtag-web",
+        "u1-rfid-app",
+        "openspool-mobile",
+        "openrfid",
+        "remote-rfid-wasikuss",
+        "drybox-nfc-baze"
+      ],
+      "next": "software"
+    },
+    {
+      "id": "software-remote",
+      "kind": "resources",
+      "title": "See my printer remotely",
+      "help": "Compare the requirements, read the creator’s guide, then choose an option to plan. Source review is not a printer compatibility test.",
+      "item_ids": [
+        "tailscale-remote-access",
+        "octoeverywhere",
+        "remote-screen",
+        "webrtc-camera"
+      ],
+      "next": "software"
+    },
+    {
+      "id": "software-screen",
+      "kind": "resources",
+      "title": "Change the screen or web interface",
+      "help": "Compare the requirements, read the creator’s guide, then choose an option to plan. Source review is not a printer compatibility test.",
+      "item_ids": [
+        "helixscreen",
+        "fluidd-mainsail-interface",
+        "remote-screen"
+      ],
+      "next": "software"
+    },
+    {
+      "id": "software-automation",
+      "kind": "resources",
+      "title": "Connect monitoring or automation",
+      "help": "Compare the requirements, read the creator’s guide, then choose an option to plan. Source review is not a printer compatibility test.",
+      "item_ids": [
+        "home-assistant-moonraker",
+        "klipper-metrics-exporter",
+        "klipper-print-hooks",
+        "klipper-custom-includes",
+        "print-notifications"
+      ],
+      "next": "software"
+    },
+    {
+      "id": "software-camera",
+      "kind": "resources",
+      "title": "Cameras and timelapses",
+      "help": "Compare the requirements, read the creator’s guide, then choose an option to plan. Source review is not a printer compatibility test.",
+      "item_ids": [
+        "webrtc-camera",
+        "timelapse-support",
+        "timelapse-recovery"
+      ],
+      "next": "software"
+    },
+    {
+      "id": "software-advanced",
+      "kind": "resources",
+      "title": "Review advanced firmware options",
+      "help": "Compare the requirements, read the creator’s guide, then choose an option to plan. Source review is not a printer compatibility test.",
+      "item_ids": [
+        "afc-lite-stub",
+        "adaptive-mesh-processing",
+        "experimental-motion-tweaks",
+        "klipper-custom-includes"
+      ],
+      "next": "software"
+    },
+    {
+      "id": "software",
+      "kind": "question",
+      "title": "What would you like the software to do?",
+      "help": "Choose the job first. We’ll distinguish apps, firmware features and extra hardware.",
+      "choices": [
+        {
+          "id": "inventory",
+          "label": "Track my filament",
+          "next": "software-inventory"
+        },
+        {
+          "id": "tags",
+          "label": "Write tags or read from a drybox",
+          "next": "software-tags"
+        },
+        {
+          "id": "remote",
+          "label": "See my printer remotely",
+          "next": "software-remote"
+        },
+        {
+          "id": "screen",
+          "label": "Change the screen or web interface",
+          "next": "software-screen"
+        },
+        {
+          "id": "automation",
+          "label": "Connect monitoring or automation",
+          "next": "software-automation"
+        },
+        {
+          "id": "camera",
+          "label": "Cameras and timelapses",
+          "next": "software-camera"
+        },
+        {
+          "id": "advanced",
+          "label": "Review advanced firmware options",
+          "next": "software-advanced"
+        },
+        {
+          "id": "slicer",
+          "label": "Explore slicer tools",
+          "next": "software-slicer"
+        }
+      ]
+    },
+    {
+      "id": "software-slicer",
+      "kind": "resources",
+      "title": "Explore slicer tools",
+      "help": "Inspect converted projects and experimental blending before sending anything to the printer.",
+      "item_ids": [
+        "makerworld-u1-converter",
+        "full-spectrum"
+      ],
+      "next": "software"
     }
   ]
 }

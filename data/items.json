@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "license": "CC-BY-4.0",
   "imported_at": "2026-10-28",
   "attribution": {
@@ -704,7 +704,11 @@
         "spoolman-integration",
         "print-notifications",
         "webrtc-camera",
-        "tailscale-remote-access"
+        "tailscale-remote-access",
+        "helixscreen",
+        "octoeverywhere",
+        "remote-screen",
+        "fluidd-mainsail-interface"
       ],
       "provenance": {
         "seed": "checklist",
@@ -751,19 +755,53 @@
       "last_verified": "2026-10-28",
       "verified_firmware": null,
       "tags": [
-        "spoolman"
+        "spoolman",
+        "software",
+        "integration",
+        "documented"
       ],
       "bothers": [
         "dry-filament"
       ],
       "locations": [],
       "warnings": [],
-      "optional_related_items": [],
+      "optional_related_items": [
+        "spool-link-app",
+        "spoolpainter",
+        "spoolkid",
+        "spooltagger",
+        "three-dmrp",
+        "spool-studio"
+      ],
       "provenance": {
         "seed": "checklist",
         "section": "Days 4–5 — integrations",
         "verification_status": "source-reviewed-not-tested",
         "note": "Integration docs reviewed; no service is hosted by StartHere."
+      },
+      "software": {
+        "kind": "integration",
+        "status": "documented",
+        "platforms": [
+          "printer",
+          "browser"
+        ],
+        "firmware": "Compatible extended firmware and a reachable Spoolman server.",
+        "accounts": "Spoolman hosting and access setup are separate from this site.",
+        "hardware": "An existing Spoolman host.",
+        "project_license": "See the current project and bundled-component licenses.",
+        "setup_steps": [
+          "Review the current U1 integration guide.",
+          "Connect the server through firmware configuration.",
+          "Verify a single spool and tag assignment."
+        ],
+        "docs": [
+          {
+            "label": "Project setup guide",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/spoolman",
+            "creator": "Paxx12; Spoolman contributors"
+          }
+        ]
       }
     },
     {
@@ -801,7 +839,10 @@
       "last_verified": "2026-10-28",
       "verified_firmware": null,
       "tags": [
-        "notifications"
+        "notifications",
+        "software",
+        "firmware-feature",
+        "documented"
       ],
       "bothers": [
         "reliability"
@@ -814,6 +855,29 @@
         "section": "First-week checklist",
         "verification_status": "imported-not-tested",
         "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      },
+      "software": {
+        "kind": "firmware-feature",
+        "status": "documented",
+        "platforms": [
+          "printer"
+        ],
+        "firmware": "Compatible extended firmware notification support.",
+        "accounts": "The chosen notification provider may need an account or service token.",
+        "hardware": "An existing notification destination.",
+        "project_license": "See the current project and bundled-component licenses.",
+        "setup_steps": [
+          "Choose the events and destination you need.",
+          "Follow the firmware’s notification documentation.",
+          "Test a completion and cancellation message."
+        ],
+        "docs": [
+          {
+            "label": "Project setup guide",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/",
+            "creator": "Paxx12"
+          }
+        ]
       }
     },
     {
@@ -851,17 +915,47 @@
       "last_verified": "2026-10-28",
       "verified_firmware": null,
       "tags": [
-        "camera"
+        "camera",
+        "software",
+        "firmware-feature",
+        "documented"
       ],
       "bothers": [],
       "locations": [],
       "warnings": [],
-      "optional_related_items": [],
+      "optional_related_items": [
+        "timelapse-support",
+        "timelapse-recovery"
+      ],
       "provenance": {
         "seed": "checklist",
         "section": "First-week checklist",
         "verification_status": "imported-not-tested",
         "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      },
+      "software": {
+        "kind": "firmware-feature",
+        "status": "documented",
+        "platforms": [
+          "printer",
+          "browser"
+        ],
+        "firmware": "Compatible extended camera service.",
+        "accounts": "Access controls depend on the printer web interface.",
+        "hardware": "The built-in camera; USB camera and hub are optional.",
+        "project_license": "See the current project and bundled-component licenses.",
+        "setup_steps": [
+          "Confirm the camera service and supported settings.",
+          "Open a local stream before adding a second camera.",
+          "Check the current camera guide for resolution and timelapse limitations."
+        ],
+        "docs": [
+          {
+            "label": "Project setup guide",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/camera_support",
+            "creator": "Paxx12"
+          }
+        ]
       }
     },
     {
@@ -899,7 +993,10 @@
       "last_verified": "2026-10-28",
       "verified_firmware": null,
       "tags": [
-        "remote-access"
+        "remote-access",
+        "software",
+        "integration",
+        "experimental"
       ],
       "bothers": [],
       "locations": [],
@@ -910,6 +1007,30 @@
         "section": "First-week checklist",
         "verification_status": "imported-not-tested",
         "note": "Rewritten from the supplied seed. Imported on 2026-10-28; no printer or firmware test performed."
+      },
+      "software": {
+        "kind": "integration",
+        "status": "experimental",
+        "platforms": [
+          "printer",
+          "browser"
+        ],
+        "firmware": "Compatible extended firmware; the VPN integration is experimental.",
+        "accounts": "A Tailscale account and tailnet access are required. Check the service’s current plan.",
+        "hardware": "No additional hardware is listed for the printer-side integration.",
+        "project_license": "See the current project and bundled-component licenses.",
+        "setup_steps": [
+          "Read the VPN guide and resource-use caveat.",
+          "Enable the documented provider option and complete account setup.",
+          "Check access scope and performance on a supervised test."
+        ],
+        "docs": [
+          {
+            "label": "Project setup guide",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/vpn",
+            "creator": "Paxx12"
+          }
+        ]
       }
     },
     {
@@ -957,7 +1078,14 @@
       "warnings": [
         "Optional RFID-loss remedy only when a programmed tag can reach the reader; a tag left on a distant dryer spool will not fix detection."
       ],
-      "optional_related_items": [],
+      "optional_related_items": [
+        "printtag-web",
+        "u1-rfid-app",
+        "openspool-mobile",
+        "openrfid",
+        "remote-rfid-wasikuss",
+        "drybox-nfc-baze"
+      ],
       "provenance": {
         "seed": "checklist",
         "section": "Days 4–5 — optional tags",
@@ -1219,7 +1347,10 @@
       "verified_firmware": null,
       "tags": [
         "3mf",
-        "makerworld"
+        "makerworld",
+        "software",
+        "plugin",
+        "documented"
       ],
       "bothers": [
         "color-count"
@@ -1232,6 +1363,29 @@
         "section": "Days 6–7 — MakerWorld workflow",
         "verification_status": "source-reviewed-not-tested",
         "note": "Checklist did not identify the extension author. Selected Dragon2203's matching project after reviewing its own repository."
+      },
+      "software": {
+        "kind": "plugin",
+        "status": "documented",
+        "platforms": [
+          "browser"
+        ],
+        "firmware": "The converter prepares slicer projects; inspect printer settings before printing.",
+        "accounts": "Browser/store or MakerWorld access requirements depend on your chosen workflow.",
+        "hardware": "Chrome or Firefox and a U1-capable slicer.",
+        "project_license": "See the repository’s component-specific license files.",
+        "setup_steps": [
+          "Follow the creator’s browser installation guide.",
+          "Convert a small profile first.",
+          "Inspect plate contents, tool assignment and settings in the slicer."
+        ],
+        "docs": [
+          {
+            "label": "Project setup guide",
+            "url": "https://github.com/Dragon2203/makerworld-to-snapmaker-u1",
+            "creator": "Dragon2203"
+          }
+        ]
       }
     },
     {
@@ -2080,7 +2234,10 @@
       "last_verified": "2026-10-28",
       "verified_firmware": null,
       "tags": [
-        "color-blending"
+        "color-blending",
+        "software",
+        "companion-app",
+        "experimental"
       ],
       "bothers": [
         "color-count"
@@ -2095,6 +2252,1993 @@
         "section": "Content seed — Full Spectrum",
         "verification_status": "source-reviewed-not-tested",
         "note": "Required by brief but absent from owner's checklist; creator repository reviewed."
+      },
+      "software": {
+        "kind": "companion-app",
+        "status": "experimental",
+        "platforms": [
+          "windows",
+          "macos",
+          "linux"
+        ],
+        "firmware": "Check the fork’s current release and U1 instructions; available builds may differ by platform.",
+        "accounts": "No separate service account is documented for the slicer workflow.",
+        "hardware": "A computer capable of running the selected slicer build.",
+        "project_license": "AGPL-3.0 and bundled-component notices.",
+        "setup_steps": [
+          "Review the current release and blending guide.",
+          "Use a small test project and inspect generated toolpaths.",
+          "Keep a known-good slicer profile for comparison."
+        ],
+        "docs": [
+          {
+            "label": "Project setup guide",
+            "url": "https://github.com/ratdoux/OrcaSlicer-FullSpectrum",
+            "creator": "Radu (ratdoux); Full Spectrum contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "helixscreen",
+      "title": "HelixScreen touchscreen interface",
+      "category": "firmware",
+      "type": "install",
+      "summary": "Replace the stock touchscreen with an alternative Klipper interface. The U1 integration is experimental.",
+      "cost_usd": 0,
+      "cost_note": "No software purchase is listed; existing devices and any external hosting are separate.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 3,
+      "phase": 4,
+      "requires": [
+        "paxx12-extended-firmware"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true,
+        "requires_firmware": "paxx12"
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": "Preston Brown and HelixScreen contributors; Paxx12 integration",
+        "url": "https://snapmakeru1-extended-firmware.pages.dev/helixscreen",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "plugin",
+        "experimental"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "The stock touchscreen interface is replaced while this option is active. Keep the camera service enabled as required by the integration."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "plugin",
+        "status": "experimental",
+        "platforms": [
+          "printer"
+        ],
+        "firmware": "Requires a compatible Paxx12 extended-firmware build; confirm feature availability in its current guide.",
+        "accounts": "No separate service account is documented for this setup.",
+        "hardware": "Use the existing printer and a device that can open its guide.",
+        "project_license": "GPL-3.0; upstream third-party component notices also apply.",
+        "setup_steps": [
+          "Check the current U1 integration guide and its camera limitation.",
+          "Select HelixScreen through the documented firmware configuration option.",
+          "Confirm the screen works and keep the documented stock-interface fallback available."
+        ],
+        "docs": [
+          {
+            "label": "U1 integration guide",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/helixscreen",
+            "creator": "Paxx12 contributors"
+          },
+          {
+            "label": "HelixScreen project",
+            "url": "https://github.com/prestonbrown/helixscreen",
+            "creator": "Preston Brown and contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "octoeverywhere",
+      "title": "OctoEverywhere cloud access",
+      "category": "firmware",
+      "type": "install",
+      "summary": "Use a cloud service for remote access, camera viewing and optional print monitoring. The firmware integration is experimental.",
+      "cost_usd": null,
+      "cost_note": "Service-plan costs were not independently priced. Check the provider before including paid features in a budget.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 3,
+      "phase": 4,
+      "requires": [
+        "paxx12-extended-firmware"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true,
+        "requires_firmware": "paxx12"
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": "OctoEverywhere contributors; Paxx12 integration",
+        "url": "https://snapmakeru1-extended-firmware.pages.dev/cloud",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "plugin",
+        "experimental"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "The service adds CPU and memory load. A remote view does not replace supervision."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "plugin",
+        "status": "experimental",
+        "platforms": [
+          "printer",
+          "browser"
+        ],
+        "firmware": "Requires a compatible Paxx12 extended-firmware build; confirm feature availability in its current guide.",
+        "accounts": "An OctoEverywhere account is required. Feature availability depends on the service plan.",
+        "hardware": "Use the existing printer and a device that can open its guide.",
+        "project_license": "See the upstream project license and bundled-component notices.",
+        "setup_steps": [
+          "Review the provider features, account terms and current pricing.",
+          "Use the documented cloud-provider option and follow the account-linking guide.",
+          "Check printer resource use during a small supervised test."
+        ],
+        "docs": [
+          {
+            "label": "U1 cloud integration",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/cloud",
+            "creator": "Paxx12 contributors"
+          },
+          {
+            "label": "OctoEverywhere service",
+            "url": "https://octoeverywhere.com/",
+            "creator": "OctoEverywhere"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spool-link-app",
+      "title": "SpoolLink companion apps",
+      "category": "filament-system",
+      "type": "install",
+      "summary": "Link a tag’s unique ID to a Spoolman spool. The author labels these apps an unstable proof of concept; they do not write custom tags.",
+      "cost_usd": null,
+      "cost_note": "Public source is available. iOS builds need the documented paid developer/NFC setup; platform and hosting costs vary.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 3,
+      "phase": 5,
+      "requires": [
+        "spoolman-integration"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Paxx12",
+        "url": "https://github.com/paxx12-snapmaker-u1/spool-link-apps",
+        "kind": "repository",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "companion-app",
+        "proof-of-concept"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "The web variant is not fully tested upstream. iOS does not support the same tag types as Android."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "companion-app",
+        "status": "proof-of-concept",
+        "platforms": [
+          "android",
+          "ios",
+          "browser"
+        ],
+        "firmware": "U1 UID-to-spool automation needs a compatible extended build with SpoolLink and Spoolman integration. The app and server are separate.",
+        "accounts": "A reachable Spoolman server is required. iOS builds need the documented NFC entitlement/developer setup.",
+        "hardware": "An NFC-capable phone; the web variant has additional browser and server constraints.",
+        "project_license": "GPL-3.0.",
+        "setup_steps": [
+          "Connect the app to the same Spoolman server used by the U1.",
+          "Scan one tag and link it to a spool.",
+          "Check the assignment in Spoolman and on the printer before linking a batch."
+        ],
+        "docs": [
+          {
+            "label": "SpoolLink project and platform guides",
+            "url": "https://github.com/paxx12-snapmaker-u1/spool-link-apps",
+            "creator": "Paxx12"
+          },
+          {
+            "label": "U1 Spoolman integration",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/spoolman",
+            "creator": "Paxx12 contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoolpainter",
+      "title": "SpoolPainter",
+      "category": "filament-system",
+      "type": "install",
+      "summary": "Manage spool inventory and read or write OpenSpool NFC data from Android. The app can pair tag IDs with a self-hosted Spoolman library.",
+      "cost_usd": 0,
+      "cost_note": "Public source is available; verify current store distribution and device/tag costs.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 3,
+      "phase": 5,
+      "requires": [
+        "spoolman-integration"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "ni4223",
+        "url": "https://github.com/ni4223/SpoolPainter",
+        "kind": "repository",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "companion-app",
+        "documented"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "companion-app",
+        "status": "documented",
+        "platforms": [
+          "android"
+        ],
+        "firmware": "U1 UID-to-spool automation needs a compatible extended build with SpoolLink and Spoolman integration. The app and server are separate.",
+        "accounts": "Uses a self-hosted Spoolman server; the project describes no separate cloud account.",
+        "hardware": "Android 10 or newer with NFC, plus suitable tags.",
+        "project_license": "GPL-3.0.",
+        "setup_steps": [
+          "Check Android and NFC requirements in the current release.",
+          "Set the Spoolman server address and test the connection.",
+          "Try one spool and tag before updating the rest of the inventory."
+        ],
+        "docs": [
+          {
+            "label": "App and release guidance",
+            "url": "https://github.com/ni4223/SpoolPainter",
+            "creator": "ni4223"
+          },
+          {
+            "label": "U1 Spoolman integration",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/spoolman",
+            "creator": "Paxx12 contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoolkid",
+      "title": "SpoolKid",
+      "category": "filament-system",
+      "type": "install",
+      "summary": "Manage filament on iOS, scan labels and work with NFC tags. A small local library can be used before connecting a Spoolman server.",
+      "cost_usd": 0,
+      "cost_note": "The author describes the TestFlight app as free. Devices, tags and optional hosting are separate.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 3,
+      "phase": 5,
+      "requires": [],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "marko-p / Marco",
+        "url": "https://github.com/marko-p/SpoolKid",
+        "kind": "repository",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "companion-app",
+        "beta"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "The current beta is newer than the published code snapshot. App tag-format support does not establish U1 reader compatibility."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "companion-app",
+        "status": "beta",
+        "platforms": [
+          "ios"
+        ],
+        "firmware": "The phone app can work independently. U1 custom-tag reading needs compatible extended firmware and a supported physical tag.",
+        "accounts": "TestFlight access is used for the current beta. Spoolman is optional for the local library.",
+        "hardware": "An NFC-capable iPhone for tag features; camera access for optional label scanning.",
+        "project_license": "The repository is an older public snapshot; current development is private. See author terms for the distributed beta.",
+        "setup_steps": [
+          "Read the current beta and supported-tag notes.",
+          "Try the local library or connect an existing Spoolman instance.",
+          "Check a single tag and spool before using it in a printer workflow."
+        ],
+        "docs": [
+          {
+            "label": "Current app and beta notes",
+            "url": "https://github.com/marko-p/SpoolKid",
+            "creator": "marko-p / Marco"
+          },
+          {
+            "label": "U1 tag and reader compatibility",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/design/rfid",
+            "creator": "Paxx12 contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spooltagger",
+      "title": "SpoolTagger",
+      "category": "filament-system",
+      "type": "install",
+      "summary": "Use a desktop NFC reader for OpenSpool tags and Spoolman linking. The firmware directory lists Windows and Linux support.",
+      "cost_usd": null,
+      "cost_note": "Reader hardware and distribution costs were not priced.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 3,
+      "phase": 5,
+      "requires": [
+        "spoolman-integration"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "NiftyBits",
+        "url": "https://codeberg.org/NiftyBits/SpoolTagger",
+        "kind": "repository",
+        "credit_status": "named",
+        "note": "Creator repository could not be fetched during review. Platform and linking notes come from the firmware project’s app directory; confirm them upstream."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "companion-app",
+        "documented"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "companion-app",
+        "status": "documented",
+        "platforms": [
+          "windows",
+          "linux"
+        ],
+        "firmware": "U1 UID-to-spool automation needs a compatible extended build with SpoolLink and Spoolman integration. The app and server are separate.",
+        "accounts": "No separate service account is documented for this setup.",
+        "hardware": "A supported desktop NFC reader; the directory names the ACR122U.",
+        "project_license": "MIT as listed by the firmware directory; confirm current upstream terms.",
+        "setup_steps": [
+          "Check the creator release for your operating system and reader.",
+          "Connect the reader and Spoolman service using the upstream guide.",
+          "Verify one tag assignment before a wider migration."
+        ],
+        "docs": [
+          {
+            "label": "Creator repository",
+            "url": "https://codeberg.org/NiftyBits/SpoolTagger",
+            "creator": "NiftyBits"
+          },
+          {
+            "label": "U1 Spoolman integration",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/spoolman",
+            "creator": "Paxx12 contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "three-dmrp",
+      "title": "3DMRP print-farm management",
+      "category": "filament-system",
+      "type": "install",
+      "summary": "Run a Windows-hosted production and printer-management system. Its broader workflow includes inventory, Moonraker printer status and filament planning.",
+      "cost_usd": null,
+      "cost_note": "Hosting, hardware and distribution costs were not independently checked.",
+      "price_checked_at": null,
+      "time_minutes": 60,
+      "difficulty": 3,
+      "phase": 5,
+      "requires": [],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "MKloberg",
+        "url": "https://github.com/MKloberg/3dmrp",
+        "kind": "repository",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "companion-app",
+        "documented"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "This is a separate hosted application, not a plugin installed by StartHere. Remote actions require their own permissions."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "companion-app",
+        "status": "documented",
+        "platforms": [
+          "windows",
+          "browser"
+        ],
+        "firmware": "Printer connections need reachable Moonraker. U1 SpoolLink features need compatible extended firmware and Spoolman; check the project for other workflows.",
+        "accounts": "Uses the server’s own access setup; review account and network configuration upstream.",
+        "hardware": "A Windows host; supported browser clients. Android NFC features have separate browser requirements.",
+        "project_license": "Check the project’s current license and distribution terms.",
+        "setup_steps": [
+          "Review hosting, access and backup requirements.",
+          "Set up the server and one printer using the project guide.",
+          "Check inventory and status before using any remote actions."
+        ],
+        "docs": [
+          {
+            "label": "Project and setup",
+            "url": "https://github.com/MKloberg/3dmrp",
+            "creator": "MKloberg"
+          },
+          {
+            "label": "U1 Spoolman integration",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/spoolman",
+            "creator": "Paxx12 contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spool-studio",
+      "title": "Spool Studio",
+      "category": "filament-system",
+      "type": "install",
+      "summary": "Use Android NFC tools and Spoolman inventory with the newer UID-based SpoolLink workflow. Existing legacy tags need a deliberate migration.",
+      "cost_usd": 0,
+      "cost_note": "No software purchase is listed; existing devices and any external hosting are separate.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 3,
+      "phase": 5,
+      "requires": [
+        "spoolman-integration"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "GeorgHo",
+        "url": "https://github.com/GeorgHo/SpoolStudio",
+        "kind": "repository",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "companion-app",
+        "documented"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "Version 3 changes the legacy tag workflow. Do not bulk-convert tags before checking one spool."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "companion-app",
+        "status": "documented",
+        "platforms": [
+          "android"
+        ],
+        "firmware": "U1 UID-to-spool automation needs a compatible extended build with SpoolLink and Spoolman integration. The app and server are separate.",
+        "accounts": "A reachable Spoolman service and printer connection are needed for the integration.",
+        "hardware": "An Android phone with NFC and compatible tags.",
+        "project_license": "MIT as listed by the firmware directory; see current repository notices.",
+        "setup_steps": [
+          "Choose the version matching the firmware and tag workflow.",
+          "Test Spoolman and Moonraker connections.",
+          "Convert one existing spool first and verify its printer assignment before continuing."
+        ],
+        "docs": [
+          {
+            "label": "App and migration guide",
+            "url": "https://github.com/GeorgHo/SpoolStudio",
+            "creator": "GeorgHo"
+          },
+          {
+            "label": "U1 Spoolman integration",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/spoolman",
+            "creator": "Paxx12 contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "openrfid",
+      "title": "OpenRFID filament detection",
+      "category": "firmware",
+      "type": "setting",
+      "summary": "Use an alternative tag reader/parser integration for more filament tag formats. The project is work in progress; support depends on the tag and reader.",
+      "cost_usd": 0,
+      "cost_note": "No software purchase is listed; existing devices and any external hosting are separate.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 3,
+      "phase": 4,
+      "requires": [
+        "paxx12-extended-firmware"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true,
+        "requires_firmware": "paxx12"
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": "suchmememanyskill; Paxx12 integration",
+        "url": "https://github.com/suchmememanyskill/OpenRFID",
+        "kind": "repository",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "integration",
+        "experimental"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "Some vendor formats need separately supplied keys or explicit enabling. A tag supported by an app may still be unreadable by the U1 hardware."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "integration",
+        "status": "experimental",
+        "platforms": [
+          "printer"
+        ],
+        "firmware": "Requires a compatible Paxx12 extended-firmware build; confirm feature availability in its current guide.",
+        "accounts": "No separate service account is documented for this setup.",
+        "hardware": "Use the existing printer and a device that can open its guide.",
+        "project_license": "GPL-3.0.",
+        "setup_steps": [
+          "Check the U1 format comparison and current firmware option.",
+          "Choose the documented detection mode.",
+          "Test a known spool before relying on automatic profiles."
+        ],
+        "docs": [
+          {
+            "label": "OpenRFID project",
+            "url": "https://github.com/suchmememanyskill/OpenRFID",
+            "creator": "suchmememanyskill"
+          },
+          {
+            "label": "U1 tag and reader compatibility",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/design/rfid",
+            "creator": "Paxx12 contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "remote-rfid-wasikuss",
+      "title": "wasikuss remote RFID reader",
+      "category": "firmware",
+      "type": "install",
+      "summary": "Move tag reading to an external microcontroller near a spool or drybox. Confirm the exact board, reader and firmware branch before buying parts.",
+      "cost_usd": null,
+      "cost_note": "Hardware, wiring and enclosure costs require a quote.",
+      "price_checked_at": null,
+      "time_minutes": 90,
+      "difficulty": 4,
+      "phase": 4,
+      "requires": [
+        "paxx12-extended-firmware"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true,
+        "requires_firmware": "paxx12"
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": "wasikuss",
+        "url": "https://github.com/wasikuss/snapmaker-u1-remote-rfid-reader",
+        "kind": "repository",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "hardware-integration",
+        "experimental"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "The firmware directory reports limited SpoolLink support for this reader. Do not assume blank or vendor tags can be linked by UID."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "hardware-integration",
+        "status": "experimental",
+        "platforms": [
+          "external-device"
+        ],
+        "firmware": "Requires a compatible Paxx12 extended-firmware build; confirm feature availability in its current guide.",
+        "accounts": "No separate service account is documented for this setup.",
+        "hardware": "An ESP32-based reader assembly. The repository and integration directory describe variants; verify the matching branch.",
+        "project_license": "MIT as listed by the firmware directory.",
+        "setup_steps": [
+          "Match the hardware list to the chosen repository branch.",
+          "Follow the creator’s assembly and network setup.",
+          "Test whether the reader reports the tag data needed by your firmware workflow."
+        ],
+        "docs": [
+          {
+            "label": "Reader project",
+            "url": "https://github.com/wasikuss/snapmaker-u1-remote-rfid-reader",
+            "creator": "wasikuss"
+          },
+          {
+            "label": "U1 tag and reader compatibility",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/design/rfid",
+            "creator": "Paxx12 contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "drybox-nfc-baze",
+      "title": "baze drybox NFC reader",
+      "category": "firmware",
+      "type": "install",
+      "summary": "Use a networked reader at the drybox. The firmware directory describes a UID-only mode suitable for SpoolLink, plus a more selective full-read mode.",
+      "cost_usd": null,
+      "cost_note": "Hardware and enclosure costs require a quote.",
+      "price_checked_at": null,
+      "time_minutes": 90,
+      "difficulty": 4,
+      "phase": 4,
+      "requires": [
+        "paxx12-extended-firmware"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true,
+        "requires_firmware": "paxx12"
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": "baze",
+        "url": "https://gitlab.com/baze/snapmaker-u1-drybox-nfc-reader",
+        "kind": "repository",
+        "credit_status": "named",
+        "note": "The GitLab page did not expose readable project documentation. Reader/mode details were reviewed in the firmware directory; confirm the creator’s current instructions."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "hardware-integration",
+        "experimental"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "hardware-integration",
+        "status": "experimental",
+        "platforms": [
+          "external-device"
+        ],
+        "firmware": "Requires a compatible Paxx12 extended-firmware build; confirm feature availability in its current guide.",
+        "accounts": "No separate service account is documented for this setup.",
+        "hardware": "The firmware directory lists an ESP32-C3 and PN532 assembly.",
+        "project_license": "CC BY-NC 4.0 as listed by the firmware directory; creator files retain that license.",
+        "setup_steps": [
+          "Confirm the current hardware and flashing guide on the creator page.",
+          "Choose the reader mode that matches UID linking or tag-payload reading.",
+          "Test one spool with the printer’s external-reader configuration."
+        ],
+        "docs": [
+          {
+            "label": "Creator reader project",
+            "url": "https://gitlab.com/baze/snapmaker-u1-drybox-nfc-reader",
+            "creator": "baze"
+          },
+          {
+            "label": "U1 tag and reader compatibility",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/design/rfid",
+            "creator": "Paxx12 contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "home-assistant-moonraker",
+      "title": "Moonraker for Home Assistant",
+      "category": "maintenance",
+      "type": "setting",
+      "summary": "Bring Moonraker printer information into Home Assistant through a community integration. The linked repository currently says it is unmaintained.",
+      "cost_usd": 0,
+      "cost_note": "No software purchase is listed; existing devices and any external hosting are separate.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 3,
+      "phase": 5,
+      "requires": [],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "marcolivierarsenault and contributors",
+        "url": "https://github.com/marcolivierarsenault/moonraker-home-assistant",
+        "kind": "repository",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "integration",
+        "unmaintained"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "The linked project is marked unmaintained. Check compatibility with your Home Assistant version before installing."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "integration",
+        "status": "unmaintained",
+        "platforms": [
+          "browser",
+          "linux",
+          "windows",
+          "macos"
+        ],
+        "firmware": "Needs reachable Moonraker and compatible Home Assistant/HACS. The linked U1 monitoring guide follows an extended-firmware setup.",
+        "accounts": "An existing Home Assistant installation and HACS setup are needed; authentication depends on your Moonraker configuration.",
+        "hardware": "A separate Home Assistant host and network access to Moonraker.",
+        "project_license": "MIT.",
+        "setup_steps": [
+          "Review maintenance status and the current installation guide.",
+          "Check Home Assistant and HACS requirements.",
+          "Connect one reachable Moonraker instance and review which entities and actions are exposed."
+        ],
+        "docs": [
+          {
+            "label": "Integration and maintenance notice",
+            "url": "https://github.com/marcolivierarsenault/moonraker-home-assistant",
+            "creator": "marcolivierarsenault and contributors"
+          },
+          {
+            "label": "U1 monitoring context",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/monitoring",
+            "creator": "Paxx12 contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "klipper-metrics-exporter",
+      "title": "Klipper metrics exporter",
+      "category": "firmware",
+      "type": "setting",
+      "summary": "Expose printer metrics for a separate Prometheus/Grafana monitoring setup. The U1 guide documents a bundled exporter option.",
+      "cost_usd": 0,
+      "cost_note": "No software purchase is listed; existing devices and any external hosting are separate.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 3,
+      "phase": 4,
+      "requires": [
+        "paxx12-extended-firmware"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true,
+        "requires_firmware": "paxx12"
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "scross01 and contributors; Paxx12 integration",
+        "url": "https://github.com/scross01/prometheus-klipper-exporter",
+        "kind": "repository",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "integration",
+        "documented"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "integration",
+        "status": "documented",
+        "platforms": [
+          "printer",
+          "browser"
+        ],
+        "firmware": "Requires a compatible Paxx12 extended-firmware build; confirm feature availability in its current guide.",
+        "accounts": "No cloud account is required for a local Prometheus/Grafana setup; external services have their own terms.",
+        "hardware": "A separate monitoring host or service for collection and dashboards.",
+        "project_license": "See the upstream project license and bundled-component notices.",
+        "setup_steps": [
+          "Review the exporter and U1 monitoring guide.",
+          "Enable the documented exporter option if needed.",
+          "Point an existing monitoring system at the endpoint and check its access scope."
+        ],
+        "docs": [
+          {
+            "label": "Exporter project",
+            "url": "https://github.com/scross01/prometheus-klipper-exporter",
+            "creator": "scross01 and contributors"
+          },
+          {
+            "label": "U1 monitoring guide",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/monitoring",
+            "creator": "Paxx12 contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "klipper-custom-includes",
+      "title": "Custom Klipper and Moonraker includes",
+      "category": "firmware",
+      "type": "setting",
+      "summary": "Keep custom configuration in the extended firmware’s include folders instead of editing stock files.",
+      "cost_usd": 0,
+      "cost_note": "No software purchase is listed; existing devices and any external hosting are separate.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 4,
+      "phase": 4,
+      "requires": [
+        "paxx12-extended-firmware"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true,
+        "requires_firmware": "paxx12"
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Paxx12 contributors",
+        "url": "https://snapmakeru1-extended-firmware.pages.dev/klipper_includes",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "advanced-config",
+        "documented"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "An invalid include can prevent Klipper or Moonraker from starting. Preserve the placeholder files and review recovery guidance."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "advanced-config",
+        "status": "documented",
+        "platforms": [
+          "printer"
+        ],
+        "firmware": "Requires a compatible Paxx12 extended-firmware build; confirm feature availability in its current guide.",
+        "accounts": "No separate service account is documented for this setup.",
+        "hardware": "Use the existing printer and a device that can open its guide.",
+        "project_license": "See the upstream project license and bundled-component notices.",
+        "setup_steps": [
+          "Back up the existing configuration.",
+          "Follow the guide for the appropriate extended include folder.",
+          "Validate a small change before restarting the relevant service."
+        ],
+        "docs": [
+          {
+            "label": "Creator documentation",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/klipper_includes",
+            "creator": "Paxx12 contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "klipper-print-hooks",
+      "title": "Klipper print lifecycle hooks",
+      "category": "firmware",
+      "type": "setting",
+      "summary": "Run custom macros around print start, completion or cancellation without replacing the stock macros.",
+      "cost_usd": 0,
+      "cost_note": "No software purchase is listed; existing devices and any external hosting are separate.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 4,
+      "phase": 4,
+      "requires": [
+        "klipper-custom-includes"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true,
+        "requires_firmware": "paxx12"
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Paxx12 contributors",
+        "url": "https://snapmakeru1-extended-firmware.pages.dev/klipper_hooks",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "advanced-config",
+        "documented"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "Hook order matters. Hooks do not receive slicer parameters directly."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "advanced-config",
+        "status": "documented",
+        "platforms": [
+          "printer"
+        ],
+        "firmware": "Requires a compatible Paxx12 extended-firmware build; confirm feature availability in its current guide.",
+        "accounts": "No separate service account is documented for this setup.",
+        "hardware": "Use the existing printer and a device that can open its guide.",
+        "project_license": "See the upstream project license and bundled-component notices.",
+        "setup_steps": [
+          "Start with a backed-up, working configuration.",
+          "Follow the documented hook naming and ordering rules.",
+          "Test start, end and cancellation paths before using a macro on a real job."
+        ],
+        "docs": [
+          {
+            "label": "Creator documentation",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/klipper_hooks",
+            "creator": "Paxx12 contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "adaptive-mesh-processing",
+      "title": "Adaptive mesh object processing",
+      "category": "firmware",
+      "type": "setting",
+      "summary": "Review the object-labeling step used by adaptive mesh. Turning on server-side processing alone is not enough.",
+      "cost_usd": 0,
+      "cost_note": "No software purchase is listed; existing devices and any external hosting are separate.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 3,
+      "phase": 4,
+      "requires": [
+        "paxx12-extended-firmware"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true,
+        "requires_firmware": "paxx12"
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": "Paxx12 contributors",
+        "url": "https://snapmakeru1-extended-firmware.pages.dev/tweaks#object-processing-for-adaptive-mesh",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "advanced-config",
+        "experimental"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "Large files can take much longer to process and use additional memory."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "advanced-config",
+        "status": "experimental",
+        "platforms": [
+          "printer"
+        ],
+        "firmware": "Requires a compatible Paxx12 extended-firmware build; confirm feature availability in its current guide.",
+        "accounts": "No separate service account is documented for this setup.",
+        "hardware": "Use the existing printer and a device that can open its guide.",
+        "project_license": "See the upstream project license and bundled-component notices.",
+        "setup_steps": [
+          "Prefer slicer-generated Exclude Object labels when supported.",
+          "Review the matching adaptive-mesh start procedure.",
+          "Use server processing only if necessary and check upload delays."
+        ],
+        "docs": [
+          {
+            "label": "Creator documentation",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/tweaks#object-processing-for-adaptive-mesh",
+            "creator": "Paxx12 contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "experimental-motion-tweaks",
+      "title": "Experimental motion and TMC tweaks",
+      "category": "firmware",
+      "type": "setting",
+      "summary": "Review Max Speed, TMC AutoTune and reduced-current options before changing motion behavior.",
+      "cost_usd": 0,
+      "cost_note": "No software purchase is listed; existing devices and any external hosting are separate.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 4,
+      "phase": 4,
+      "requires": [
+        "paxx12-extended-firmware"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true,
+        "requires_firmware": "paxx12"
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": "Paxx12 contributors; JNP-1 motion values",
+        "url": "https://snapmakeru1-extended-firmware.pages.dev/tweaks",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "advanced-config",
+        "experimental"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "Max Speed and Reduced Current cannot be combined in the documented configuration. Higher limits increase wear; driver changes can cause heat or skipped steps."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "advanced-config",
+        "status": "experimental",
+        "platforms": [
+          "printer"
+        ],
+        "firmware": "Requires a compatible Paxx12 extended-firmware build; confirm feature availability in its current guide.",
+        "accounts": "No separate service account is documented for this setup.",
+        "hardware": "Use the existing printer and a device that can open its guide.",
+        "project_license": "See the upstream project license and bundled-component notices.",
+        "setup_steps": [
+          "Begin with a calibrated stock baseline.",
+          "Read the separate risks for each option and change one setting at a time.",
+          "Run a small supervised test and revert on motion faults."
+        ],
+        "docs": [
+          {
+            "label": "Creator documentation",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/tweaks",
+            "creator": "Paxx12 contributors; JNP-1 motion values"
+          }
+        ]
+      }
+    },
+    {
+      "id": "afc-lite-stub",
+      "title": "AFC-Lite status interface",
+      "category": "firmware",
+      "type": "setting",
+      "summary": "Expose AFC-style status panels for the U1’s existing extruders. This experimental stub is not an AFC hardware controller.",
+      "cost_usd": 0,
+      "cost_note": "No software purchase is listed; existing devices and any external hosting are separate.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 3,
+      "phase": 4,
+      "requires": [
+        "paxx12-extended-firmware"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true,
+        "requires_firmware": "paxx12"
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": "Paxx12 contributors",
+        "url": "https://snapmakeru1-extended-firmware.pages.dev/afc-lite",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "firmware-feature",
+        "experimental"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "The status stub does not implement AFC hardware control or full AFC behavior. Check your build’s current limitations."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "firmware-feature",
+        "status": "experimental",
+        "platforms": [
+          "printer",
+          "browser"
+        ],
+        "firmware": "Requires a compatible Paxx12 extended-firmware build; confirm feature availability in its current guide.",
+        "accounts": "No separate service account is documented for this setup.",
+        "hardware": "Use the existing printer and a device that can open its guide.",
+        "project_license": "See the upstream project license and bundled-component notices.",
+        "setup_steps": [
+          "Read the supported operations and limitations.",
+          "Use the documented AFC Stub option if it fits your interface needs.",
+          "Check the lane status without assuming support for external AFC hardware."
+        ],
+        "docs": [
+          {
+            "label": "Creator documentation",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/afc-lite",
+            "creator": "Paxx12 contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "timelapse-support",
+      "title": "Extended-firmware timelapse support",
+      "category": "firmware",
+      "type": "setting",
+      "summary": "Review timelapse viewing and recording support alongside the camera setup. The guide lists the Fluidd plugin without settings support.",
+      "cost_usd": 0,
+      "cost_note": "No software purchase is listed; existing devices and any external hosting are separate.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 3,
+      "phase": 4,
+      "requires": [
+        "webrtc-camera"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true,
+        "requires_firmware": "paxx12"
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Paxx12 contributors",
+        "url": "https://snapmakeru1-extended-firmware.pages.dev/camera_support#timelapse-support",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "firmware-feature",
+        "documented"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "Disabling the internal camera also disables timelapses in the documented configuration."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "firmware-feature",
+        "status": "documented",
+        "platforms": [
+          "printer",
+          "browser"
+        ],
+        "firmware": "Requires a compatible Paxx12 extended-firmware build; confirm feature availability in its current guide.",
+        "accounts": "No separate service account is documented for this setup.",
+        "hardware": "Use the existing printer and a device that can open its guide.",
+        "project_license": "See the upstream project license and bundled-component notices.",
+        "setup_steps": [
+          "Keep a working camera service.",
+          "Check the camera guide’s current timelapse limitations.",
+          "Inspect a short recording before depending on it for a long print."
+        ],
+        "docs": [
+          {
+            "label": "Creator documentation",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/camera_support#timelapse-support",
+            "creator": "Paxx12 contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "timelapse-recovery",
+      "title": "U1 timelapse recovery tool",
+      "category": "filament-system",
+      "type": "install",
+      "summary": "Try to salvage playable footage from an unfinished U1 timelapse. Recovery can be partial.",
+      "cost_usd": 0,
+      "cost_note": "No software purchase is listed; existing devices and any external hosting are separate.",
+      "price_checked_at": null,
+      "time_minutes": 20,
+      "difficulty": 3,
+      "phase": 5,
+      "requires": [],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "horzadome",
+        "url": "https://github.com/horzadome/snapmaker-u1-timelapse-recovery",
+        "kind": "repository",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "companion-app",
+        "documented"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "Recovery is not guaranteed and cannot recreate frames that were never written."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "companion-app",
+        "status": "documented",
+        "platforms": [
+          "windows",
+          "macos",
+          "linux"
+        ],
+        "firmware": "The desktop recovery workflow needs no printer firmware change. The bundled printer-side tool depends on the extended-firmware build.",
+        "accounts": "No separate service account is documented for this setup.",
+        "hardware": "A computer with Python and FFmpeg for the documented desktop workflow.",
+        "project_license": "MIT.",
+        "setup_steps": [
+          "Keep the original video untouched and work on a copy.",
+          "Review the computer setup requirements for Python and FFmpeg.",
+          "Follow the creator’s recovery procedure and inspect the output."
+        ],
+        "docs": [
+          {
+            "label": "Creator documentation",
+            "url": "https://github.com/horzadome/snapmaker-u1-timelapse-recovery",
+            "creator": "horzadome"
+          }
+        ]
+      }
+    },
+    {
+      "id": "remote-screen",
+      "title": "Remote touchscreen view",
+      "category": "firmware",
+      "type": "setting",
+      "summary": "Mirror the printer touchscreen in a browser, with the interaction supported by the firmware integration.",
+      "cost_usd": 0,
+      "cost_note": "No software purchase is listed; existing devices and any external hosting are separate.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 3,
+      "phase": 4,
+      "requires": [
+        "paxx12-extended-firmware"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true,
+        "requires_firmware": "paxx12"
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Paxx12 contributors",
+        "url": "https://snapmakeru1-extended-firmware.pages.dev/remote_screen",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "firmware-feature",
+        "documented"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "This feature can interact with the printer. Review access controls before allowing remote use."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "firmware-feature",
+        "status": "documented",
+        "platforms": [
+          "printer",
+          "browser"
+        ],
+        "firmware": "Requires a compatible Paxx12 extended-firmware build; confirm feature availability in its current guide.",
+        "accounts": "No separate service account is documented for this setup.",
+        "hardware": "Use the existing printer and a device that can open its guide.",
+        "project_license": "See the upstream project license and bundled-component notices.",
+        "setup_steps": [
+          "Review the Remote Screen guide.",
+          "Enable the documented option in firmware configuration.",
+          "Check the local screen view and its inherited access controls."
+        ],
+        "docs": [
+          {
+            "label": "Creator documentation",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/remote_screen",
+            "creator": "Paxx12 contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fluidd-mainsail-interface",
+      "title": "Choose Fluidd or Mainsail",
+      "category": "firmware",
+      "type": "setting",
+      "summary": "Choose the web interface you prefer for the extended firmware. Only one interface selection is active at a time.",
+      "cost_usd": 0,
+      "cost_note": "No software purchase is listed; existing devices and any external hosting are separate.",
+      "price_checked_at": null,
+      "time_minutes": 10,
+      "difficulty": 3,
+      "phase": 4,
+      "requires": [
+        "paxx12-extended-firmware"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true,
+        "requires_firmware": "paxx12"
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Fluidd and Mainsail contributors; Paxx12 integration",
+        "url": "https://snapmakeru1-extended-firmware.pages.dev/firmware_config",
+        "kind": "docs",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "firmware-feature",
+        "documented"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "firmware-feature",
+        "status": "documented",
+        "platforms": [
+          "printer",
+          "browser"
+        ],
+        "firmware": "Requires a compatible Paxx12 extended-firmware build; confirm feature availability in its current guide.",
+        "accounts": "No separate service account is documented for this setup.",
+        "hardware": "Use the existing printer and a device that can open its guide.",
+        "project_license": "See the upstream project license and bundled-component notices.",
+        "setup_steps": [
+          "Review the current frontend selector.",
+          "Choose Fluidd or Mainsail in firmware configuration.",
+          "Check that your usual configuration and camera pages are reachable."
+        ],
+        "docs": [
+          {
+            "label": "Creator documentation",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/firmware_config",
+            "creator": "Fluidd and Mainsail contributors; Paxx12 integration"
+          }
+        ]
+      }
+    },
+    {
+      "id": "printtag-web",
+      "title": "PrintTag-Web",
+      "category": "filament-system",
+      "type": "install",
+      "summary": "Use a compatible phone browser to work with filament NFC tags. Check tag format and printer compatibility separately.",
+      "cost_usd": 0,
+      "cost_note": "No software purchase is listed; existing devices and any external hosting are separate.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 3,
+      "phase": 5,
+      "requires": [],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "Paxx12",
+        "url": "https://github.com/paxx12/PrintTag-Web",
+        "kind": "repository",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "companion-app",
+        "documented"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "The firmware directory says Web NFC writing is unavailable in iOS and desktop browsers. OpenPrintTag-capable apps do not make ISO15693 tags readable by the U1."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "companion-app",
+        "status": "documented",
+        "platforms": [
+          "android",
+          "browser"
+        ],
+        "firmware": "The phone app can work independently. U1 custom-tag reading needs compatible extended firmware and a supported physical tag.",
+        "accounts": "No separate service account is documented; browser NFC permission is required.",
+        "hardware": "Chrome on an NFC-capable Android phone for Web NFC.",
+        "project_license": "See the upstream project license and bundled-component notices.",
+        "setup_steps": [
+          "Open the creator’s app link in a supported browser.",
+          "Choose a format that the U1 reader can actually read.",
+          "Write and verify one spare tag before tagging valuable spools."
+        ],
+        "docs": [
+          {
+            "label": "Project and app link",
+            "url": "https://github.com/paxx12/PrintTag-Web",
+            "creator": "Paxx12"
+          },
+          {
+            "label": "U1 tag and reader compatibility",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/design/rfid",
+            "creator": "Paxx12 contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "u1-rfid-app",
+      "title": "U1-RFID app",
+      "category": "filament-system",
+      "type": "install",
+      "summary": "Use an Android app focused on writing OpenSpool filament data for the U1.",
+      "cost_usd": 0,
+      "cost_note": "No software purchase is listed; existing devices and any external hosting are separate.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 3,
+      "phase": 5,
+      "requires": [],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "DnG-Crafts",
+        "url": "https://github.com/DnG-Crafts/U1-RFID",
+        "kind": "repository",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "companion-app",
+        "documented"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "Writing a tag does not add tag-reading support to stock firmware."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "companion-app",
+        "status": "documented",
+        "platforms": [
+          "android"
+        ],
+        "firmware": "The phone app can work independently. U1 custom-tag reading needs compatible extended firmware and a supported physical tag.",
+        "accounts": "No separate service account is documented for this setup.",
+        "hardware": "An NFC-capable Android phone and suitable writable tags.",
+        "project_license": "See the creator’s repository and distribution terms.",
+        "setup_steps": [
+          "Check the current Android release and NFC requirements.",
+          "Enter the spool’s actual filament information.",
+          "Verify one supported tag with the intended printer setup."
+        ],
+        "docs": [
+          {
+            "label": "Creator project",
+            "url": "https://github.com/DnG-Crafts/U1-RFID",
+            "creator": "DnG-Crafts"
+          },
+          {
+            "label": "U1 tag and reader compatibility",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/design/rfid",
+            "creator": "Paxx12 contributors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "openspool-mobile",
+      "title": "OpenSpool mobile app",
+      "category": "filament-system",
+      "type": "install",
+      "summary": "Write basic OpenSpool NFC data from a mobile device. Check the app’s platform and tag requirements before choosing a workflow.",
+      "cost_usd": 0,
+      "cost_note": "No software purchase is listed; existing devices and any external hosting are separate.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 3,
+      "phase": 5,
+      "requires": [],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "none",
+      "source": {
+        "creator": "spuder and contributors",
+        "url": "https://github.com/spuder/OpenSpoolMobile",
+        "kind": "repository",
+        "credit_status": "named",
+        "note": "Creator documentation reviewed for this guide. Check the linked project for current releases and requirements."
+      },
+      "last_verified": "2026-10-28",
+      "verified_firmware": null,
+      "tags": [
+        "software",
+        "companion-app",
+        "documented"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "App capabilities and physical tag compatibility are separate from U1 firmware support."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Software and integration coverage review",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Original source-based rewrite. Documentation review only; no installation, printer test or firmware compatibility verification."
+      },
+      "software": {
+        "kind": "companion-app",
+        "status": "documented",
+        "platforms": [
+          "android",
+          "ios"
+        ],
+        "firmware": "The phone app can work independently. U1 custom-tag reading needs compatible extended firmware and a supported physical tag.",
+        "accounts": "No separate service account is documented for this setup.",
+        "hardware": "A compatible NFC-capable phone and writable tags.",
+        "project_license": "See the current repository license and mobile distribution terms.",
+        "setup_steps": [
+          "Read the app’s platform setup guide.",
+          "Choose supported tags and enter accurate filament details.",
+          "Test one tag against the reader configuration you intend to use."
+        ],
+        "docs": [
+          {
+            "label": "Mobile app project",
+            "url": "https://github.com/spuder/OpenSpoolMobile",
+            "creator": "spuder and contributors"
+          },
+          {
+            "label": "U1 tag and reader compatibility",
+            "url": "https://snapmakeru1-extended-firmware.pages.dev/design/rfid",
+            "creator": "Paxx12 contributors"
+          }
+        ]
       }
     }
   ]
