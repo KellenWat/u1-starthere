@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {searchFixes,codeQuery} from '../assets/fix-search.mjs';
-import {renderFix} from '../assets/fix-view.mjs';
+import {renderFix,renderFixSummary} from '../assets/fix-view.mjs';
 import {escape} from '../assets/view.mjs';
 const read=async name=>JSON.parse(await readFile(new URL(name,import.meta.url),'utf8'));
 const {fixes}=await read('../data/fixes.json'),{items}=await read('../data/items.json'),fixtures=await read('./fixtures/fix-search.json');
@@ -42,6 +42,9 @@ test('unknown and incomplete codes never fall back to a misleading numeric or sy
 test('coded guide views show complete identifiers, review evidence and safe shareable links',()=>{
   for(const card of fixes.filter(card=>card.codes.length)){
     const html=renderFix(card,items,'https://example.github.io/u1-starthere/');
+    const summary=renderFixSummary(card);
+    for(const code of card.codes)assert.ok(summary.includes(`<code>${code}</code>`));
+    assert.ok(!summary.includes('<details')&&!summary.includes('<a '));
     for(const code of card.codes)assert.ok(html.includes(`/u1-starthere/fixes/?q=${code}`));
     for(const source of card.code_evidence.sources)assert.ok(html.includes(source.url));
     assert.ok(html.includes('not tested on a printer'));

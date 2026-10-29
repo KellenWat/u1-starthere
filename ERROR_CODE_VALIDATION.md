@@ -1,5 +1,23 @@
 # Error-code lookup handoff — 2026-10-29
 
+## Follow-up: show numbers beside each fix
+
+The owner requested visible code numbers. Results now list every associated
+code beneath the title, including when the fix is collapsed. Journey cards
+also list their codes directly; only source/review notes remain expandable.
+This supersedes the initial collapsed-number layout described below.
+
+Changed `assets/fix-view.mjs`, `assets/fix-ui.mjs`, `assets/site.css`, the
+existing fix-view assertions in `tests/fix-search.test.mjs`, and README
+Decision 40. Browser review confirmed visible numbers on collapsed cards,
+keyboard expansion and no horizontal overflow at 390 px and 320 px, including
+the 15-code group. Number text is explicitly 13.12 px for phone readability.
+No data associations changed. Local verification: 84 JS tests passed, four
+data files validated, all 68 generated pages matched, and diff checks passed.
+
+Preview using the same local command below; the review server is stopped
+at handoff.
+
 ## Completed and verified
 
 - Added 37 complete code mappings across eight families, four new fix cards

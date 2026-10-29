@@ -336,6 +336,11 @@ match the JSON. The optional authoring script is not a deployment build step.
     never substitute a similar number. Keep symptom search available separately.
     Expandable code evidence follows the checks to keep stop conditions visible
     on a phone. All four new guides are reachable in the connected journey.
+40. **Visible codes beside fixes:** per the owner's follow-up, all associated
+    numbers now appear beneath each fix title in the results list, including
+    collapsed results. Journey cards show the same complete codes before the
+    checks. Only source/review notes remain expandable; codes are never hidden
+    behind that disclosure. Number lists wrap on phones and render from JSON.
 
 ## Source review and remaining content work
 
