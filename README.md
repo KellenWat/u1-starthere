@@ -31,13 +31,16 @@ for `ba097fa`: all five golden personas, 34 JavaScript tests, 27 Python tests,
 three data files and all 42 generated pages. See [M3 validation evidence](M3_VALIDATION.md).
 The owner's macOS-inspired theme is applied across the site.
 
-**M4 implemented: connected guide, symptom search and all seed rankings pass locally.**
+**M4 complete: connected guide, symptom search and all seed rankings pass locally and in CI.**
 The owner's latest direction adds a shared decision map: clear observations
 open matching fix cards, uncertain answers lead to another question, and goals
 lead to a conditional planner. `/fixes/` searches all 12 cards. Every seed
 symptom and additional authored phrase ranks its own card first. Source
 limitations, stop conditions and related-item links stay visible. See
 [M4 validation evidence](M4_VALIDATION.md) for final local and CI evidence.
+[Actions run #10 passed](https://github.com/KellenWat/u1-starthere/actions/runs/40817767600)
+for `d4e0b03`: 63 JavaScript tests, 31 Python tests, four data documents and
+all 43 generated pages.
 M5 and M6 have not started.
 
 M1 acceptance evidence:

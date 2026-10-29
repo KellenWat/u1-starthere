@@ -23,6 +23,20 @@ unique choice IDs and reachability. All 43 committed HTML pages match the
 generator. Every local asset/page link is checked, including `/fixes/`.
 The JavaScript budget counts runtime, authoring and test modules together.
 
+[GitHub Actions run #10](https://github.com/KellenWat/u1-starthere/actions/runs/40817767600)
+passed for `d4e0b03fd7b59f34a1e941a3a833de4692cd9bf7`. Actual CI output:
+
+```text
+PASS total JavaScript: 111427 / 200000 bytes
+Validation passed: 4 data files; 0 errors.
+Ran 31 tests in 2.001s
+OK
+# tests 63
+# pass 63
+# fail 0
+PASS generated pages match JSON and template: 43 HTML pages (38 item details).
+```
+
 New cases cover unknown searches, punctuation/case, data-order independence,
 escaping unsafe text/links, all seed rankings, preserved fix-step order,
 shared questions, clarifier outcomes, helped/still-happening routes, cycle
