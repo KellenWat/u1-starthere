@@ -438,6 +438,12 @@ match the JSON. The optional authoring script is not a deployment build step.
     This early beta replaces the brief's suggested late-November soft launch
     at the owner's request.
 
+54. **Suggestions:** every page's shared footer now has a Something missing?
+    button opening a dedicated GitHub suggestion form. Readers can suggest a
+    guide, fix, project or usability improvement, with an optional original
+    creator link and page context. The button discloses the GitHub account
+    requirement; the About page links to the same form.
+
 ## Source review and remaining content work
 
 Source pages were reviewed on 2026-10-28 for Paxx12, its RFID/Spoolman/heater

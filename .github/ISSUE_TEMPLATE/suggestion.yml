@@ -1,0 +1,37 @@
+name: Suggest an addition or improvement
+description: Suggest a missing guide, fix, community project or website improvement.
+title: "Suggestion: "
+body:
+  - type: markdown
+    attributes:
+      value: "What would make U1 StartHere more useful? Suggestions are public."
+  - type: dropdown
+    id: area
+    attributes:
+      label: What kind of suggestion is this?
+      options:
+        - Setup or first prints
+        - Fix or symptom guide
+        - Printed part or hardware project
+        - Software or integration
+        - Website usability
+        - Something else
+  - type: textarea
+    id: missing
+    attributes:
+      label: What's missing or could be better?
+    validations:
+      required: true
+  - type: textarea
+    id: benefit
+    attributes:
+      label: How would it help? (optional)
+  - type: input
+    id: source
+    attributes:
+      label: Creator or documentation link (optional)
+      description: For a community project, link to the creator's original page.
+  - type: input
+    id: page
+    attributes:
+      label: Page you were using (optional)
