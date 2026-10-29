@@ -16,6 +16,8 @@ export function mountFreshness(root=document){
     const state=reviewState(record),text=reviewLabel(record,state);
     if(badge.textContent!==text)badge.textContent=text;
     badge.classList.toggle('review-due',state!=='current');
+    const summary=badge.closest('.catalog-source')?.querySelector('summary');
+    if(summary){const label=state==='due'?'Source & review — review due':state==='unknown'?'Source & review — check date':'Source & review';if(summary.textContent!==label)summary.textContent=label;}
   }}
   refresh();const observer=new MutationObserver(refresh);observer.observe(root.body||root,{childList:true,subtree:true});return ()=>observer.disconnect();
 }

@@ -1,5 +1,5 @@
 {
-  "version": "1.6.0",
+  "version": "1.7.0",
   "license": "CC-BY-4.0",
   "imported_at": "2026-10-28",
   "attribution": {
@@ -4821,6 +4821,81 @@
         "verification_status": "source-reviewed-not-tested",
         "note": "Community discussion reviewed on 2026-10-29; recommendation evidence is linked separately. Current model-host files, settings and license were not reviewed; no physical testing or file rehosting."
       }
+    }
+  ],
+  "catalog_groups": [
+    {
+      "id": "setup",
+      "title": "Setup & first prints",
+      "description": "Prepare the printer and establish a stock baseline.",
+      "categories": [
+        "setup"
+      ]
+    },
+    {
+      "id": "printed-parts",
+      "title": "Printed parts",
+      "description": "Browse useful parts for cleanup, storage, access and larger projects.",
+      "categories": [
+        "printed-mod"
+      ]
+    },
+    {
+      "id": "filament",
+      "title": "Filament & drying",
+      "description": "Spool handling, dry-feed routes and filament tools.",
+      "categories": [
+        "filament-system"
+      ]
+    },
+    {
+      "id": "print-quality",
+      "title": "Slicing & print quality",
+      "description": "Slicer workflows, tuning and print-quality checks.",
+      "categories": [
+        "slicer"
+      ]
+    },
+    {
+      "id": "maintenance",
+      "title": "Maintenance & monitoring",
+      "description": "Calibration upkeep and monitoring integrations.",
+      "categories": [
+        "maintenance"
+      ]
+    },
+    {
+      "id": "firmware",
+      "title": "Firmware & printer tools",
+      "description": "Firmware choices, integrations and printer-side features.",
+      "categories": [
+        "firmware"
+      ]
+    },
+    {
+      "id": "enclosures",
+      "title": "Enclosures & cooling",
+      "description": "Review cover routes, airflow and electronics-cooling requirements.",
+      "categories": [
+        "enclosure",
+        "cooling"
+      ]
+    },
+    {
+      "id": "colors",
+      "title": "More colors",
+      "description": "Community options for extending color workflows.",
+      "categories": [
+        "multi-color"
+      ]
+    },
+    {
+      "id": "accessories",
+      "title": "Parts & accessories",
+      "description": "Build plates, dryers, spares and other purchased equipment.",
+      "categories": [
+        "purchase"
+      ]
     }
   ]
 }

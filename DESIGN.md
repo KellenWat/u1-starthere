@@ -2,6 +2,20 @@
 
 ## Current refinement: a clear next step
 
+Catalog browsing plan: retain white #ffffff, inset #f6f7f9, ink #202124,
+secondary #5f636b, rules #e2e5e9 and action #0069d9, with the existing native
+typeface. Left-align named category sections and show counts. Open the first
+section initially; use native disclosures for the rest. Filters open every
+matching section. A compact jump navigation reaches each category directly.
+Cards prioritize title, a short visual summary, price/type and visible software
+status; source/review details remain one keyboard-operable disclosure away.
+Full requirements remain on the item page. Review against the request: category
+structure should do the organizing, without adding decorative panels or more
+explanatory copy. Review phone layout and filters, then correct observed issues.
+Phone review: retain the search field and collapse the other filters into a
+native panel with a visible active count. Shared filter URLs open that panel;
+clearing filters restores the quiet default. This brings categories forward.
+
 Public-beta additions keep the existing tokens and layout: source-review text
 is subordinate to an item's purpose, with a plain Review due label when needed.
 About uses left-aligned readable sections and a quiet feedback panel that stacks

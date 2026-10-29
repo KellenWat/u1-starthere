@@ -6,11 +6,12 @@
     "license",
     "imported_at",
     "attribution",
-    "items"
+    "items",
+    "catalog_groups"
   ],
   "properties": {
     "version": {
-      "const": "1.6.0"
+      "const": "1.7.0"
     },
     "license": {
       "const": "CC-BY-4.0"
@@ -380,6 +381,52 @@
             "minItems": 1,
             "items": {
               "$ref": "common.schema.json#/$defs/source"
+            }
+          }
+        }
+      }
+    },
+    "catalog_groups": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "title",
+          "description",
+          "categories"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "categories": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "setup",
+                "printed-mod",
+                "purchase",
+                "firmware",
+                "slicer",
+                "enclosure",
+                "cooling",
+                "filament-system",
+                "multi-color",
+                "maintenance"
+              ]
             }
           }
         }

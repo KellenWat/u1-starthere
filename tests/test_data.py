@@ -28,6 +28,18 @@ class DataTests(unittest.TestCase):
     def test_seed_passes(self):
         self.assertEqual(validate_documents(self.docs), [])
 
+    def test_catalog_groups_cannot_drop_items(self):
+        self.docs['items']['catalog_groups'].pop(0)
+        self.rejects('exactly one catalog group')
+
+    def test_catalog_categories_cannot_appear_twice(self):
+        self.docs['items']['catalog_groups'][1]['categories'].append('setup')
+        self.rejects('overlapping category')
+
+    def test_catalog_group_ids_are_unique(self):
+        self.docs['items']['catalog_groups'][1]['id'] = self.docs['items']['catalog_groups'][0]['id']
+        self.rejects('duplicate group ID')
+
     def test_community_evidence_rejects_tracking_links(self):
         self.item('split-waste-chute')['community_evidence'][0]['url'] += '?utm_source=test'
         self.rejects('affiliate/tracking')

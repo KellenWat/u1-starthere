@@ -44,6 +44,19 @@ def validate_documents(documents: dict, root: Path = ROOT) -> list[str]:
 
     items, fixes, phases = (documents[kind][kind] for kind in ("items", "fixes", "phases"))
     item_map = {item["id"]: item for item in items}
+    groups = documents['items']['catalog_groups']
+    if len({group['id'] for group in groups}) != len(groups):
+        errors.append('catalog_groups: duplicate group ID')
+    category_groups = {}
+    for group in groups:
+        for category in group['categories']:
+            category_groups.setdefault(category, []).append(group['id'])
+    for category, owners in category_groups.items():
+        if len(owners) != 1:
+            errors.append('catalog_groups: overlapping category ' + category)
+    for item in items:
+        if len(category_groups.get(item['category'], [])) != 1:
+            errors.append(item['id'] + ': needs exactly one catalog group')
     phase_ids = [phase["phase"] for phase in phases]
     if phase_ids != list(range(7)):
         errors.append("phases.json: phases must appear once each, in order 0 through 6")

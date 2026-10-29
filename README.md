@@ -448,6 +448,14 @@ match the JSON. The optional authoring script is not a deployment build step.
     1 in the header/footer and Unicode subscript in page titles. Accessible
     link names remain readable as U1 StartHere.
 
+56. **Catalog readability:** contract 1.7.0 stores nine ordered browsing groups
+    in items.json. They cover every item exactly once using existing categories.
+    The first group opens by default, with counts and jump links for the others.
+    Search stays visible; secondary filters have an active-count disclosure.
+    Filtered matches open automatically. Compact previews keep full source,
+    review and requirement information accessible, with unstable software status
+    still visible. Existing filter URLs and planner behavior remain compatible.
+
 ## Source review and remaining content work
 
 Source pages were reviewed on 2026-10-28 for Paxx12, its RFID/Spoolman/heater

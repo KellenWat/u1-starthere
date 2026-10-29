@@ -1,7 +1,8 @@
 import {renderTrackStep,renderMilestones} from './track-view.mjs';
 import {mountFreshness} from './freshness.mjs';
 import {renderHome} from './home-view.mjs';
-import {escape as e,label,money,path,itemPath,itemCard,catalogItems,platformLabel} from './view.mjs';
+import {renderCatalog} from './catalog-view.mjs';
+import {escape as e,label,money,path,itemPath,catalogItems,platformLabel} from './view.mjs';
 import {STORAGE_KEY,readProgress,progressCounts} from './progress.mjs';
 import {mountJourney} from './journey-ui.mjs';
 import {mountFixes} from './fix-ui.mjs';
@@ -19,14 +20,14 @@ async function load() {
   try {
     const names=['items','phases',...(['plan','fixes'].includes(page)?['fixes']:[]),...(['home','plan'].includes(page)?['journey']:[])];
     const docs = await Promise.all(names.map(async name => {
-      const response = await fetch(path(base,`data/${name}.json`));
+      const response = await fetch(path(base,`data/${name}.json`),{cache:'no-cache'});
       if (!response.ok) throw new Error('Data unavailable');
       return response.json();
     }));
     items = docs[0].items; phases = docs[1].phases;
     if (!Array.isArray(items) || !Array.isArray(phases)) throw new Error('Invalid data');
     if (page === 'home') main.innerHTML=renderHome(items,phases,docs[2],base);
-    if (page === 'catalog') catalog();
+    if (page === 'catalog') catalog(docs[0].catalog_groups);
     if (page === 'start') track(docs[1]);
     if (page === 'plan') mountJourney(main,items,phases,base,docs[0],docs[2].fixes,docs[3]);
     if (page === 'fixes') mountFixes(main,docs[2].fixes,items,base);
@@ -36,43 +37,58 @@ async function load() {
   }
 }
 
-function catalog() {
+function catalog(groups) {
   const categories = [...new Set(items.map(item=>item.category))].sort();
-  main.innerHTML = `<header class="page-heading"><h1>Community catalog.</h1><p class="lead">Tools, upgrades and guides for your next change.<br>Check the prerequisites and follow the creator’s instructions.</p></header>
+  main.innerHTML = `<header class="page-heading"><h1>Community catalog.</h1><p class="lead">Browse a category or find a specific project.</p></header>
     <form class="filters" id="catalog-filters" role="search" aria-label="Filter the catalog"><div class="search-control"><label for="catalog-query">Find an item</label><input id="catalog-query" name="q" type="search" placeholder="Search by project, material or creator" autocomplete="off"></div>
-    <div class="filter-primary"><div><label for="category">Category</label><select id="category" name="category">${options([['','All categories'],['software','Software & integrations'],...categories.map(value=>[value,label(value)])])}</select></div>
+    <details class="catalog-filter-panel"><summary>Filters</summary><div class="filter-primary"><div><label for="category">Category</label><select id="category" name="category">${options([['','All categories'],['software','Software & integrations'],...categories.map(value=>[value,label(value)])])}</select></div>
     <div><label for="cost">Cost</label><select id="cost" name="cost">${options([['','Any cost'],['0','Free options'],['50','Up to $50'],['150','Up to $150'],['300','Up to $300'],['variable','Price varies']])}</select></div>
     <div><label for="platform">Runs on</label><select id="platform" name="platform">${options([['','Any platform'],...[...new Set(items.flatMap(item=>item.software?.platforms||[]))].sort().map(value=>[value,platformLabel(value)])])}</select></div></div>
     <div class="filter-secondary"><details class="filter-extras"><summary>Difficulty &amp; stage</summary><div class="filter-extra-fields"><div><label for="difficulty">Difficulty</label><select id="difficulty" name="difficulty">${options([['','Any difficulty'],['1','1 — Easy'],['2','Up to 2 — Some setup'],['3','Up to 3 — Hands-on'],['4','Up to 4 — Advanced'],['5','Up to 5 — Experimental']])}</select></div>
     <div><label for="phase">Earliest stage</label><select id="phase" name="phase">${options([['','Any stage'],...phases.map(phase=>[String(phase.phase),phase.name])])}</select></div></div></details>
-    <button type="reset" class="text-button">Clear filters</button></div></form>
-    <div class="results-heading"><p id="results-count" role="status" aria-live="polite"></p><p class="small">Ordered by earliest stage, then title</p></div><div class="catalog-grid" id="catalog-results"></div>
+    <button type="reset" class="text-button">Clear filters</button></div></details></form>
+    <div class="results-heading"><p id="results-count" role="status" aria-live="polite"></p></div><div id="catalog-results"></div>
     <p class="catalog-note">Free means no purchase price; filament and optional hardware can still cost money. All times are estimates. Open an item for its price date, source and limitations.</p>`;
   const form = document.querySelector('#catalog-filters');
   const params = new URL(location.href).searchParams;
+  const initialSection=location.hash.slice(1);
   for (const control of form.elements) {
     if (!control.name || !params.has(control.name)) continue;
     const value = params.get(control.name);
     if (control.type === 'search' || [...control.options].some(option=>option.value===value)) control.value=value;
   }
   if(params.has('difficulty')||params.has('phase'))form.querySelector('.filter-extras').open=true;
+  if(['category','cost','platform','difficulty','phase'].some(key=>params.has(key)))form.querySelector('.catalog-filter-panel').open=true;
   function update() {
     const filters = Object.fromEntries(new FormData(form));
     const extraCount=[filters.difficulty,filters.phase].filter(Boolean).length;
+    const filterCount=[filters.category,filters.cost,filters.platform,filters.difficulty,filters.phase].filter(Boolean).length;
+    form.querySelector('.catalog-filter-panel>summary').textContent=`Filters${filterCount?` (${filterCount} active)`:''}`;
     form.querySelector('.filter-extras>summary').textContent=`Difficulty & stage${extraCount?` (${extraCount} active)`:''}`;
     const selected = catalogItems(items,filters);
     document.querySelector('#results-count').textContent = `${selected.length} of ${items.length} items`;
-    document.querySelector('#catalog-results').innerHTML = selected.length ? selected.map(item=>itemCard(item,phases,base)).join('') :
-      '<div class="empty-state"><h2>No items match these filters</h2><p>Try a broader category, cost or stage.</p><button class="button secondary" type="button" id="empty-reset">Clear filters</button></div>';
+    document.querySelector('#catalog-results').innerHTML = renderCatalog(selected,groups,base,{filtered:Object.values(filters).some(Boolean)});
     document.querySelector('#empty-reset')?.addEventListener('click',()=>form.reset());
-    const url = new URL(location.href); url.search='';
+    const url = new URL(location.href); url.search='';url.hash='';
     for (const [key,value] of Object.entries(filters)) if(value) url.searchParams.set(key,value);
     history.replaceState(null,'',url);
   }
   form.addEventListener('submit',event=>event.preventDefault());
   form.addEventListener('input',update);
-  form.addEventListener('reset',()=>{setTimeout(update,0);});
+  form.addEventListener('reset',()=>{setTimeout(()=>{form.querySelector('.catalog-filter-panel').open=false;update();},0);});
+  function revealSection(id){
+    const section=document.getElementById(id);if(!section?.classList.contains('catalog-section'))return;
+    history.replaceState(null,'',location.pathname+location.search+'#'+id);
+    section.open=true;section.querySelector('summary').focus({preventScroll:true});
+    section.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  }
+  main.addEventListener('click',event=>{
+    const jump=event.target.closest('[data-catalog-jump]');if(!jump)return;
+    event.preventDefault();const id='catalog-group-'+jump.dataset.catalogJump;
+    revealSection(id);
+  });
   update();
+  if(initialSection.startsWith('catalog-group-'))revealSection(initialSection);
 }
 
 function track(trackData) {

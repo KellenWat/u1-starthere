@@ -1,4 +1,19 @@
-# U1 StartHere data contract (1.6.0)
+# U1 StartHere data contract (1.7.0)
+
+Contract 1.7.0 adds `catalog_groups` to items.json. Each ordered group has a
+stable `id`, readable `title`, `description` and `categories` list. Validation
+requires unique group IDs and exactly one group for every item category, with
+no overlaps or silently omitted records. Groups organize browsing; they do not
+alter planner order, conditions or prerequisites. Empty filtered groups are
+omitted, and the existing category/platform filters remain compatible.
+
+Unfiltered browsing opens the first group; active filters open all matching
+groups. Group anchors restore their open section. Compact cards retain full
+summaries in the document and item detail; a two-line visual preview reduces
+clutter. Source/review information is in a native disclosure, with overdue
+status surfaced on its summary at runtime. Unstable software status remains
+visible. Canonical data requests revalidate; cached pre-1.7 data can still
+render groups derived from their existing category fields.
 
 ## Public URLs and freshness
 
