@@ -1,6 +1,9 @@
 # M3 validation evidence
 
-Local acceptance checks passed on 2026-10-28; GitHub Actions result pending.
+Local acceptance checks and [GitHub Actions run #6](https://github.com/KellenWat/u1-starthere/actions/runs/40791919046)
+passed on 2026-10-28 for commit `ba097fa89aec402bca104c72da86c14dc39aa01f`.
+The successful run checked all five golden personas, 34 JavaScript tests,
+27 Python tests, the three JSON documents and all 42 generated pages.
 M4 has not started. This milestone includes the owner's scrolling decision
 path and their later Apple/macOS-inspired theme request across the site.
 

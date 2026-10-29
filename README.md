@@ -22,11 +22,14 @@ with all three JSON files, 25 Python tests, 11 JavaScript tests and all 41
 generated pages checked. [M2 validation evidence](M2_VALIDATION.md) records
 the phone/desktop checks and limits.
 
-**M3 implemented and locally verified; final Actions run pending.** The
+**M3 complete: all five golden personas and GitHub Actions pass.** The
 scrolling decision path builds a deterministic plan with gate/prerequisite
 ordering, visible conflict and budget explanations, reason chips, running
 totals, URL sharing, ownership refinements, optional remedies and print/Markdown
-exports. All five golden personas pass locally. M4–M6 have not started.
+exports. [Actions run #6 passed](https://github.com/KellenWat/u1-starthere/actions/runs/40791919046)
+for `ba097fa`: all five golden personas, 34 JavaScript tests, 27 Python tests,
+three data files and all 42 generated pages. See [M3 validation evidence](M3_VALIDATION.md).
+The owner's macOS-inspired theme is applied across the site. M4–M6 have not started.
 
 M1 acceptance evidence:
 
