@@ -15,6 +15,8 @@ The beta focuses on a successful first print, finding an appropriate fix and
 choosing a useful next project. Source review is not physical-printer validation.
 [Owner walkthrough protocol](BETA_TESTING.md) records the next validation work.
 
+![U1 StartHere public beta](docs/screenshots/public-beta-home.png)
+
 Publishing uses GitHub Pages at no domain cost. Main-branch deployment runs only
 after schemas, tests and generated-page checks pass. The server publishes the
 committed files without a site build. Weekly/on-demand source checks maintain
@@ -55,8 +57,12 @@ limitations, stop conditions and related-item links stay visible. See
 [Actions run #10 passed](https://github.com/KellenWat/u1-starthere/actions/runs/40817767600)
 for `d4e0b03`: 63 JavaScript tests, 31 Python tests, four data documents and
 all 43 generated pages.
-M5 implementation is included in this beta: embed/data docs, About/feedback,
-review badges, weekly source monitoring and mobile/keyboard polish. See
+**M5 complete: public beta, validation and deployment passed.** Embed/data docs,
+About/feedback, review badges, weekly source monitoring and mobile/keyboard
+polish are live. [Validation and deployment passed](https://github.com/KellenWat/u1-starthere/actions/runs/40939303835),
+and [the first source-review run passed](https://github.com/KellenWat/u1-starthere/actions/runs/40939433035),
+maintaining [the review queue](https://github.com/KellenWat/u1-starthere/issues/1).
+See
 [M5 validation evidence](M5_VALIDATION.md) for acceptance results. Formal M6
 competition submission assets remain separate.
 
@@ -392,7 +398,8 @@ match the JSON. The optional authoring script is not a deployment build step.
     scenarios, not recruited participants or a physical U1 print. Source review
     is labeled accordingly. [Owner journey audit](USER_JOURNEY_AUDIT.md) records
     findings, changes, validation and remaining usability questions. The current
-    track has 38 steps; the connected journey has 48 nodes. M5/M6 remain deferred.
+    track had 38 steps; the connected journey had 48 nodes. M5/M6 were deferred
+    at that audit; the current M5 status is recorded above.
 
 49. **Useful first prints:** the owner's follow-up adds ahlang's split waste
     chute/box and Darien's deflector wall. Setup, improvement and exploration
@@ -428,6 +435,8 @@ match the JSON. The optional authoring script is not a deployment build step.
     The repository was already public. GitHub Pages uses the existing main
     branch through a test-gated Actions deployment, serving committed files
     without a site build. No custom domain or paid hosting is required.
+    This early beta replaces the brief's suggested late-November soft launch
+    at the owner's request.
 
 ## Source review and remaining content work
 

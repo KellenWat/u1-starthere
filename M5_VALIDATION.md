@@ -52,9 +52,32 @@ GitHub run evidence is recorded at publication.
 ## Publication verification
 
 Repository visibility was confirmed public before this change. GitHub Pages
-was disabled. The owner's request authorizes enabling the public site and
-updating the repository. Publication and workflow-run results are pending at
-this local-preparation commit; they will be recorded after the live checks.
+was disabled. At the owner's request, GitHub Pages was enabled with GitHub
+Actions as the source. The repository's About description and website URL
+were updated and confirmed in the visible saved state.
+
+- Public site: https://kellenwat.github.io/u1-starthere/.
+- Implementation: `efd346701799a792d5e4479f9207d012be29df92`.
+- [Validate and publish passed](https://github.com/KellenWat/u1-starthere/actions/runs/40939303835): both data/test and deployment jobs succeeded.
+- [First manual source-review run passed](https://github.com/KellenWat/u1-starthere/actions/runs/40939433035), saved its report artifact and created [the bot review queue](https://github.com/KellenWat/u1-starthere/issues/1).
+- Runner result: 83 URLs, 65 OK, 0 broken, 18 needing manual review; no overdue
+  dates and eight unresolved primary credits. Environment-dependent blocked
+  responses explain the difference from the local check above.
+- Anonymous HTTPS checks returned 200 for home, About, embed, track, plan,
+  fixes, catalog, a new item detail and embed.js. All four JSON URLs returned
+  200, contract 1.6.0 and `Access-Control-Allow-Origin: *` for external reuse.
+- Live browser walkthrough: home → Get started → loading → exact track guide,
+  with focus on its summary. Exact code `0002-0523-0001-0045` returned one
+  matching pogo-contact guide with its associated numbers and stop condition.
+  The live embed linked to the public item route. The GitHub owner-feedback
+  form rendered all expected fields; no feedback report was submitted.
+- Screenshot: `docs/screenshots/public-beta-home.png`, captured from the public
+  website and included in the README. No participant or printer validation is
+  inferred from these browser checks.
+
+M5 acceptance is complete. Final documentation updates use the same test-gated
+deployment path. The next evidence needed is actual owner use, not another
+catalog expansion.
 
 ## Files created/changed
 
