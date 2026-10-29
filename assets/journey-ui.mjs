@@ -1,7 +1,8 @@
-import {escape as e,path,itemPath,softwareCard,platformLabel,filterSoftware} from './view.mjs';
+import {escape as e,path,itemPath,softwareCard,filterSoftware} from './view.mjs';
 import {walkJourney,chooseJourney,encodeJourney,decodeJourney,edges} from './journey.mjs';
 import {renderFix} from './fix-view.mjs';
 import {mountPlanner,unmountPlanner} from './plan-ui.mjs';
+import {renderResources} from './resource-view.mjs';
 
 export function mountJourney(main,items,phases,base,itemData,fixes,data){
   const decoded=decodeJourney(location.hash.startsWith('#plan=')?'':location.hash,data,items);
@@ -34,8 +35,7 @@ export function mountJourney(main,items,phases,base,itemData,fixes,data){
       content=`<div class="journey-guide"><p class="intro-label">A guide matches this observation</p>${renderFix(card,items,base)}<div class="guide-actions"><button type="button" class="button primary" data-edge="next">What’s next?</button>${card.related_items.length?'<button type="button" class="button secondary" data-related>Plan related improvements</button>':''}<button type="button" class="text-button" data-still>Still happening</button><button type="button" class="text-button" data-helped>That helped</button></div><p class="small">A matching guide is a starting point, not a confirmed diagnosis.</p></div>`;
     }
     if(node.kind==='resources'){
-      const options=node.item_ids.map(id=>items.find(item=>item.id===id)),platforms=[...new Set(options.flatMap(item=>item.software?.platforms||[]))].sort();
-      content=`<div class="journey-resources"><header><h2 id="journey-title">${e(node.title)}</h2><p class="lead">${e(node.help)}</p></header><div class="software-filter"><div><label for="software-platform">Runs on</label><select id="software-platform"><option value="">Any platform</option>${platforms.map(value=>`<option value="${e(value)}">${e(platformLabel(value))}</option>`).join('')}</select></div><p id="software-count" role="status" aria-live="polite">${options.length} options</p><a href="${e(path(base,'catalog/?category=software'))}">All software guides</a></div><div class="software-grid" id="software-results">${options.map(item=>softwareCard(item,base)).join('')}</div><button type="button" class="button secondary" data-edge="next">Explore another software goal</button></div>`;
+      content=renderResources(node,items,base);
     }
     if(node.kind==='track'){
       const step=node.step_id?phases.flatMap(phase=>phase.steps).find(step=>step.id===node.step_id):null;

@@ -6,7 +6,7 @@ import {buildPlan} from '../assets/planner.mjs';
 import {walkJourney} from '../assets/journey.mjs';
 const read=async file=>JSON.parse(await readFile(new URL(file,import.meta.url),'utf8'));
 const {items}=await read('../data/items.json'),{phases}=await read('../data/phases.json'),journey=await read('../data/journey.json');
-const software=items.filter(item=>item.software),newGuides=items.filter(item=>item.provenance.seed==='community-docs');
+const software=items.filter(item=>item.software),newGuides=items.filter(item=>item.provenance.seed==='community-docs'&&item.software);
 
 test('all identified documentation gaps have credited, optional, source-reviewed guides',()=>{
   assert.equal(newGuides.length,25);

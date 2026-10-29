@@ -1,5 +1,5 @@
 {
-  "version": "1.5.0",
+  "version": "1.6.0",
   "license": "CC-BY-4.0",
   "imported_at": "2026-10-28",
   "attribution": {
@@ -90,6 +90,12 @@
           "next": "track-first-file"
         },
         {
+          "id": "prints",
+          "label": "Useful first prints",
+          "description": "Waste chute and collection wall options after stock checks",
+          "next": "first-prints"
+        },
+        {
           "id": "ready",
           "label": "Ready for my next change",
           "next": "improve",
@@ -110,6 +116,12 @@
           "label": "Software & integrations",
           "description": "Apps, firmware features and community tools",
           "next": "software"
+        },
+        {
+          "id": "prints",
+          "label": "Useful prints and projects",
+          "description": "Cleanup, daily convenience, enclosures and cooling",
+          "next": "print-projects"
         },
         {
           "id": "noise",
@@ -190,6 +202,12 @@
           "label": "Software & integrations",
           "description": "Apps, firmware features and community tools",
           "next": "software"
+        },
+        {
+          "id": "prints",
+          "label": "Useful prints and projects",
+          "description": "Cleanup, daily convenience, enclosures and cooling",
+          "next": "print-projects"
         },
         {
           "id": "abs",
@@ -889,6 +907,68 @@
       "title": "Set the spool’s material and color",
       "help": "Use the already-loaded-spool instruction in this guide. A missing automatic label does not by itself mean the filament failed to load.",
       "step_id": "load-first-filament"
+    },
+    {
+      "id": "first-prints",
+      "kind": "resources",
+      "title": "Easy cleanup and storage prints",
+      "help": "After the stock tests work, consider a collector, deflector or spare-plate holder if it solves a problem for you. Check current creator instructions. The chute and deflector have not been tested as a combined kit.",
+      "item_ids": [
+        "split-waste-chute",
+        "waste-deflector-wall",
+        "buildsheet-holder-two-versions"
+      ],
+      "next": "print-projects"
+    },
+    {
+      "id": "print-projects",
+      "kind": "question",
+      "title": "What kind of print would help?",
+      "help": "Choose by the job you want to do. Larger projects can need bought parts, fitting work or electronics skills.",
+      "choices": [
+        {
+          "id": "early",
+          "label": "Cleanup and storage",
+          "description": "Optional prints after your first stock checks",
+          "next": "first-prints"
+        },
+        {
+          "id": "everyday",
+          "label": "Everyday convenience",
+          "description": "Spool handling, door access and dryer routing",
+          "next": "everyday-prints"
+        },
+        {
+          "id": "advanced",
+          "label": "Enclosure and cooling projects",
+          "description": "Advanced builds with additional hardware",
+          "next": "advanced-prints"
+        }
+      ]
+    },
+    {
+      "id": "everyday-prints",
+      "kind": "resources",
+      "title": "Make everyday printing easier",
+      "help": "Choose a project for equipment you actually own. Model revisions and physical fit still need checking; a forum recommendation is not a guarantee.",
+      "item_ids": [
+        "elegant-spool-holder",
+        "original-door-hinge",
+        "sh02-dryer-rear-outlet"
+      ],
+      "next": "print-projects"
+    },
+    {
+      "id": "advanced-prints",
+      "kind": "resources",
+      "title": "Plan a larger hardware project",
+      "help": "These are optional projects after a clean stock baseline, not first-print requirements. Review the whole build, purchased hardware and electrical work before printing parts. Community reports do not establish safe chamber temperatures or filtration performance.",
+      "item_ids": [
+        "cyberdyne-vented-cover",
+        "ikea-carbon-hepa-housing",
+        "tareku-cooling-brackets"
+      ],
+      "next": "print-projects"
     }
   ]
 }

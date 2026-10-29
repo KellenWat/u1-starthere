@@ -1,5 +1,5 @@
 {
-  "version": "1.5.0",
+  "version": "1.6.0",
   "license": "CC-BY-4.0",
   "imported_at": "2026-10-28",
   "attribution": {
@@ -367,6 +367,24 @@
       "goal": "Fit useful printed parts after clean stock tests.",
       "steps": [
         {
+          "id": "review-waste-chute",
+          "text": "Review the split waste chute if emptying the stock collector is awkward.",
+          "item_id": "split-waste-chute",
+          "optional": true,
+          "requires_steps": [
+            "save-baseline"
+          ]
+        },
+        {
+          "id": "review-waste-wall",
+          "text": "Review a deflector wall if scraps miss the collection bucket.",
+          "item_id": "waste-deflector-wall",
+          "optional": true,
+          "requires_steps": [
+            "save-baseline"
+          ]
+        },
+        {
           "id": "print-riser",
           "text": "Review the riser model and its cover fit; lighting is optional and priced separately.",
           "item_id": "just-a-riser-xl",
@@ -395,6 +413,33 @@
           "text": "Repeat vibration calibration after the riser or base changes.",
           "item_id": "vibration-recalibration",
           "optional": true
+        },
+        {
+          "id": "review-buildsheet-holder-two-versions",
+          "text": "Optionally review Build-sheet holder: two versions for your setup.",
+          "item_id": "buildsheet-holder-two-versions",
+          "optional": true,
+          "requires_steps": [
+            "save-baseline"
+          ]
+        },
+        {
+          "id": "review-elegant-spool-holder",
+          "text": "Optionally review Elegant spool holder for your setup.",
+          "item_id": "elegant-spool-holder",
+          "optional": true,
+          "requires_steps": [
+            "save-baseline"
+          ]
+        },
+        {
+          "id": "review-original-door-hinge",
+          "text": "Optionally review Original Hinge door-access mod for your setup.",
+          "item_id": "original-door-hinge",
+          "optional": true,
+          "requires_steps": [
+            "save-baseline"
+          ]
         }
       ]
     },
@@ -481,6 +526,15 @@
           "text": "Review converted 3MF objects, tool assignments and prime-tower stability in the slicer before printing.",
           "item_id": "makerworld-u1-converter",
           "optional": true
+        },
+        {
+          "id": "review-sh02-dryer-rear-outlet",
+          "text": "Optionally review Rear outlet for Sovol / Comgrow SH02 dryer for your setup.",
+          "item_id": "sh02-dryer-rear-outlet",
+          "optional": true,
+          "requires_steps": [
+            "save-baseline"
+          ]
         }
       ]
     },
@@ -518,6 +572,33 @@
           "text": "Keep the original stock-test records and add your configuration changes to your maintenance notes.",
           "item_id": null,
           "optional": true
+        },
+        {
+          "id": "review-cyberdyne-vented-cover",
+          "text": "Optionally review Cyberdyne vented IKEA top-cover adapter for your setup.",
+          "item_id": "cyberdyne-vented-cover",
+          "optional": true,
+          "requires_steps": [
+            "save-baseline"
+          ]
+        },
+        {
+          "id": "review-ikea-carbon-hepa-housing",
+          "text": "Optionally review Carbon + HEPA housing for an IKEA enclosure for your setup.",
+          "item_id": "ikea-carbon-hepa-housing",
+          "optional": true,
+          "requires_steps": [
+            "save-baseline"
+          ]
+        },
+        {
+          "id": "review-tareku-cooling-brackets",
+          "text": "Optionally review Tareku mainboard / PSU cooling brackets for your setup.",
+          "item_id": "tareku-cooling-brackets",
+          "optional": true,
+          "requires_steps": [
+            "save-baseline"
+          ]
         }
       ]
     }

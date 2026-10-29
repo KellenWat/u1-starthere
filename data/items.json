@@ -1,5 +1,5 @@
 {
-  "version": "1.5.0",
+  "version": "1.6.0",
   "license": "CC-BY-4.0",
   "imported_at": "2026-10-28",
   "attribution": {
@@ -1509,7 +1509,8 @@
       ],
       "conflicts": [
         "diy-samla-lid",
-        "biqu-popcap"
+        "biqu-popcap",
+        "cyberdyne-vented-cover"
       ],
       "gates": [
         "enclosed"
@@ -1580,7 +1581,8 @@
       ],
       "conflicts": [
         "official-top-cover",
-        "biqu-popcap"
+        "biqu-popcap",
+        "cyberdyne-vented-cover"
       ],
       "gates": [
         "enclosed"
@@ -1645,7 +1647,8 @@
       ],
       "conflicts": [
         "official-top-cover",
-        "diy-samla-lid"
+        "diy-samla-lid",
+        "cyberdyne-vented-cover"
       ],
       "gates": [
         "enclosed"
@@ -4239,6 +4242,584 @@
             "creator": "Paxx12 contributors"
           }
         ]
+      }
+    },
+    {
+      "id": "split-waste-chute",
+      "title": "Split waste chute and removable collection box",
+      "category": "printed-mod",
+      "type": "print",
+      "summary": "A split replacement collector lets the lower box come away for emptying. Consider it if removing the stock waste box is awkward.",
+      "cost_usd": null,
+      "cost_note": "Filament cost and print duration depend on your slice. Check the creator page for current files, material and hardware requirements; no fixed project cost is assumed.",
+      "price_checked_at": null,
+      "time_minutes": 45,
+      "difficulty": 2,
+      "phase": 3,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": "ahlang",
+        "url": "https://makerworld.com/en/models/2110048-snapmaker-u1-split-type-waste-filament-organizer",
+        "kind": "model",
+        "credit_status": "named",
+        "note": "Original model linked by its creator. Check the current revision, material, license and fitting instructions there."
+      },
+      "last_verified": "2026-10-29",
+      "verified_firmware": null,
+      "tags": [
+        "first-prints",
+        "waste",
+        "poop",
+        "chute",
+        "collection",
+        "early-prints"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "Optional after clean stock tests. Follow the current creator instructions for material, revision and installation.",
+        "Fit only while the printer is idle and cooled. Confirm toolhead, bed and bucket clearance before printing; remove it if it interferes.",
+        "Compatibility between the split collector and deflector has not been checked. Treat them as separate options, not a tested combined kit.",
+        "The 45-minute planning allowance is our estimate for review and fitting, not the print time. No physical fit test was performed."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Useful first prints / waste collection",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Creator announcement reviewed on 2026-10-29. The model-host revision and installation have not been verified; no physical fit test or file rehosting."
+      },
+      "community_evidence": [
+        {
+          "creator": "ahlang",
+          "url": "https://forum.snapmaker.com/t/snapmaker-u1-split-waste-chute/40832",
+          "kind": "forum",
+          "credit_status": "named",
+          "note": "Creator introduction and model link"
+        }
+      ]
+    },
+    {
+      "id": "waste-deflector-wall",
+      "title": "Waste deflector / collection wall",
+      "category": "printed-mod",
+      "type": "print",
+      "summary": "A removable barrier at the nozzle-wiper brackets is intended to guide loose scraps into the stock bucket. It is a different approach from replacing the collector.",
+      "cost_usd": null,
+      "cost_note": "Filament cost and print duration depend on your slice. Check the creator page for current files, material and hardware requirements; no fixed project cost is assumed.",
+      "price_checked_at": null,
+      "time_minutes": 45,
+      "difficulty": 2,
+      "phase": 3,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": "Darien (Darien_Stegosaur)",
+        "url": "https://www.printables.com/model/1753992-snapmaker-u1-poop-deflector",
+        "kind": "model",
+        "credit_status": "named",
+        "note": "Original model linked by its creator. Check the current revision, material, license and fitting instructions there."
+      },
+      "last_verified": "2026-10-29",
+      "verified_firmware": null,
+      "tags": [
+        "first-prints",
+        "waste",
+        "poop",
+        "wall",
+        "collection",
+        "early-prints"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "Optional after clean stock tests. Follow the current creator instructions for material, revision and installation.",
+        "Fit only while the printer is idle and cooled. Confirm toolhead, bed and bucket clearance before printing; remove it if it interferes.",
+        "Compatibility between the split collector and deflector has not been checked. Treat them as separate options, not a tested combined kit.",
+        "The 45-minute planning allowance is our estimate for review and fitting, not the print time. No physical fit test was performed."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Useful first prints / waste collection",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Creator announcement reviewed on 2026-10-29. The model-host revision and installation have not been verified; no physical fit test or file rehosting."
+      },
+      "community_evidence": [
+        {
+          "creator": "Darien_Stegosaur",
+          "url": "https://www.reddit.com/r/SnapmakerU1/comments/1u6xhbp/i_made_a_solution_for_poop_missing_the_bucket/",
+          "kind": "forum",
+          "credit_status": "named",
+          "note": "Creator introduction and fit goals"
+        }
+      ]
+    },
+    {
+      "id": "buildsheet-holder-two-versions",
+      "title": "Build-sheet holder: two versions",
+      "category": "printed-mod",
+      "type": "print",
+      "summary": "Store spare build sheets beside the printer instead of leaving them on the workbench.",
+      "cost_usd": null,
+      "cost_note": "No fixed project cost is assumed. Check current files and hardware needs, then use your slice for filament cost and print duration.",
+      "price_checked_at": null,
+      "time_minutes": 30,
+      "difficulty": 1,
+      "phase": 3,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": null,
+        "url": "https://makerworld.com/en/models/2556721-snapmaker-u1-buildsheet-holder-two-versions",
+        "kind": "model",
+        "credit_status": "pending",
+        "note": "Model linked in the community discussion below. Current revision, settings and license need confirmation on the creator page."
+      },
+      "community_evidence": [
+        {
+          "creator": "bjorn_lo",
+          "url": "https://www.reddit.com/r/SnapmakerU1/comments/1trctbk/starting_mods_for_snapmaker_u1/",
+          "kind": "forum",
+          "credit_status": "named",
+          "note": "Owner recommendation and exact model link"
+        }
+      ],
+      "last_verified": "2026-10-29",
+      "verified_firmware": null,
+      "tags": [
+        "useful-prints",
+        "early-prints"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "Check the mounting method and sheet dimensions. Designer credit is still pending on the model page.",
+        "Optional after clean stock checks. Current model instructions and physical fit have not been verified.",
+        "The listed time is our planning allowance for review/fitting, excluding printing; it is not a creator-tested print duration."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Forum-recommended prints / early",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Community discussion reviewed on 2026-10-29; recommendation evidence is linked separately. Current model-host files, settings and license were not reviewed; no physical testing or file rehosting."
+      }
+    },
+    {
+      "id": "elegant-spool-holder",
+      "title": "Elegant spool holder",
+      "category": "printed-mod",
+      "type": "print",
+      "summary": "An alternative spool mount for owners who want to improve everyday spool handling.",
+      "cost_usd": null,
+      "cost_note": "No fixed project cost is assumed. Check current files and hardware needs, then use your slice for filament cost and print duration.",
+      "price_checked_at": null,
+      "time_minutes": 45,
+      "difficulty": 2,
+      "phase": 3,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": "rfnovo",
+        "url": "https://makerworld.com/en/models/2182947-elegant-spool-holder-for-snapmaker-u1",
+        "kind": "model",
+        "credit_status": "named",
+        "note": "Model linked in the community discussion below. Current revision, settings and license need confirmation on the creator page."
+      },
+      "community_evidence": [
+        {
+          "creator": "BigFoig_",
+          "url": "https://www.reddit.com/r/snapmaker/comments/1vfvl3d/sharing_my_dyi_mods_for_the_u1/",
+          "kind": "forum",
+          "credit_status": "named",
+          "note": "Owner-installed spool-holder recommendation"
+        }
+      ],
+      "last_verified": "2026-10-29",
+      "verified_firmware": null,
+      "tags": [
+        "useful-prints",
+        "everyday-prints"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "Check spool dimensions, retention and feeder alignment; compatibility with every spool is not established.",
+        "Optional after clean stock checks. Current model instructions and physical fit have not been verified.",
+        "The listed time is our planning allowance for review/fitting, excluding printing; it is not a creator-tested print duration."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Forum-recommended prints / everyday",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Community discussion reviewed on 2026-10-29; recommendation evidence is linked separately. Current model-host files, settings and license were not reviewed; no physical testing or file rehosting."
+      }
+    },
+    {
+      "id": "original-door-hinge",
+      "title": "Original Hinge door-access mod",
+      "category": "printed-mod",
+      "type": "print",
+      "summary": "A door-hinge project to review if the stock door access does not suit your workspace.",
+      "cost_usd": null,
+      "cost_note": "No fixed project cost is assumed. Check current files and hardware needs, then use your slice for filament cost and print duration.",
+      "price_checked_at": null,
+      "time_minutes": 60,
+      "difficulty": 3,
+      "phase": 3,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": "Bixx",
+        "url": "https://makerworld.com/en/models/2262216-snapmaker-u1-door-hinge-original-hinge",
+        "kind": "model",
+        "credit_status": "named",
+        "note": "Model linked in the community discussion below. Current revision, settings and license need confirmation on the creator page."
+      },
+      "community_evidence": [
+        {
+          "creator": "BigFoig_",
+          "url": "https://www.reddit.com/r/snapmaker/comments/1vfvl3d/sharing_my_dyi_mods_for_the_u1/",
+          "kind": "forum",
+          "credit_status": "named",
+          "note": "Owner-installed door-hinge recommendation"
+        }
+      ],
+      "last_verified": "2026-10-29",
+      "verified_firmware": null,
+      "tags": [
+        "useful-prints",
+        "everyday-prints"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "Follow the complete door-fitting instructions and support the glass during any hinge work. Confirm closing and clearance before use.",
+        "Optional after clean stock checks. Current model instructions and physical fit have not been verified.",
+        "The listed time is our planning allowance for review/fitting, excluding printing; it is not a creator-tested print duration."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Forum-recommended prints / everyday",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Community discussion reviewed on 2026-10-29; recommendation evidence is linked separately. Current model-host files, settings and license were not reviewed; no physical testing or file rehosting."
+      }
+    },
+    {
+      "id": "sh02-dryer-rear-outlet",
+      "title": "Rear outlet for Sovol / Comgrow SH02 dryer",
+      "category": "printed-mod",
+      "type": "print",
+      "summary": "A routing option for owners already feeding filament from a Sovol or Comgrow SH02 dryer.",
+      "cost_usd": null,
+      "cost_note": "No fixed project cost is assumed. Check current files and hardware needs, then use your slice for filament cost and print duration.",
+      "price_checked_at": null,
+      "time_minutes": 60,
+      "difficulty": 3,
+      "phase": 5,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": "RVfan",
+        "url": "https://makerworld.com/en/models/2073487-rear-outlet-for-sovol-comgrow-sh02-dryer",
+        "kind": "model",
+        "credit_status": "named",
+        "note": "Model linked in the community discussion below. Current revision, settings and license need confirmation on the creator page."
+      },
+      "community_evidence": [
+        {
+          "creator": "BigFoig_",
+          "url": "https://www.reddit.com/r/snapmaker/comments/1vfvl3d/sharing_my_dyi_mods_for_the_u1/",
+          "kind": "forum",
+          "credit_status": "named",
+          "note": "Owner-installed SH02 routing recommendation"
+        }
+      ],
+      "last_verified": "2026-10-29",
+      "verified_firmware": null,
+      "tags": [
+        "useful-prints",
+        "everyday-prints"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "This is a dryer-specific project, not a universal U1 feeder part. Check your SH02 revision and the creator’s modification instructions; it does not restore RFID detection.",
+        "Optional after clean stock checks. Current model instructions and physical fit have not been verified.",
+        "The listed time is our planning allowance for review/fitting, excluding printing; it is not a creator-tested print duration."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Forum-recommended prints / everyday",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Community discussion reviewed on 2026-10-29; recommendation evidence is linked separately. Current model-host files, settings and license were not reviewed; no physical testing or file rehosting."
+      }
+    },
+    {
+      "id": "cyberdyne-vented-cover",
+      "title": "Cyberdyne vented IKEA top-cover adapter",
+      "category": "printed-mod",
+      "type": "print",
+      "summary": "A box-based top-cover project with a vent-opening design for owners ready to plan an enclosure.",
+      "cost_usd": null,
+      "cost_note": "No fixed project cost is assumed. Check current files and hardware needs, then use your slice for filament cost and print duration.",
+      "price_checked_at": null,
+      "time_minutes": 180,
+      "difficulty": 3,
+      "phase": 6,
+      "requires": [
+        "stock-burn-in-complete"
+      ],
+      "conflicts": [
+        "diy-samla-lid",
+        "official-top-cover",
+        "biqu-popcap"
+      ],
+      "gates": [],
+      "conditions": {
+        "on_request": true,
+        "min_stock_days": 7
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": "Cyberdyne",
+        "url": "https://www.printables.com/model/1551818-snapmaker-u1-top-cover-with-vent-opening-for-ikea",
+        "kind": "model",
+        "credit_status": "named",
+        "note": "Model linked in the community discussion below. Current revision, settings and license need confirmation on the creator page."
+      },
+      "community_evidence": [
+        {
+          "creator": "BigFoig_",
+          "url": "https://www.reddit.com/r/snapmaker/comments/1vfvl3d/sharing_my_dyi_mods_for_the_u1/",
+          "kind": "forum",
+          "credit_status": "named",
+          "note": "Owner-used vented-cover model and credit"
+        }
+      ],
+      "last_verified": "2026-10-29",
+      "verified_firmware": null,
+      "tags": [
+        "useful-prints",
+        "advanced-prints"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "Confirm the exact container and material requirements. A lid alone does not establish fume control or a safe heated-chamber temperature.",
+        "Optional after clean stock checks. Current model instructions and physical fit have not been verified.",
+        "The listed time is our planning allowance for review/fitting, excluding printing; it is not a creator-tested print duration."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Forum-recommended prints / advanced",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Community discussion reviewed on 2026-10-29; recommendation evidence is linked separately. Current model-host files, settings and license were not reviewed; no physical testing or file rehosting."
+      }
+    },
+    {
+      "id": "ikea-carbon-hepa-housing",
+      "title": "Carbon + HEPA housing for an IKEA enclosure",
+      "category": "printed-mod",
+      "type": "print",
+      "summary": "A filter-housing project for an IKEA enclosure, requiring a separate fan, filters and power arrangement.",
+      "cost_usd": null,
+      "cost_note": "No fixed project cost is assumed. Check current files and hardware needs, then use your slice for filament cost and print duration.",
+      "price_checked_at": null,
+      "time_minutes": 180,
+      "difficulty": 4,
+      "phase": 6,
+      "requires": [
+        "stock-burn-in-complete",
+        "cyberdyne-vented-cover"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true,
+        "min_stock_days": 7
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": "Silversoul07",
+        "url": "https://makerworld.com/en/models/2751403-snapmaker-u1-carbon-hepa-filter-ikea-enclosure",
+        "kind": "model",
+        "credit_status": "named",
+        "note": "Model linked in the community discussion below. Current revision, settings and license need confirmation on the creator page."
+      },
+      "community_evidence": [
+        {
+          "creator": "BigFoig_",
+          "url": "https://www.reddit.com/r/snapmaker/comments/1vfvl3d/sharing_my_dyi_mods_for_the_u1/",
+          "kind": "forum",
+          "credit_status": "named",
+          "note": "Owner-installed filter-housing recommendation"
+        }
+      ],
+      "last_verified": "2026-10-29",
+      "verified_firmware": null,
+      "tags": [
+        "useful-prints",
+        "advanced-prints"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "Review the complete fan, filter and power requirements. Housing geometry or reduced odor does not establish filtration effectiveness or exposure control.",
+        "Optional after clean stock checks. Current model instructions and physical fit have not been verified.",
+        "The listed time is our planning allowance for review/fitting, excluding printing; it is not a creator-tested print duration."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Forum-recommended prints / advanced",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Community discussion reviewed on 2026-10-29; recommendation evidence is linked separately. Current model-host files, settings and license were not reviewed; no physical testing or file rehosting."
+      }
+    },
+    {
+      "id": "tareku-cooling-brackets",
+      "title": "Tareku mainboard / PSU cooling brackets",
+      "category": "printed-mod",
+      "type": "print",
+      "summary": "Fan brackets and a chamber divider for an electronics-cooling project; these printed parts are only part of the build.",
+      "cost_usd": null,
+      "cost_note": "No fixed project cost is assumed. Check current files and hardware needs, then use your slice for filament cost and print duration.",
+      "price_checked_at": null,
+      "time_minutes": 180,
+      "difficulty": 4,
+      "phase": 6,
+      "requires": [
+        "stock-burn-in-complete",
+        "mainboard-psu-cooling"
+      ],
+      "conflicts": [],
+      "gates": [],
+      "conditions": {
+        "on_request": true,
+        "min_stock_days": 7,
+        "soldering": true
+      },
+      "materials_relevance": [
+        "all"
+      ],
+      "reversible": true,
+      "warranty_risk": "gray",
+      "source": {
+        "creator": "Tareku (Tareku99)",
+        "url": "https://www.printables.com/model/1714821-snapmaker-u1-mainboard-psu-cooling-brackets-for-no",
+        "kind": "model",
+        "credit_status": "named",
+        "note": "Model linked in the community discussion below. Current revision, settings and license need confirmation on the creator page."
+      },
+      "community_evidence": [
+        {
+          "creator": "Tareku99",
+          "url": "https://www.reddit.com/r/SnapmakerU1/comments/1taqgyk/my_attempt_to_make_the_u1_quieter_and_cooler_psu/",
+          "kind": "forum",
+          "credit_status": "named",
+          "note": "Creator’s cooling-bracket and divider discussion"
+        }
+      ],
+      "last_verified": "2026-10-29",
+      "verified_firmware": null,
+      "tags": [
+        "useful-prints",
+        "advanced-prints"
+      ],
+      "bothers": [],
+      "locations": [],
+      "warnings": [
+        "Requires a complete electronics-cooling guide, specified fans and hardware. Do not open or modify a mains PSU from this summary; use qualified help. A driver-temperature report is not processor-cooling certification.",
+        "Optional after clean stock checks. Current model instructions and physical fit have not been verified.",
+        "The listed time is our planning allowance for review/fitting, excluding printing; it is not a creator-tested print duration."
+      ],
+      "optional_related_items": [],
+      "provenance": {
+        "seed": "community-docs",
+        "section": "Forum-recommended prints / advanced",
+        "verification_status": "source-reviewed-not-tested",
+        "note": "Community discussion reviewed on 2026-10-29; recommendation evidence is linked separately. Current model-host files, settings and license were not reviewed; no physical testing or file rehosting."
       }
     }
   ]

@@ -28,6 +28,14 @@ class DataTests(unittest.TestCase):
     def test_seed_passes(self):
         self.assertEqual(validate_documents(self.docs), [])
 
+    def test_community_evidence_rejects_tracking_links(self):
+        self.item('split-waste-chute')['community_evidence'][0]['url'] += '?utm_source=test'
+        self.rejects('affiliate/tracking')
+
+    def test_community_evidence_links_to_pages_not_files(self):
+        self.item('split-waste-chute')['community_evidence'][0]['url'] = 'https://example.org/model.stl'
+        self.rejects('direct third-party file')
+
     def test_minimum_catalog_and_fixes(self):
         expected = {
             "stock-burn-in-complete", "concrete-paver-base", "just-a-riser-xl",

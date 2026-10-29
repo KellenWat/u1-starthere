@@ -1,4 +1,4 @@
-# U1 StartHere data contract (1.5.0)
+# U1 StartHere data contract (1.6.0)
 
 The canonical authored content is `data/items.json`, `data/fixes.json` and
 `data/phases.json`, plus the routing-only `data/journey.json`. Consumers must render records from these files; catalog
@@ -167,6 +167,19 @@ optional `description`, and optional `set` effects for stage/materials/concerns.
 Fix nodes reference `fix_id` and a follow-up `next`; their content is rendered
 from fixes.json. Terminal kinds are `plan`, `track`, `search` and `support`.
 No fix instructions or item facts are copied into routing metadata.
+
+Resource groups may also reference printed modifications. The view derives
+software filters only for groups whose records all contain software metadata;
+printed-part groups show creator model links, costs, prerequisites and fit
+warnings from items.json. Optional printed track steps do not enter readiness
+milestones.
+
+Contract 1.6.0 adds optional item `community_evidence`, an array of common
+credited source objects. These link the owner report or creator announcement
+separately from the model page. Evidence URLs get the same public-page,
+tracking and direct-file checks as primary sources. Discussion review does
+not verify the latest model files, fit, temperatures or filtration performance.
+Unknown designer handles remain null with pending credit, visibly labeled.
 
 The validator checks all four schemas, targets, unique choices, fix references
 and reachability. Shared nodes and return edges are intentional. Navigation

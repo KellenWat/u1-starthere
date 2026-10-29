@@ -88,6 +88,7 @@ def validate_documents(documents: dict, root: Path = ROOT) -> list[str]:
                     if target == key:
                         errors.append(f"{key}: self-reference in {field}")
             urls = [record["source"]["url"]]
+            urls.extend(source["url"] for source in record.get("community_evidence", []))
             urls.extend(link["url"] for link in record.get("software", {}).get("docs", []))
             for source in record.get("code_evidence", {}).get("sources", []):
                 if not source["creator"] or source["credit_status"] != "named":

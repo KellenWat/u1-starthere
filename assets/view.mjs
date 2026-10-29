@@ -90,6 +90,7 @@ export function renderItem(item, items, phases, base) {
       <p>${escape(item.source.note)}</p>
       <dl class="source-facts"><div><dt>${escape(status)}</dt><dd>${escape(date(item.last_verified))}</dd></div>
       <div><dt>Firmware tested</dt><dd>${escape(item.verified_firmware || 'Not tested')}</dd></div></dl>
+      ${item.community_evidence?.length?`<h3>Community discussion</h3><ul class="plain-list">${item.community_evidence.map(source=>`<li>${link(safeLink(source.url),source.note)}<small>${escape(source.creator||'Credit pending')}</small></li>`).join('')}</ul>`:''}
       <p class="small">${escape(item.provenance.note)}</p><p class="small">We link to the original project. Its own license and instructions apply.</p>
     </aside></div>`;
 }

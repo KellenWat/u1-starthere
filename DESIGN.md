@@ -59,6 +59,16 @@ of the quiet decorative rules. Preserve native keyboard controls.
 
 ## Earlier iterations
 
+### Community-print routes
+
+Reuse the existing quiet resource cards for printed projects. Put the creator's
+model action before expandable fit/cost notes; keep source review and untested
+fit visible. The new-owner route stays on cleanup/storage, while improvement
+and exploration offer a shared three-way project question. Review at 390 px,
+including keyboard disclosures and return paths. Do not expose platform filters
+or software wording on print groups. An initial long card pushed the model link
+too far down; move supporting notes behind the existing native disclosure.
+
 ### Owner walkthrough audit
 
 Treat the first print as the new owner's goal. Before each unfamiliar action,

@@ -377,6 +377,26 @@ match the JSON. The optional authoring script is not a deployment build step.
     findings, changes, validation and remaining usability questions. The current
     track has 38 steps; the connected journey has 48 nodes. M5/M6 remain deferred.
 
+49. **Useful first prints:** the owner's follow-up adds ahlang's split waste
+    chute/box and Darien's deflector wall. Setup, improvement and exploration
+    link to one shared group. Both remain optional phase-3 choices after stock
+    tests; no automatic planner selection or assumed free filament cost.
+    Creator announcements establish authorship and purpose. Their linked model
+    pages could not be read by the research tool, so do not claim a latest
+    revision, specific print settings, license or tested combined compatibility.
+    Current files and installation stay on the creator's own page. The generic
+    resources view now distinguishes printed parts from software controls.
+
+50. **Forum review across usage levels:** nine model links now form three
+    groups: early cleanup/storage, everyday convenience, and advanced enclosure/
+    cooling projects. The new-owner route opens the early group; improvement
+    and exploration first ask which kind of project would help. Contract 1.6.0
+    stores linked `community_evidence` separately from the original model URL.
+    Unknown project costs remain quotes, all additions are opt-in, advanced
+    electrical routes respect the existing skill limits, and no new project
+    claims to provide a thermal-safety capability. See
+    [forum print review](FORUM_PRINT_REVIEW.md) for sources and deferred leads.
+
 ## Source review and remaining content work
 
 Source pages were reviewed on 2026-10-28 for Paxx12, its RFID/Spoolman/heater
