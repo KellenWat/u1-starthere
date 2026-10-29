@@ -68,6 +68,15 @@ adjustments, reset/restored filters, and the updated track/item layouts remains
 pending. No final screenshots are claimed; first-pass views were inspected in
 the chat before the interruption. The automated checks above passed afterward.
 
+## Repository handoff
+
+Implementation commit: `340773375dd6fb15e9abe565ec6d94857cb02b77`.
+The attempted `git push origin main` was also rejected by automatic approval
+review because its selected model was at capacity. The push was not executed;
+GitHub CI has not run for this revision. The local commit is ready to push
+after review-service availability is restored. No alternate publishing path
+was used to bypass the rejection.
+
 ## Files changed
 
 - `assets/home-view.mjs` (new), `assets/app.mjs`, `assets/fix-ui.mjs`,
