@@ -5,7 +5,7 @@ const root = new URL('../',import.meta.url), check = process.argv.includes('--ch
 const read = path => readFile(new URL(path,root),'utf8');
 const [{items},{phases},template] = await Promise.all([read('data/items.json').then(JSON.parse),read('data/phases.json').then(JSON.parse),read('templates/page.html')]);
 const pages = [
-  {file:'index.html',page:'home',base:'./',title:'U1 StartHere — A good first week starts stock',description:'A clear startup track and credited catalog for Snapmaker U1 owners.'},
+  {file:'index.html',page:'home',base:'./',title:'U1 StartHere — A clear next step for your U1',description:'Find your next step, follow the startup track and explore sourced community fixes and projects for Snapmaker U1.'},
   {file:'catalog/index.html',page:'catalog',base:'../',title:'Catalog — U1 StartHere',description:'Browse U1 setup, printed mods, purchases and settings by cost, difficulty and stage.'},
   {file:'start/index.html',page:'start',base:'../',title:'Startup track — U1 StartHere',description:'Work through your U1 setup, stock tests, first mods and tuning at your own pace.'},
   {file:'plan/index.html',page:'plan',base:'../',title:'What’s next? — U1 StartHere',description:'Follow a scrolling decision path to a deterministic, priced U1 plan with prerequisites and credited community sources.'},

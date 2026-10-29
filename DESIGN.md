@@ -1,4 +1,63 @@
-# M2 design direction
+# U1 StartHere design direction
+
+## Current refinement: a clear next step
+
+Preserve the owner's minimal Apple/macOS direction and connected, full-screen
+decision diagram. Make the next useful action the strongest element on every
+page. The U1's four toolheads inform the four connected starting choices;
+these are working routes from journey.json, not decorative product tiles.
+
+Tokens: canvas `#ffffff`, inset `#f6f7f9`, ink `#202124`, secondary `#5f636b`,
+rule `#e2e5e9`, action `#0069d9`. Native Apple/Segoe UI typography throughout;
+headlines use medium weight and balanced lines, text stays under 70 characters.
+Use a 4/8 px spacing scale, 8 px controls, 16 px purposeful panels, and quiet
+rules instead of shadows on every component. Codes use explicit readable
+monospace. No remote fonts, decorative imagery or automatic motion.
+
+```text
+U1 StartHere                         Start  What's next?  Catalog  Fixes
+
+                  A clear next step for your U1.
+                          short explanation
+                                 |
+                    +------------+------------+
+                  [ route ]                 [ route ]
+                  [ route ]                 [ route ]
+
+      Startup sequence from JSON    /    Search a symptom or full code
+                  Community options with creator credit
+```
+
+Homepage and diagram questions are centered. Catalog, fixes, track and item
+details are left aligned. Fixes use one divided list with codes visible in
+collapsed rows. Search comes before secondary explanations. Catalog search,
+category, cost and platform stay visible; difficulty/stage are a native
+disclosure. Phone navigation is compact, stage links scroll in one row, and
+forms keep explicit labels. Stop conditions, source caveats and all planner
+reasons remain intact.
+
+Review before building: a new coat of rounded panels would repeat the present
+problem. Reduce the repeated cards and toolbar chrome instead. The meaningful
+diagram gets the emphasis; utility pages get restrained typography and useful
+density. No marketing statistics, fake printer render, UI window decorations,
+or unrelated M5 features. Review at phone and desktop sizes, then correct the
+observed rough edges in a second pass.
+
+First-pass review: the homepage is quieter, and all four routes restore the
+expected graph destination. On a phone, opening a routed link still left the
+question below header/trail chrome and clipped its last answer row. The second
+pass focuses/scrolls the active node when restoring a nonempty route and lets
+the initial root question account for the header/toolbar in its viewport
+height. Keep full-height scenes after a choice. Code numbers remain visible
+on collapsed fix rows; source notes stay subordinate to the checks.
+
+Catalog review: narrow side-by-side category controls truncated long category
+names. Keep category across the phone's full row, with cost/platform beneath
+it. Show an active count on the extra-filter disclosure so a hidden difficulty
+or phase filter remains discoverable. Strengthen input borders independently
+of the quiet decorative rules. Preserve native keyboard controls.
+
+## Earlier iterations
 
 ## Software documentation expansion
 

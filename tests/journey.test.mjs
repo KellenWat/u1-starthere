@@ -3,9 +3,25 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {walkJourney,chooseJourney,encodeJourney,decodeJourney,edges} from '../assets/journey.mjs';
 import {remainingQuestions} from '../assets/decision-flow.mjs';
+import {renderHome} from '../assets/home-view.mjs';
 const read=async name=>JSON.parse(await readFile(new URL(name,import.meta.url),'utf8'));
 const data=await read('../data/journey.json'),{items}=await read('../data/items.json'),{fixes}=await read('../data/fixes.json');
 const walk=choices=>walkJourney(data,choices,items);
+
+test('homepage entrances use authored journey choices and restore their destination',async()=>{
+  const {phases}=await read('../data/phases.json');
+  const base='https://example.github.io/u1-starthere/';
+  const html=renderHome(items,phases,data,base);
+  const links=[...html.matchAll(/class="home-path" href="([^"]+)"/g)].map(match=>new URL(match[1]));
+  const start=data.nodes.find(node=>node.id===data.start);
+  assert.equal(links.length,start.choices.length);
+  for(const [index,link] of links.entries()){
+    assert.equal(link.pathname,'/u1-starthere/plan/');
+    const restored=decodeJourney(link.hash,data,items);
+    assert.equal(restored.valid,true);
+    assert.equal(walk(restored.choices).node.id,start.choices[index].next);
+  }
+});
 
 test('a clear symptom reaches its fix without the planner questionnaire',()=>{
   assert.equal(walk(['problem','quality','tower']).node.fix_id,'prime-tower-toppling');

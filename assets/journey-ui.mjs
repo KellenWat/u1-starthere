@@ -71,5 +71,5 @@ export function mountJourney(main,items,phases,base,itemData,fixes,data){
   const requested=new URL(location.href).searchParams.get('item');
   if(location.hash.startsWith('#plan='))startPlanner();
   else if(requested&&items.some(item=>item.id===requested)){const url=new URL(location.href);url.searchParams.delete('item');history.replaceState(null,'',url);startPlanner({initialState:{selected:[requested]}});}
-  else draw();
+  else draw(choices.length>0);
 }

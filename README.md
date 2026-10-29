@@ -341,6 +341,19 @@ match the JSON. The optional authoring script is not a deployment build step.
     collapsed results. Journey cards show the same complete codes before the
     checks. Only source/review notes remain expandable; codes are never hidden
     behind that disclosure. Number lists wrap on phones and render from JSON.
+41. **Design refinement:** retain the owner's minimal Apple/macOS direction,
+    with a white canvas, a compact header, native typography, quieter borders
+    and fewer competing panels. Utility pages are left aligned; full-screen
+    decision questions stay centered. No fonts, imagery or dependencies added.
+42. **Homepage as a working entrance:** its four choices come directly from
+    journey.json and link to the corresponding restored path. Startup phases
+    and catalog highlights still render from JSON. Nonempty restored journeys
+    bring the active question into view, with reduced-motion behavior preserved.
+43. **Phone usability after review:** a divided fix list keeps every documented
+    code visible, category uses the full filter row, and difficulty/stage live
+    in a keyboard-operable disclosure with an active count. Shared URLs open
+    those extra filters when needed. Track stage links scroll in one row.
+    This is a design iteration; M5 embed/freshness and M6 remain deferred.
 
 ## Source review and remaining content work
 

@@ -1,3 +1,4 @@
+import {renderHome} from './home-view.mjs';
 import {escape as e,label,money,path,itemPath,itemCard,catalogItems,platformLabel} from './view.mjs';
 import {STORAGE_KEY,readProgress,progressCounts} from './progress.mjs';
 import {mountJourney} from './journey-ui.mjs';
@@ -13,7 +14,7 @@ let items,phases;
 async function load() {
   if (page === 'item') return; // Complete item content is pre-rendered from JSON.
   try {
-    const names=['items','phases',...(['plan','fixes'].includes(page)?['fixes']:[]),...(page==='plan'?['journey']:[])];
+    const names=['items','phases',...(['plan','fixes'].includes(page)?['fixes']:[]),...(['home','plan'].includes(page)?['journey']:[])];
     const docs = await Promise.all(names.map(async name => {
       const response = await fetch(path(base,`data/${name}.json`));
       if (!response.ok) throw new Error('Data unavailable');
@@ -21,7 +22,7 @@ async function load() {
     }));
     items = docs[0].items; phases = docs[1].phases;
     if (!Array.isArray(items) || !Array.isArray(phases)) throw new Error('Invalid data');
-    if (page === 'home') home();
+    if (page === 'home') main.innerHTML=renderHome(items,phases,docs[2],base);
     if (page === 'catalog') catalog();
     if (page === 'start') track();
     if (page === 'plan') mountJourney(main,items,phases,base,docs[0],docs[2].fixes,docs[3]);
@@ -32,32 +33,16 @@ async function load() {
   }
 }
 
-function home() {
-  const highlights = ['printed-mod','firmware','slicer'].map(category =>
-    items.find(item=>item.category===category)).filter(Boolean);
-  main.innerHTML = `<section class="home-hero"><div class="hero-copy"><p class="intro-label">For your Snapmaker U1</p>
-    <h1>A good first week starts stock.</h1><p class="lead">Get the basics right, find useful community projects, and make your next change with a reason.</p>
-    <div class="hero-actions">${link('start/','I’m new — start the track','button primary')}${link('plan/','I have a U1 — plan my next steps','button secondary')}</div>
-    <p class="quiet-note">Free to use. No accounts, affiliate links or tracking.</p></div>
-    <aside class="week-preview" aria-labelledby="week-heading"><div class="preview-heading"><img src="${e(path(base,'assets/app-icon.svg'))}" width="44" height="44" alt=""><h2 id="week-heading">Give your U1 a good start</h2></div>
-    <ol>${phases.slice(0,3).map(phase=>`<li><span class="phase-number">${phase.phase+1}</span><div><h3>${e(phase.name)}</h3><p>${e(phase.goal)}</p></div></li>`).join('')}</ol>
-    ${link('start/','See the full startup track','text-link')}</aside></section>
-    <section class="home-section"><div class="section-heading"><div><h2>Good places to begin</h2><p>Useful community options, with the source always attached.</p></div>${link('catalog/','Browse the catalog','text-link')}</div>
-    <div class="catalog-grid">${highlights.map(item=>itemCard(item,phases,base)).join('')}</div></section>
-    <section class="next-section"><div><h2>“What should I do next?”</h2><p>Follow connected choices to a matching guide, the next useful question, or community projects that fit. See the order, costs and reasons, including anything your budget defers.</p><p class="small">Ask what matters. Keep every source attached.</p></div>${link('plan/','Find my next steps','button secondary')}</section>
-    <section class="support-section"><h2>Something isn’t working?</h2><form class="home-fix-search" action="${e(path(base,'fixes/'))}" role="search"><label for="home-symptom">Describe the symptom or paste an error code</label><div><input id="home-symptom" type="search" name="q" placeholder="For example: prime tower keeps falling over"><button class="button primary" type="submit">Find a guide</button></div></form><p class="small">Keep your printer stock while investigating a new-machine fault.</p>${link('fixes/','Browse all fix cards','text-link')}</section>`;
-}
-
 function catalog() {
   const categories = [...new Set(items.map(item=>item.category))].sort();
-  main.innerHTML = `<header class="page-heading"><p class="intro-label">Community projects and practical setup</p><h1>The U1 catalog</h1><p class="lead">Find a useful next step. Check the prerequisites, cost notes and creator’s guide before making a change.</p></header>
-    <form class="filters" id="catalog-filters" role="search" aria-label="Filter the catalog"><div class="search-control"><label for="catalog-query">Find an item</label><input id="catalog-query" name="q" type="search" placeholder="Try a material, project or creator" autocomplete="off"></div>
-    <div><label for="category">Category</label><select id="category" name="category">${options([['','All categories'],['software','Software & integrations'],...categories.map(value=>[value,label(value)])])}</select></div>
+  main.innerHTML = `<header class="page-heading"><h1>Community catalog.</h1><p class="lead">Tools, upgrades and guides for your next change.<br>Check the prerequisites and follow the creator’s instructions.</p></header>
+    <form class="filters" id="catalog-filters" role="search" aria-label="Filter the catalog"><div class="search-control"><label for="catalog-query">Find an item</label><input id="catalog-query" name="q" type="search" placeholder="Search by project, material or creator" autocomplete="off"></div>
+    <div class="filter-primary"><div><label for="category">Category</label><select id="category" name="category">${options([['','All categories'],['software','Software & integrations'],...categories.map(value=>[value,label(value)])])}</select></div>
     <div><label for="cost">Cost</label><select id="cost" name="cost">${options([['','Any cost'],['0','Free options'],['50','Up to $50'],['150','Up to $150'],['300','Up to $300'],['variable','Price varies']])}</select></div>
-    <div><label for="difficulty">Difficulty</label><select id="difficulty" name="difficulty">${options([['','Any difficulty'],['1','1 — Easy'],['2','Up to 2 — Some setup'],['3','Up to 3 — Hands-on'],['4','Up to 4 — Advanced'],['5','Up to 5 — Experimental']])}</select></div>
-    <div><label for="phase">Earliest stage</label><select id="phase" name="phase">${options([['','Any stage'],...phases.map(phase=>[String(phase.phase),phase.name])])}</select></div>
-    <div><label for="platform">Runs on</label><select id="platform" name="platform">${options([['','Any platform'],...[...new Set(items.flatMap(item=>item.software?.platforms||[]))].sort().map(value=>[value,platformLabel(value)])])}</select></div>
-    <button type="reset" class="button quiet">Clear filters</button></form>
+    <div><label for="platform">Runs on</label><select id="platform" name="platform">${options([['','Any platform'],...[...new Set(items.flatMap(item=>item.software?.platforms||[]))].sort().map(value=>[value,platformLabel(value)])])}</select></div></div>
+    <div class="filter-secondary"><details class="filter-extras"><summary>Difficulty &amp; stage</summary><div class="filter-extra-fields"><div><label for="difficulty">Difficulty</label><select id="difficulty" name="difficulty">${options([['','Any difficulty'],['1','1 — Easy'],['2','Up to 2 — Some setup'],['3','Up to 3 — Hands-on'],['4','Up to 4 — Advanced'],['5','Up to 5 — Experimental']])}</select></div>
+    <div><label for="phase">Earliest stage</label><select id="phase" name="phase">${options([['','Any stage'],...phases.map(phase=>[String(phase.phase),phase.name])])}</select></div></div></details>
+    <button type="reset" class="text-button">Clear filters</button></div></form>
     <div class="results-heading"><p id="results-count" role="status" aria-live="polite"></p><p class="small">Ordered by earliest stage, then title</p></div><div class="catalog-grid" id="catalog-results"></div>
     <p class="catalog-note">Free means no purchase price; filament and optional hardware can still cost money. All times are estimates. Open an item for its price date, source and limitations.</p>`;
   const form = document.querySelector('#catalog-filters');
@@ -67,8 +52,11 @@ function catalog() {
     const value = params.get(control.name);
     if (control.type === 'search' || [...control.options].some(option=>option.value===value)) control.value=value;
   }
+  if(params.has('difficulty')||params.has('phase'))form.querySelector('.filter-extras').open=true;
   function update() {
     const filters = Object.fromEntries(new FormData(form));
+    const extraCount=[filters.difficulty,filters.phase].filter(Boolean).length;
+    form.querySelector('.filter-extras>summary').textContent=`Difficulty & stage${extraCount?` (${extraCount} active)`:''}`;
     const selected = catalogItems(items,filters);
     document.querySelector('#results-count').textContent = `${selected.length} of ${items.length} items`;
     document.querySelector('#catalog-results').innerHTML = selected.length ? selected.map(item=>itemCard(item,phases,base)).join('') :
@@ -92,7 +80,7 @@ function track() {
   const firstIncomplete = phases.find(phase=>progressCounts(progress,phase.steps).finished<phase.steps.length)?.phase ?? phases[0].phase;
   const hashPhase = /^#phase-(\d+)$/.exec(location.hash)?.[1];
   const openPhase = hashPhase!==undefined && phases.some(phase=>phase.phase===Number(hashPhase)) ? Number(hashPhase) : firstIncomplete;
-  main.innerHTML = `<header class="page-heading track-heading"><p class="intro-label">Your first week, at your pace</p><h1>The startup track</h1><p class="lead">Stock first, mods second. Get a clean baseline before changing the printer, then choose what’s useful to you.</p></header>
+  main.innerHTML = `<header class="page-heading track-heading"><h1>The startup track.</h1><p class="lead">Stock first, mods second. Get a clean baseline before changing the printer, then choose what’s useful to you.</p></header>
     <section class="progress-panel" aria-labelledby="progress-heading"><div><h2 id="progress-heading">Your progress</h2><p id="progress-text" role="status" aria-live="polite"></p></div><progress id="track-progress" value="0" max="${allSteps.length}" aria-label="Startup track progress"></progress><p class="small" id="storage-note">Saved only in this browser. Optional steps can be skipped.</p></section>
     <nav class="phase-nav" aria-label="Track stages">${phases.map(phase=>`<a href="#phase-${phase.phase}">${e(phase.name)}</a>`).join('')}</nav>
     <div class="track-phases">${phases.map(phase=>`<details class="track-phase" id="phase-${phase.phase}" ${phase.phase===openPhase?'open':''}><summary><span class="phase-number">${phase.phase+1}</span><span class="phase-title">${e(phase.name)}<small>${e(phase.goal)}</small></span><span class="phase-status" data-phase-status="${phase.phase}"></span><span class="disclosure" aria-hidden="true">+</span></summary>
